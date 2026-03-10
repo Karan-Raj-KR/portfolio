@@ -76,7 +76,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.6 }}
-                    className="flex gap-8 pt-2"
+                    className="flex gap-10 pb-20 pt-2"
                 >
                     <Magnetic>
                         <a
@@ -101,7 +101,7 @@ export function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.6, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2"
+                className="absolute bottom-6 left-1/2 -translate-x-1/2"
             >
                 <div className="flex flex-col items-center gap-2">
                     <span className="text-xs font-light text-muted-foreground">SCROLL</span>

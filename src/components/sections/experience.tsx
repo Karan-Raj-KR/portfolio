@@ -11,14 +11,6 @@ const experience = [
             "Pursuing a Bachelor’s degree in Artificial Intelligence & Machine Learning",
             "Building a strong foundation in programming, problem-solving, and applied technology",
             "Actively working on frontend and automation projects alongside academics",
-            {
-                title: "Frontend Developer Intern — CodeAlpha (Unpaid Internship)",
-                items: [
-                    "Completed during first semester",
-                    "Worked on frontend development tasks and assignments",
-                    "Gained exposure to real-world development workflows",
-                ]
-            }
         ],
     },
     // ... other items remain same, just keeping the structure valid
@@ -74,18 +66,7 @@ export function Experience() {
                         <div className="mb-4 text-base font-medium text-muted-foreground/80">{item.company}</div>
                         <ul className="max-w-2xl text-muted-foreground dark:text-gray-400 list-disc pl-4 space-y-1">
                             {item.description.map((point, i) => (
-                                typeof point === "string" ? (
-                                    <li key={i}>{point}</li>
-                                ) : (
-                                    <li key={i} className="list-none -ml-5 mt-4">
-                                        <div className="font-medium text-foreground mb-1">{point.title}</div>
-                                        <ul className="list-disc pl-5 space-y-1">
-                                            {point.items.map((sub, j) => (
-                                                <li key={j}>{sub}</li>
-                                            ))}
-                                        </ul>
-                                    </li>
-                                )
+                                <li key={i}>{point}</li>
                             ))}
                         </ul>
                     </motion.div>

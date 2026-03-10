@@ -47,13 +47,31 @@
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
       --tw-duration: initial;
+      --tw-ease: initial;
+      --tw-animation-delay: 0s;
+      --tw-animation-direction: normal;
+      --tw-animation-duration: initial;
+      --tw-animation-fill-mode: none;
+      --tw-animation-iteration-count: 1;
+      --tw-enter-blur: 0;
+      --tw-enter-opacity: 1;
+      --tw-enter-rotate: 0;
+      --tw-enter-scale: 1;
+      --tw-enter-translate-x: 0;
+      --tw-enter-translate-y: 0;
+      --tw-exit-blur: 0;
+      --tw-exit-opacity: 1;
+      --tw-exit-rotate: 0;
+      --tw-exit-scale: 1;
+      --tw-exit-translate-x: 0;
+      --tw-exit-translate-y: 0;
     }
   }
 }
 
 @layer theme {
   :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-sans: var(--font-sans);
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-gray-400: #99a1af;
     --spacing: .25rem;
@@ -97,21 +115,15 @@
     --tracking-tight: -.025em;
     --tracking-wide: .025em;
     --leading-relaxed: 1.625;
-    --radius-lg: .5rem;
-    --radius-xl: .75rem;
+    --ease-in: cubic-bezier(.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, .2, 1);
+    --ease-in-out: cubic-bezier(.4, 0, .2, 1);
     --blur-sm: 8px;
     --blur-md: 12px;
     --default-transition-duration: .15s;
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --color-background: hsl(var(--background));
-    --color-foreground: hsl(var(--foreground));
-    --color-primary: hsl(var(--primary));
-    --color-muted: hsl(var(--muted));
-    --color-muted-foreground: hsl(var(--muted-foreground));
-    --color-border: hsl(var(--border));
-    --color-ring: hsl(var(--ring));
   }
 
   @supports (color: lab(0% 0 0)) {
@@ -414,12 +426,32 @@
   }
 
   * {
-    border-color: var(--color-border);
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    * {
+      outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+    }
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
     transition: background-color .3s, color .3s;
   }
 }
@@ -471,8 +503,24 @@
     top: calc(var(--spacing) * 2);
   }
 
+  .top-4 {
+    top: calc(var(--spacing) * 4);
+  }
+
+  .top-20 {
+    top: calc(var(--spacing) * 20);
+  }
+
   .right-0 {
     right: calc(var(--spacing) * 0);
+  }
+
+  .bottom-4 {
+    bottom: calc(var(--spacing) * 4);
+  }
+
+  .bottom-6 {
+    bottom: calc(var(--spacing) * 6);
   }
 
   .bottom-10 {
@@ -802,6 +850,10 @@
     gap: calc(var(--spacing) * 8);
   }
 
+  .gap-10 {
+    gap: calc(var(--spacing) * 10);
+  }
+
   :where(.space-y-1 > :not(:last-child)) {
     --tw-space-y-reverse: 0;
     margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
@@ -835,11 +887,11 @@
   }
 
   .rounded-lg {
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius);
   }
 
   .rounded-xl {
-    border-radius: var(--radius-xl);
+    border-radius: calc(var(--radius) * 1.4);
   }
 
   .border {
@@ -858,68 +910,68 @@
   }
 
   .border-border {
-    border-color: var(--color-border);
+    border-color: var(--border);
   }
 
   .border-border\/40 {
-    border-color: color-mix(in srgb, hsl(var(--border)) 40%, transparent);
+    border-color: var(--border);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .border-border\/40 {
-      border-color: color-mix(in oklab, var(--color-border) 40%, transparent);
+      border-color: color-mix(in oklab, var(--border) 40%, transparent);
     }
   }
 
   .bg-background {
-    background-color: var(--color-background);
+    background-color: var(--background);
   }
 
   .bg-background\/80 {
-    background-color: color-mix(in srgb, hsl(var(--background)) 80%, transparent);
+    background-color: var(--background);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .bg-background\/80 {
-      background-color: color-mix(in oklab, var(--color-background) 80%, transparent);
+      background-color: color-mix(in oklab, var(--background) 80%, transparent);
     }
   }
 
   .bg-foreground {
-    background-color: var(--color-foreground);
+    background-color: var(--foreground);
   }
 
   .bg-muted-foreground {
-    background-color: var(--color-muted-foreground);
+    background-color: var(--muted-foreground);
   }
 
   .bg-muted\/10 {
-    background-color: color-mix(in srgb, hsl(var(--muted)) 10%, transparent);
+    background-color: var(--muted);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .bg-muted\/10 {
-      background-color: color-mix(in oklab, var(--color-muted) 10%, transparent);
+      background-color: color-mix(in oklab, var(--muted) 10%, transparent);
     }
   }
 
   .bg-muted\/20 {
-    background-color: color-mix(in srgb, hsl(var(--muted)) 20%, transparent);
+    background-color: var(--muted);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .bg-muted\/20 {
-      background-color: color-mix(in oklab, var(--color-muted) 20%, transparent);
+      background-color: color-mix(in oklab, var(--muted) 20%, transparent);
     }
   }
 
   .bg-muted\/30 {
-    background-color: color-mix(in srgb, hsl(var(--muted)) 30%, transparent);
+    background-color: var(--muted);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .bg-muted\/30 {
-      background-color: color-mix(in oklab, var(--color-muted) 30%, transparent);
+      background-color: color-mix(in oklab, var(--muted) 30%, transparent);
     }
   }
 
@@ -977,6 +1029,10 @@
 
   .pt-12 {
     padding-top: calc(var(--spacing) * 12);
+  }
+
+  .pb-20 {
+    padding-bottom: calc(var(--spacing) * 20);
   }
 
   .pl-4 {
@@ -1094,74 +1150,74 @@
   }
 
   .text-background {
-    color: var(--color-background);
+    color: var(--background);
   }
 
   .text-foreground {
-    color: var(--color-foreground);
+    color: var(--foreground);
   }
 
   .text-foreground\/80 {
-    color: color-mix(in srgb, hsl(var(--foreground)) 80%, transparent);
+    color: var(--foreground);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .text-foreground\/80 {
-      color: color-mix(in oklab, var(--color-foreground) 80%, transparent);
+      color: color-mix(in oklab, var(--foreground) 80%, transparent);
     }
   }
 
   .text-muted-foreground {
-    color: var(--color-muted-foreground);
+    color: var(--muted-foreground);
   }
 
   .text-muted-foreground\/40 {
-    color: color-mix(in srgb, hsl(var(--muted-foreground)) 40%, transparent);
+    color: var(--muted-foreground);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .text-muted-foreground\/40 {
-      color: color-mix(in oklab, var(--color-muted-foreground) 40%, transparent);
+      color: color-mix(in oklab, var(--muted-foreground) 40%, transparent);
     }
   }
 
   .text-muted-foreground\/50 {
-    color: color-mix(in srgb, hsl(var(--muted-foreground)) 50%, transparent);
+    color: var(--muted-foreground);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .text-muted-foreground\/50 {
-      color: color-mix(in oklab, var(--color-muted-foreground) 50%, transparent);
+      color: color-mix(in oklab, var(--muted-foreground) 50%, transparent);
     }
   }
 
   .text-muted-foreground\/60 {
-    color: color-mix(in srgb, hsl(var(--muted-foreground)) 60%, transparent);
+    color: var(--muted-foreground);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .text-muted-foreground\/60 {
-      color: color-mix(in oklab, var(--color-muted-foreground) 60%, transparent);
+      color: color-mix(in oklab, var(--muted-foreground) 60%, transparent);
     }
   }
 
   .text-muted-foreground\/80 {
-    color: color-mix(in srgb, hsl(var(--muted-foreground)) 80%, transparent);
+    color: var(--muted-foreground);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .text-muted-foreground\/80 {
-      color: color-mix(in oklab, var(--color-muted-foreground) 80%, transparent);
+      color: color-mix(in oklab, var(--muted-foreground) 80%, transparent);
     }
   }
 
   .text-primary\/80 {
-    color: color-mix(in srgb, hsl(var(--primary)) 80%, transparent);
+    color: var(--primary);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .text-primary\/80 {
-      color: color-mix(in oklab, var(--color-primary) 80%, transparent);
+      color: color-mix(in oklab, var(--primary) 80%, transparent);
     }
   }
 
@@ -1176,7 +1232,7 @@
   }
 
   .ring-background {
-    --tw-ring-color: var(--color-background);
+    --tw-ring-color: var(--background);
   }
 
   .filter {
@@ -1224,6 +1280,21 @@
     transition-duration: .3s;
   }
 
+  .ease-in {
+    --tw-ease: var(--ease-in);
+    transition-timing-function: var(--ease-in);
+  }
+
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
+  }
+
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+  }
+
   .select-none {
     -webkit-user-select: none;
     user-select: none;
@@ -1231,131 +1302,131 @@
 
   @media (hover: hover) {
     .group-hover\:border-foreground\/30:is(:where(.group):hover *) {
-      border-color: color-mix(in srgb, hsl(var(--foreground)) 30%, transparent);
+      border-color: var(--foreground);
     }
 
     @supports (color: color-mix(in lab, red, red)) {
       .group-hover\:border-foreground\/30:is(:where(.group):hover *) {
-        border-color: color-mix(in oklab, var(--color-foreground) 30%, transparent);
+        border-color: color-mix(in oklab, var(--foreground) 30%, transparent);
       }
     }
   }
 
   @media (hover: hover) {
     .group-hover\:bg-muted\/40:is(:where(.group):hover *) {
-      background-color: color-mix(in srgb, hsl(var(--muted)) 40%, transparent);
+      background-color: var(--muted);
     }
 
     @supports (color: color-mix(in lab, red, red)) {
       .group-hover\:bg-muted\/40:is(:where(.group):hover *) {
-        background-color: color-mix(in oklab, var(--color-muted) 40%, transparent);
+        background-color: color-mix(in oklab, var(--muted) 40%, transparent);
       }
     }
   }
 
   @media (hover: hover) {
     .group-hover\:text-foreground:is(:where(.group):hover *) {
-      color: var(--color-foreground);
+      color: var(--foreground);
     }
   }
 
   @media (hover: hover) {
     .group-hover\:text-primary:is(:where(.group):hover *) {
-      color: var(--color-primary);
+      color: var(--primary);
     }
   }
 
   .selection\:bg-foreground ::selection, .selection\:bg-foreground::selection {
-    background-color: var(--color-foreground);
+    background-color: var(--foreground);
   }
 
   .selection\:bg-primary\/20 ::selection {
-    background-color: color-mix(in srgb, hsl(var(--primary)) 20%, transparent);
+    background-color: var(--primary);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .selection\:bg-primary\/20 ::selection {
-      background-color: color-mix(in oklab, var(--color-primary) 20%, transparent);
+      background-color: color-mix(in oklab, var(--primary) 20%, transparent);
     }
   }
 
   .selection\:bg-primary\/20::selection {
-    background-color: color-mix(in srgb, hsl(var(--primary)) 20%, transparent);
+    background-color: var(--primary);
   }
 
   @supports (color: color-mix(in lab, red, red)) {
     .selection\:bg-primary\/20::selection {
-      background-color: color-mix(in oklab, var(--color-primary) 20%, transparent);
+      background-color: color-mix(in oklab, var(--primary) 20%, transparent);
     }
   }
 
   .selection\:text-background ::selection, .selection\:text-background::selection {
-    color: var(--color-background);
+    color: var(--background);
   }
 
   @media (hover: hover) {
     .hover\:bg-foreground\/90:hover {
-      background-color: color-mix(in srgb, hsl(var(--foreground)) 90%, transparent);
+      background-color: var(--foreground);
     }
 
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:bg-foreground\/90:hover {
-        background-color: color-mix(in oklab, var(--color-foreground) 90%, transparent);
+        background-color: color-mix(in oklab, var(--foreground) 90%, transparent);
       }
     }
   }
 
   @media (hover: hover) {
     .hover\:bg-muted:hover {
-      background-color: var(--color-muted);
+      background-color: var(--muted);
     }
   }
 
   @media (hover: hover) {
     .hover\:bg-muted\/20:hover {
-      background-color: color-mix(in srgb, hsl(var(--muted)) 20%, transparent);
+      background-color: var(--muted);
     }
 
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:bg-muted\/20:hover {
-        background-color: color-mix(in oklab, var(--color-muted) 20%, transparent);
+        background-color: color-mix(in oklab, var(--muted) 20%, transparent);
       }
     }
   }
 
   @media (hover: hover) {
     .hover\:bg-muted\/30:hover {
-      background-color: color-mix(in srgb, hsl(var(--muted)) 30%, transparent);
+      background-color: var(--muted);
     }
 
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:bg-muted\/30:hover {
-        background-color: color-mix(in oklab, var(--color-muted) 30%, transparent);
+        background-color: color-mix(in oklab, var(--muted) 30%, transparent);
       }
     }
   }
 
   @media (hover: hover) {
     .hover\:bg-muted\/40:hover {
-      background-color: color-mix(in srgb, hsl(var(--muted)) 40%, transparent);
+      background-color: var(--muted);
     }
 
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:bg-muted\/40:hover {
-        background-color: color-mix(in oklab, var(--color-muted) 40%, transparent);
+        background-color: color-mix(in oklab, var(--muted) 40%, transparent);
       }
     }
   }
 
   @media (hover: hover) {
     .hover\:text-foreground:hover {
-      color: var(--color-foreground);
+      color: var(--foreground);
     }
   }
 
   @media (hover: hover) {
     .hover\:text-primary:hover {
-      color: var(--color-primary);
+      color: var(--primary);
     }
   }
 
@@ -1383,7 +1454,7 @@
   }
 
   .focus-visible\:ring-ring:focus-visible {
-    --tw-ring-color: var(--color-ring);
+    --tw-ring-color: var(--ring);
   }
 
   .focus-visible\:outline-none:focus-visible {
@@ -1564,11 +1635,110 @@
     }
   }
 
-  @media (prefers-color-scheme: dark) {
-    .dark\:text-gray-400 {
-      color: var(--color-gray-400);
-    }
+  .dark\:text-gray-400:is(.dark *) {
+    color: var(--color-gray-400);
   }
+}
+
+@property --tw-animation-delay {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0s;
+}
+
+@property --tw-animation-direction {
+  syntax: "*";
+  inherits: false;
+  initial-value: normal;
+}
+
+@property --tw-animation-duration {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-animation-fill-mode {
+  syntax: "*";
+  inherits: false;
+  initial-value: none;
+}
+
+@property --tw-animation-iteration-count {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-enter-blur {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-enter-opacity {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-enter-rotate {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-enter-scale {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-enter-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-enter-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-exit-blur {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-exit-opacity {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-exit-rotate {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-exit-scale {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+
+@property --tw-exit-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --tw-exit-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
 }
 
 ::-webkit-scrollbar {
@@ -1588,6 +1758,147 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground));
+}
+
+:root {
+  --background: #fff;
+  --foreground: #0a0a0a;
+  --card: #fff;
+  --card-foreground: #0a0a0a;
+  --popover: #fff;
+  --popover-foreground: #0a0a0a;
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #df2225;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a1a1a1;
+  --chart-1: #90c5ff;
+  --chart-2: #3080ff;
+  --chart-3: #155dfc;
+  --chart-4: #1447e6;
+  --chart-5: #193cb8;
+  --radius: .625rem;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #171717;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #a1a1a1;
+}
+
+@supports (color: lab(0% 0 0)) {
+  :root {
+    --background: lab(100% 0 0);
+    --foreground: lab(2.75381% 0 0);
+    --card: lab(100% 0 0);
+    --card-foreground: lab(2.75381% 0 0);
+    --popover: lab(100% 0 0);
+    --popover-foreground: lab(2.75381% 0 0);
+    --primary: lab(7.78201% -.0000149012 0);
+    --primary-foreground: lab(98.26% 0 0);
+    --secondary: lab(96.52% -.0000298023 .0000119209);
+    --secondary-foreground: lab(7.78201% -.0000149012 0);
+    --muted: lab(96.52% -.0000298023 .0000119209);
+    --muted-foreground: lab(48.496% 0 0);
+    --accent: lab(96.52% -.0000298023 .0000119209);
+    --accent-foreground: lab(7.78201% -.0000149012 0);
+    --destructive: lab(49.0747% 69.3434 49.6251);
+    --border: lab(90.952% 0 -.0000119209);
+    --input: lab(90.952% 0 -.0000119209);
+    --ring: lab(66.128% -.0000298023 .0000119209);
+    --chart-1: lab(77.5052% -6.4629 -36.42);
+    --chart-2: lab(54.1736% 13.3369 -74.6839);
+    --chart-3: lab(44.0605% 29.0279 -86.0352);
+    --chart-4: lab(36.9089% 35.0961 -85.6872);
+    --chart-5: lab(30.2514% 27.7853 -70.2699);
+    --sidebar: lab(98.26% 0 0);
+    --sidebar-foreground: lab(2.75381% 0 0);
+    --sidebar-primary: lab(7.78201% -.0000149012 0);
+    --sidebar-primary-foreground: lab(98.26% 0 0);
+    --sidebar-accent: lab(96.52% -.0000298023 .0000119209);
+    --sidebar-accent-foreground: lab(7.78201% -.0000149012 0);
+    --sidebar-border: lab(90.952% 0 -.0000119209);
+    --sidebar-ring: lab(66.128% -.0000298023 .0000119209);
+  }
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #171717;
+  --card-foreground: #fafafa;
+  --popover: #171717;
+  --popover-foreground: #fafafa;
+  --primary: #d4d4d4;
+  --primary-foreground: #171717;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a1a1a1;
+  --accent: #404040;
+  --accent-foreground: #fafafa;
+  --destructive: #ff6568;
+  --border: #ffffff1a;
+  --input: #ffffff26;
+  --ring: #737373;
+  --chart-1: #90c5ff;
+  --chart-2: #3080ff;
+  --chart-3: #155dfc;
+  --chart-4: #1447e6;
+  --chart-5: #193cb8;
+  --sidebar: #171717;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #1447e6;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #ffffff1a;
+  --sidebar-ring: #737373;
+}
+
+@supports (color: lab(0% 0 0)) {
+  .dark {
+    --background: lab(2.75381% 0 0);
+    --foreground: lab(98.26% 0 0);
+    --card: lab(7.78201% -.0000149012 0);
+    --card-foreground: lab(98.26% 0 0);
+    --popover: lab(7.78201% -.0000149012 0);
+    --popover-foreground: lab(98.26% 0 0);
+    --primary: lab(84.92% 0 -.0000119209);
+    --primary-foreground: lab(7.78201% -.0000149012 0);
+    --secondary: lab(15.204% 0 -.00000596046);
+    --secondary-foreground: lab(98.26% 0 0);
+    --muted: lab(15.204% 0 -.00000596046);
+    --muted-foreground: lab(66.128% -.0000298023 .0000119209);
+    --accent: lab(27.036% 0 0);
+    --accent-foreground: lab(98.26% 0 0);
+    --destructive: lab(63.7053% 60.745 31.3109);
+    --border: lab(100% 0 0 / .1);
+    --input: lab(100% 0 0 / .15);
+    --ring: lab(48.496% 0 0);
+    --chart-1: lab(77.5052% -6.4629 -36.42);
+    --chart-2: lab(54.1736% 13.3369 -74.6839);
+    --chart-3: lab(44.0605% 29.0279 -86.0352);
+    --chart-4: lab(36.9089% 35.0961 -85.6872);
+    --chart-5: lab(30.2514% 27.7853 -70.2699);
+    --sidebar: lab(7.78201% -.0000149012 0);
+    --sidebar-foreground: lab(98.26% 0 0);
+    --sidebar-primary: lab(36.9089% 35.0961 -85.6872);
+    --sidebar-primary-foreground: lab(98.26% 0 0);
+    --sidebar-accent: lab(15.204% 0 -.00000596046);
+    --sidebar-accent-foreground: lab(98.26% 0 0);
+    --sidebar-border: lab(100% 0 0 / .1);
+    --sidebar-ring: lab(48.496% 0 0);
+  }
 }
 
 @property --tw-translate-x {
@@ -1826,6 +2137,11 @@
 }
 
 @property --tw-duration {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-ease {
   syntax: "*";
   inherits: false
 }
