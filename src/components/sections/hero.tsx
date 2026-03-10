@@ -3,6 +3,17 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
+import { Magnetic } from "@/components/ui/magnetic";
+
+const words = [
+    { text: "I build ", highlight: false },
+    { text: "fast", highlight: true },
+    { text: ", ", highlight: false },
+    { text: "interactive", highlight: true },
+    { text: ", and ", highlight: false },
+    { text: "modern", highlight: true },
+    { text: " web experiences.", highlight: false },
+];
 
 export function Hero() {
     const ref = useRef<HTMLDivElement>(null);
@@ -24,21 +35,29 @@ export function Hero() {
                 className="z-10 flex max-w-[1000px] flex-col items-center space-y-8"
             >
                 <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-5xl font-bold tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl"
                 >
-                    I build <span className="text-muted-foreground/80">fast</span>,{" "}
-                    <span className="text-muted-foreground/80">interactive</span>, and{" "}
-                    <span className="text-muted-foreground/80">modern</span> web
-                    experiences.
+                    {words.map((word, i) => (
+                        <motion.span
+                            key={i}
+                            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+                            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                            transition={{
+                                duration: 0.6,
+                                delay: 0.1 + i * 0.08,
+                                ease: "easeOut",
+                            }}
+                            className={word.highlight ? "text-muted-foreground/80" : ""}
+                        >
+                            {word.text}
+                        </motion.span>
+                    ))}
                 </motion.h1>
 
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                    transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
                     className="max-w-[600px] text-lg text-muted-foreground sm:text-xl md:text-2xl"
                 >
                     Frontend Developer · React · Next.js · Interactive UI
@@ -47,17 +66,41 @@ export function Hero() {
                 <motion.p
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
+                    transition={{ duration: 0.8, delay: 1.0 }}
                     className="text-sm font-light tracking-wide text-muted-foreground/60"
                 >
                     First-year BTech AIML student passionate about clean design, performance, and interactivity.
                 </motion.p>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.6 }}
+                    className="flex gap-8 pt-2"
+                >
+                    <Magnetic>
+                        <a
+                            href="#projects"
+                            className="relative z-10 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
+                        >
+                            View My Work
+                        </a>
+                    </Magnetic>
+                    <Magnetic>
+                        <a
+                            href="#contact"
+                            className="relative z-10 inline-flex h-12 items-center justify-center rounded-full border border-border px-7 text-sm font-medium text-foreground transition-colors hover:bg-muted/30"
+                        >
+                            Get in Touch
+                        </a>
+                    </Magnetic>
+                </motion.div>
             </motion.div>
 
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
+                transition={{ delay: 1.6, duration: 1 }}
                 className="absolute bottom-10 left-1/2 -translate-x-1/2"
             >
                 <div className="flex flex-col items-center gap-2">

@@ -11,28 +11,28 @@ const projects = [
         subtitle: "A personal identity on the web",
         description: "A high-end, interactive portfolio website showcasing skills and projects with a focus on performant animations and clean typography.",
         tags: ["Next.js", "Framer Motion", "Tailwind CSS"],
-        links: { demo: "#", code: "#" },
+        links: { demo: "/", code: "https://github.com/Karan-Raj-KR" },
     },
     {
         title: "SaaS Landing Page",
         subtitle: "High-conversion marketing page",
         description: "A responsive landing page for a fictional SaaS product, featuring scroll-triggered animations and a modern pricing table.",
         tags: ["React", "TypeScript", "Vite"],
-        links: { demo: "#", code: "#" },
+        links: { demo: null, code: "https://github.com/Karan-Raj-KR" },
     },
     {
         title: "Interactive Dashboard",
         subtitle: "Data visualization experiment",
         description: "A dark-mode dashboard exploring complex data visualization using D3.js wrapped in React components.",
         tags: ["React", "D3.js", "CSS Modules"],
-        links: { demo: "#", code: "#" },
+        links: { demo: null, code: "https://github.com/Karan-Raj-KR" },
     },
     {
         title: "AI Chat Interface",
         subtitle: "Hackathon project runner-up",
         description: "An elegant chat interface for an LLM wrapper, focusing on streaming text effects and message states.",
         tags: ["Next.js", "OpenAI API", "Zustand"],
-        links: { demo: "#", code: "#" },
+        links: { demo: null, code: "https://github.com/Karan-Raj-KR" },
     },
 ];
 
@@ -80,14 +80,17 @@ export function Projects() {
                             </div>
 
                             <div className="flex gap-4">
-                                <Link
-                                    href={project.links.demo}
-                                    className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary hover:underline hover:underline-offset-4"
-                                >
-                                    Live Demo <ExternalLink className="h-3 w-3" />
-                                </Link>
+                                {project.links.demo && (
+                                    <Link
+                                        href={project.links.demo}
+                                        className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary hover:underline hover:underline-offset-4"
+                                    >
+                                        Live Demo <ExternalLink className="h-3 w-3" />
+                                    </Link>
+                                )}
                                 <Link
                                     href={project.links.code}
+                                    target="_blank"
                                     className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                                 >
                                     Source Code <Github className="h-3 w-3" />

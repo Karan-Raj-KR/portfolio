@@ -13,8 +13,8 @@ export function Contact() {
         {
             name: "GitHub",
             icon: <Github className="h-6 w-6" />,
-            href: "https://github.com/Karan-RajKR",
-            info: "github.com/Karan-RajKR",
+            href: "https://github.com/Karan-Raj-KR",
+            info: "github.com/Karan-Raj-KR",
         },
         {
             name: "LinkedIn",

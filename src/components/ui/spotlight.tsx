@@ -16,18 +16,12 @@ export function Spotlight() {
         smoothY.set(y);
     }, [x, y, smoothX, smoothY]);
 
+    const background = useMotionTemplate`radial-gradient(600px circle at ${smoothX}px ${smoothY}px, var(--spotlight-color, rgba(255, 255, 255, 0.06)), transparent 40%)`;
+
     return (
         <motion.div
             className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
-            style={{
-                background: useMotionTemplate`
-          radial-gradient(
-            600px circle at ${smoothX}px ${smoothY}px,
-            rgba(255, 255, 255, 0.06),
-            transparent 40%
-          )
-        `,
-            }}
+            style={{ background }}
         />
     );
 }

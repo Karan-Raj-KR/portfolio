@@ -6,13 +6,6 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
-const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Work", href: "#projects" },
-    { name: "Contact", href: "#contact" },
-];
-
 export function Header() {
     const [scrolled, setScrolled] = useState(false);
 
@@ -46,6 +39,9 @@ export function Header() {
                     </Link>
                     <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors">
                         Work
+                    </Link>
+                    <Link href="#karyo" className="text-sm font-medium hover:text-primary transition-colors">
+                        Karyo
                     </Link>
                     <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
                         Contact

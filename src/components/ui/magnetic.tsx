@@ -17,8 +17,9 @@ export function Magnetic({ children }: { children: React.ReactNode }) {
         const { height, width, left, top } = ref.current!.getBoundingClientRect();
         const middleX = clientX - (left + width / 2);
         const middleY = clientY - (top + height / 2);
-        x.set(middleX);
-        y.set(middleY);
+        const clamp = (val: number, max: number) => Math.max(-max, Math.min(max, val));
+        x.set(clamp(middleX * 0.3, 15));
+        y.set(clamp(middleY * 0.3, 15));
     }
 
     function handleMouseLeave() {

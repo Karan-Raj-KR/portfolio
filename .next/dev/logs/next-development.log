@@ -1,3 +1,36 @@
-[00:00:02.055] Server  LOG     ✓ Ready in 1953ms
-[00:00:04.376] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.505] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:00.950] Server  LOG     ✓ Ready in 696ms
+[00:00:08.912] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:09.050] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:10.903] Browser WARN    'hsl(var(--foreground) / 0.3)' is not an animatable color. Use the equivalent color code instead.. For more information and steps for solving, visit https://motion.dev/troubleshooting/color-not-animatable
+[00:05:49.895] Server  LOG     ✓ Compiled in 222ms
+[00:05:58.866] Server  LOG     ✓ Compiled in 22ms
+[00:06:08.092] Server  LOG     ✓ Compiled in 16ms
+[00:06:10.224] Server  LOG     ✓ Compiled in 132ms
+[00:06:57.532] Server  LOG     ✓ Compiled in 52ms
+[00:06:58.537] Server  LOG     ✓ Compiled in 27ms
+[00:07:15.875] Server  LOG     ✓ Compiled in 113ms
+[00:07:27.500] Server  LOG     ✓ Compiled in 10ms
+[00:08:11.792] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:12.627] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:12.797] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:10:14.587] Browser WARN    'hsl(var(--foreground) / 0.3)' is not an animatable color. Use the equivalent color code instead.. For more information and steps for solving, visit https://motion.dev/troubleshooting/color-not-animatable
+[00:10:14.885] Browser WARN    'hsl(var(--foreground) / 0.3)' is not an animatable color. Use the equivalent color code instead.. For more information and steps for solving, visit https://motion.dev/troubleshooting/color-not-animatable
+[00:11:00.161] Browser WARN    'hsl(var(--foreground) / 0.3)' is not an animatable color. Use the equivalent color code instead.. For more information and steps for solving, visit https://motion.dev/troubleshooting/color-not-animatable
+[00:11:00.503] Browser WARN    'hsl(var(--foreground) / 0.3)' is not an animatable color. Use the equivalent color code instead.. For more information and steps for solving, visit https://motion.dev/troubleshooting/color-not-animatable
+[00:12:01.881] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:02.028] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:14:14.427] Server  LOG     ✓ Compiled in 140ms
+[00:14:32.810] Server  LOG     ✓ Compiled in 105ms
+[00:14:34.944] Server  LOG     ✓ Compiled in 154ms
+[00:15:21.476] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:21.664] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:35:50.175] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:50.332] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:37:18.650] Server  LOG     ✓ Compiled in 64ms
+[00:39:02.586] Server  LOG     ✓ Compiled in 12ms
+[00:39:21.390] Server  LOG     ✓ Compiled in 9ms
+[00:39:48.537] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:39:48.720] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:40:41.259] Server  LOG     ✓ Compiled in 38ms
+[00:41:04.307] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:41:04.476] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
