@@ -6,13 +6,8 @@ import { useEffect, useState } from "react";
 
 export function ClickSparkWrapper({ children }: { children: React.ReactNode }) {
     const { theme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    const sparkColor = mounted && theme === "light" ? "#000000" : "#ffffff";
+    const isClient = typeof window !== 'undefined';
+    const sparkColor = isClient && theme === "light" ? "#000000" : "#ffffff";
 
     return (
         <ClickSpark
