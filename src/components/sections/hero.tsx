@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
+import { useHoverSound, useClickSound } from "@/components/providers/sound-provider";
 
 const words = [
     { text: "I build ", highlight: false },
@@ -17,6 +18,9 @@ const words = [
 
 export function Hero() {
     const ref = useRef<HTMLDivElement>(null);
+    const playHover = useHoverSound();
+    const playClick = useClickSound();
+    
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end start"],
@@ -81,6 +85,8 @@ export function Hero() {
                     <Magnetic>
                         <a
                             href="#projects"
+                            onMouseEnter={() => playHover()}
+                            onClick={() => playClick()}
                             className="relative z-10 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
                         >
                             View My Work
@@ -89,6 +95,8 @@ export function Hero() {
                     <Magnetic>
                         <a
                             href="#contact"
+                            onMouseEnter={() => playHover()}
+                            onClick={() => playClick()}
                             className="relative z-10 inline-flex h-12 items-center justify-center rounded-full border border-border px-7 text-sm font-medium text-foreground transition-colors hover:bg-muted/30"
                         >
                             Get in Touch

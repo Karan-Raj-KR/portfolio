@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { SoundProvider } from "@/components/providers/sound-provider";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -32,7 +33,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          <SoundProvider>
+            {children}
+          </SoundProvider>
         </ThemeProvider>
       </body>
     </html>

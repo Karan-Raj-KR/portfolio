@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import { Tilt } from "@/components/ui/tilt";
+import { useHoverSound } from "@/components/providers/sound-provider";
 
 const projects = [
     {
@@ -37,6 +38,8 @@ const projects = [
 ];
 
 export function Projects() {
+    const playHover = useHoverSound();
+    
     return (
         <section id="projects" className="container mx-auto px-4 py-24 md:px-6">
             <motion.h2
@@ -83,6 +86,7 @@ export function Projects() {
                                 {project.links.demo && (
                                     <Link
                                         href={project.links.demo}
+                                        onMouseEnter={() => playHover()}
                                         className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary hover:underline hover:underline-offset-4"
                                     >
                                         Live Demo <ExternalLink className="h-3 w-3" />
@@ -91,6 +95,7 @@ export function Projects() {
                                 <Link
                                     href={project.links.code}
                                     target="_blank"
+                                    onMouseEnter={() => playHover()}
                                     className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                                 >
                                     Source Code <Github className="h-3 w-3" />
