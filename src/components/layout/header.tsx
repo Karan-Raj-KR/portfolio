@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { SoundToggle } from "@/components/ui/sound-toggle";
 import { useHoverSound } from "@/components/providers/sound-provider";
 
 export function Header() {
@@ -48,10 +49,14 @@ export function Header() {
                     <Link href="#contact" onMouseEnter={() => playHover()} className="text-sm font-medium hover:text-primary transition-colors">
                         Contact
                     </Link>
-                    <ThemeToggle />
+                    <div className="flex items-center gap-2">
+                        <SoundToggle />
+                        <ThemeToggle />
+                    </div>
                 </nav>
 
-                <div className="md:hidden flex items-center gap-4">
+                <div className="md:hidden flex items-center gap-2">
+                    <SoundToggle />
                     <ThemeToggle />
                     {/* Mobile menu button could go here */}
                 </div>
