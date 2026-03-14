@@ -1,38 +1,38 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import {
-    Code, FileJson, Palette, Terminal, Wind,
+    Code, FileJson, Terminal, Wind,
     Database, Cpu, Server, Layers, Workflow,
+    MonitorSmartphone, LayoutTemplate, Atom, Triangle, MessageSquare, Sparkles, Bot, Link as LinkIcon, Code2, GitBranch, Github, Cloud, Rocket, Network
 } from "lucide-react";
 
-const skillCategories = [
-    {
-        title: "Core Technologies",
-        skills: [
-            { name: "JavaScript", icon: <FileJson className="h-4 w-4" /> },
-            { name: "Python", icon: <Terminal className="h-4 w-4" /> },
-            { name: "C++", icon: <Cpu className="h-4 w-4" /> },
-            { name: "HTML & CSS", icon: <Code className="h-4 w-4" /> },
-        ]
-    },
-    {
-        title: "Frameworks",
-        skills: [
-            { name: "React.js / Next.js", icon: <Layers className="h-4 w-4" /> },
-            { name: "Node.js", icon: <Server className="h-4 w-4" /> },
-            { name: "Tailwind CSS", icon: <Wind className="h-4 w-4" /> },
-        ]
-    },
-    {
-        title: "Tools",
-        skills: [
-            { name: "MySQL", icon: <Database className="h-4 w-4" /> },
-            { name: "n8n", icon: <Workflow className="h-4 w-4" /> },
-            { name: "Git", icon: <Terminal className="h-4 w-4" /> },
-        ]
-    }
+const skillRows = [
+    [
+        { name: "JavaScript", icon: <FileJson className="h-4 w-4" /> },
+        { name: "Python", icon: <Terminal className="h-4 w-4" /> },
+        { name: "React", icon: <Atom className="h-4 w-4" /> },
+        { name: "Next.js", icon: <Triangle className="h-4 w-4" /> },
+        { name: "Node.js", icon: <Server className="h-4 w-4" /> },
+        { name: "Tailwind CSS", icon: <Wind className="h-4 w-4" /> },
+    ],
+    [
+        { name: "Prompt Engineering", icon: <MessageSquare className="h-4 w-4" /> },
+        { name: "Generative AI", icon: <Sparkles className="h-4 w-4" /> },
+        { name: "AI Agents", icon: <Bot className="h-4 w-4" /> },
+        { name: "LLM Integration", icon: <LinkIcon className="h-4 w-4" /> },
+        { name: "Claude Code", icon: <Code2 className="h-4 w-4" /> },
+    ],
+    [
+        { name: "Git", icon: <GitBranch className="h-4 w-4" /> },
+        { name: "GitHub", icon: <Github className="h-4 w-4" /> },
+        { name: "Vercel", icon: <Cloud className="h-4 w-4" /> },
+        { name: "Antigravity", icon: <Rocket className="h-4 w-4" /> },
+        { name: "n8n", icon: <Workflow className="h-4 w-4" /> },
+        { name: "MySQL", icon: <Database className="h-4 w-4" /> },
+        { name: "REST APIs", icon: <Network className="h-4 w-4" /> },
+    ]
 ];
 
 function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactNode }; index: number }) {
@@ -88,13 +88,13 @@ function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactN
         >
             <motion.div
                 animate={{
-                    scale: isHovered ? 1.12 : 1,
+                    scale: isHovered ? 1.05 : 1,
                     boxShadow: isHovered
                         ? "0 8px 30px -4px hsl(var(--foreground) / 0.15)"
                         : "0 0px 0px 0px hsl(var(--foreground) / 0)",
                 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="flex items-center gap-2.5 rounded-full border border-border bg-muted/20 px-5 py-3 backdrop-blur-sm transition-colors group-hover:border-foreground/30 group-hover:bg-muted/40"
+                className="flex items-center gap-2.5 rounded-full border border-border bg-muted/20 px-5 py-3 backdrop-blur-sm transition-colors group-hover:border-foreground/30 group-hover:bg-muted/40 whitespace-nowrap"
             >
                 <motion.span
                     animate={{
@@ -115,40 +115,52 @@ function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactN
 }
 
 export function Skills() {
+    const shouldReduceMotion = useReducedMotion();
+
     return (
-        <section id="skills" className="container mx-auto px-4 py-24 md:px-6">
+        <section id="skills" className="w-full flex flex-col justify-center overflow-hidden py-24">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="mx-auto max-w-4xl"
+                className="container mx-auto px-4 md:px-6 mb-12"
             >
-                <h2 className="mb-10 text-3xl font-bold tracking-tight md:text-5xl">Skills</h2>
-
-                <div className="space-y-12">
-                    {skillCategories.map((category, catIdx) => (
-                        <div key={category.title} className="space-y-6">
-                            <h3 className="text-xl font-medium tracking-tight text-foreground/90">{category.title}</h3>
-                            <div className="flex flex-wrap gap-3 md:gap-4">
-                                {category.skills.map((skill, i) => (
-                                    <SkillChip key={skill.name} skill={skill} index={catIdx * 10 + i} />
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.8, duration: 1 }}
-                    className="mt-10 text-sm font-light text-muted-foreground/40 text-center md:text-left"
-                >
-                    Currently expanding my stack through projects and hands-on learning.
-                </motion.p>
+                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Skills</h2>
+                <p className="max-w-2xl text-lg text-muted-foreground">
+                    Technologies and tools I use to build web apps, experiment with AI, and ship projects.
+                </p>
             </motion.div>
+
+            <div className="relative flex flex-col gap-6 overflow-hidden">
+                {/* Gradient Fades */}
+                <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-[100px] bg-gradient-to-r from-background to-transparent" />
+                <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-[100px] bg-gradient-to-l from-background to-transparent" />
+
+                {skillRows.map((row, rowIdx) => (
+                    <div key={rowIdx} className="group relative flex w-full overflow-hidden flex-nowrap">
+                        <motion.div
+                            animate={shouldReduceMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
+                            transition={{
+                                repeat: Infinity,
+                                ease: "linear",
+                                duration: rowIdx % 2 === 0 ? 30 : 40,
+                            }}
+                            className="flex w-max"
+                            // Pause animation on hover
+                            whileHover={shouldReduceMotion ? {} : { animationPlayState: "paused" }}
+                        >
+                            {[...Array(4)].map((_, dupIdx) => (
+                                <div key={dupIdx} className="flex gap-4 px-2" aria-hidden={dupIdx > 0 ? "true" : undefined}>
+                                    {row.map((skill, i) => (
+                                        <SkillChip key={`${skill.name}-${dupIdx}-${i}`} skill={skill} index={i} />
+                                    ))}
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
+                ))}
+            </div>
         </section>
     );
 }

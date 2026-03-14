@@ -55,7 +55,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-                    className="max-w-[600px] text-lg text-muted-foreground sm:text-xl md:text-2xl"
+                    className="pt-6 max-w-[600px] text-lg text-muted-foreground sm:text-xl md:text-2xl"
                 >
                     Developer · Builder · Founder
                 </motion.p>
@@ -66,7 +66,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 1.0 }}
                     className="text-sm font-light tracking-wide text-muted-foreground/60"
                 >
-                    First-year AIML student building software, experimenting with AI, and turning ideas into real projects.
+                    AIML student building software, experimenting with AI, and shipping real projects.
                 </motion.p>
 
                 <motion.div
@@ -88,7 +88,7 @@ export function Hero() {
                             href="https://github.com/Karan-Raj-KR"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="relative z-10 inline-flex h-12 items-center justify-center rounded-full border border-border px-7 text-sm font-medium text-foreground transition-colors hover:bg-muted/30"
+                            className="relative z-10 inline-flex h-12 items-center justify-center rounded-full border border-border bg-background px-7 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                         >
                             GitHub
                         </a>
@@ -96,7 +96,7 @@ export function Hero() {
                     <Magnetic>
                         <a
                             href="#contact"
-                            className="relative z-10 inline-flex h-12 items-center justify-center rounded-full border border-border px-7 text-sm font-medium text-foreground transition-colors hover:bg-muted/30"
+                            className="relative z-10 inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
                         >
                             Contact
                         </a>
@@ -110,8 +110,7 @@ export function Hero() {
                 transition={{ delay: 1.6, duration: 1 }}
                 className="absolute bottom-6 left-1/2 -translate-x-1/2"
             >
-                <div className="flex flex-col items-center gap-2">
-                    <span className="text-xs font-light text-muted-foreground">SCROLL</span>
+                <div className="flex flex-col items-center">
                     <motion.div
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

@@ -28,13 +28,16 @@ export function About() {
                 className="mx-auto max-w-4xl space-y-8 text-2xl font-light leading-relaxed md:text-4xl"
             >
                 <motion.p variants={itemVariants}>
-                    I’m <span className="text-foreground font-normal">Karan Raj</span>, a developer and builder currently in my first year of BTech in AI/ML.
+                    I’m <span className="text-foreground font-normal">Karan Raj</span>, a developer and builder studying AI/ML.
                 </motion.p>
                 <motion.p variants={itemVariants} className="text-muted-foreground">
-                    I learn by <span className="text-foreground font-normal">shipping</span>. Whether it's experimenting with new AI tools, building full-stack web apps, or managing client projects through my agency Karyo, I'm passionate about creating real products.
+                    I learn by <span className="text-foreground font-normal">shipping projects</span> and experimenting with new technologies.
+                </motion.p>
+                <motion.p variants={itemVariants} className="text-muted-foreground/90">
+                    I build full-stack applications and collaborate with local businesses to establish their online presence through my agency, <span className="text-foreground font-normal">Karyo</span>.
                 </motion.p>
                 <motion.p variants={itemVariants} className="text-muted-foreground/80">
-                    I focus on solving real problems, turning ideas into software, and constantly pushing my skills through hackathons and community projects.
+                    My focus is on solving real problems, competing in hackathons, and turning ideas into functioning software products.
                 </motion.p>
             </motion.div>
         </section>

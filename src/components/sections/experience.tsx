@@ -8,20 +8,21 @@ const experience = [
         period: "2025 – 2029",
         company: "Engineering",
         description: [
-            "Pursuing a Bachelor’s degree in Artificial Intelligence & Machine Learning",
-            "Building a strong foundation in programming, problem-solving, and applied technology",
-            "Actively working on frontend and automation projects alongside academics",
+            "Pursuing a Bachelor's degree in Artificial Intelligence & Machine Learning",
+            "Building web and AI projects alongside academic coursework",
+            "Exploring automation tools, AI agents, and modern developer workflows",
+            "Participating in hackathons and developer communities",
         ],
     },
-    // ... other items remain same, just keeping the structure valid
     {
         role: "Freelance Web Developer",
         period: "2021 – 2023",
         company: "Self-Employed",
         description: [
-            "Designed and built basic websites for individuals and small businesses",
-            "Focused on clean layouts, responsiveness, and usability",
-            "Sold multiple small website projects as a freelancer",
+            "Designed and delivered websites for individuals and small businesses",
+            "Built responsive websites using modern web technologies",
+            "Collaborated directly with clients to understand requirements and deliver solutions",
+            "Completed multiple freelance projects independently",
         ],
     },
     {
@@ -29,9 +30,9 @@ const experience = [
         period: "2021 – 2023",
         company: "Self-Employed",
         description: [
-            "Worked as a freelance video editor and graphic designer for clients",
-            "Edited videos and designed graphics based on client requirements",
-            "Gained early experience working with real clients, deadlines, and feedback",
+            "Worked with clients on video editing and graphic design projects",
+            "Produced visual content based on client requirements and feedback",
+            "Gained early experience managing client relationships and deadlines",
         ],
     },
 ];
