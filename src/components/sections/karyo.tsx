@@ -9,17 +9,17 @@ const services = [
     {
         icon: <Globe className="h-5 w-5" />,
         title: "Website Development",
-        description: "Professional, mobile-responsive websites with modern UI/UX, WhatsApp & Maps integration, and basic SEO.",
+        description: "Modern, mobile-responsive websites built with clean design, fast performance, and intuitive user experiences.",
     },
     {
         icon: <Users className="h-5 w-5" />,
         title: "Online Presence",
-        description: "Helping businesses become discoverable online with a 24/7 digital storefront that builds credibility.",
+        description: "Helping local businesses become discoverable online with a professional website and a reliable digital presence.",
     },
     {
         icon: <Clock className="h-5 w-5" />,
         title: "Fast Delivery",
-        description: "Typical project delivery in 7–10 working days with a structured, transparent process.",
+        description: "Simple business websites delivered within 7–10 days through a clear and transparent process.",
     },
 ];
 
@@ -46,7 +46,7 @@ export function Karyo() {
                         </motion.div>
                         <h2 className="text-3xl font-bold tracking-tight md:text-5xl">Karyo</h2>
                         <p className="mt-3 max-w-lg text-lg text-muted-foreground">
-                            Your partner in building online presence.
+                            A small digital studio helping local businesses get online.
                         </p>
                     </div>
                     <motion.div
@@ -72,7 +72,9 @@ export function Karyo() {
                     transition={{ delay: 0.1, duration: 0.8 }}
                     className="mb-12 max-w-3xl text-xl font-light leading-relaxed text-muted-foreground md:text-2xl"
                 >
-                    <span className="text-foreground font-normal">Karyo</span> is a small digital agency where I build websites and online presence for local businesses.
+                    <span className="text-foreground font-normal">Karyo</span> is a small digital studio started with a few friends where we design and build modern websites for local businesses.
+                    <br /><br />
+                    Our goal is simple: help businesses establish a clean, reliable online presence that customers can easily find and trust.
                 </motion.p>
 
                 <div className="grid gap-6 md:grid-cols-3">
@@ -95,15 +97,6 @@ export function Karyo() {
                     ))}
                 </div>
 
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="mt-12 text-sm font-light text-muted-foreground/50 text-center md:text-left"
-                >
-                    Websites starting from ₹8,000 · Delivered in 7–10 days · 50% advance, 50% on completion
-                </motion.p>
             </motion.div>
         </section>
     );
