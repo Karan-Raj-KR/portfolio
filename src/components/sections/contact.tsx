@@ -53,11 +53,10 @@ export function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="max-w-[600px] text-lg text-muted-foreground md:text-xl"
+                    className="max-w-[600px] text-lg text-muted-foreground md:text-xl space-y-4"
                 >
-                    I design and develop modern websites for students, creators, and small businesses.
-                    <br className="hidden md:block" />
-                    Clean design. Fast performance. Smooth interactions.
+                    <span className="block">I design and build modern websites and digital products focused on clean design, performance, and real-world usability.</span>
+                    <span className="block">If you have a project, an idea, or just want to connect — feel free to reach out.<br />I'm always open to interesting conversations and collaborations.</span>
                 </motion.p>
 
                 <motion.div
