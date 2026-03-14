@@ -7,20 +7,35 @@ import {
     Database, Cpu, Server, Layers, Workflow,
 } from "lucide-react";
 
-const allSkills = [
-    { name: "HTML", icon: <Code className="h-4 w-4" /> },
-    { name: "CSS", icon: <Palette className="h-4 w-4" /> },
-    { name: "JavaScript", icon: <FileJson className="h-4 w-4" /> },
-    { name: "React.js", icon: <Layers className="h-4 w-4" /> },
-    { name: "Node.js", icon: <Server className="h-4 w-4" /> },
-    { name: "Tailwind CSS", icon: <Wind className="h-4 w-4" /> },
-    { name: "Python", icon: <Terminal className="h-4 w-4" /> },
-    { name: "C++", icon: <Cpu className="h-4 w-4" /> },
-    { name: "MySQL", icon: <Database className="h-4 w-4" /> },
-    { name: "n8n", icon: <Workflow className="h-4 w-4" /> },
+const skillCategories = [
+    {
+        title: "Core Technologies",
+        skills: [
+            { name: "JavaScript", icon: <FileJson className="h-4 w-4" /> },
+            { name: "Python", icon: <Terminal className="h-4 w-4" /> },
+            { name: "C++", icon: <Cpu className="h-4 w-4" /> },
+            { name: "HTML & CSS", icon: <Code className="h-4 w-4" /> },
+        ]
+    },
+    {
+        title: "Frameworks",
+        skills: [
+            { name: "React.js / Next.js", icon: <Layers className="h-4 w-4" /> },
+            { name: "Node.js", icon: <Server className="h-4 w-4" /> },
+            { name: "Tailwind CSS", icon: <Wind className="h-4 w-4" /> },
+        ]
+    },
+    {
+        title: "Tools",
+        skills: [
+            { name: "MySQL", icon: <Database className="h-4 w-4" /> },
+            { name: "n8n", icon: <Workflow className="h-4 w-4" /> },
+            { name: "Git", icon: <Terminal className="h-4 w-4" /> },
+        ]
+    }
 ];
 
-function SkillChip({ skill, index }: { skill: typeof allSkills[0]; index: number }) {
+function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactNode }; index: number }) {
     const ref = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -111,9 +126,16 @@ export function Skills() {
             >
                 <h2 className="mb-10 text-3xl font-bold tracking-tight md:text-5xl">Skills</h2>
 
-                <div className="flex flex-wrap gap-3 md:gap-4">
-                    {allSkills.map((skill, i) => (
-                        <SkillChip key={skill.name} skill={skill} index={i} />
+                <div className="space-y-12">
+                    {skillCategories.map((category, catIdx) => (
+                        <div key={category.title} className="space-y-6">
+                            <h3 className="text-xl font-medium tracking-tight text-foreground/90">{category.title}</h3>
+                            <div className="flex flex-wrap gap-3 md:gap-4">
+                                {category.skills.map((skill, i) => (
+                                    <SkillChip key={skill.name} skill={skill} index={catIdx * 10 + i} />
+                                ))}
+                            </div>
+                        </div>
                     ))}
                 </div>
 

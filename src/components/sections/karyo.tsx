@@ -42,7 +42,7 @@ export function Karyo() {
                             className="mb-3 flex items-center gap-2 text-sm font-medium text-primary/80"
                         >
                             <Sparkles className="h-4 w-4" />
-                            Agency
+                            Founder — Karyo
                         </motion.div>
                         <h2 className="text-3xl font-bold tracking-tight md:text-5xl">Karyo</h2>
                         <p className="mt-3 max-w-lg text-lg text-muted-foreground">
@@ -72,7 +72,7 @@ export function Karyo() {
                     transition={{ delay: 0.1, duration: 0.8 }}
                     className="mb-12 max-w-3xl text-xl font-light leading-relaxed text-muted-foreground md:text-2xl"
                 >
-                    We help <span className="text-foreground font-normal">local businesses</span> — salons, clinics, gyms, restaurants, and shops — build professional websites that bring them customers and credibility.
+                    <span className="text-foreground font-normal">Karyo</span> is a small digital agency where I build websites and online presence for local businesses.
                 </motion.p>
 
                 <div className="grid gap-6 md:grid-cols-3">

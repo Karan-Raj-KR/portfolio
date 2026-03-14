@@ -3,11 +3,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 
-import { useHoverSound } from "@/components/providers/sound-provider";
-
 export function Tilt({ children, className }: { children: React.ReactNode; className?: string }) {
     const ref = useRef<HTMLDivElement>(null);
-    const playHover = useHoverSound();
 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -20,11 +17,6 @@ export function Tilt({ children, className }: { children: React.ReactNode; class
 
     function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
         if (!ref.current) return;
-        
-        // Play sound if entering the bounds (since onMouseEnter can be finicky with Framer)
-        if (x.get() === 0 && y.get() === 0) {
-            playHover();
-        }
 
         const { left, top, width, height } = ref.current.getBoundingClientRect();
         const clientX = e.clientX - left;

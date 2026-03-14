@@ -4,14 +4,10 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { useHoverSound, useThemeSound } from "@/components/providers/sound-provider";
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = React.useState(false);
-    
-    const playHover = useHoverSound();
-    const playSwitch = useThemeSound();
 
     // Avoid hydration mismatch
     React.useEffect(() => {
@@ -31,10 +27,8 @@ export function ThemeToggle() {
     return (
         <button
             onClick={() => {
-                playSwitch();
                 setTheme(isDark ? "light" : "dark");
             }}
-            onMouseEnter={() => playHover()}
             className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
             <div className="relative h-4 w-4">

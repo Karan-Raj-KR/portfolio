@@ -5,12 +5,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { SoundToggle } from "@/components/ui/sound-toggle";
-import { useHoverSound } from "@/components/providers/sound-provider";
 
 export function Header() {
     const [scrolled, setScrolled] = useState(false);
-    const playHover = useHoverSound();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,34 +26,32 @@ export function Header() {
             )}
         >
             <div className="container mx-auto flex items-center justify-between px-4 md:px-6">
-                <Link href="/" onMouseEnter={() => playHover()} className="text-xl font-bold tracking-tighter transition-opacity hover:opacity-80">
+                <Link href="/" className="text-xl font-bold tracking-tighter transition-opacity hover:opacity-80">
                     Karan Raj K R
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-8">
-                    <Link href="#about" onMouseEnter={() => playHover()} className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors">
                         About
                     </Link>
-                    <Link href="#skills" onMouseEnter={() => playHover()} className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors">
                         Skills
                     </Link>
-                    <Link href="#projects" onMouseEnter={() => playHover()} className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors">
                         Work
                     </Link>
-                    <Link href="#karyo" onMouseEnter={() => playHover()} className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link href="#karyo" className="text-sm font-medium hover:text-primary transition-colors">
                         Karyo
                     </Link>
-                    <Link href="#contact" onMouseEnter={() => playHover()} className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
                         Contact
                     </Link>
                     <div className="flex items-center gap-2">
-                        <SoundToggle />
                         <ThemeToggle />
                     </div>
                 </nav>
 
                 <div className="md:hidden flex items-center gap-2">
-                    <SoundToggle />
                     <ThemeToggle />
                     {/* Mobile menu button could go here */}
                 </div>

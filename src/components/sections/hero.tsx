@@ -4,22 +4,15 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useRef } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
-import { useHoverSound, useClickSound } from "@/components/providers/sound-provider";
 
 const words = [
-    { text: "I build ", highlight: false },
-    { text: "fast", highlight: true },
-    { text: ", ", highlight: false },
-    { text: "interactive", highlight: true },
-    { text: ", and ", highlight: false },
-    { text: "modern", highlight: true },
-    { text: " web experiences.", highlight: false },
+    { text: "From ideas ", highlight: false },
+    { text: "to real ", highlight: true },
+    { text: "products.", highlight: false },
 ];
 
 export function Hero() {
     const ref = useRef<HTMLDivElement>(null);
-    const playHover = useHoverSound();
-    const playClick = useClickSound();
     
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -64,7 +57,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
                     className="max-w-[600px] text-lg text-muted-foreground sm:text-xl md:text-2xl"
                 >
-                    Frontend Developer · Interactive UI
+                    Developer · Builder · Founder
                 </motion.p>
 
                 <motion.p
@@ -73,7 +66,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 1.0 }}
                     className="text-sm font-light tracking-wide text-muted-foreground/60"
                 >
-                    First-year BTech AIML student passionate about clean design, performance, and interactivity.
+                    First-year AIML student building software, experimenting with AI, and turning ideas into real projects.
                 </motion.p>
 
                 <motion.div
@@ -85,21 +78,27 @@ export function Hero() {
                     <Magnetic>
                         <a
                             href="#projects"
-                            onMouseEnter={() => playHover()}
-                            onClick={() => playClick()}
                             className="relative z-10 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
                         >
-                            View My Work
+                            View Projects
+                        </a>
+                    </Magnetic>
+                    <Magnetic>
+                        <a
+                            href="https://github.com/Karan-Raj-KR"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative z-10 inline-flex h-12 items-center justify-center rounded-full border border-border px-7 text-sm font-medium text-foreground transition-colors hover:bg-muted/30"
+                        >
+                            GitHub
                         </a>
                     </Magnetic>
                     <Magnetic>
                         <a
                             href="#contact"
-                            onMouseEnter={() => playHover()}
-                            onClick={() => playClick()}
                             className="relative z-10 inline-flex h-12 items-center justify-center rounded-full border border-border px-7 text-sm font-medium text-foreground transition-colors hover:bg-muted/30"
                         >
-                            Get in Touch
+                            Contact
                         </a>
                     </Magnetic>
                 </motion.div>
