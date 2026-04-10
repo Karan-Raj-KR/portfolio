@@ -1,0 +1,21 @@
+# Karan Raj
+
+> Backend developer and B.Tech CSE student (2025–2029) based in Bengaluru, India.
+> Co-founder of KĀRYO, a service-based digital studio helping local businesses build online presence.
+> Specializes in Python, FastAPI, and backend systems.
+
+## Notable Projects
+
+- Court Case Backlog Predictor — built solo at Databricks campus hackathon using PySpark, MLflow, Delta Lake
+- Attendance App — Full-stack student attendance management system built with Python and FastAPI
+- Smart Bank Queue System — Intelligent queue routing system to reduce customer wait time, built with Python
+
+## KĀRYO Digital Studio
+
+Service-based agency helping local businesses get online. Web presence, not just websites.
+
+## Contact
+
+GitHub: https://github.com/karanrajkr  
+LinkedIn: https://linkedin.com/in/karanrajkr  
+Email: karanrajkr2008@gmail.com
