@@ -97,6 +97,21 @@
   }
 }
 
+/* Marquee animation */
+@keyframes marquee {
+    from { transform: translateX(0) translateZ(0); }
+    to   { transform: translateX(-50%) translateZ(0); }
+}
+.marquee-track {
+    will-change: transform;
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+}
+
 /* Custom Scrollbar for Webkit */
 ::-webkit-scrollbar {
   width: 8px;

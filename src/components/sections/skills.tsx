@@ -66,15 +66,6 @@ function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactN
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, scale: 0, rotate: -10 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{
-                type: "spring",
-                stiffness: 260,
-                damping: 20,
-                delay: index * 0.06,
-            }}
             whileTap={{ scale: 0.92 }}
             onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
@@ -138,17 +129,15 @@ export function Skills() {
                 <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-[100px] bg-gradient-to-l from-background to-transparent" />
 
                 {skillRows.map((row, rowIdx) => (
-                    <div key={rowIdx} className="group relative flex w-full overflow-hidden flex-nowrap">
-                        <motion.div
-                            animate={shouldReduceMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
-                            transition={{
-                                repeat: Infinity,
-                                ease: "linear",
-                                duration: rowIdx % 2 === 0 ? 30 : 40,
+                    <div key={rowIdx} className="marquee-row relative flex w-full overflow-hidden flex-nowrap">
+                        <div
+                            className="marquee-track flex w-max"
+                            style={{
+                                animationDuration: shouldReduceMotion ? "0s" : `${rowIdx % 2 === 0 ? 30 : 40}s`,
+                                animationPlayState: shouldReduceMotion ? "paused" : "running",
+                                willChange: "transform",
+                                transform: "translateZ(0)",
                             }}
-                            className="flex w-max"
-                            // Pause animation on hover
-                            whileHover={shouldReduceMotion ? {} : { animationPlayState: "paused" }}
                         >
                             {[...Array(4)].map((_, dupIdx) => (
                                 <div key={dupIdx} className="flex gap-4 px-2" aria-hidden={dupIdx > 0 ? "true" : undefined}>
@@ -157,7 +146,7 @@ export function Skills() {
                                     ))}
                                 </div>
                             ))}
-                        </motion.div>
+                        </div>
                     </div>
                 ))}
             </div>
