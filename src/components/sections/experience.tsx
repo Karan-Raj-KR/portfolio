@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const experience = [
     {
         role: "Co-founder, KĀRYO",
-        period: "2024 – Present",
+        period: "2025 – Present",
         company: "",
         description: [
             "Building a digital agency helping local businesses in Bangalore establish their online presence",
