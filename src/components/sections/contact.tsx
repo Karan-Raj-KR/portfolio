@@ -55,8 +55,7 @@ export function Contact() {
                     transition={{ delay: 0.1 }}
                     className="max-w-[600px] text-lg text-muted-foreground md:text-xl space-y-4"
                 >
-                    <span className="block">I design and build modern websites and digital products focused on clean design, performance, and real-world usability.</span>
-                    <span className="block">If you have a project, an idea, or just want to connect — feel free to reach out.<br />I'm always open to interesting conversations and collaborations.</span>
+                    <span className="block">I build backends, compete at hackathons, and co-run a digital agency in Bangalore. If you have something worth building — let's talk.</span>
                 </motion.p>
 
                 <motion.div

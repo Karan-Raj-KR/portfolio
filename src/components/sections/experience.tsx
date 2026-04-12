@@ -4,35 +4,23 @@ import { motion } from "framer-motion";
 
 const experience = [
     {
-        role: "BTech Student (Artificial Intelligence & Machine Learning)",
+        role: "Co-founder, KĀRYO",
+        period: "2024 – Present",
+        company: "",
+        description: [
+            "Building a digital agency helping local businesses in Bangalore establish their online presence",
+            "Door-to-door client acquisition across local markets",
+            "End-to-end delivery: websites, Google Business, social media setup",
+        ],
+    },
+    {
+        role: "BTech, Computer Science Engineering",
         period: "2025 – 2029",
-        company: "Engineering",
+        company: "NIAT–S-VYASA University",
         description: [
-            "Pursuing a Bachelor's degree in Artificial Intelligence & Machine Learning",
-            "Building web and AI projects alongside academic coursework",
-            "Exploring automation tools, AI agents, and modern developer workflows",
-            "Participating in hackathons and developer communities",
-        ],
-    },
-    {
-        role: "Freelance Web Developer",
-        period: "2021 – 2023",
-        company: "Self-Employed",
-        description: [
-            "Designed and delivered websites for individuals and small businesses",
-            "Built responsive websites using modern web technologies",
-            "Collaborated directly with clients to understand requirements and deliver solutions",
-            "Completed multiple freelance projects independently",
-        ],
-    },
-    {
-        role: "Freelance Video Editor & Graphic Designer",
-        period: "2021 – 2023",
-        company: "Self-Employed",
-        description: [
-            "Worked with clients on video editing and graphic design projects",
-            "Produced visual content based on client requirements and feedback",
-            "Gained early experience managing client relationships and deadlines",
+            "Focusing on backend development with Python and FastAPI",
+            "Competing at hackathons and shipping projects outside the curriculum",
+            "Building toward entrepreneurship alongside college",
         ],
     },
 ];

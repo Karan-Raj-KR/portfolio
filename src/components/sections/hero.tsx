@@ -95,7 +95,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 1.0 }}
                     className="text-sm font-light tracking-wide text-muted-foreground/60"
                 >
-                    AIML student building software, experimenting with AI, and shipping real projects.
+                    CSE student building backends, competing at hackathons, and shipping real products.
                 </motion.p>
 
                 <motion.div
