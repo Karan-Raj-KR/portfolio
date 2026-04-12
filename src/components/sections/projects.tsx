@@ -7,6 +7,13 @@ import { Tilt } from "@/components/ui/tilt";
 
 const projects = [
     {
+        title: "VoiceRx",
+        subtitle: "HackBLR 2026",
+        description: "AI voice health assistant for patients without doctor access — built at HackBLR 2026",
+        tags: ["FastAPI", "Vapi", "Qdrant", "Groq", "RAG"],
+        links: { demo: null, code: "https://github.com/Karan-Raj-KR/VoiceRx" },
+    },
+    {
         title: "Court Backlog Predictor",
         subtitle: "Databricks Hackathon — solo build",
         description: "ML model predicting court case backlog trends — built solo at Databricks Hackathon",
@@ -28,18 +35,11 @@ const projects = [
         links: { demo: null, code: "https://github.com/Karan-Raj-KR/smart-bank-queue-management" },
     },
     {
-        title: "Link in Bio",
-        subtitle: "Customizable link-in-bio builder",
-        description: "Customizable link-in-bio page builder",
-        tags: ["Python"],
-        links: { demo: null, code: "https://github.com/Karan-Raj-KR/link-in-bio" },
-    },
-    {
-        title: "Portfolio",
-        subtitle: "Personal developer portfolio",
-        description: "Personal developer portfolio built with TypeScript & Next.js",
-        tags: ["TypeScript", "Next.js", "Tailwind CSS"],
-        links: { demo: "https://karanrajkr.vercel.app", code: "https://github.com/Karan-Raj-KR/portfolio" },
+        title: "FLUX — Hand Fluid Sim",
+        subtitle: "Hand-tracking WebGL fluid simulation",
+        description: "Hand-tracking WebGL fluid simulation using real-time webcam input",
+        tags: ["MediaPipe", "WebGL", "JavaScript"],
+        links: { demo: "https://karanrajkr-flux.vercel.app", code: "https://github.com/Karan-Raj-KR/FLUX" },
     },
 ];
 
