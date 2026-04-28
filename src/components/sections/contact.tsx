@@ -87,6 +87,7 @@ export function Contact() {
                                 key={social.name}
                                 href={social.href}
                                 target={social.name === "Email" ? undefined : "_blank"}
+                                rel={social.name === "Email" ? undefined : "noopener noreferrer"}
                                 className="text-muted-foreground hover:text-foreground transition-colors"
                                 onMouseEnter={() => setHoveredInfo(social.info)}
                                 onMouseLeave={() => setHoveredInfo(null)}

@@ -14,6 +14,13 @@ const projects = [
         links: { demo: null, code: "https://github.com/Karan-Raj-KR/VoiceRx" },
     },
     {
+        title: "KĀRYO Lead Intelligence Agent",
+        subtitle: "Agentathon 2026",
+        description: "4-agent CrewAI pipeline that qualifies local business leads and drafts personalized cold outreach — built for KĀRYO's real sales workflow. Includes self-correction loop and structured .docx output.",
+        tags: ["CrewAI", "Groq", "Pydantic", "Python"],
+        links: { demo: null, code: "https://github.com/Karan-Raj-KR/karyo-agent" },
+    },
+    {
         title: "Court Backlog Predictor",
         subtitle: "Databricks Hackathon — solo build",
         description: "ML model predicting court case backlog trends — built solo at Databricks Hackathon",
@@ -95,6 +102,8 @@ export function Projects() {
                                 {project.links.demo && (
                                     <Link
                                         href={project.links.demo}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary hover:underline hover:underline-offset-4"
                                     >
                                         Live Demo <ExternalLink className="h-3 w-3" />
@@ -103,6 +112,7 @@ export function Projects() {
                                 <Link
                                         href={project.links.code}
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                         className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                                 >
                                     Source Code <Github className="h-3 w-3" />

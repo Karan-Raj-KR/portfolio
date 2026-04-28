@@ -58,6 +58,7 @@ export function Karyo() {
                         <Link
                             href="https://linktr.ee/Karyo"
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/20 px-6 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted/40"
                         >
                             Learn More <ExternalLink className="h-3.5 w-3.5" />
