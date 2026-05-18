@@ -7,6 +7,17 @@ import { Tilt } from "@/components/ui/tilt";
 
 const projects = [
     {
+        title: "FormPilot",
+        subtitle: "Chrome Extension · 2026",
+        description: "AI-powered Chrome extension that scans any web form, understands field context with LLMs, and autofills inputs (including long text) with multi-profile support — 100% local, bring-your-own API key.",
+        tags: ["Manifest V3", "React", "TypeScript", "TailwindCSS", "Vite", "LLM"],
+        links: {
+            demo: "https://form-pilot.netlify.app/",
+            store: "https://chromewebstore.google.com/detail/formpilot/ffkpekcnpbafklidejfbhinahahaabfi",
+            code: "https://github.com/Karan-Raj-KR/FormPilot",
+        },
+    },
+    {
         title: "VoiceRx",
         subtitle: "HackBLR 2026",
         description: "AI voice health assistant for patients without doctor access — built at HackBLR 2026",
@@ -63,7 +74,7 @@ export function Projects() {
                     Selected Work
                 </h2>
                 <p className="max-w-2xl text-lg text-muted-foreground">
-                    A selection of projects I've built while experimenting with ideas and technologies.
+                    A selection of projects I&apos;ve built while experimenting with ideas and technologies.
                 </p>
             </motion.div>
 
@@ -107,6 +118,16 @@ export function Projects() {
                                         className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary hover:underline hover:underline-offset-4"
                                     >
                                         Live Demo <ExternalLink className="h-3 w-3" />
+                                    </Link>
+                                )}
+                                {project.links.store && (
+                                    <Link
+                                        href={project.links.store}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary hover:underline hover:underline-offset-4"
+                                    >
+                                        Chrome Web Store <ExternalLink className="h-3 w-3" />
                                     </Link>
                                 )}
                                 <Link
