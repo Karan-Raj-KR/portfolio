@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 
 const experience = [
     {
+        role: "Open Source Contributor — GSSoC 2026",
+        period: "May 2026 — Present",
+        company: "",
+        description: [
+            "Active contributor in GirlScript Summer of Code 2026",
+            "Merged 4 pull requests across open-source repositories",
+            "Contributing through bug fixes, backend improvements, and feature implementations",
+            "Collaborating with maintainers via GitHub workflows and code reviews",
+        ],
+    },
+    {
         role: "Co-founder, KĀRYO",
         period: "2025 – Present",
         company: "",
