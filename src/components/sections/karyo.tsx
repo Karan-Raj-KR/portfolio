@@ -46,7 +46,7 @@ export function Karyo() {
                         </motion.div>
                         <h2 className="text-3xl font-bold tracking-tight md:text-5xl">KĀRYO</h2>
                         <p className="mt-3 max-w-lg text-lg text-muted-foreground">
-                            Co-founder — Your partner in building online presence
+                            Digital agency · Bangalore
                         </p>
                     </div>
                     <motion.div

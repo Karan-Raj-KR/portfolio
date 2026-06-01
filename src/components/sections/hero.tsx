@@ -1,10 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Github, Instagram, Linkedin, Mail } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
+import { socialLinks } from "@/lib/social";
 
 const words = [
     { text: "From ideas ", highlight: false },
@@ -15,33 +16,6 @@ const words = [
 export function Hero() {
     const ref = useRef<HTMLDivElement>(null);
     const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
-
-    const socialLinks = [
-        {
-            name: "GitHub",
-            icon: <Github className="h-6 w-6" />,
-            href: "https://github.com/Karan-Raj-KR",
-            info: "github.com/Karan-Raj-KR",
-        },
-        {
-            name: "LinkedIn",
-            icon: <Linkedin className="h-6 w-6" />,
-            href: "https://www.linkedin.com/in/karanrajkr/",
-            info: "linkedin.com/in/karanrajkr",
-        },
-        {
-            name: "Instagram",
-            icon: <Instagram className="h-6 w-6" />,
-            href: "https://www.instagram.com/karan.rajkr/",
-            info: "@karan.rajkr",
-        },
-        {
-            name: "Email",
-            icon: <Mail className="h-6 w-6" />,
-            href: "mailto:karanrajkr2008@gmail.com",
-            info: "karanrajkr2008@gmail.com",
-        },
-    ];
     
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -140,20 +114,23 @@ export function Hero() {
                     className="flex flex-col items-center gap-4 pt-12"
                 >
                     <div className="flex items-center gap-6">
-                        {socialLinks.map((social) => (
-                            <Link
-                                key={social.name}
-                                href={social.href}
-                                target={social.name === "Email" ? undefined : "_blank"}
-                                rel={social.name === "Email" ? undefined : "noopener noreferrer"}
-                                className="text-muted-foreground hover:text-foreground transition-colors"
-                                onMouseEnter={() => setHoveredInfo(social.info)}
-                                onMouseLeave={() => setHoveredInfo(null)}
-                            >
-                                {social.icon}
-                                <span className="sr-only">{social.name}</span>
-                            </Link>
-                        ))}
+                        {socialLinks.map((social) => {
+                            const Icon = social.icon;
+                            return (
+                                <Link
+                                    key={social.name}
+                                    href={social.href}
+                                    target={social.name === "Email" ? undefined : "_blank"}
+                                    rel={social.name === "Email" ? undefined : "noopener noreferrer"}
+                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                    onMouseEnter={() => setHoveredInfo(social.info)}
+                                    onMouseLeave={() => setHoveredInfo(null)}
+                                >
+                                    <Icon className="h-6 w-6" />
+                                    <span className="sr-only">{social.name}</span>
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     <div className="h-6">

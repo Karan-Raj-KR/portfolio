@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import { Tilt } from "@/components/ui/tilt";
@@ -41,14 +41,14 @@ const projects = [
     {
         title: "Attendance App",
         subtitle: "Full-stack attendance system",
-        description: "Full-stack student attendance management system",
+        description: "FastAPI backend with student attendance tracking, session management, and a web dashboard. Covers marking, reporting, and class-level views — early backend project built end-to-end.",
         tags: ["Python", "FastAPI"],
         links: { demo: null, code: "https://github.com/Karan-Raj-KR/Attendance-App" },
     },
     {
         title: "Smart Bank Queue Management",
         subtitle: "Intelligent queue routing",
-        description: "Intelligent queue routing system for banks to reduce customer wait time",
+        description: "Queue routing system that assigns bank customers to tellers based on transaction type, estimated service time, and current load — reduces average wait time through priority-aware scheduling.",
         tags: ["Python"],
         links: { demo: null, code: "https://github.com/Karan-Raj-KR/smart-bank-queue-management" },
     },
@@ -60,6 +60,20 @@ const projects = [
         links: { demo: "https://karanrajkr-flux.vercel.app", code: "https://github.com/Karan-Raj-KR/FLUX" },
     },
 ];
+
+const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: 0.07,
+        },
+    },
+};
+
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
 export function Projects() {
     return (
@@ -78,15 +92,15 @@ export function Projects() {
                 </p>
             </motion.div>
 
-            <div className="grid gap-8 md:grid-cols-2">
-                {projects.map((project, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1, duration: 0.6 }}
-                    >
+            <motion.div
+                className="grid gap-8 md:grid-cols-2"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+            >
+                {projects.map((project) => (
+                    <motion.div key={project.title} variants={itemVariants}>
                         <Tilt className="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-muted/10 p-8 hover:bg-muted/20 transition-colors">
                             <div>
                                 <div className="mb-6 flex items-baseline justify-between">
@@ -130,19 +144,21 @@ export function Projects() {
                                         Chrome Web Store <ExternalLink className="h-3 w-3" />
                                     </Link>
                                 )}
-                                <Link
+                                {project.links.code && (
+                                    <Link
                                         href={project.links.code}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                                >
-                                    Source Code <Github className="h-3 w-3" />
-                                </Link>
+                                    >
+                                        Source Code <Github className="h-3 w-3" />
+                                    </Link>
+                                )}
                             </div>
                         </Tilt>
                     </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }
