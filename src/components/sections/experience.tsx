@@ -25,7 +25,7 @@ const experience = [
         ],
     },
     {
-        role: "🏆 1st Place — Open Loop 2026",
+        role: "1st Place — Open Loop 2026",
         period: "April 2026",
         company: "Yenepoya University / Yentech",
         description: [
@@ -84,7 +84,7 @@ export function Experience() {
                             <h3 className="text-xl font-semibold text-foreground">{item.role}</h3>
                             <span className="text-sm font-light text-muted-foreground">{item.period}</span>
                         </div>
-                        <div className="mb-4 text-base font-medium text-muted-foreground/80">{item.company}</div>
+                        {item.company && <div className="mb-4 text-base font-medium text-muted-foreground/80">{item.company}</div>}
                         <ul className="max-w-2xl text-muted-foreground dark:text-gray-400 list-disc pl-4 space-y-1">
                             {item.description.map((point, i) => (
                                 <li key={i}>{point}</li>

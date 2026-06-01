@@ -1,40 +1,13 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Github, Linkedin, Mail, Instagram } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
+import { socialLinks } from "@/lib/social";
 
 export function Contact() {
     const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
-
-    const socialLinks = [
-        {
-            name: "GitHub",
-            icon: <Github className="h-6 w-6" />,
-            href: "https://github.com/Karan-Raj-KR",
-            info: "github.com/Karan-Raj-KR",
-        },
-        {
-            name: "LinkedIn",
-            icon: <Linkedin className="h-6 w-6" />,
-            href: "https://www.linkedin.com/in/karanrajkr/",
-            info: "linkedin.com/in/karanrajkr",
-        },
-        {
-            name: "Instagram",
-            icon: <Instagram className="h-6 w-6" />,
-            href: "https://www.instagram.com/karan.rajkr/",
-            info: "@karan.rajkr",
-        },
-        {
-            name: "Email",
-            icon: <Mail className="h-6 w-6" />,
-            href: "mailto:karanrajkr2008@gmail.com",
-            info: "karanrajkr2008@gmail.com",
-        },
-    ];
 
     return (
         <section id="contact" className="container mx-auto px-4 py-32 md:px-6">
@@ -82,20 +55,23 @@ export function Contact() {
                     className="flex flex-col items-center gap-4 pt-12"
                 >
                     <div className="flex items-center gap-6">
-                        {socialLinks.map((social) => (
-                            <Link
-                                key={social.name}
-                                href={social.href}
-                                target={social.name === "Email" ? undefined : "_blank"}
-                                rel={social.name === "Email" ? undefined : "noopener noreferrer"}
-                                className="text-muted-foreground hover:text-foreground transition-colors"
-                                onMouseEnter={() => setHoveredInfo(social.info)}
-                                onMouseLeave={() => setHoveredInfo(null)}
-                            >
-                                {social.icon}
-                                <span className="sr-only">{social.name}</span>
-                            </Link>
-                        ))}
+                        {socialLinks.map((social) => {
+                            const Icon = social.icon;
+                            return (
+                                <Link
+                                    key={social.name}
+                                    href={social.href}
+                                    target={social.name === "Email" ? undefined : "_blank"}
+                                    rel={social.name === "Email" ? undefined : "noopener noreferrer"}
+                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                    onMouseEnter={() => setHoveredInfo(social.info)}
+                                    onMouseLeave={() => setHoveredInfo(null)}
+                                >
+                                    <Icon className="h-6 w-6" />
+                                    <span className="sr-only">{social.name}</span>
+                                </Link>
+                            );
+                        })}
                     </div>
 
                     <div className="h-6">
