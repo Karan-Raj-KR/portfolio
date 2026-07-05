@@ -34,7 +34,8 @@ export function Hero() {
                 style={{ y, opacity }}
                 className="z-10 flex max-w-[1000px] flex-col items-center space-y-8"
             >
-                <motion.h1
+                <h1 className="sr-only">Karan Raj KR - AI Engineer, Backend Developer, and NIAT Alumni Portfolio</h1>
+                <motion.h2
                     className="text-5xl font-bold tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl"
                 >
                     {words.map((word, i) => (
@@ -52,7 +53,7 @@ export function Hero() {
                             {word.text}
                         </motion.span>
                     ))}
-                </motion.h1>
+                </motion.h2>
 
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -60,7 +61,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
                     className="pt-6 max-w-[600px] text-lg text-muted-foreground sm:text-xl md:text-2xl"
                 >
-                    Developer · Builder · Founder
+                    AI Engineer · Backend Developer · Founder
                 </motion.p>
 
                 <motion.p

@@ -58,7 +58,7 @@ export function Header() {
                     <ThemeToggle />
                     <button
                         onClick={() => setMenuOpen((prev) => !prev)}
-                        className="p-1.5 text-muted-foreground hover:text-foreground transition-colors"
+                        className="p-3 text-muted-foreground hover:text-foreground transition-colors"
                         aria-label={menuOpen ? "Close menu" : "Open menu"}
                         aria-expanded={menuOpen}
                     >

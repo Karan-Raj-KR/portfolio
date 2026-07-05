@@ -40,7 +40,7 @@ export function Contact() {
                     <Magnetic>
                         <Link
                             href="mailto:karanrajkr2008@gmail.com"
-                            className="inline-flex h-14 items-center justify-center rounded-full bg-foreground px-8 text-base font-medium text-background transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                            className="inline-flex h-14 items-center justify-center rounded-full bg-foreground px-8 text-base font-medium text-background transition-colors hover:bg-foreground/90 focus-visible:outline-none"
                         >
                             Get in Touch
                         </Link>
@@ -63,11 +63,12 @@ export function Contact() {
                                     href={social.href}
                                     target={social.name === "Email" ? undefined : "_blank"}
                                     rel={social.name === "Email" ? undefined : "noopener noreferrer"}
-                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                    className="p-3 text-muted-foreground hover:text-foreground transition-colors"
                                     onMouseEnter={() => setHoveredInfo(social.info)}
                                     onMouseLeave={() => setHoveredInfo(null)}
+                                    aria-label={`Visit my ${social.name}`}
                                 >
-                                    <Icon className="h-6 w-6" />
+                                    <Icon className="h-6 w-6" aria-hidden="true" />
                                     <span className="sr-only">{social.name}</span>
                                 </Link>
                             );

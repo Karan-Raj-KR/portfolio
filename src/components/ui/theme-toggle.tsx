@@ -29,7 +29,7 @@ export function ThemeToggle() {
             onClick={() => {
                 setTheme(isDark ? "light" : "dark");
             }}
-            className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background transition-colors hover:bg-muted focus-visible:outline-none"
         >
             <div className="relative h-4 w-4">
                 <motion.div
