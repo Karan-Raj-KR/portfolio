@@ -5,11 +5,14 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { ClickSparkWrapper } from "@/components/ui/click-spark-wrapper";
 
 // Dynamically import sections below the fold to reduce initial bundle size
+const Achievements = dynamic(() => import("@/components/sections/achievements").then(mod => mod.Achievements));
 const About = dynamic(() => import("@/components/sections/about").then(mod => mod.About));
-const Skills = dynamic(() => import("@/components/sections/skills").then(mod => mod.Skills));
+const BuildingNow = dynamic(() => import("@/components/sections/building-now").then(mod => mod.BuildingNow));
 const Projects = dynamic(() => import("@/features/projects/components/project-list").then(mod => mod.Projects));
-const Experience = dynamic(() => import("@/features/experience/components/experience-timeline").then(mod => mod.Experience));
 const Karyo = dynamic(() => import("@/components/sections/karyo").then(mod => mod.Karyo));
+const Skills = dynamic(() => import("@/components/sections/skills").then(mod => mod.Skills));
+const Community = dynamic(() => import("@/components/sections/community").then(mod => mod.Community));
+const Roadmap = dynamic(() => import("@/components/sections/roadmap").then(mod => mod.Roadmap));
 const Contact = dynamic(() => import("@/components/sections/contact").then(mod => mod.Contact));
 
 export default function Home() {
@@ -18,12 +21,18 @@ export default function Home() {
       <main className="relative flex min-h-screen flex-col overflow-hidden selection:bg-primary/20">
         <Spotlight />
         <Header />
+        
+        {/* 15-Second Information Hierarchy */}
         <Hero />
+        <Achievements />
         <About />
-        <Skills />
+        <BuildingNow />
         <Projects />
-        <Experience />
         <Karyo />
+        <Skills />
+        <Community />
+        <Roadmap />
+        
         <Contact />
       </main>
     </ClickSparkWrapper>

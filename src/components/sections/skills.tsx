@@ -5,8 +5,23 @@ import { useRef, useState } from "react";
 import {
     Code, FileJson, Terminal, Wind,
     Database, Cpu, Server, Layers, Workflow,
-    MonitorSmartphone, LayoutTemplate, Atom, Triangle, MessageSquare, Sparkles, Bot, Link as LinkIcon, Code2, GitBranch, Github, Cloud, Rocket, Network
+    MonitorSmartphone, LayoutTemplate, Atom, Triangle, MessageSquare, Sparkles, Bot, Link as LinkIcon, Code2, GitBranch, Github, Cloud, Rocket, Network, ChevronDown
 } from "lucide-react";
+
+const skillCategories = [
+    {
+        title: "Languages & Frameworks",
+        description: "Python, JavaScript/TypeScript, React, Next.js, FastAPI. The core building blocks for scalable backends and highly interactive frontends.",
+    },
+    {
+        title: "AI & Data Engineering",
+        description: "LLM Integration, RAG Pipelines, Prompt Engineering, CrewAI, Qdrant, Databricks. Bridging generative AI with robust data infrastructures.",
+    },
+    {
+        title: "Infrastructure & Tooling",
+        description: "Git, Vercel, n8n, REST APIs, Chrome Extensions. Focused on seamless deployment, automated workflows, and developer productivity.",
+    }
+];
 
 const skillRows = [
     [
@@ -107,6 +122,7 @@ function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactN
 
 export function Skills() {
     const shouldReduceMotion = useReducedMotion();
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
     return (
         <section id="skills" className="w-full flex flex-col justify-center overflow-hidden py-24">
@@ -115,15 +131,41 @@ export function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="container mx-auto px-4 md:px-6 mb-12"
+                className="container mx-auto px-4 md:px-6 mb-16"
             >
-                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Skills</h2>
-                <p className="max-w-2xl text-lg text-muted-foreground">
-                    Technologies and tools I use to build web apps, experiment with AI, and ship projects.
+                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Technical Arsenal</h2>
+                <p className="max-w-2xl text-lg text-muted-foreground mb-12">
+                    Technologies and architectures I use to build scalable backends, deploy AI agents, and ship full-stack applications.
                 </p>
+
+                <div className="grid gap-6 md:grid-cols-3 max-w-5xl">
+                    {skillCategories.map((category, index) => (
+                        <div 
+                            key={index}
+                            className={`rounded-xl border p-6 transition-all cursor-pointer ${expandedIndex === index ? 'border-primary bg-primary/5' : 'border-border bg-muted/5 hover:border-foreground/30'}`}
+                            onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+                        >
+                            <div className="flex justify-between items-center mb-3">
+                                <h3 className={`font-semibold ${expandedIndex === index ? 'text-primary' : 'text-foreground'}`}>
+                                    {category.title}
+                                </h3>
+                                <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${expandedIndex === index ? 'rotate-180 text-primary' : 'text-muted-foreground'}`} />
+                            </div>
+                            <motion.div 
+                                initial={false}
+                                animate={{ height: expandedIndex === index ? 'auto' : 0, opacity: expandedIndex === index ? 1 : 0 }}
+                                className="overflow-hidden"
+                            >
+                                <p className="text-sm text-muted-foreground leading-relaxed pt-2 border-t border-border/50">
+                                    {category.description}
+                                </p>
+                            </motion.div>
+                        </div>
+                    ))}
+                </div>
             </motion.div>
 
-            <div className="relative flex flex-col gap-6 overflow-hidden">
+            <div className="relative flex flex-col gap-6 overflow-hidden pt-8">
                 {/* Gradient Fades */}
                 <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-[100px] bg-gradient-to-r from-background to-transparent" />
                 <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-[100px] bg-gradient-to-l from-background to-transparent" />
