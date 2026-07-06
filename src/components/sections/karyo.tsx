@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Globe, Users, Clock, Sparkles, Building2, Code2, LineChart, Cpu } from "lucide-react";
+import { ExternalLink, Globe, Users, Clock, Sparkles, Building2, Cpu } from "lucide-react";
 import Link from "next/link";
 import { Tilt } from "@/components/ui/tilt";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
@@ -67,8 +67,8 @@ export function Karyo() {
                     </motion.div>
                 </div>
 
-                <div className="grid gap-16 md:grid-cols-2 items-start mb-24">
-                    <div>
+                <div className="mb-24">
+                    <div className="max-w-3xl">
                         <h3 className="text-2xl font-semibold mb-6">The Mission</h3>
                         <p className="text-lg leading-relaxed text-muted-foreground mb-6">
                             KĀRYO was founded to solve a critical disconnect: local businesses in Bangalore have massive potential but lack the technical literacy to establish a robust online presence. 
@@ -76,29 +76,6 @@ export function Karyo() {
                         <p className="text-lg leading-relaxed text-muted-foreground">
                             As Co-founder, I lead the technical architecture and digital strategy. We bypass traditional agency bloat by combining direct door-to-door client acquisition with rapid, AI-assisted development pipelines.
                         </p>
-                    </div>
-                    <div className="grid gap-6">
-                        <div className="rounded-xl border border-border p-6 bg-muted/5">
-                            <h4 className="text-sm font-medium text-primary mb-2 flex items-center gap-2">
-                                <LineChart className="h-4 w-4" /> Impact & Metrics
-                            </h4>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                    <p className="text-3xl font-bold text-foreground">Active</p>
-                                    <p className="text-sm text-muted-foreground">Client base scaling</p>
-                                </div>
-                                <div>
-                                    <p className="text-3xl font-bold text-foreground">7 Days</p>
-                                    <p className="text-sm text-muted-foreground">Average delivery time</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="rounded-xl border border-border p-6 bg-muted/5">
-                            <h4 className="text-sm font-medium text-primary mb-2 flex items-center gap-2">
-                                <Code2 className="h-4 w-4" /> Tech Stack
-                            </h4>
-                            <p className="text-sm text-muted-foreground">Next.js, Tailwind CSS, CrewAI (Internal Automations), Groq, Vercel.</p>
-                        </div>
                     </div>
                 </div>
 

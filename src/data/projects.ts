@@ -25,6 +25,7 @@ export interface Project {
         store?: string | null;
         code: string | null;
     };
+    story?: string;
 }
 
 export const projects: Project[] = [

@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
 import {
     Code, FileJson, Terminal, Wind,
     Database, Cpu, Server, Layers, Workflow,
-    MonitorSmartphone, LayoutTemplate, Atom, Triangle, MessageSquare, Sparkles, Bot, Link as LinkIcon, Code2, GitBranch, Github, Cloud, Rocket, Network, ChevronDown
+    MonitorSmartphone, LayoutTemplate, Atom, Triangle, MessageSquare, Sparkles, Bot, Link as LinkIcon, Code2, GitBranch, Github, Cloud, Rocket, Network
 } from "lucide-react";
 
 const skillCategories = [
@@ -51,45 +51,13 @@ const skillRows = [
 ];
 
 function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactNode }; index: number }) {
-    const ref = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
-
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const springX = useSpring(x, { stiffness: 300, damping: 20 });
-    const springY = useSpring(y, { stiffness: 300, damping: 20 });
-
-    const rotateX = useTransform(springY, [-0.5, 0.5], ["8deg", "-8deg"]);
-    const rotateY = useTransform(springX, [-0.5, 0.5], ["-8deg", "8deg"]);
-
-    function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-        if (!ref.current) return;
-        const rect = ref.current.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width - 0.5;
-        const py = (e.clientY - rect.top) / rect.height - 0.5;
-        x.set(px);
-        y.set(py);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-        setIsHovered(false);
-    }
 
     return (
         <motion.div
-            ref={ref}
             whileTap={{ scale: 0.92 }}
-            onMouseMove={handleMouseMove}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d",
-            }}
+            onMouseLeave={() => setIsHovered(false)}
             className="group relative cursor-pointer select-none"
         >
             <motion.div
@@ -122,7 +90,7 @@ function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactN
 
 export function Skills() {
     const shouldReduceMotion = useReducedMotion();
-    const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+
 
     return (
         <section id="skills" className="w-full flex flex-col justify-center overflow-hidden py-24">
@@ -138,31 +106,7 @@ export function Skills() {
                     Technologies and architectures I use to build scalable backends, deploy AI agents, and ship full-stack applications.
                 </p>
 
-                <div className="grid gap-6 md:grid-cols-3 max-w-5xl">
-                    {skillCategories.map((category, index) => (
-                        <div 
-                            key={index}
-                            className={`rounded-xl border p-6 transition-all cursor-pointer ${expandedIndex === index ? 'border-primary bg-primary/5' : 'border-border bg-muted/5 hover:border-foreground/30'}`}
-                            onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                        >
-                            <div className="flex justify-between items-center mb-3">
-                                <h3 className={`font-semibold ${expandedIndex === index ? 'text-primary' : 'text-foreground'}`}>
-                                    {category.title}
-                                </h3>
-                                <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${expandedIndex === index ? 'rotate-180 text-primary' : 'text-muted-foreground'}`} />
-                            </div>
-                            <motion.div 
-                                initial={false}
-                                animate={{ height: expandedIndex === index ? 'auto' : 0, opacity: expandedIndex === index ? 1 : 0 }}
-                                className="overflow-hidden"
-                            >
-                                <p className="text-sm text-muted-foreground leading-relaxed pt-2 border-t border-border/50">
-                                    {category.description}
-                                </p>
-                            </motion.div>
-                        </div>
-                    ))}
-                </div>
+
             </motion.div>
 
             <div className="relative flex flex-col gap-6 overflow-hidden pt-8">
