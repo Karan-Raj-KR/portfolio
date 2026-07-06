@@ -1,8 +1,11 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { projects } from "@/data/projects";
 
 export const metadata = {
-  title: "Projects & Open Source",
-  description: "A deep dive into my open-source contributions, hackathon wins, and personal projects.",
+  title: "Projects",
+  description: "Case studies of what I've built — hackathon wins, agents, and tools, each starting with what actually happened.",
 };
 
 export default function ProjectsList() {
@@ -14,14 +17,31 @@ export default function ProjectsList() {
           { name: "Projects", url: "https://karanrajkr.vercel.app/projects" },
         ]}
       />
-      <h1 className="mb-8 text-4xl font-bold tracking-tight">Projects & Open Source</h1>
-      <p className="mb-12 text-lg text-muted-foreground">
-        Detailed case studies and links to my latest work.
+      <h1 className="mb-8 text-4xl font-bold tracking-tight">Projects</h1>
+      <p className="mb-12 max-w-2xl text-lg text-muted-foreground">
+        Each case study starts with what actually happened, not the feature list.
       </p>
 
-      {/* Future integration: Map over src/data/projects.ts here for a detailed view */}
-      <div className="rounded-xl border border-border p-8 text-center text-muted-foreground">
-        Project case studies coming soon.
+      <div className="border-t border-border">
+        {projects.map((project) => (
+          <article key={project.slug} className="grid gap-3 border-b border-border py-8 md:grid-cols-[10rem_1fr] md:gap-10">
+            <p className="font-mono text-xs leading-6 text-muted-foreground">{project.subtitle}</p>
+            <div className="max-w-2xl">
+              <h2 className="mb-2 text-2xl font-semibold tracking-tight">
+                <Link href={`/projects/${project.slug}`} className="transition-colors hover:text-muted-foreground">
+                  {project.title}
+                </Link>
+              </h2>
+              <p className="mb-4 leading-relaxed text-muted-foreground">{project.story}</p>
+              <Link
+                href={`/projects/${project.slug}`}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"
+              >
+                Case study <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+          </article>
+        ))}
       </div>
     </main>
   );

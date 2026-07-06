@@ -26,8 +26,8 @@ export const achievements: Achievement[] = [
         title: "Open Source Contributor",
         organization: "GirlScript Summer of Code",
         date: "2026",
-        description: "Merged 4 pull requests across various open-source repositories.",
-        metric: "4 PRs Merged"
+        description: "Merged 12 pull requests across various open-source repositories.",
+        metric: "12 PRs Merged"
     },
     {
         title: "Co-Founder",
