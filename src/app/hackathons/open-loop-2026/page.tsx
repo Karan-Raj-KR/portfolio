@@ -1,5 +1,6 @@
-import { ExternalLink, Github, ArrowLeft, ImageOff, MapPin, Calendar, Building } from "lucide-react";
+import { ExternalLink, Github, ArrowLeft, MapPin, Calendar, Building } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata = {
@@ -68,10 +69,13 @@ export default function OpenLoopHackathonPage() {
                                 FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM with the user's selected profile, and maps the AI's structured JSON response back into form fields.
                             </p>
                             
-                            <div className="aspect-video w-full rounded-xl border border-border bg-muted/10 flex flex-col items-center justify-center text-muted-foreground mb-4">
-                                <ImageOff className="h-12 w-12 mb-4 opacity-50" />
-                                <p className="text-sm font-medium">IMAGE PLACEHOLDER — Winner Ceremony Photo</p>
-                            </div>
+                            <Image
+                                src="/Karan-certificate.png"
+                                alt="Open Loop Hackathon 2026 Winner Certificate"
+                                width={1200}
+                                height={675}
+                                className="w-full h-auto rounded-xl border border-border mb-4 bg-muted/5"
+                            />
                         </section>
                         
                         <section>
@@ -80,10 +84,13 @@ export default function OpenLoopHackathonPage() {
                                 Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All personal data is stored locally via Chrome Storage API, never sent to any server.
                             </p>
                             
-                            <div className="aspect-video w-full rounded-xl border border-border bg-muted/10 flex flex-col items-center justify-center text-muted-foreground mb-4">
-                                <ImageOff className="h-12 w-12 mb-4 opacity-50" />
-                                <p className="text-sm font-medium">IMAGE PLACEHOLDER — Architecture Diagram</p>
-                            </div>
+                            <Image
+                                src="/architecture-image.png"
+                                alt="FormPilot Architecture Diagram"
+                                width={1200}
+                                height={675}
+                                className="w-full h-auto rounded-xl border border-border mb-4 bg-muted/5"
+                            />
                         </section>
                         
                         <div className="space-y-12 border-t border-border pt-12">
