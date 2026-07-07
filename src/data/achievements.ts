@@ -30,7 +30,7 @@ export const achievements: Achievement[] = [
         metric: "12 PRs Merged"
     },
     {
-        title: "Co-Founder",
+        title: "Founder",
         organization: "KĀRYO",
         date: "2025 - Present",
         description: "Building a digital agency for local businesses in Bangalore.",

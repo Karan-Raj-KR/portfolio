@@ -18,7 +18,7 @@ export const experience: Experience[] = [
         ],
     },
     {
-        role: "Co-founder, KĀRYO",
+        role: "Founder, KĀRYO",
         period: "2025 – Present",
         company: "",
         description: [
