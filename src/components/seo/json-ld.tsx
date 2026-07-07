@@ -1,28 +1,6 @@
 import React from "react";
 
 export function SiteJsonLd() {
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Karan Raj KR",
-    alternateName: ["Karan Raj", "Karan Raj K R", "Karan NIAT"],
-    url: "https://karanrajkr.vercel.app",
-    image: "https://karanrajkr.vercel.app/og-image.jpg",
-    jobTitle: "AI Engineer & Backend Developer",
-    alumniOf: {
-      "@type": "CollegeOrUniversity",
-      name: "NIAT",
-    },
-    worksFor: {
-      "@type": "Organization",
-      name: "KĀRYO",
-    },
-    sameAs: [
-      "https://github.com/Karan-Raj-KR",
-      // Add LinkedIn, Twitter etc here if available
-    ],
-  };
-
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -54,7 +32,7 @@ export function SiteJsonLd() {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify([personSchema, orgSchema, websiteSchema]),
+        __html: JSON.stringify([orgSchema, websiteSchema]),
       }}
     />
   );
