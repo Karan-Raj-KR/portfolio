@@ -47,6 +47,7 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { BottomNav } from "@/components/layout/bottom-nav";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans', display: 'swap'});
 
@@ -109,7 +110,10 @@ export default function RootLayout({
             enableSystem={false}
             disableTransitionOnChange
           >
-            {children}
+            <div className="pb-[64px] lg:pb-0">
+              {children}
+            </div>
+            <BottomNav />
           </ThemeProvider>
         </MotionProvider>
       </body>
