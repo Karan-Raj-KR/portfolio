@@ -1,34 +1,25 @@
-import { notFound } from "next/navigation";
-import { projects } from "@/data/projects";
-import { ExternalLink, Github, ArrowLeft } from "lucide-react";
+import { ExternalLink, Github, ArrowLeft, ImageOff, MapPin, Calendar, Building } from "lucide-react";
 import Link from "next/link";
-import { ImagePlaceholder } from "@/components/ui/image-placeholder";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata = {
-    title: "Open Loop Hackathon 2026 — Winner",
-    description: "1st Place Winner at Open Loop Hackathon 2026",
+    title: "Open Loop Hackathon 2026 — Winner | Karan Raj KR",
+    description: "1st Place Winner at Open Loop Hackathon 2026. Built FormPilot, an AI-powered Chrome extension.",
 };
 
 export default function OpenLoopHackathonPage() {
-    const project = projects.find((p) => p.slug === "formpilot");
-
-    if (!project) {
-        notFound();
-    }
-
     return (
         <main className="min-h-screen py-24">
             <BreadcrumbJsonLd
                 items={[
                     { name: "Home", url: "https://karanrajkr.vercel.app/" },
-                    { name: "Hackathons", url: "https://karanrajkr.vercel.app/#hackathon" },
+                    { name: "Hackathons", url: "https://karanrajkr.vercel.app/hackathons" },
                     { name: "Open Loop 2026", url: `https://karanrajkr.vercel.app/hackathons/open-loop-2026` },
                 ]}
             />
             
-            <article className="container mx-auto px-4 md:px-6 max-w-4xl">
-                <Link href="/#hackathon" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-12 transition-colors">
+            <article className="container mx-auto px-4 md:px-6 max-w-5xl">
+                <Link href="/hackathons" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-12 transition-colors">
                     <ArrowLeft className="h-4 w-4" /> Back to Hackathons
                 </Link>
 
@@ -41,85 +32,165 @@ export default function OpenLoopHackathonPage() {
                             </span>
                         </div>
                     </div>
+                    
+                    <div className="flex flex-col gap-3 mb-8 text-muted-foreground">
+                        <div className="flex items-center gap-2"><Building className="h-4 w-4 shrink-0" /> Organizer: YenTech — Official Tech Club of Yenepoya School of Engineering & Technology</div>
+                        <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" /> Venue: YMK Auditorium, Kulur Campus, Mangaluru, Karnataka</div>
+                        <div className="flex items-center gap-2"><Calendar className="h-4 w-4 shrink-0" /> Date: April 25–26, 2026</div>
+                    </div>
+
                     <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                        {project.overview}
+                        <strong className="text-foreground">Project: FormPilot</strong> <br/>
+                        A privacy-first, BYOK (Bring Your Own Key) Chrome extension that intelligently autofills complex web forms using LLMs. Built entirely in 24 hours on-site. Secured 1st place.
                     </p>
                     <div className="flex gap-4">
-                        {project.links.demo && (
-                            <Link href={project.links.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90">
-                                View Live <ExternalLink className="h-4 w-4" />
-                            </Link>
-                        )}
-                        {project.links.code && (
-                            <Link href={project.links.code} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted">
-                                Source Code <Github className="h-4 w-4" />
-                            </Link>
-                        )}
+                        <Link href="https://form-pilot.netlify.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90">
+                            View Live <ExternalLink className="h-4 w-4" />
+                        </Link>
+                        <Link href="https://github.com/Karan-Raj-KR/FormPilot" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted">
+                            Source Code <Github className="h-4 w-4" />
+                        </Link>
                     </div>
                 </header>
 
-                <div className="mb-16">
-                    <ImagePlaceholder height="450px" text="Open Loop 2026 Winner Ceremony" />
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-12 mb-16">
-                    <div className="md:col-span-2 space-y-12">
+                <div className="grid lg:grid-cols-3 gap-12 mb-16">
+                    <div className="lg:col-span-2 space-y-12">
                         <section>
                             <h2 className="text-2xl font-bold mb-4">The Problem</h2>
-                            <p className="text-muted-foreground leading-relaxed">{project.problem}</p>
+                            <p className="text-muted-foreground leading-relaxed">
+                                Users waste hours filling repetitive, complex forms (job applications, grants, registrations). Traditional autofill relies on exact field-name matching and fails on long-form text or nuanced dropdowns.
+                            </p>
                         </section>
+                        
                         <section>
-                            <h2 className="text-2xl font-bold mb-4">The Solution ({project.title})</h2>
-                            <p className="text-muted-foreground leading-relaxed">{project.solution}</p>
+                            <h2 className="text-2xl font-bold mb-4">The Solution (FormPilot)</h2>
+                            <p className="text-muted-foreground leading-relaxed mb-6">
+                                FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM with the user's selected profile, and maps the AI's structured JSON response back into form fields.
+                            </p>
+                            
+                            <div className="aspect-video w-full rounded-xl border border-border bg-muted/10 flex flex-col items-center justify-center text-muted-foreground mb-4">
+                                <ImageOff className="h-12 w-12 mb-4 opacity-50" />
+                                <p className="text-sm font-medium">IMAGE PLACEHOLDER — Winner Ceremony Photo</p>
+                            </div>
                         </section>
+                        
                         <section>
                             <h2 className="text-2xl font-bold mb-4">Architecture</h2>
-                            <p className="text-muted-foreground leading-relaxed mb-6">{project.architecture}</p>
-                            <ImagePlaceholder height="300px" text="Architecture Diagram Placeholder" />
+                            <p className="text-muted-foreground leading-relaxed mb-6">
+                                Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All personal data is stored locally via Chrome Storage API, never sent to any server.
+                            </p>
+                            
+                            <div className="aspect-video w-full rounded-xl border border-border bg-muted/10 flex flex-col items-center justify-center text-muted-foreground mb-4">
+                                <ImageOff className="h-12 w-12 mb-4 opacity-50" />
+                                <p className="text-sm font-medium">IMAGE PLACEHOLDER — Architecture Diagram</p>
+                            </div>
                         </section>
+                        
+                        <div className="space-y-12 border-t border-border pt-12">
+                            <section>
+                                <h2 className="text-2xl font-bold mb-4">Engineering Challenge</h2>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    Handling dynamic form fields rendered by React or Vue frameworks, which swallow native DOM events. We had to simulate authentic input, change, and blur events to trigger framework state updates correctly.
+                                </p>
+                            </section>
+                            
+                            <section className="bg-muted/5 border border-border rounded-xl p-8">
+                                <h2 className="text-xl font-bold mb-3">Lessons Learned</h2>
+                                <p className="text-muted-foreground leading-relaxed">
+                                    Manifest V3 intricacies, service worker lifecycles, and simulating trusted events in modern web apps.
+                                </p>
+                            </section>
+                        </div>
                     </div>
                     
-                    <aside className="space-y-8">
+                    <aside className="space-y-10">
                         <div>
                             <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Timeline</h3>
-                            <p className="text-muted-foreground">{project.timeline}</p>
+                            <p className="text-muted-foreground text-sm leading-relaxed">Built in 24 hours | April 25–26, 2026</p>
                         </div>
+                        
                         <div>
                             <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Tech Stack</h3>
                             <ul className="flex flex-wrap gap-2">
-                                {project.techStack.map(tech => (
+                                {["React 18", "TypeScript", "Vite", "Tailwind CSS", "Chrome Extension API (Manifest V3)", "OpenAI/Groq API"].map(tech => (
                                     <li key={tech} className="bg-muted/10 border border-border px-3 py-1 rounded-md text-sm text-muted-foreground">
                                         {tech}
                                     </li>
                                 ))}
                             </ul>
                         </div>
+                        
                         <div>
                             <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Key Features</h3>
                             <ul className="list-disc pl-4 text-muted-foreground space-y-2 text-sm">
-                                {project.features.map(feature => (
-                                    <li key={feature}>{feature}</li>
-                                ))}
+                                <li>Multi-provider support: ChatGPT, Claude, Gemini, Groq</li>
+                                <li>Multi-profile support (e.g., Job Seeker, Investor)</li>
+                                <li>Intelligent dropdown field matching</li>
+                                <li>Long-form text generation (cover letters, summaries)</li>
+                                <li>100% local storage — no personal data leaves the device</li>
+                                <li>BYOK (Bring Your Own Key) architecture</li>
                             </ul>
                         </div>
-                    </aside>
-                </div>
 
-                <div className="space-y-12 border-t border-border pt-12">
-                    <section>
-                        <h2 className="text-2xl font-bold mb-4">Engineering Challenges</h2>
-                        <p className="text-muted-foreground leading-relaxed">{project.challenges}</p>
-                    </section>
-                    
-                    <section>
-                        <h2 className="text-2xl font-bold mb-4">Results & Impact</h2>
-                        <p className="text-muted-foreground leading-relaxed">{project.results}</p>
-                    </section>
-                    
-                    <section className="bg-muted/5 border border-border rounded-xl p-8">
-                        <h2 className="text-xl font-bold mb-3">Lessons Learned</h2>
-                        <p className="text-muted-foreground leading-relaxed">{project.lessons}</p>
-                    </section>
+                        <div>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Event Scale</h3>
+                            <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
+                                <li><strong>309</strong> participants</li>
+                                <li><strong>121</strong> teams</li>
+                                <li><strong>109</strong> colleges</li>
+                                <li><strong>14</strong> states | <strong>58</strong> cities</li>
+                                <li><strong>70%</strong> completion rate (teams that shipped end-to-end)</li>
+                                <li>Top 25 teams shortlisted for finals</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Scores</h3>
+                            <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
+                                <li>FormPilot (1st): <strong>80 / 100</strong></li>
+                                <li>Runner-up: <strong>60 / 100</strong></li>
+                                <li>Margin: <strong>20 points</strong></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Prize</h3>
+                            <p className="text-muted-foreground text-sm">₹20,000 cash | Total prize pool: ₹1,00,000</p>
+                        </div>
+
+                        <div>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Team</h3>
+                            <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
+                                <li>Karan Raj KR (Team Lead) — S-VYASA University</li>
+                                <li>Havinash Gangisetty — S-VYASA University</li>
+                                <li>Saagnik Dey — S-VYASA University</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Podium</h3>
+                            <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
+                                <li>🥇 1st: Karan's Team (OL02) — S-VYASA University, Bengaluru</li>
+                                <li>🥈 2nd: Prateek D Shriyan + team — PACE, Mangaluru</li>
+                                <li>🥉 3rd: Harshith + team — SDMIT, Ujire</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Judges</h3>
+                            <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
+                                <li>Vaibhav Salian – AI/ML Engineer, EG A/S (Denmark)</li>
+                                <li>Joywin Bennis – Software Engineer, EG A/S</li>
+                                <li>Darshan Dinesh Bhandary – Infrastructure Specialist, Kyndryl</li>
+                                <li>Adithya Poonja – Business Development, AIC NITTE Incubation Centre</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Sponsors (Gold Tier)</h3>
+                            <p className="text-muted-foreground text-sm">Unstop, DK24, NXT WAVE, .xyz, Kalvium</p>
+                        </div>
+                    </aside>
                 </div>
             </article>
         </main>

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: '%s | Karan Raj KR'
   },
   description: 'Karan Raj KR is an AI Engineer and Backend Developer building with Python, FastAPI, and Next.js. Founder of KĀRYO and NIAT Alumni.',
-  keywords: ['Karan Raj KR', 'Karan Raj AI Engineer', 'Karan Raj Portfolio', 'Karan Raj K R', 'Karan Raj NIAT', 'Karan NIAT', 'Backend Developer', 'AI', 'FastAPI'],
+  keywords: ['Karan Raj KR', 'Karan Raj AI Engineer', 'Karan Raj Portfolio', 'Karan Raj KR', 'Karan Raj NIAT', 'Karan NIAT', 'Backend Developer', 'AI', 'FastAPI'],
   authors: [{ name: 'Karan Raj KR' }],
   creator: 'Karan Raj KR',
   alternates: {

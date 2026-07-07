@@ -11,7 +11,7 @@ const navLinks = [
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Work" },
-    { href: "#hackathon", label: "Hackathons" },
+    { href: "/hackathons", label: "Hackathons" },
     { href: "#karyo", label: "Karyo" },
     { href: "#contact", label: "Contact" },
 ];
@@ -37,7 +37,7 @@ export function Header() {
         >
             <div className="container mx-auto flex items-center justify-between px-4 md:px-6">
                 <Link href="/" className="text-xl font-bold tracking-tighter transition-opacity hover:opacity-80">
-                    Karan Raj K R
+                    Karan Raj KR
                 </Link>
 
                 <nav className="hidden md:flex items-center gap-8">

@@ -32,16 +32,9 @@ export function Hero() {
         >
             <motion.div
                 style={{ y, opacity }}
-                className="z-10 flex max-w-[1000px] flex-col items-center space-y-8"
+                className="z-10 flex max-w-[1000px] flex-col items-center space-y-8 mt-16 md:mt-24"
             >
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="font-mono text-sm font-medium text-muted-foreground uppercase tracking-widest"
-                >
-                    Karan Raj KR
-                </motion.h1>
+
                 <motion.h2
                     className="text-5xl font-bold tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl"
                 >
@@ -84,7 +77,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.6 }}
-                    className="flex gap-10 pb-20 pt-2"
+                    className="flex gap-10 pb-6 pt-2"
                 >
                     <Magnetic>
                         <a
@@ -119,7 +112,7 @@ export function Hero() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
-                    className="flex flex-col items-center gap-4 pt-12"
+                    className="flex flex-col items-center gap-4 pt-2"
                 >
                     <div className="flex items-center gap-6">
                         {socialLinks.map((social) => {

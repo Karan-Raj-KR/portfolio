@@ -11,7 +11,7 @@ const hackathons = [
         organization: "Open Loop Hackathon",
         date: "April 2026",
         description: "Built FormPilot, an AI-powered Chrome extension, competing against 120+ teams from 100+ colleges.",
-        metric: "Rank 1 / 120+",
+        metric: "Rank 1 / 121 teams · 109 colleges · 14 states",
         link: "/hackathons/open-loop-2026"
     },
     {
@@ -58,7 +58,7 @@ export function Hackathon() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-12"
+                className="mb-12 pt-16"
             >
                 <div className="mb-3 flex items-center gap-2 text-sm font-medium text-primary/80">
                     <Terminal className="h-4 w-4" />

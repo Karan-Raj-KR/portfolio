@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Globe, Users, Clock, Sparkles, Building2, Cpu } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Tilt } from "@/components/ui/tilt";
-import { ImagePlaceholder } from "@/components/ui/image-placeholder";
 
 const capabilities = [
     {
@@ -102,13 +102,19 @@ export function Karyo() {
                     </div>
                 </div>
                 
-                {/* Visual Asset Placeholder */}
+                {/* Visual Asset */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
+                    className="relative w-full h-[500px] rounded-xl overflow-hidden border border-border"
                 >
-                    <ImagePlaceholder height="500px" text="KĀRYO Client Dashboard / Team Photo Placeholder" />
+                    <Image 
+                        src="/images/karyo-image.png" 
+                        alt="KĀRYO Client Dashboard" 
+                        fill
+                        className="object-cover"
+                    />
                 </motion.div>
 
             </motion.div>
