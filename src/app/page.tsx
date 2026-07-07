@@ -12,7 +12,6 @@ const Projects = dynamic(() => import("@/features/projects/components/project-li
 const Hackathon = dynamic(() => import("@/components/sections/hackathon").then(mod => mod.Hackathon));
 const Karyo = dynamic(() => import("@/components/sections/karyo").then(mod => mod.Karyo));
 const Skills = dynamic(() => import("@/components/sections/skills").then(mod => mod.Skills));
-const Community = dynamic(() => import("@/components/sections/community").then(mod => mod.Community));
 
 const Contact = dynamic(() => import("@/components/sections/contact").then(mod => mod.Contact));
 
@@ -32,8 +31,6 @@ export default function Home() {
         <Hackathon />
         <Karyo />
         <Skills />
-        <Community />
-
         
         <Contact />
       </main>
