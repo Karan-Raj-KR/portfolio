@@ -99,9 +99,9 @@ export function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="container mx-auto px-4 md:px-6 mb-16"
+                className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16"
             >
-                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Technical Arsenal</h2>
+                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl break-words">Technical Arsenal</h2>
                 <p className="max-w-2xl text-lg text-muted-foreground mb-12">
                     Technologies and architectures I use to build scalable backends, deploy AI agents, and ship full-stack applications.
                 </p>

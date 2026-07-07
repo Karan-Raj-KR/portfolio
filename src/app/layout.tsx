@@ -95,7 +95,7 @@ export default function RootLayout({
         />
       </head>
       <body className={cn(
-        "min-h-screen bg-background font-sans antialiased text-foreground selection:bg-foreground selection:text-background",
+        "min-h-screen bg-background font-sans antialiased text-foreground selection:bg-foreground selection:text-background overflow-x-hidden",
         outfit.variable
       )}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (

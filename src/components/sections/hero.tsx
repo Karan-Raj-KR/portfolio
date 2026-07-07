@@ -28,7 +28,7 @@ export function Hero() {
     return (
         <section
             ref={ref}
-            className="relative flex h-screen min-h-[800px] flex-col items-center justify-center overflow-hidden px-4 text-center md:px-6"
+            className="relative flex h-screen min-h-[800px] flex-col items-center justify-center overflow-hidden px-4 sm:px-8 md:px-6 lg:px-8 text-center"
         >
             <motion.div
                 style={{ y, opacity }}
@@ -36,7 +36,7 @@ export function Hero() {
             >
 
                 <motion.h2
-                    className="text-5xl font-bold tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter leading-tight sm:leading-tight md:leading-tight break-words max-w-[90vw]"
                 >
                     {words.map((word, i) => (
                         <motion.span
@@ -59,7 +59,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-                    className="pt-6 max-w-[600px] text-lg text-muted-foreground sm:text-xl md:text-2xl"
+                    className="pt-6 max-w-[600px] mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground"
                 >
                     AI Engineer · Backend Developer · Founder
                 </motion.p>
@@ -68,7 +68,7 @@ export function Hero() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 1.0 }}
-                    className="text-sm font-light tracking-wide text-muted-foreground/60"
+                    className="text-sm font-light tracking-wide text-muted-foreground/60 max-w-prose mx-auto"
                 >
                     CSE student building backends, competing at hackathons, and shipping real products.
                 </motion.p>

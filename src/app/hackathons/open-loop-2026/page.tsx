@@ -19,14 +19,14 @@ export default function OpenLoopHackathonPage() {
                 ]}
             />
             
-            <article className="container mx-auto px-4 md:px-6 max-w-5xl">
-                <Link href="/hackathons" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-12 transition-colors">
+            <article className="container mx-auto px-4 sm:px-8 lg:px-0 max-w-5xl">
+                <Link href="/hackathons" className="inline-flex min-h-[44px] py-2 px-4 -ml-4 items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-12 transition-colors">
                     <ArrowLeft className="h-4 w-4" /> Back to Hackathons
                 </Link>
 
                 <header className="mb-16">
                     <div className="flex flex-wrap items-center gap-4 mb-6">
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight">Open Loop Hackathon 2026</h1>
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight break-words">Open Loop Hackathon 2026</h1>
                         <div className="flex gap-2">
                             <span className="bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full text-sm font-medium">
                                 1st Place Winner
@@ -44,27 +44,27 @@ export default function OpenLoopHackathonPage() {
                         <strong className="text-foreground">Project: FormPilot</strong> <br/>
                         A privacy-first, BYOK (Bring Your Own Key) Chrome extension that intelligently autofills complex web forms using LLMs. Built entirely in 24 hours on-site. Secured 1st place.
                     </p>
-                    <div className="flex gap-4">
-                        <Link href="https://form-pilot.netlify.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90">
+                    <div className="flex flex-wrap gap-4">
+                        <Link href="https://form-pilot.netlify.app/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90">
                             View Live <ExternalLink className="h-4 w-4" />
                         </Link>
-                        <Link href="https://github.com/Karan-Raj-KR/FormPilot" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted">
+                        <Link href="https://github.com/Karan-Raj-KR/FormPilot" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted">
                             Source Code <Github className="h-4 w-4" />
                         </Link>
                     </div>
                 </header>
 
-                <div className="grid lg:grid-cols-3 gap-12 mb-16">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
                     <div className="lg:col-span-2 space-y-12">
                         <section>
-                            <h2 className="text-2xl font-bold mb-4">The Problem</h2>
+                            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">The Problem</h2>
                             <p className="text-muted-foreground leading-relaxed">
                                 Users waste hours filling repetitive, complex forms (job applications, grants, registrations). Traditional autofill relies on exact field-name matching and fails on long-form text or nuanced dropdowns.
                             </p>
                         </section>
                         
                         <section>
-                            <h2 className="text-2xl font-bold mb-4">The Solution (FormPilot)</h2>
+                            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">The Solution (FormPilot)</h2>
                             <p className="text-muted-foreground leading-relaxed mb-6">
                                 FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM with the user's selected profile, and maps the AI's structured JSON response back into form fields.
                             </p>
@@ -79,7 +79,7 @@ export default function OpenLoopHackathonPage() {
                         </section>
                         
                         <section>
-                            <h2 className="text-2xl font-bold mb-4">Architecture</h2>
+                            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">Architecture</h2>
                             <p className="text-muted-foreground leading-relaxed mb-6">
                                 Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All personal data is stored locally via Chrome Storage API, never sent to any server.
                             </p>
@@ -95,7 +95,7 @@ export default function OpenLoopHackathonPage() {
                         
                         <div className="space-y-12 border-t border-border pt-12">
                             <section>
-                                <h2 className="text-2xl font-bold mb-4">Engineering Challenge</h2>
+                                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">Engineering Challenge</h2>
                                 <p className="text-muted-foreground leading-relaxed">
                                     Handling dynamic form fields rendered by React or Vue frameworks, which swallow native DOM events. We had to simulate authentic input, change, and blur events to trigger framework state updates correctly.
                                 </p>

@@ -26,7 +26,7 @@ const capabilities = [
 
 export function Karyo() {
     return (
-        <section id="karyo" className="container mx-auto px-4 py-24 md:px-6">
+        <section id="karyo" className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export function Karyo() {
                             <Building2 className="h-4 w-4" />
                             Entrepreneurship
                         </motion.div>
-                        <h2 className="text-3xl font-bold tracking-tight md:text-6xl">KĀRYO</h2>
+                        <h2 className="text-3xl font-bold tracking-tight md:text-6xl break-words leading-tight">KĀRYO</h2>
                         <p className="mt-3 max-w-lg text-lg text-muted-foreground">
                             Digital Agency · Bangalore
                         </p>
@@ -60,7 +60,7 @@ export function Karyo() {
                             href="https://linktr.ee/Karyo"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
+                            className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
                         >
                             Visit KĀRYO <ExternalLink className="h-4 w-4" />
                         </Link>
@@ -81,7 +81,7 @@ export function Karyo() {
 
                 <div className="mb-12">
                     <h3 className="text-2xl font-semibold mb-8">Core Capabilities</h3>
-                    <div className="grid gap-6 md:grid-cols-3">
+                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                         {capabilities.map((cap, index) => (
                             <motion.div
                                 key={index}

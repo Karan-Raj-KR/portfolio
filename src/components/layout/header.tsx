@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
@@ -19,6 +19,7 @@ const navLinks = [
 export function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const navRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -28,6 +29,18 @@ export function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
+                setMenuOpen(false);
+            }
+        };
+        if (menuOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [menuOpen]);
+
     return (
         <header
             className={cn(
@@ -35,12 +48,12 @@ export function Header() {
                 scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/40 py-3" : "bg-transparent py-6"
             )}
         >
-            <div className="container mx-auto flex items-center justify-between px-4 md:px-6">
+            <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
                 <Link href="/" className="text-xl font-bold tracking-tighter transition-opacity hover:opacity-80">
                     Karan Raj KR
                 </Link>
 
-                <nav className="hidden md:flex items-center gap-8">
+                <nav className="hidden lg:flex items-center gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
@@ -55,11 +68,11 @@ export function Header() {
                     </div>
                 </nav>
 
-                <div className="md:hidden flex items-center gap-2">
+                <div className="lg:hidden flex items-center gap-2">
                     <ThemeToggle />
                     <button
                         onClick={() => setMenuOpen((prev) => !prev)}
-                        className="p-3 text-muted-foreground hover:text-foreground transition-colors"
+                        className="flex h-11 w-11 items-center justify-center p-2 text-muted-foreground hover:text-foreground transition-colors"
                         aria-label={menuOpen ? "Close menu" : "Open menu"}
                         aria-expanded={menuOpen}
                     >
@@ -71,19 +84,20 @@ export function Header() {
             <AnimatePresence>
                 {menuOpen && (
                     <motion.nav
+                        ref={navRef}
                         initial={{ opacity: 0, y: -8 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute left-0 right-0 top-full bg-background/95 backdrop-blur-md border-b border-border/40 md:hidden"
+                        className="absolute left-0 right-0 top-full bg-background/95 backdrop-blur-md border-b border-border/40 lg:hidden"
                     >
-                        <div className="container mx-auto flex flex-col px-4 py-4">
+                        <div className="container mx-auto flex flex-col px-4 py-4 sm:px-6">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setMenuOpen(false)}
-                                    className="py-3 text-base font-medium text-foreground/60 hover:text-foreground transition-colors border-b border-border/30 last:border-0"
+                                    className="flex min-h-[44px] items-center py-4 text-base font-medium text-foreground/60 hover:text-foreground transition-colors border-b border-border/30 last:border-0"
                                 >
                                     {link.label}
                                 </Link>

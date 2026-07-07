@@ -19,13 +19,13 @@ export function About() {
     };
 
     return (
-        <section id="about" className="container mx-auto flex min-h-[60vh] flex-col justify-center px-4 py-24 md:px-6">
+        <section id="about" className="container mx-auto flex min-h-[60vh] flex-col justify-center px-4 sm:px-6 lg:px-8 py-24">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                className="mx-auto max-w-4xl space-y-8 text-xl font-light leading-relaxed md:text-3xl text-muted-foreground"
+                className="mx-auto max-w-4xl space-y-8 text-xl font-light leading-relaxed md:text-3xl text-muted-foreground break-words"
             >
                 <motion.p variants={itemVariants}>
                     I'm Karan Raj KR — 18 years old, based in Bengaluru, and I've been building things since before I knew what a stack was.

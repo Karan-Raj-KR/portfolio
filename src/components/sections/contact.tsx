@@ -10,13 +10,13 @@ export function Contact() {
     const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
 
     return (
-        <section id="contact" className="container mx-auto px-4 py-32 md:px-6">
+        <section id="contact" className="container mx-auto px-4 sm:px-6 lg:px-8 py-32">
             <div className="flex flex-col items-center text-center space-y-12">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl"
+                    className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl break-words leading-tight"
                 >
                     Let’s Build Something
                 </motion.h2>
@@ -26,7 +26,7 @@ export function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="max-w-[600px] text-lg text-muted-foreground md:text-xl space-y-4"
+                    className="max-w-[600px] text-lg text-muted-foreground md:text-xl space-y-4 break-words"
                 >
                     <span className="block">I build backends, compete at hackathons, and co-run a digital agency in Bangalore. If you have something worth building — let's talk.</span>
                 </motion.p>
