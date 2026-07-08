@@ -1,9 +1,11 @@
 "use client";
 
 import { Twitter, Linkedin, MessageCircle, Share2 } from "lucide-react";
-import { Publication } from "@/data/publications";
+import { Article } from "@/data/publications";
 
-export function ShareButtons({ publication }: { publication: Publication }) {
+export function ShareButtons({ article }: { article: Article }) {
+  const canonicalUrl = article.canonicalUrl || article.platforms[0]?.url || "";
+
   const handleShare = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -11,9 +13,9 @@ export function ShareButtons({ publication }: { publication: Publication }) {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: publication.title,
-          text: publication.excerpt,
-          url: publication.url,
+          title: article.title,
+          text: article.excerpt,
+          url: canonicalUrl,
         });
       } catch (err) {
         console.error("Error sharing:", err);
@@ -30,15 +32,15 @@ export function ShareButtons({ publication }: { publication: Publication }) {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  const encodedUrl = encodeURIComponent(publication.url);
-  const encodedTitle = encodeURIComponent(publication.title);
+  const encodedUrl = encodeURIComponent(canonicalUrl);
+  const encodedTitle = encodeURIComponent(article.title);
 
   const twitterUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
   const whatsappUrl = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
 
   return (
-    <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border z-20 relative">
+    <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border relative z-20">
       <span className="text-xs font-medium text-muted-foreground mr-2">Share:</span>
       <button
         onClick={handleLink(twitterUrl)}

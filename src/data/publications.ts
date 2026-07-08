@@ -1,19 +1,27 @@
-export type Publication = {
-  title: string;
-  source: "hashnode" | "devto";
+export type Platform = {
+  source: "hashnode" | "devto" | "medium" | "quora";
   url: string;
-  publishedDate: string; // ISO date format YYYY-MM-DD
-  excerpt: string;
-  coverImage?: string;
 };
 
-export const publications: Publication[] = [
+export type Article = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  publishedDate: string; // ISO date format YYYY-MM-DD
+  coverImage?: string;
+  platforms: Platform[];
+  canonicalUrl?: string;
+};
+
+export const publications: Article[] = [
   {
-    title: "Building KĀRYO: Automating Law Firm Operations",
-    source: "hashnode",
-    url: "https://karanrajkr.hashnode.dev/hello-world",
+    slug: "my-first-year-of-engineering",
+    title: "My First Year of Engineering",
+    excerpt: "A deep dive into what I built, won, and actually learned during my first year.",
     publishedDate: "2026-07-05",
-    excerpt: "A deep dive into how we built KĀRYO to solve workflow bottlenecks for local law firms using AI and Next.js.",
-    coverImage: "/og-image.jpg" // Using default OG image as placeholder
+    platforms: [
+      { source: "hashnode", url: "https://karanrajkr.hashnode.dev/my-first-year-of-engineering" },
+      { source: "devto", url: "https://dev.to/karanrajkr/my-first-year-of-engineering-what-i-built-won-and-actually-learned-1473" }
+    ]
   }
 ];
