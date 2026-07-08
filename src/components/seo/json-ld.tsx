@@ -5,8 +5,8 @@ export function SiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "KĀRYO",
-    url: "https://karanrajkr.vercel.app",
-    logo: "https://karanrajkr.vercel.app/og-image.jpg",
+    url: "https://karanrajkr.com",
+    logo: "https://karanrajkr.com/og-image.jpg",
     description: "A digital studio helping local businesses get online.",
     founders: [
       {
@@ -20,10 +20,10 @@ export function SiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Karan Raj KR - Portfolio",
-    url: "https://karanrajkr.vercel.app",
+    url: "https://karanrajkr.com",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://karanrajkr.vercel.app/?q={search_term_string}",
+      target: "https://karanrajkr.com/?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };

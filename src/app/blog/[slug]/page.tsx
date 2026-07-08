@@ -31,9 +31,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://karanrajkr.vercel.app/" },
-          { name: "Blog", url: "https://karanrajkr.vercel.app/blog" },
-          { name: resolvedParams.slug, url: `https://karanrajkr.vercel.app/blog/${resolvedParams.slug}` },
+          { name: "Home", url: "https://karanrajkr.com/" },
+          { name: "Blog", url: "https://karanrajkr.com/blog" },
+          { name: resolvedParams.slug, url: `https://karanrajkr.com/blog/${resolvedParams.slug}` },
         ]}
       />
       

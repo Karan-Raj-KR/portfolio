@@ -11,8 +11,8 @@ export default function BlogList() {
     <main className="container mx-auto px-4 py-24 md:px-6">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://karanrajkr.vercel.app/" },
-          { name: "Blog", url: "https://karanrajkr.vercel.app/blog" },
+          { name: "Home", url: "https://karanrajkr.com/" },
+          { name: "Blog", url: "https://karanrajkr.com/blog" },
         ]}
       />
       <h1 className="mb-8 text-4xl font-bold tracking-tight">Blog</h1>

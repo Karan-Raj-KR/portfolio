@@ -13,9 +13,9 @@ export default function OpenLoopHackathonPage() {
         <main className="min-h-screen py-24">
             <BreadcrumbJsonLd
                 items={[
-                    { name: "Home", url: "https://karanrajkr.vercel.app/" },
-                    { name: "Hackathons", url: "https://karanrajkr.vercel.app/hackathons" },
-                    { name: "Open Loop 2026", url: `https://karanrajkr.vercel.app/hackathons/open-loop-2026` },
+                    { name: "Home", url: "https://karanrajkr.com/" },
+                    { name: "Hackathons", url: "https://karanrajkr.com/hackathons" },
+                    { name: "Open Loop 2026", url: `https://karanrajkr.com/hackathons/open-loop-2026` },
                 ]}
             />
             

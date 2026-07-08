@@ -9,7 +9,7 @@ import "./globals.css";
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://karanrajkr.vercel.app"),
+  metadataBase: new URL("https://karanrajkr.com"),
   title: {
     default: 'Karan Raj KR | AI Engineer & Backend Developer',
     template: '%s | Karan Raj KR'
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Karan Raj KR | AI Engineer & Backend Developer',
     description: 'AI Engineer and Backend Developer. Founder of KĀRYO. NIAT Alumni.',
-    url: 'https://karanrajkr.vercel.app',
+    url: 'https://karanrajkr.com',
     siteName: 'Karan Raj KR Portfolio',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Karan Raj KR - AI Engineer' }],
     locale: 'en_IN',
@@ -68,7 +68,7 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Karan Raj KR",
               "alternateName": "Karan Raj",
-              "url": "https://karanrajkr.vercel.app",
+              "url": "https://karanrajkr.com",
               "jobTitle": "AI Developer & Founder",
               "worksFor": {
                 "@type": "Organization",

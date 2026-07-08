@@ -10,8 +10,8 @@ export default function WritingList() {
     <main className="container mx-auto px-4 py-24 md:px-6">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://karanrajkr.vercel.app/" },
-          { name: "Writing", url: "https://karanrajkr.vercel.app/writing" },
+          { name: "Home", url: "https://karanrajkr.com/" },
+          { name: "Writing", url: "https://karanrajkr.com/writing" },
         ]}
       />
       <h1 className="mb-8 text-4xl font-bold tracking-tight">Writing</h1>

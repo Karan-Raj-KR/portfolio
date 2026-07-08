@@ -10,8 +10,8 @@ export default function Changelog() {
     <main className="container mx-auto px-4 py-24 md:px-6">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://karanrajkr.vercel.app/" },
-          { name: "Changelog", url: "https://karanrajkr.vercel.app/changelog" },
+          { name: "Home", url: "https://karanrajkr.com/" },
+          { name: "Changelog", url: "https://karanrajkr.com/changelog" },
         ]}
       />
       <h1 className="mb-8 text-4xl font-bold tracking-tight">Changelog</h1>
