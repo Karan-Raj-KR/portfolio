@@ -77,7 +77,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.6 }}
-                    className="flex gap-10 pb-6 pt-2"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-10 pb-6 pt-2 w-full"
                 >
                     <Magnetic>
                         <a

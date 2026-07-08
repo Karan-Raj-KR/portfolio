@@ -7,6 +7,8 @@ import { User, Briefcase, Trophy, Building2, LayoutGrid } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BottomNavSheet } from "./bottom-nav-sheet";
 
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+
 const navItems = [
     { id: "about", href: "/#about", label: "About", icon: User },
     { id: "projects", href: "/#projects", label: "Work", icon: Briefcase },
@@ -18,6 +20,18 @@ export function BottomNav() {
     const pathname = usePathname();
     const [activeHash, setActiveHash] = useState<string>("");
     const [isSheetOpen, setIsSheetOpen] = useState(false);
+    
+    const { scrollY } = useScroll();
+    const [hidden, setHidden] = useState(false);
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious() ?? 0;
+        if (latest > previous && latest > 50) {
+            setHidden(true);
+        } else {
+            setHidden(false);
+        }
+    });
 
     useEffect(() => {
         // Only run observer on the home page where these sections exist
@@ -59,7 +73,15 @@ export function BottomNav() {
 
     return (
         <>
-            <nav className="fixed bottom-0 left-0 right-0 z-50 flex h-16 items-center justify-around bg-background/95 backdrop-blur-md border-t border-border/40 pb-[env(safe-area-inset-bottom)] lg:hidden">
+            <motion.nav 
+                variants={{
+                    visible: { y: 0 },
+                    hidden: { y: "100%" },
+                }}
+                animate={hidden ? "hidden" : "visible"}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="fixed bottom-0 left-0 right-0 z-50 flex h-[80px] pb-6 pt-2 items-center justify-around bg-background/95 backdrop-blur-md border-t border-border/40 lg:hidden"
+            >
                 {navItems.map((item) => {
                     const Icon = item.icon;
                     const active = isActive(item);
@@ -84,7 +106,7 @@ export function BottomNav() {
                     <LayoutGrid className="h-[22px] w-[22px]" />
                     <span className="text-[11px] font-medium leading-none">More</span>
                 </button>
-            </nav>
+            </motion.nav>
             <BottomNavSheet isOpen={isSheetOpen} onClose={() => setIsSheetOpen(false)} />
         </>
     );
