@@ -100,7 +100,7 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased text-foreground selection:bg-foreground selection:text-background overflow-x-hidden",
         outfit.variable
       )}>
-        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
+        {process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
         )}
         <SiteJsonLd />
