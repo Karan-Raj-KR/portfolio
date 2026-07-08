@@ -69,7 +69,7 @@ export default function BlogList() {
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Blog</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          Thoughts and tutorials on AI, Python, FastAPI, Next.js, and building products.
+          Sharing my thoughts, experiences, and achievements.
         </p>
       </div>
 
