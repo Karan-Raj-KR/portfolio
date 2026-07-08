@@ -51,6 +51,10 @@ export function SiteJsonLd() {
       {
         "@type": "Person",
         name: "Karan Raj KR",
+      },
+      {
+        "@type": "Person",
+        name: "Havinash",
       }
     ]
   };

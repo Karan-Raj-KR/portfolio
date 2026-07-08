@@ -71,7 +71,7 @@ export function Karyo() {
                     <div className="max-w-3xl">
                         <h3 className="text-2xl font-semibold mb-6">The Mission</h3>
                         <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-                            KĀRYO was founded to solve a critical disconnect: local businesses in Bangalore have massive potential but lack the technical literacy to establish a robust online presence. 
+                            KĀRYO was founded by Havinash and me to solve a critical disconnect: local businesses in Bangalore have massive potential but lack the technical literacy to establish a robust online presence. 
                         </p>
                         <p className="text-lg leading-relaxed text-muted-foreground">
                             As Founder, I lead the technical architecture and digital strategy. We bypass traditional agency bloat by combining direct door-to-door client acquisition with rapid, AI-assisted development pipelines.
