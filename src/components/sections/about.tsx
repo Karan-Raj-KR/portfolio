@@ -40,7 +40,7 @@ export function About() {
                     Before that I went solo at HackBLR 2026 with VoiceRx — a RAG-based voice health assistant — and landed Top 40 out of 2,500+ teams.
                 </motion.p>
                 <motion.p variants={itemVariants}>
-                    I also co-founded KĀRYO, a digital agency where we help businesses build their online presence. Paying clients, shipped production work, real revenue.
+                    I also founded KĀRYO, a digital agency where we help businesses build their online presence. Paying clients, shipped production work, real revenue.
                 </motion.p>
                 <motion.p variants={itemVariants}>
                     I write about what I build at <a href="https://karanrajkr.hashnode.dev" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-muted-foreground/30 underline-offset-4 hover:decoration-foreground">karanrajkr.hashnode.dev</a>
@@ -51,7 +51,7 @@ export function About() {
                     <div className="space-y-8 text-base md:text-lg text-muted-foreground/90 font-normal">
                         <div>
                             <h4 className="font-semibold text-foreground">What does Karan Raj KR do?</h4>
-                            <p className="mt-2">Karan Raj KR is an AI Engineer and Backend Developer specializing in Python, FastAPI, and Next.js. He builds AI-powered applications and is the co-founder of KĀRYO, a digital studio helping local businesses get online.</p>
+                            <p className="mt-2">Karan Raj KR is an AI Engineer and Backend Developer specializing in Python, FastAPI, and Next.js. He builds AI-powered applications and is the founder of KĀRYO, a digital studio helping local businesses get online.</p>
                         </div>
                         <div>
                             <h4 className="font-semibold text-foreground">What is Karan Raj KR's background?</h4>

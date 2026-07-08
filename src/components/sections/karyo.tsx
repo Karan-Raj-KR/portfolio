@@ -74,7 +74,7 @@ export function Karyo() {
                             KĀRYO was founded to solve a critical disconnect: local businesses in Bangalore have massive potential but lack the technical literacy to establish a robust online presence. 
                         </p>
                         <p className="text-lg leading-relaxed text-muted-foreground">
-                            As Co-founder, I lead the technical architecture and digital strategy. We bypass traditional agency bloat by combining direct door-to-door client acquisition with rapid, AI-assisted development pipelines.
+                            As Founder, I lead the technical architecture and digital strategy. We bypass traditional agency bloat by combining direct door-to-door client acquisition with rapid, AI-assisted development pipelines.
                         </p>
                     </div>
                 </div>
