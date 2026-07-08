@@ -5,6 +5,7 @@ import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Tilt } from "@/components/ui/tilt";
 import { projects } from "@/data/projects";
+import { ProjectJsonLd } from "@/components/seo/json-ld";
 
 const containerVariants: Variants = {
     hidden: {},
@@ -23,6 +24,7 @@ const itemVariants: Variants = {
 export function Projects() {
     return (
         <section id="projects" className="container mx-auto px-4 py-24 md:px-6">
+            <ProjectJsonLd />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

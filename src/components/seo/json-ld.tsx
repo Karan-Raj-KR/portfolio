@@ -1,6 +1,45 @@
 import React from "react";
 
 export function SiteJsonLd() {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Karan Raj KR",
+    "alternateName": "Karan Raj",
+    "url": "https://karanrajkr.com",
+    "jobTitle": "AI Engineer & Backend Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "KĀRYO"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "NIAT–S-VYASA University"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bengaluru",
+      "addressCountry": "IN"
+    },
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Backend Development",
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "Machine Learning",
+      "Large Language Models (LLMs)"
+    ],
+    "sameAs": [
+      "https://github.com/Karan-Raj-KR",
+      "https://linkedin.com/in/karanrajkr",
+      "https://twitter.com/karan_raj_kr",
+      "https://instagram.com/karan.rajkr",
+      "https://karanrajkr.hashnode.dev",
+      "https://dev.to/karanrajkr"
+    ]
+  };
+
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -32,7 +71,7 @@ export function SiteJsonLd() {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify([orgSchema, websiteSchema]),
+        __html: JSON.stringify([personSchema, orgSchema, websiteSchema]),
       }}
     />
   );

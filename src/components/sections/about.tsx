@@ -45,6 +45,24 @@ export function About() {
                 <motion.p variants={itemVariants}>
                     I write about what I build at <a href="https://karanrajkr.hashnode.dev" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-muted-foreground/30 underline-offset-4 hover:decoration-foreground">karanrajkr.hashnode.dev</a>
                 </motion.p>
+
+                <motion.div variants={itemVariants} className="mt-20 pt-12 border-t border-border/40">
+                    <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground mb-8">Frequently Asked Questions</h3>
+                    <div className="space-y-8 text-base md:text-lg text-muted-foreground/90 font-normal">
+                        <div>
+                            <h4 className="font-semibold text-foreground">What does Karan Raj KR do?</h4>
+                            <p className="mt-2">Karan Raj KR is an AI Engineer and Backend Developer specializing in Python, FastAPI, and Next.js. He builds AI-powered applications and is the co-founder of KĀRYO, a digital studio helping local businesses get online.</p>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-foreground">What is Karan Raj KR's background?</h4>
+                            <p className="mt-2">He is an 18-year-old student pursuing a B.Tech in CSE (AI/ML) at NIAT–S-VYASA University in Bengaluru. He gained most of his experience by shipping real-world projects and competing in national hackathons.</p>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-foreground">What projects has Karan Raj KR built?</h4>
+                            <p className="mt-2">His key projects include FormPilot (an AI Chrome extension that won 1st place at Open Loop 2026), VoiceRx (a RAG-based voice health assistant), and the KĀRYO Lead Intelligence Agent for automating business operations.</p>
+                        </div>
+                    </div>
+                </motion.div>
             </motion.div>
         </section>
     );

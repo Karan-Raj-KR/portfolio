@@ -61,40 +61,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
       <head>
         <meta name="google-site-verification" content="0W3wPYuowx9ekB31u-YSCyuTTf0GQeRXilZ3nagT-BM" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Karan Raj KR",
-              "alternateName": "Karan Raj",
-              "url": "https://karanrajkr.com",
-              "jobTitle": "AI Developer & Founder",
-              "worksFor": {
-                "@type": "Organization",
-                "name": "KĀRYO"
-              },
-              "alumniOf": {
-                "@type": "CollegeOrUniversity",
-                "name": "NIAT–S-VYASA University"
-              },
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Bengaluru",
-                "addressCountry": "IN"
-              },
-              "sameAs": [
-                "https://github.com/Karan-Raj-KR",
-                "https://linkedin.com/in/karanrajkr",
-                "https://twitter.com/karan_raj_kr",
-                "https://instagram.com/karan.rajkr",
-                "https://karanrajkr.hashnode.dev",
-                "https://dev.to/karanrajkr"
-              ]
-            })
-          }}
-        />
       </head>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased text-foreground selection:bg-foreground selection:text-background overflow-x-hidden",
