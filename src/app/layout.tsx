@@ -4,7 +4,7 @@ import { Outfit, Geist } from "next/font/google";
 import { SiteJsonLd } from "@/components/seo/json-ld";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { GoogleAnalytics } from '@next/third-parties/google'
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap" });
