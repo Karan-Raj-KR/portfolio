@@ -41,7 +41,7 @@ export function Hero() {
                     {words.map((word, i) => (
                         <motion.span
                             key={i}
-                            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+                            initial={{ opacity: 1, y: 30, filter: "blur(8px)" }}
                             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                             transition={{
                                 duration: 0.6,
