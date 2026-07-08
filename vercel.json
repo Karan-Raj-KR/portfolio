@@ -5,7 +5,7 @@
       "has": [
         {
           "type": "host",
-          "value": "(?!karanrajkr\\.vercel\\.app).*\\.vercel\\.app"
+          "value": ".*\\.vercel\\.app"
         }
       ],
       "headers": [
