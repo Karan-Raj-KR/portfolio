@@ -13,8 +13,8 @@ export default function ProjectsList() {
     <main className="container mx-auto px-4 py-24 md:px-6">
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://karanrajkr.com/" },
-          { name: "Projects", url: "https://karanrajkr.com/projects" },
+          { name: "Home", url: "https://www.karanrajkr.com/" },
+          { name: "Projects", url: "https://www.karanrajkr.com/projects" },
         ]}
       />
       <h1 className="mb-8 text-4xl font-bold tracking-tight">Projects</h1>

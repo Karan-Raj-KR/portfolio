@@ -34,9 +34,9 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<{ s
         <main className="min-h-screen py-24">
             <BreadcrumbJsonLd
                 items={[
-                    { name: "Home", url: "https://karanrajkr.com/" },
-                    { name: "Projects", url: "https://karanrajkr.com/projects" },
-                    { name: project.title, url: `https://karanrajkr.com/projects/${project.slug}` },
+                    { name: "Home", url: "https://www.karanrajkr.com/" },
+                    { name: "Projects", url: "https://www.karanrajkr.com/projects" },
+                    { name: project.title, url: `https://www.karanrajkr.com/projects/${project.slug}` },
                 ]}
             />
             

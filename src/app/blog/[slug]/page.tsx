@@ -31,9 +31,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://karanrajkr.com/" },
-          { name: "Blog", url: "https://karanrajkr.com/blog" },
-          { name: resolvedParams.slug, url: `https://karanrajkr.com/blog/${resolvedParams.slug}` },
+          { name: "Home", url: "https://www.karanrajkr.com/" },
+          { name: "Blog", url: "https://www.karanrajkr.com/blog" },
+          { name: resolvedParams.slug, url: `https://www.karanrajkr.com/blog/${resolvedParams.slug}` },
         ]}
       />
       

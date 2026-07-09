@@ -15,9 +15,9 @@ export default function OpenLoopHackathonPage() {
             <Header />
             <BreadcrumbJsonLd
                 items={[
-                    { name: "Home", url: "https://karanrajkr.com/" },
-                    { name: "Hackathons", url: "https://karanrajkr.com/hackathons" },
-                    { name: "Open Loop 2026", url: `https://karanrajkr.com/hackathons/open-loop-2026` },
+                    { name: "Home", url: "https://www.karanrajkr.com/" },
+                    { name: "Hackathons", url: "https://www.karanrajkr.com/hackathons" },
+                    { name: "Open Loop 2026", url: `https://www.karanrajkr.com/hackathons/open-loop-2026` },
                 ]}
             />
             

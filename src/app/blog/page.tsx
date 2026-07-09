@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: "Blog | Karan Raj KR",
     description: "Read my latest articles about AI Engineering, Backend Development, and building products.",
-    url: "https://karanrajkr.com/blog",
+    url: "https://www.karanrajkr.com/blog",
     images: [{ url: publications[0]?.coverImage || "/og-image.jpg" }]
   }
 };
@@ -40,7 +40,7 @@ export default function BlogList() {
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": "Blog | Karan Raj KR",
-    "url": "https://karanrajkr.com/blog",
+    "url": "https://www.karanrajkr.com/blog",
     "blogPost": sortedArticles.map((article) => ({
       "@type": "BlogPosting",
       "headline": article.title,
@@ -63,8 +63,8 @@ export default function BlogList() {
       />
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: "https://karanrajkr.com/" },
-          { name: "Blog", url: "https://karanrajkr.com/blog" },
+          { name: "Home", url: "https://www.karanrajkr.com/" },
+          { name: "Blog", url: "https://www.karanrajkr.com/blog" },
         ]}
       />
       
