@@ -3,7 +3,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { publications } from "@/data/publications";
 import { Tilt } from "@/components/ui/tilt";
 import { ShareButtons } from "@/components/blog/share-buttons";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: "Blog | Karan Raj KR",
@@ -114,7 +114,9 @@ export default function BlogList() {
                       <p className="mb-6 text-sm leading-relaxed text-muted-foreground line-clamp-3">
                         {article.excerpt}
                       </p>
-                      
+                    </div>
+
+                    <div className="mt-auto flex flex-col">
                       <div className="mb-4">
                         <span className="text-xs font-medium text-muted-foreground mr-2">Read on:</span>
                         <div className="flex flex-wrap gap-2 mt-2">
@@ -132,10 +134,16 @@ export default function BlogList() {
                           ))}
                         </div>
                       </div>
-                    </div>
 
-                    <div className="mt-auto">
                       <ShareButtons article={article} />
+                      <Link 
+                        href={primaryUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-muted/50 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                      >
+                        Read more <ArrowRight className="h-4 w-4" />
+                      </Link>
                     </div>
                   </div>
                 </Tilt>
