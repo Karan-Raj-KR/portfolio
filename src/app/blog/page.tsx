@@ -3,7 +3,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { publications } from "@/data/publications";
 import { Tilt } from "@/components/ui/tilt";
 import { ShareButtons } from "@/components/blog/share-buttons";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 
 export const metadata = {
   title: "Blog | Karan Raj KR",
