@@ -6,13 +6,13 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#projects", label: "Work" },
+    { href: "/#about", label: "About" },
+    { href: "/#skills", label: "Skills" },
+    { href: "/#projects", label: "Work" },
     { href: "/hackathons", label: "Hackathons" },
     { href: "/blog", label: "Blog" },
-    { href: "#karyo", label: "Karyo" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#karyo", label: "Karyo" },
+    { href: "/#contact", label: "Contact" },
 ];
 
 export function Header() {

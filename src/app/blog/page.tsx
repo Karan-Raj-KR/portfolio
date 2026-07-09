@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Header } from "@/components/layout/header";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { publications } from "@/data/publications";
 import { Tilt } from "@/components/ui/tilt";
@@ -55,6 +56,7 @@ export default function BlogList() {
 
   return (
     <main className="container mx-auto px-4 py-24 md:px-6">
+      <Header />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}

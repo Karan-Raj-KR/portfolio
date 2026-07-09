@@ -2,6 +2,7 @@ import { ExternalLink, Github, ArrowLeft, MapPin, Calendar, Building } from "luc
 import Link from "next/link";
 import Image from "next/image";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { Header } from "@/components/layout/header";
 
 export const metadata = {
     title: "Open Loop Hackathon 2026 — Winner | Karan Raj KR",
@@ -11,6 +12,7 @@ export const metadata = {
 export default function OpenLoopHackathonPage() {
     return (
         <main className="min-h-screen py-24">
+            <Header />
             <BreadcrumbJsonLd
                 items={[
                     { name: "Home", url: "https://karanrajkr.com/" },
