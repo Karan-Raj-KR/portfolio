@@ -3,7 +3,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { publications } from "@/data/publications";
 import { Tilt } from "@/components/ui/tilt";
 import { ShareButtons } from "@/components/blog/share-buttons";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 export const metadata = {
   title: "Blog | Karan Raj KR",
@@ -31,7 +31,7 @@ const platformLabels: Record<string, string> = {
 };
 
 export default function BlogList() {
-  const sortedArticles = [...publications].sort((a, b) =>
+  const sortedArticles = [...publications].sort((a, b) => 
     new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
   );
 
@@ -65,7 +65,7 @@ export default function BlogList() {
           { name: "Blog", url: "https://karanrajkr.com/blog" },
         ]}
       />
-
+      
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Blog</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
@@ -78,7 +78,7 @@ export default function BlogList() {
           No articles yet. Check back soon!
         </div>
       ) : (
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch">
           {sortedArticles.map((article, index) => {
             const primaryUrl = article.canonicalUrl || article.platforms[0]?.url || "#";
             return (
@@ -86,62 +86,56 @@ export default function BlogList() {
                 <Tilt className="flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-muted/10 transition-colors group-hover:bg-muted/20 relative z-0">
                   {article.coverImage && (
                     <Link href={primaryUrl} target="_blank" rel="noopener noreferrer" className="relative h-48 w-full border-b border-border bg-muted/30 block">
-                      <img
-                        src={article.coverImage}
-                        alt={article.title}
+                      <img 
+                        src={article.coverImage} 
+                        alt={article.title} 
                         className="h-full w-full object-cover"
                         loading="lazy"
                         decoding="async"
                       />
                     </Link>
                   )}
-                  <div className="flex flex-col flex-grow p-5 sm:p-6">
-                    <div className="mb-3 flex items-center justify-between">
-                      <time dateTime={article.publishedDate} className="text-xs text-muted-foreground font-medium">
-                        {new Date(article.publishedDate).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric'
-                        })}
-                      </time>
-                    </div>
-                    <Link href={primaryUrl} target="_blank" rel="noopener noreferrer">
-                      <h2 className="mb-3 text-xl font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-3">
-                        {article.title}
-                      </h2>
-                    </Link>
-                    <p className="mb-6 text-sm leading-relaxed text-muted-foreground line-clamp-3 flex-grow">
-                      {article.excerpt}
-                    </p>
-
-                    <div className="mb-4">
-                      <span className="text-xs font-medium text-muted-foreground mr-2">Read on:</span>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {article.platforms.map((platform, idx) => (
-                          <Link
-                            key={idx}
-                            href={platform.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${platformStyles[platform.source] || 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-                          >
-                            {platformLabels[platform.source] || platform.source}
-                            <ExternalLink className="h-3 w-3" />
-                          </Link>
-                        ))}
+                  <div className="flex flex-col flex-grow h-full p-5 sm:p-6">
+                    <div>
+                      <div className="mb-3 flex items-center justify-between">
+                        <time dateTime={article.publishedDate} className="text-xs text-muted-foreground font-medium">
+                          {new Date(article.publishedDate).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                          })}
+                        </time>
+                      </div>
+                      <Link href={primaryUrl} target="_blank" rel="noopener noreferrer">
+                        <h2 className="mb-3 text-xl font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-3">
+                          {article.title}
+                        </h2>
+                      </Link>
+                      <p className="mb-6 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                        {article.excerpt}
+                      </p>
+                      
+                      <div className="mb-4">
+                        <span className="text-xs font-medium text-muted-foreground mr-2">Read on:</span>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {article.platforms.map((platform, idx) => (
+                            <Link 
+                              key={idx} 
+                              href={platform.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${platformStyles[platform.source] || 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
+                            >
+                              {platformLabels[platform.source] || platform.source}
+                              <ExternalLink className="h-3 w-3" />
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
-                    <div className="mt-auto flex flex-col">
+                    <div className="mt-auto">
                       <ShareButtons article={article} />
-                      <Link 
-                        href={primaryUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-muted/50 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-                      >
-                        Read more <ArrowRight className="h-4 w-4" />
-                      </Link>
                     </div>
                   </div>
                 </Tilt>
