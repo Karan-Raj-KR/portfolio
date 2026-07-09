@@ -95,7 +95,7 @@ export default function BlogList() {
                       />
                     </Link>
                   )}
-                  <div className="flex flex-col flex-grow p-5 sm:p-6">
+                  <div className="flex flex-col flex-grow h-full p-5 sm:p-6">
                     <div>
                       <div className="mb-3 flex items-center justify-between">
                         <time dateTime={article.publishedDate} className="text-xs text-muted-foreground font-medium">
