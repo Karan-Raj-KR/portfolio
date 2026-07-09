@@ -96,39 +96,41 @@ export default function BlogList() {
                     </Link>
                   )}
                   <div className="flex flex-col flex-grow p-5 sm:p-6">
-                    <div className="mb-3 flex items-center justify-between">
-                      <time dateTime={article.publishedDate} className="text-xs text-muted-foreground font-medium">
-                        {new Date(article.publishedDate).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric'
-                        })}
-                      </time>
-                    </div>
-                    <Link href={primaryUrl} target="_blank" rel="noopener noreferrer">
-                      <h2 className="mb-3 text-xl font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-3">
-                        {article.title}
-                      </h2>
-                    </Link>
-                    <p className="mb-6 text-sm leading-relaxed text-muted-foreground line-clamp-3 flex-grow">
-                      {article.excerpt}
-                    </p>
-                    
-                    <div className="mb-4">
-                      <span className="text-xs font-medium text-muted-foreground mr-2">Read on:</span>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {article.platforms.map((platform, idx) => (
-                          <Link 
-                            key={idx} 
-                            href={platform.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${platformStyles[platform.source] || 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-                          >
-                            {platformLabels[platform.source] || platform.source}
-                            <ExternalLink className="h-3 w-3" />
-                          </Link>
-                        ))}
+                    <div>
+                      <div className="mb-3 flex items-center justify-between">
+                        <time dateTime={article.publishedDate} className="text-xs text-muted-foreground font-medium">
+                          {new Date(article.publishedDate).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                          })}
+                        </time>
+                      </div>
+                      <Link href={primaryUrl} target="_blank" rel="noopener noreferrer">
+                        <h2 className="mb-3 text-xl font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-3">
+                          {article.title}
+                        </h2>
+                      </Link>
+                      <p className="mb-6 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                        {article.excerpt}
+                      </p>
+                      
+                      <div className="mb-4">
+                        <span className="text-xs font-medium text-muted-foreground mr-2">Read on:</span>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {article.platforms.map((platform, idx) => (
+                            <Link 
+                              key={idx} 
+                              href={platform.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${platformStyles[platform.source] || 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
+                            >
+                              {platformLabels[platform.source] || platform.source}
+                              <ExternalLink className="h-3 w-3" />
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
