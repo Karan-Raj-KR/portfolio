@@ -3,6 +3,9 @@ import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 export const metadata = {
   title: "Writing",
   description: "Essays, thoughts, and research notes on software, AI, and startups.",
+  alternates: {
+    canonical: "/writing",
+  },
 };
 
 export default function WritingList() {

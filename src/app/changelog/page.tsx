@@ -3,6 +3,9 @@ import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 export const metadata = {
   title: "Changelog",
   description: "A timeline of my releases, updates, and major milestones.",
+  alternates: {
+    canonical: "/changelog",
+  },
 };
 
 export default function Changelog() {

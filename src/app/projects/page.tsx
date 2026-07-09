@@ -6,6 +6,9 @@ import { projects } from "@/data/projects";
 export const metadata = {
   title: "Projects",
   description: "Case studies of what I've built — hackathon wins, agents, and tools, each starting with what actually happened.",
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 export default function ProjectsList() {

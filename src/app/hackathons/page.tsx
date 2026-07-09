@@ -8,6 +8,9 @@ import { Contact } from "@/components/sections/contact";
 export const metadata: Metadata = {
   title: "Hackathons | Karan Raj KR",
   description: "A look at the projects and prototypes I've built under intense time constraints.",
+  alternates: {
+    canonical: "/hackathons",
+  },
 };
 
 export default function HackathonsPage() {

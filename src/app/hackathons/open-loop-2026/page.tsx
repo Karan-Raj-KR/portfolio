@@ -7,6 +7,9 @@ import { Header } from "@/components/layout/header";
 export const metadata = {
     title: "Open Loop Hackathon 2026 — Winner | Karan Raj KR",
     description: "1st Place Winner at Open Loop Hackathon 2026. Built FormPilot, an AI-powered Chrome extension.",
+    alternates: {
+        canonical: "/hackathons/open-loop-2026",
+    },
 };
 
 export default function OpenLoopHackathonPage() {

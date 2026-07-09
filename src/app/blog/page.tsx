@@ -9,6 +9,9 @@ import { ExternalLink } from "lucide-react";
 export const metadata = {
   title: "Blog | Karan Raj KR",
   description: "Read my latest articles about AI Engineering, Backend Development, and building products.",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
     title: "Blog | Karan Raj KR",
     description: "Read my latest articles about AI Engineering, Backend Development, and building products.",
