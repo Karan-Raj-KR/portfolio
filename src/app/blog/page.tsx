@@ -78,7 +78,7 @@ export default function BlogList() {
           No articles yet. Check back soon!
         </div>
       ) : (
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch">
           {sortedArticles.map((article, index) => {
             const primaryUrl = article.canonicalUrl || article.platforms[0]?.url || "#";
             return (
