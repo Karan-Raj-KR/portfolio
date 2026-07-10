@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: 'Karan Raj KR is an AI Engineer and Backend Developer building with Python, FastAPI, and Next.js. Founder of KĀRYO. B.Tech CSE (AI/ML) student at NIAT–S-VYASA University, Bengaluru.',
     url: 'https://www.karanrajkr.com',
     siteName: 'Karan Raj KR Portfolio',
-    images: [{ url: 'https://www.karanrajkr.com/karan-raj-kr-ai-engineer.jpeg', width: 1200, height: 630, alt: 'Karan Raj KR - AI Engineer and Backend Developer, Founder of KĀRYO' }],
+    images: [{ url: 'https://www.karanrajkr.com/og-image.png', width: 1200, height: 630, alt: 'Karan Raj KR - AI Engineer and Backend Developer, Founder of KĀRYO' }],
     locale: 'en_IN',
     type: 'website',
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Karan Raj KR | AI Engineer & Backend Developer',
     description: 'Karan Raj KR is an AI Engineer and Backend Developer building with Python, FastAPI, and Next.js. Founder of KĀRYO. B.Tech CSE (AI/ML) student at NIAT–S-VYASA University, Bengaluru.',
-    images: ['https://www.karanrajkr.com/karan-raj-kr-ai-engineer.jpeg'],
+    images: ['https://www.karanrajkr.com/og-image.png'],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
