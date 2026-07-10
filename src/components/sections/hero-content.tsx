@@ -9,6 +9,7 @@ const words = [
 export function HeroContent() {
     return (
         <>
+            <h1 className="sr-only">Karan Raj KR — AI Engineer & Backend Developer</h1>
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter leading-tight sm:leading-tight md:leading-tight break-words max-w-[90vw]">
                 {words.map((word, i) => (
                     <span

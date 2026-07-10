@@ -11,6 +11,7 @@ const hackathons = [
         organization: "Open Loop Hackathon",
         date: "April 2026",
         description: "Built FormPilot, an AI-powered Chrome extension, competing against 120+ teams from 100+ colleges.",
+        summary: "1st Place | FormPilot | React, Chrome APIs, LLMs",
         metric: "Rank 1 / 121 teams · 109 colleges · 14 states",
         link: "/hackathons/open-loop-2026"
     },
@@ -19,6 +20,7 @@ const hackathons = [
         organization: "HackBLR 2026",
         date: "April 2026",
         description: "Selected as a finalist out of 2,500+ participants. Built VoiceRx, a voice-first health AI assistant solo.",
+        summary: "Finalist | VoiceRx | FastAPI, Vapi, Groq, Qdrant",
         metric: "Top 40 / 2500+"
     },
     {
@@ -26,6 +28,7 @@ const hackathons = [
         organization: "Agentathon 2026",
         date: "2026",
         description: "Built a 4-agent CrewAI pipeline that qualifies local business leads and drafts personalized cold outreach.",
+        summary: "Participant | Lead Intelligence Agent | CrewAI, Python, Groq",
         metric: "Multi-Agent"
     },
     {
@@ -33,11 +36,17 @@ const hackathons = [
         organization: "Databricks Hackathon",
         date: "2026",
         description: "Built Court Backlog Predictor ML pipeline using PySpark, MLflow, and Delta Lake.",
+        summary: "Participant | Court Backlog Predictor | PySpark, MLflow, Delta Lake",
         metric: "Solo Build"
     }
 ];
 
-export function Hackathon() {
+interface HackathonProps {
+    titleAs?: "h1" | "h2";
+    title?: string;
+}
+
+export function Hackathon({ titleAs: Title = "h2", title = "Competitive Building" }: HackathonProps = {}) {
     const containerVariants: Variants = {
         hidden: {},
         visible: {
@@ -64,9 +73,9 @@ export function Hackathon() {
                     <Terminal className="h-4 w-4" />
                     Hackathons
                 </div>
-                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Competitive Building</h2>
+                <Title className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">{title}</Title>
                 <p className="max-w-2xl text-lg text-muted-foreground">
-                    A look at the projects and prototypes I've built under intense time constraints.
+                    A look at the projects and prototypes I've built under intense time constraints. Hackathons are my favorite way to experiment with new technologies and rapidly validate ideas. Here you'll find a collection of my competitive builds, ranging from AI voice assistants to data engineering pipelines.
                 </p>
             </motion.div>
 
@@ -83,8 +92,11 @@ export function Hackathon() {
                             <div>
                                 <h3 className="mb-1 text-xl font-semibold text-foreground">{item.title}</h3>
                                 <p className="mb-4 text-sm font-medium text-primary/80">{item.organization}</p>
-                                <p className="mb-6 text-sm leading-relaxed text-muted-foreground break-words">
+                                <p className="mb-4 text-sm leading-relaxed text-muted-foreground break-words">
                                     {item.description}
+                                </p>
+                                <p className="mb-6 text-xs font-medium text-foreground bg-muted/50 p-2 rounded-md">
+                                    {item.summary}
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-border pt-4 gap-2 sm:gap-0">

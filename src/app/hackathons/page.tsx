@@ -6,7 +6,7 @@ import { ClickSparkWrapper } from "@/components/ui/click-spark-wrapper";
 import { Contact } from "@/components/sections/contact";
 
 export const metadata: Metadata = {
-  title: "Hackathons | Karan Raj KR",
+  title: "Hackathons",
   description: "A look at the projects and prototypes I've built under intense time constraints.",
   alternates: {
     canonical: "/hackathons",
@@ -20,7 +20,7 @@ export default function HackathonsPage() {
         <Spotlight />
         <Header />
         
-        <Hackathon />
+        <Hackathon titleAs="h1" title="Hackathons" />
         
         <Contact />
       </main>

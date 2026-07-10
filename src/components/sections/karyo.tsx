@@ -57,7 +57,7 @@ export function Karyo() {
                         transition={{ delay: 0.2 }}
                     >
                         <Link
-                            href="https://linktr.ee/Karyo"
+                            href="https://www.karyo.in"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90"

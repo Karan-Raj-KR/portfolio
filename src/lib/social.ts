@@ -18,7 +18,7 @@ export const socialLinks: SocialLink[] = [
     {
         name: "LinkedIn",
         icon: Linkedin,
-        href: "https://www.linkedin.com/in/karanrajkr/",
+        href: "https://www.linkedin.com/in/karanrajkr",
         info: "linkedin.com/in/karanrajkr",
     },
     {

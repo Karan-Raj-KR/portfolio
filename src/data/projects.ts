@@ -40,7 +40,7 @@ export const projects: Project[] = [
             { label: "Score", value: "80/100" },
             { label: "Users", value: "TBA" }
         ],
-        overview: "FormPilot is a privacy-first, BYOK (Bring Your Own Key) Chrome extension that intelligently autofills complex web forms using LLMs. It was built during the Open Loop 2026 hackathon, where it secured 1st place.",
+        overview: "FormPilot is a BYOK Chrome extension that intelligently autofills complex web forms using LLMs. 1st place winner at the Open Loop 2026 hackathon.",
         problem: "Users waste hours filling out repetitive, complex forms (job applications, grants, registrations). Traditional autofill is dumb—it relies on exact field name matches and fails on long-form text or nuanced dropdowns.",
         solution: "FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM along with the user's selected profile, and maps the AI's structured JSON response back into the form fields.",
         architecture: "Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All data is stored locally using Chrome Storage API.",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
             { label: "Status", value: "Finalist" },
             { label: "Applicants", value: "2,500+" }
         ],
-        overview: "VoiceRx is an AI-powered voice assistant designed to provide accessible preliminary health information to patients who lack immediate access to medical professionals.",
+        overview: "VoiceRx is an AI voice health assistant providing accessible preliminary medical information to patients without immediate access to doctors.",
         problem: "In many regions, wait times for doctors are extensive, and patients lack a reliable way to get immediate, conversational answers about symptoms or medications without resorting to anxiety-inducing web searches.",
         solution: "A voice-first interface powered by Vapi and Groq, utilizing a custom RAG (Retrieval-Augmented Generation) pipeline backed by Qdrant vector database to ensure medical accuracy.",
         architecture: "FastAPI backend handles webhooks and RAG logic. Qdrant stores medical embeddings. Groq provides ultra-fast LLM inference, and Vapi orchestrates the voice synthesis and recognition.",

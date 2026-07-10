@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { publications } from "@/data/publications";
@@ -7,13 +8,13 @@ import { ShareButtons } from "@/components/blog/share-buttons";
 import { ExternalLink } from "lucide-react";
 
 export const metadata = {
-  title: "Blog | Karan Raj KR",
+  title: "Blog",
   description: "Read my latest articles about AI Engineering, Backend Development, and building products.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "Blog | Karan Raj KR",
+    title: "Blog",
     description: "Read my latest articles about AI Engineering, Backend Development, and building products.",
     url: "https://www.karanrajkr.com/blog",
     images: [{ url: publications[0]?.coverImage || "/og-image.jpg" }]
@@ -74,7 +75,7 @@ export default function BlogList() {
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Blog</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          Sharing my thoughts, experiences, and achievements.
+          I write about my journey in AI engineering, backend development, and building products. You'll find technical deep dives, hackathon build logs, and reflections on creating scalable systems. My goal is to share practical insights that can help other developers build better software.
         </p>
       </div>
 
@@ -91,12 +92,12 @@ export default function BlogList() {
                 <Tilt className="flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-muted/10 transition-colors group-hover:bg-muted/20 relative z-0">
                   {article.coverImage && (
                     <Link href={primaryUrl} target="_blank" rel="noopener noreferrer" className="relative h-48 w-full border-b border-border bg-muted/30 block">
-                      <img 
+                      <Image 
                         src={article.coverImage} 
                         alt={article.title} 
-                        className="h-full w-full object-cover"
-                        loading="lazy"
-                        decoding="async"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
                       />
                     </Link>
                   )}
