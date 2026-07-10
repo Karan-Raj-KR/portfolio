@@ -7,12 +7,13 @@ export function SiteJsonLd() {
     "name": "Karan Raj KR",
     "alternateName": "Karan Raj",
     "url": "https://www.karanrajkr.com",
+    "image": "https://www.karanrajkr.com/karan-raj-kr-ai-engineer.jpeg",
     "jobTitle": "AI Engineer & Backend Developer",
     "worksFor": {
       "@type": "Organization",
       "name": "KĀRYO"
     },
-    "alumniOf": {
+    "affiliation": {
       "@type": "CollegeOrUniversity",
       "name": "NIAT–S-VYASA University"
     },
@@ -36,7 +37,8 @@ export function SiteJsonLd() {
       "https://twitter.com/karan_raj_kr",
       "https://instagram.com/karan.rajkr",
       "https://karanrajkr.hashnode.dev",
-      "https://dev.to/karanrajkr"
+      "https://dev.to/karanrajkr",
+      "https://youtube.com/@KaranRajKR"
     ]
   };
 

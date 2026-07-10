@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Karan Raj KR | AI Engineer & Backend Developer',
     short_name: 'Karan Raj KR',
-    description: 'AI Engineer and Backend Developer. Founder of KĀRYO. NIAT Alumni.',
+    description: 'Karan Raj KR is an AI Engineer and Backend Developer building with Python, FastAPI, and Next.js. Founder of KĀRYO. B.Tech CSE (AI/ML) student at NIAT–S-VYASA University, Bengaluru.',
     start_url: '/',
     display: 'standalone',
     background_color: '#000000',
