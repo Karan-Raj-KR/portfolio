@@ -4,7 +4,6 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { ArrowDown } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { Magnetic } from "@/components/ui/magnetic";
 import { socialLinks } from "@/lib/social";
 
 export function HeroAnimations({ children }: { children: React.ReactNode }) {

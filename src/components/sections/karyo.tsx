@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ExternalLink, Globe, Users, Clock, Sparkles, Building2, Cpu } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRef } from "react";
 import { Tilt } from "@/components/ui/tilt";
 
 const capabilities = [
@@ -25,6 +26,16 @@ const capabilities = [
 ];
 
 export function Karyo() {
+    const imageRef = useRef<HTMLDivElement>(null);
+    const shouldReduceMotion = useReducedMotion();
+
+    const { scrollYProgress } = useScroll({
+        target: imageRef,
+        offset: ["start end", "end start"],
+    });
+
+    const imageY = useTransform(scrollYProgress, [0, 1], shouldReduceMotion ? ["0%", "0%"] : ["-8%", "8%"]);
+
     return (
         <section id="karyo" className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <motion.div
@@ -104,17 +115,22 @@ export function Karyo() {
                 
                 {/* Visual Asset */}
                 <motion.div
+                    ref={imageRef}
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     className="relative w-full h-[500px] rounded-xl overflow-hidden border border-border"
                 >
-                    <Image 
-                        src="/images/karyo-image.png" 
-                        alt="KĀRYO Client Dashboard" 
-                        fill
-                        className="object-cover"
-                    />
+                    {/* Oversized wrapper so the ±8% parallax shift never exposes an edge */}
+                    <motion.div style={{ y: imageY }} className="absolute inset-x-0 top-[-10%] bottom-[-10%]">
+                        <Image
+                            src="/images/karyo-image.png"
+                            alt="KĀRYO Client Dashboard"
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 1024px"
+                            className="object-cover"
+                        />
+                    </motion.div>
                 </motion.div>
 
             </motion.div>
