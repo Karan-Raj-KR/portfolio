@@ -1,10 +1,13 @@
 export interface Project {
     slug: string;
     title: string;
-    subtitle: string;
+    /** Honest maturity label. Shipped things and weekend builds are not the same
+     *  claim, and saying so is what makes the shipped ones believable. */
+    context: string;
     description: string;
+    /** One verifiable result. Omit rather than invent one. */
+    outcome?: string;
     tags: string[];
-    metrics: { label: string; value: string }[];
     overview: string;
     problem: string;
     solution: string;
@@ -15,51 +18,45 @@ export interface Project {
     results: string;
     lessons: string;
     timeline: string;
-    assets: {
-        type: "image" | "gif";
-        url: string; // Placeholder string
-        alt: string;
-    }[];
     links: {
         demo: string | null;
         store?: string | null;
         code: string | null;
     };
-    story?: string;
 }
 
 export const projects: Project[] = [
     {
         slug: "formpilot",
         title: "FormPilot",
-        subtitle: "Chrome Extension · April 2026",
-        description: "AI-powered Chrome extension that scans any web form, understands field context with LLMs, and autofills inputs with multi-profile support.",
-        tags: ["Manifest V3", "React", "TypeScript", "TailwindCSS", "Vite", "LLM"],
-        metrics: [
-            { label: "Placement", value: "1st Place" },
-            { label: "Score", value: "80/100" },
-            { label: "Users", value: "TBA" }
-        ],
-        overview: "FormPilot is a BYOK Chrome extension that intelligently autofills complex web forms using LLMs. 1st place winner at the Open Loop 2026 hackathon.",
-        problem: "Users waste hours filling out repetitive, complex forms (job applications, grants, registrations). Traditional autofill is dumb—it relies on exact field name matches and fails on long-form text or nuanced dropdowns.",
-        solution: "FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM along with the user's selected profile, and maps the AI's structured JSON response back into the form fields.",
-        architecture: "Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All data is stored locally using Chrome Storage API.",
-        techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Chrome Extension API (Manifest V3)", "OpenAI/Groq API"],
+        context: "Shipped · Chrome Web Store",
+        description:
+            "A Chrome extension that reads any web form, works out what each field is actually asking for using an LLM, and fills it in from a saved profile — including long-form answers and awkward dropdowns.",
+        outcome: "1st of 121 teams at Open Loop 2026 · scored 80/100, second place scored 60",
+        tags: ["Manifest V3", "React", "TypeScript", "LLM"],
+        overview:
+            "A BYOK Chrome extension that autofills complex web forms using LLMs. Built in 24 hours, won Open Loop 2026, then published to the Chrome Web Store.",
+        problem:
+            "Job applications, grant forms and registrations ask the same twenty questions in twenty different shapes. Native autofill matches on exact field names, so it breaks on anything with a custom label, a long-form textarea, or a dropdown whose options don't match your answer verbatim.",
+        solution:
+            "A content script scrapes the DOM for input fields and their surrounding context, sends that plus the user's selected profile to an LLM, and maps the structured JSON response back onto the form.",
+        architecture:
+            "Vite + React popup UI. A background service worker handles API calls. Content scripts manipulate the active page. All personal data stays in Chrome Storage on-device — the extension never sees a server we control.",
+        techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Manifest V3", "OpenAI / Groq API"],
         features: [
-            "Multi-profile support (e.g., Job Seeker, Investor)",
-            "Intelligent dropdown matching",
-            "Long-form text generation (cover letters, summaries)",
-            "100% local storage of personal data",
-            "Bring Your Own Key (BYOK) architecture"
+            "Multiple profiles (e.g. job seeker vs. investor) with different tones",
+            "Dropdown matching that picks the closest valid option rather than failing",
+            "Long-form generation for cover letters and summaries",
+            "Personal data stored locally, never transmitted to our infrastructure",
+            "Bring Your Own Key — the user supplies their own API key",
         ],
-        challenges: "Handling dynamic form fields rendered by frameworks like React or Vue, which often swallow native DOM events. We had to simulate authentic user input events (input, change, blur) to trigger framework state updates.",
-        results: "Won 1st Place at Open Loop 2026 against 120+ teams, scoring 80/100 (2nd place scored 60/100). Successfully published to the Chrome Web Store.",
-        lessons: "Learned the intricacies of Manifest V3, service worker lifecycles, and the importance of simulating trusted events in modern web apps.",
-        timeline: "Built in 24 hours (April 2026)",
-        assets: [
-            { type: "image", url: "placeholder", alt: "FormPilot Popup UI" },
-            { type: "gif", url: "placeholder", alt: "FormPilot autofilling a complex job application" }
-        ],
+        challenges:
+            "React and Vue swallow programmatic DOM writes: setting `input.value` directly updates the DOM but never the framework's state, so the form submits empty. Fixed by dispatching the native input/change/blur sequence the frameworks actually listen for, which meant reading how React's synthetic event system attaches listeners.",
+        results:
+            "1st place at Open Loop 2026 — 121 teams, 109 colleges, 309 participants, 14 states. Scored 80/100 against a second-place score of 60. Published to the Chrome Web Store.",
+        lessons:
+            "Manifest V3 service workers are killed aggressively, so any state you keep in module scope disappears mid-session. Everything that matters has to round-trip through storage.",
+        timeline: "Built in 24 hours · April 2026",
         links: {
             demo: "https://form-pilot.netlify.app/",
             store: "https://chromewebstore.google.com/detail/formpilot/ffkpekcnpbafklidejfbhinahahaabfi",
@@ -67,94 +64,127 @@ export const projects: Project[] = [
         },
     },
     {
+        slug: "karyo",
+        title: "KĀRYO",
+        context: "Running · paying clients",
+        description:
+            "A digital agency I co-founded with Havinash, getting local Bangalore businesses online — websites, Google Business profiles, social presence. Clients are acquired door-to-door and delivery is end-to-end.",
+        outcome: "Paying clients, production work shipped",
+        tags: ["Next.js", "SEO", "Client work"],
+        overview:
+            "A digital agency for local businesses in Bangalore. I lead technical architecture and delivery; Havinash and I both sell.",
+        problem:
+            "Local businesses in Bangalore have demand but no digital surface — no site, no Google Business listing, nothing to find. Traditional agencies price them out and take months.",
+        solution:
+            "Cut the agency overhead: direct door-to-door acquisition instead of paid ads, and an AI-assisted build pipeline that gets a small business live in days rather than months.",
+        architecture:
+            "Next.js sites deployed on Vercel, Google Business profile setup, and internal automation (see the Lead Intelligence Agent) to keep prospecting from eating the whole week.",
+        techStack: ["Next.js", "Vercel", "Google Business Profile", "n8n"],
+        features: [
+            "Websites built and deployed end-to-end",
+            "Google Business profile setup and optimisation",
+            "Social presence setup",
+            "Door-to-door B2B acquisition across local markets",
+        ],
+        challenges:
+            "Selling to owners who have been burned by an agency before, or who don't believe a website will change anything. The pitch had to become a demonstration rather than a deck.",
+        results:
+            "Paying clients and shipped production work while studying full time.",
+        lessons:
+            "Doing sales yourself changes what you build. Most of what we thought clients wanted was not what they paid for.",
+        timeline: "2025 – present",
+        links: { demo: "https://www.karyo.in", code: null },
+    },
+    {
         slug: "voicerx",
         title: "VoiceRx",
-        subtitle: "HackBLR 2026",
-        description: "AI voice health assistant for patients without doctor access — built at HackBLR 2026",
+        context: "Hackathon build · solo",
+        description:
+            "A voice-first health assistant for people who can't get a doctor on the phone. Ask it about a symptom or a medication and it answers conversationally, grounded in a real medical corpus rather than whatever the model remembers.",
+        outcome: "Top 40 of 2,500+ participants at HackBLR 2026",
         tags: ["FastAPI", "Vapi", "Qdrant", "Groq", "RAG"],
-        metrics: [
-            { label: "Status", value: "Finalist" },
-            { label: "Applicants", value: "2,500+" }
-        ],
-        overview: "VoiceRx is an AI voice health assistant providing accessible preliminary medical information to patients without immediate access to doctors.",
-        problem: "In many regions, wait times for doctors are extensive, and patients lack a reliable way to get immediate, conversational answers about symptoms or medications without resorting to anxiety-inducing web searches.",
-        solution: "A voice-first interface powered by Vapi and Groq, utilizing a custom RAG (Retrieval-Augmented Generation) pipeline backed by Qdrant vector database to ensure medical accuracy.",
-        architecture: "FastAPI backend handles webhooks and RAG logic. Qdrant stores medical embeddings. Groq provides ultra-fast LLM inference, and Vapi orchestrates the voice synthesis and recognition.",
+        overview:
+            "A RAG-backed voice health assistant giving preliminary medical information to people without immediate access to a doctor. Built solo.",
+        problem:
+            "Waiting rooms are long and web search is worse — you type in a symptom and get cancer. People want a conversation, and they want it grounded in something.",
+        solution:
+            "A voice interface over a retrieval pipeline: Vapi handles speech, Qdrant holds medical embeddings, Groq runs inference fast enough that the conversation doesn't feel like a form submission.",
+        architecture:
+            "FastAPI handles webhooks and retrieval. Qdrant stores medical embeddings. Groq serves the LLM. Vapi orchestrates speech-to-text and text-to-speech.",
         techStack: ["Python", "FastAPI", "Vapi", "Qdrant", "Groq", "LangChain"],
         features: [
             "Real-time voice conversation",
-            "RAG-backed medical knowledge base",
-            "Low-latency responses (<500ms)",
-            "Symptom triage logic"
+            "Answers grounded in a retrieved medical corpus, not model memory",
+            "Symptom triage that escalates rather than diagnosing",
         ],
-        challenges: "Reducing latency in the voice pipeline. The combination of STT (Speech-to-Text), RAG retrieval, LLM generation, and TTS (Text-to-Speech) initially took over 2 seconds. Optimized by streaming chunks and using Groq.",
-        results: "Selected as a Finalist at HackBLR 2026 out of 2,500+ participants across India.",
-        lessons: "Deep dive into real-time voice architectures and latency optimization for LLMs.",
+        challenges:
+            "The full loop — speech-to-text, retrieval, generation, text-to-speech — started at over two seconds, which is long enough that people talk over it. Streaming the response in chunks and moving inference to Groq brought it under 500ms to first audio.",
+        results:
+            "Top 40 of 2,500+ participants at HackBLR 2026, competing solo against teams.",
+        lessons:
+            "In voice, latency is the product. A correct answer that arrives late reads as broken.",
         timeline: "April 2026",
-        assets: [
-            { type: "image", url: "placeholder", alt: "VoiceRx Architecture Diagram" }
-        ],
         links: { demo: null, code: "https://github.com/Karan-Raj-KR/VoiceRx" },
     },
     {
         slug: "karyo-agent",
         title: "KĀRYO Lead Intelligence Agent",
-        subtitle: "Agentathon 2026",
-        description: "4-agent CrewAI pipeline that qualifies local business leads and drafts personalized cold outreach — built for KĀRYO's real sales workflow.",
+        context: "Internal tool · in use",
+        description:
+            "A four-agent CrewAI pipeline that finds local businesses, works out which ones actually need a website, and drafts the outreach. Built because prospecting by hand was eating the week.",
+        outcome: "Runs KĀRYO's prospecting; dozens of qualified leads per run",
         tags: ["CrewAI", "Groq", "Pydantic", "Python"],
-        metrics: [
-            { label: "Agents", value: "4" },
-            { label: "Workflow", value: "Automated" }
-        ],
-        overview: "An automated lead generation and qualification pipeline built to support KĀRYO's door-to-door sales efforts in Bangalore.",
-        problem: "Manually researching local businesses, checking if they have a website, and drafting personalized outreach is incredibly time-consuming and scales poorly.",
-        solution: "A multi-agent system using CrewAI. Agent 1 scrapes local directories. Agent 2 qualifies leads based on digital footprint. Agent 3 drafts personalized outreach. Agent 4 reviews and formats the output.",
-        architecture: "Python scripts orchestrating CrewAI with Groq as the LLM engine for cost-effective, rapid reasoning. Outputs are structured using Pydantic and exported to .docx.",
+        overview:
+            "A multi-agent lead qualification pipeline supporting KĀRYO's real sales workflow — not a demo.",
+        problem:
+            "Researching local businesses one at a time, checking whether they already have a site, and writing a personal message to each is a full day's work for maybe fifteen leads.",
+        solution:
+            "Four agents in sequence: scrape local directories, qualify on digital footprint, draft personalised outreach, then review and format. Each hands structured data to the next.",
+        architecture:
+            "CrewAI orchestration with Groq for cheap fast reasoning. Pydantic schemas enforce the contract between agents so a malformed step fails loudly instead of poisoning the next one.",
         techStack: ["Python", "CrewAI", "Groq", "Pydantic", "BeautifulSoup"],
         features: [
-            "Automated lead scraping",
-            "Digital footprint analysis (Website/GMB presence)",
-            "Personalized pitch generation",
-            "Self-correction loop for quality assurance",
-            "Structured .docx output"
+            "Automated lead scraping from local directories",
+            "Qualification on digital footprint (existing site, Google Business presence)",
+            "Personalised outreach drafting",
+            "A review pass that rejects its own bad output",
         ],
-        challenges: "Preventing hallucinations in the qualification agent. Enforced strict JSON schema outputs using Pydantic to ensure reliable data passing between agents.",
-        results: "Significantly accelerated KĀRYO's prospecting phase, generating dozens of highly qualified leads per run.",
-        lessons: "Learned the complexities of multi-agent orchestration and the importance of structured outputs in LLM chains.",
+        challenges:
+            "The qualification agent confidently invented businesses that didn't exist. Enforcing strict Pydantic schemas on every inter-agent handoff turned silent hallucinations into loud validation errors.",
+        results:
+            "Now the front of KĀRYO's prospecting process, producing dozens of qualified leads per run.",
+        lessons:
+            "In a multi-agent chain, an unvalidated handoff means the second agent's error is invisible until the fourth. Schemas at every boundary, not just the output.",
         timeline: "2026",
-        assets: [
-            { type: "image", url: "placeholder", alt: "CrewAI Agent Graph" }
-        ],
         links: { demo: null, code: "https://github.com/Karan-Raj-KR/karyo-agent" },
     },
     {
         slug: "court-backlog-predictor",
         title: "Court Backlog Predictor",
-        subtitle: "Databricks Hackathon",
-        description: "ML model predicting court case backlog trends — built solo at Databricks Hackathon",
-        tags: ["PySpark", "MLflow", "Delta Lake", "Unity Catalog", "Jupyter"],
-        metrics: [
-            { label: "Build", value: "Solo" },
-            { label: "Tech", value: "Databricks" }
-        ],
-        overview: "A machine learning pipeline built on Databricks to analyze and predict judicial backlog trends across various courts.",
-        problem: "Court systems are overwhelmed, and administrative bodies lack predictive insights to allocate resources or judges efficiently.",
-        solution: "Leveraged PySpark to process historical case data and train regression models to forecast future backlog severity by case type and jurisdiction.",
-        architecture: "Data ingested into Delta Lake, managed via Unity Catalog. PySpark handles distributed data processing and model training, with MLflow tracking experiments.",
-        techStack: ["PySpark", "MLflow", "Delta Lake", "Databricks Unity Catalog", "Python"],
+        context: "Hackathon build · solo",
+        description:
+            "A PySpark pipeline on Databricks that forecasts judicial case backlog by court and case type, so administrators can see where the pile-up is coming before it arrives.",
+        tags: ["PySpark", "MLflow", "Delta Lake", "Databricks"],
+        overview:
+            "An ML pipeline on the Databricks lakehouse predicting judicial backlog trends across courts.",
+        problem:
+            "Court systems are overwhelmed and allocate judges reactively, because nobody can see which jurisdictions are about to get worse.",
+        solution:
+            "Process historical case records with PySpark and train regression models to forecast backlog severity by case type and jurisdiction.",
+        architecture:
+            "Data lands in Delta Lake under Unity Catalog governance. PySpark handles distributed processing and training; MLflow tracks experiments.",
+        techStack: ["PySpark", "MLflow", "Delta Lake", "Unity Catalog", "Python"],
         features: [
-            "Distributed data processing",
-            "Predictive modeling for case duration",
-            "Automated experiment tracking",
-            "Data governance via Unity Catalog"
+            "Distributed processing of historical case data",
+            "Backlog severity forecasting by jurisdiction and case type",
+            "Experiment tracking through MLflow",
         ],
-        challenges: "Handling messy, unstructured historical legal data required extensive cleaning and normalization before feature engineering could begin.",
-        results: "Successfully built and deployed a predictive pipeline during the Databricks Hackathon.",
-        lessons: "Gained hands-on experience with the modern data lakehouse architecture and distributed ML workflows.",
+        challenges:
+            "Historical legal records are inconsistent in almost every field that matters — dates, case types, court identifiers. Most of the work was normalisation before any modelling could start.",
+        results: "Built and deployed end-to-end during the hackathon, solo.",
+        lessons:
+            "On real administrative data, feature engineering is downstream of a week of cleaning you didn't budget for.",
         timeline: "2026",
-        assets: [
-            { type: "image", url: "placeholder", alt: "Databricks MLflow Dashboard" }
-        ],
         links: { demo: null, code: "https://github.com/Karan-Raj-KR/court-backlog-predictor" },
-    }
+    },
 ];

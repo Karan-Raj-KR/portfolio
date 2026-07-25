@@ -35,3 +35,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build cache / OS cruft
+tsconfig.tsbuildinfo
+.DS_Store

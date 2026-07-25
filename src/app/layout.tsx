@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Outfit, Geist } from "next/font/google";
 import { SiteJsonLd } from "@/components/seo/json-ld";
-import { MotionProvider } from "@/components/providers/motion-provider";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -38,17 +37,19 @@ export const metadata: Metadata = {
     images: ['https://www.karanrajkr.com/og-image.png'],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    // Was also hardcoded as a second <meta> in <head>, which emitted two
+    // conflicting tags whenever the env var was set.
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ?? '0W3wPYuowx9ekB31u-YSCyuTTf0GQeRXilZ3nagT-BM',
   },
+  // icon.png and apple-icon.png in src/app are picked up automatically.
   manifest: "/manifest.json",
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
-  }
 };
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { BottomNav } from "@/components/layout/bottom-nav";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans', display: 'swap'});
@@ -60,9 +61,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
-      <head>
-        <meta name="google-site-verification" content="0W3wPYuowx9ekB31u-YSCyuTTf0GQeRXilZ3nagT-BM" />
-      </head>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased text-foreground selection:bg-foreground selection:text-background overflow-x-hidden",
         outfit.variable
@@ -71,20 +69,26 @@ export default function RootLayout({
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
         )}
         <SiteJsonLd />
-        <MotionProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem={false}
-            disableTransitionOnChange
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <ScrollProgress />
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-foreground focus:px-4 focus:py-2 focus:text-background"
           >
-            <ScrollProgress />
-            <div className="pb-[64px] lg:pb-0">
-              {children}
-            </div>
-            <BottomNav />
-          </ThemeProvider>
-        </MotionProvider>
+            Skip to main content
+          </a>
+          <Header />
+          <div className="pb-[calc(80px+env(safe-area-inset-bottom))] lg:pb-0">
+            {children}
+          </div>
+          <Footer />
+          <BottomNav />
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

@@ -1,13 +1,10 @@
 import { Metadata } from "next";
-import { Header } from "@/components/layout/header";
 import { Hackathon } from "@/components/sections/hackathon";
-import { Spotlight } from "@/components/ui/spotlight";
-import { ClickSparkWrapper } from "@/components/ui/click-spark-wrapper";
-import { Contact } from "@/components/sections/contact";
 
 export const metadata: Metadata = {
   title: "Hackathons",
-  description: "A look at the projects and prototypes I've built under intense time constraints.",
+  description:
+    "Hackathon results and what I built at each — 1st of 121 teams at Open Loop 2026, top 40 of 2,500+ at HackBLR 2026.",
   alternates: {
     canonical: "/hackathons",
   },
@@ -15,15 +12,8 @@ export const metadata: Metadata = {
 
 export default function HackathonsPage() {
   return (
-    <ClickSparkWrapper>
-      <main className="relative flex min-h-screen flex-col overflow-hidden selection:bg-primary/20">
-        <Spotlight />
-        <Header />
-        
-        <Hackathon titleAs="h1" title="Hackathons" />
-        
-        <Contact />
-      </main>
-    </ClickSparkWrapper>
+    <main id="main" className="flex min-h-screen flex-col">
+      <Hackathon />
+    </main>
   );
 }

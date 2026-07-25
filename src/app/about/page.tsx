@@ -1,12 +1,10 @@
-import { Header } from "@/components/layout/header";
 import Image from "next/image";
 import { Github, Linkedin, Twitter, Instagram, Youtube, ExternalLink } from "lucide-react";
 import { About as AboutSection } from "@/components/sections/about";
 
 export default function AboutPage() {
   return (
-    <main className="relative flex min-h-screen flex-col overflow-hidden selection:bg-primary/20">
-      <Header />
+    <main id="main" className="relative flex min-h-screen flex-col">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row gap-8 items-center mb-16">
@@ -16,6 +14,7 @@ export default function AboutPage() {
                 alt="Karan Raj KR - AI Engineer and Backend Developer, Founder of KĀRYO"
                 fill
                 priority
+                sizes="(max-width: 768px) 192px, 256px"
                 className="object-cover"
               />
             </div>

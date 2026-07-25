@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Header } from "@/components/layout/header";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { publications } from "@/data/publications";
-import { Tilt } from "@/components/ui/tilt";
 import { ShareButtons } from "@/components/blog/share-buttons";
 import { ExternalLink } from "lucide-react";
 
@@ -75,7 +74,7 @@ export default function BlogList() {
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Blog</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          I write about my journey in AI engineering, backend development, and building products. You'll find technical deep dives, hackathon build logs, and reflections on creating scalable systems. My goal is to share practical insights that can help other developers build better software.
+          I write about my journey in AI engineering, backend development, and building products. You&apos;ll find technical deep dives, hackathon build logs, and reflections on creating scalable systems. My goal is to share practical insights that can help other developers build better software.
         </p>
       </div>
 
@@ -89,7 +88,7 @@ export default function BlogList() {
             const primaryUrl = article.canonicalUrl || article.platforms[0]?.url || "#";
             return (
               <div key={index} className="group relative block h-full">
-                <Tilt className="flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-muted/10 transition-colors group-hover:bg-muted/20 relative z-0">
+                <div className="flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-muted/10 transition-colors group-hover:bg-muted/20 relative z-0">
                   {article.coverImage && (
                     <Link href={primaryUrl} target="_blank" rel="noopener noreferrer" className="relative h-48 w-full border-b border-border bg-muted/30 block">
                       <Image 
@@ -144,7 +143,7 @@ export default function BlogList() {
                       <ShareButtons article={article} />
                     </div>
                   </div>
-                </Tilt>
+                </div>
               </div>
             );
           })}

@@ -3,19 +3,15 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useActiveSection } from "@/hooks/use-active-section";
 
 const navLinks = [
+    { href: "/#work", label: "Work", section: "work" },
     { href: "/#about", label: "About", section: "about" },
-    { href: "/#skills", label: "Skills", section: "skills" },
-    { href: "/#projects", label: "Work", section: "projects" },
     { href: "/hackathons", label: "Hackathons" },
-    { href: "/blog", label: "Blog" },
-    { href: "/#karyo", label: "Karyo", section: "karyo" },
-    { href: "/#contact", label: "Contact", section: "contact" },
+    { href: "/blog", label: "Writing" },
 ];
 
 const trackedSections = navLinks.flatMap((link) => (link.section ? [link.section] : []));
@@ -29,7 +25,7 @@ export function Header() {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -48,27 +44,27 @@ export function Header() {
                     Karan Raj KR
                 </Link>
 
-                <nav className="hidden lg:flex items-center gap-8">
+                <nav aria-label="Main" className="hidden lg:flex items-center gap-8">
                     {navLinks.map((link) => {
                         const active = isActive(link);
                         return (
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                aria-current={active ? "true" : undefined}
+                                aria-current={active ? (link.section ? "true" : "page") : undefined}
                                 className={cn(
                                     "relative text-sm font-medium transition-colors hover:text-foreground",
                                     active ? "text-foreground" : "text-foreground/60"
                                 )}
                             >
                                 {link.label}
-                                {active && (
-                                    <motion.span
-                                        layoutId="nav-indicator"
-                                        className="absolute -bottom-1.5 left-0 right-0 h-px bg-foreground"
-                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                    />
-                                )}
+                                <span
+                                    aria-hidden="true"
+                                    className={cn(
+                                        "absolute -bottom-1.5 left-0 right-0 h-px origin-left bg-accent-signal transition-transform duration-200",
+                                        active ? "scale-x-100" : "scale-x-0"
+                                    )}
+                                />
                             </Link>
                         );
                     })}

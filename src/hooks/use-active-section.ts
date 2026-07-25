@@ -20,7 +20,14 @@ export function useActiveSection(sectionIds: string[]) {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) setActive(entry.target.id);
+                    // Clearing on exit matters as much as setting on entry: without
+                    // it the last section stays lit forever, including at the top
+                    // of the page where nothing is active.
+                    if (entry.isIntersecting) {
+                        setActive(entry.target.id);
+                    } else {
+                        setActive((current) => (current === entry.target.id ? "" : current));
+                    }
                 });
             },
             // Triggers once a section reaches the middle band of the viewport.

@@ -71,7 +71,7 @@ export default function OpenLoopHackathonPage() {
                         <section>
                             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">The Solution (FormPilot)</h2>
                             <p className="text-muted-foreground leading-relaxed mb-6">
-                                FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM with the user's selected profile, and maps the AI's structured JSON response back into form fields.
+                                FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM with the user&apos;s selected profile, and maps the AI&apos;s structured JSON response back into form fields.
                             </p>
                             
                             <Image
@@ -86,7 +86,7 @@ export default function OpenLoopHackathonPage() {
                         <section>
                             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4">Architecture</h2>
                             <p className="text-muted-foreground leading-relaxed mb-6">
-                                Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All personal data is stored locally via Chrome Storage API, never sent to any server.
+                                Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page&apos;s DOM. All personal data is stored locally via Chrome Storage API, never sent to any server.
                             </p>
                             
                             <Image
@@ -182,7 +182,7 @@ export default function OpenLoopHackathonPage() {
                         <div>
                             <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-3">Podium</h3>
                             <ul className="list-disc pl-4 space-y-2 text-sm text-muted-foreground">
-                                <li>🥇 1st: Karan's Team (OL02) — S-VYASA University, Bengaluru</li>
+                                <li>🥇 1st: Karan&apos;s Team (OL02) — S-VYASA University, Bengaluru</li>
                                 <li>🥈 2nd: Prateek D Shriyan + team — PACE, Mangaluru</li>
                                 <li>🥉 3rd: Harshith + team — SDMIT, Ujire</li>
                             </ul>

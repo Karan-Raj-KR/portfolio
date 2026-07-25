@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -13,92 +11,115 @@
   }
   body {
     @apply bg-background text-foreground;
-    transition: background-color 0.3s ease, color 0.3s ease;
   }
-  h1, h2, h3 {
+  h1, h2, h3, h4 {
     font-family: var(--font-outfit), var(--font-sans);
   }
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-ring;
   }
+  /* Fragment links must clear the fixed header. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
 }
 
-/* Marquee animation */
-@keyframes marquee {
-    from { transform: translateX(0) translateZ(0); }
-    to   { transform: translateX(-50%) translateZ(0); }
+/* Scroll-driven reveal. Replaces framer-motion whileInView on static sections:
+   no JS, no client boundary, and content stays visible if unsupported. */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
 }
-.marquee-track {
-    will-change: transform;
-    animation-name: marquee;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+.reveal {
+  animation: reveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 25%;
 }
-.marquee-row:hover .marquee-track {
-    animation-play-state: paused;
-}
-
-/* Custom Scrollbar for Webkit */
-::-webkit-scrollbar {
-  width: 8px;
+@supports not (animation-timeline: view()) {
+  .reveal { animation: none; }
 }
 
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+/* Scroll progress bar, also scroll-driven rather than spring-animated. */
+@keyframes progress {
+  to { transform: scaleX(1); }
+}
+.scroll-progress {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  z-index: 60;
+  transform-origin: left;
+  transform: scaleX(0);
+  background: var(--accent-signal);
+  animation: progress linear;
+  animation-timeline: scroll(root block);
 }
 
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  color-scheme: light;
+  scrollbar-color: var(--muted-foreground) var(--background);
+
+  /* Warm neutrals — pure grey reads as an untouched Tailwind install. */
+  --background: oklch(0.993 0.002 90);
+  --foreground: oklch(0.19 0.004 60);
+  --card: oklch(0.993 0.002 90);
+  --card-foreground: oklch(0.19 0.004 60);
+  --popover: oklch(0.993 0.002 90);
+  --popover-foreground: oklch(0.19 0.004 60);
+  --primary: oklch(0.19 0.004 60);
+  --primary-foreground: oklch(0.993 0.002 90);
+  --secondary: oklch(0.96 0.004 85);
+  --secondary-foreground: oklch(0.19 0.004 60);
+  --muted: oklch(0.96 0.004 85);
+  --muted-foreground: oklch(0.50 0.006 70);
+  --accent: oklch(0.96 0.004 85);
+  --accent-foreground: oklch(0.19 0.004 60);
   --destructive: oklch(0.58 0.22 27);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.90 0.004 85);
+  --input: oklch(0.90 0.004 85);
+  /* Focus rings should be maximally visible. The old value was 2.59:1. */
+  --ring: oklch(0.19 0.004 60);
   --radius: 0.625rem;
-  --spotlight-color: rgba(0, 0, 0, 0.08);
+
+  /* The single signal colour. Allowed on: rank metrics, link underlines,
+     the scroll progress bar. Not on body copy, borders, or backgrounds. */
+  --accent-signal: oklch(0.52 0.18 47);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.87 0.00 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  color-scheme: dark;
+
+  --background: oklch(0.155 0.004 75);
+  --foreground: oklch(0.96 0.003 85);
+  --card: oklch(0.20 0.004 75);
+  --card-foreground: oklch(0.96 0.003 85);
+  --popover: oklch(0.20 0.004 75);
+  --popover-foreground: oklch(0.96 0.003 85);
+  --primary: oklch(0.96 0.003 85);
+  --primary-foreground: oklch(0.155 0.004 75);
+  --secondary: oklch(0.25 0.005 75);
+  --secondary-foreground: oklch(0.96 0.003 85);
+  --muted: oklch(0.25 0.005 75);
+  --muted-foreground: oklch(0.71 0.005 80);
+  --accent: oklch(0.32 0.005 75);
+  --accent-foreground: oklch(0.96 0.003 85);
+  --destructive: oklch(0.70 0.19 22);
+  --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --spotlight-color: rgba(255, 255, 255, 0.07);
+  --ring: oklch(0.96 0.003 85);
+
+  --accent-signal: oklch(0.74 0.16 47);
 }
 
 @theme inline {
@@ -109,6 +130,7 @@
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+  --color-accent-signal: var(--accent-signal);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -124,8 +146,4 @@
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 }

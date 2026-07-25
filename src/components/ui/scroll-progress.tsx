@@ -1,16 +1,5 @@
-"use client";
-
-import { motion, useScroll, useSpring } from "framer-motion";
-
+// Scroll-driven CSS animation (see .scroll-progress in globals.css) — no JS,
+// no client boundary, and framer-motion stays off the root layout.
 export function ScrollProgress() {
-    const { scrollYProgress } = useScroll();
-    const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
-
-    return (
-        <motion.div
-            style={{ scaleX }}
-            className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-foreground/70"
-            aria-hidden="true"
-        />
-    );
+    return <div className="scroll-progress" aria-hidden="true" />;
 }

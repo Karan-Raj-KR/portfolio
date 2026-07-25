@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function ProjectsList() {
   return (
-    <main className="container mx-auto px-4 py-24 md:px-6">
+    <main id="main" className="container mx-auto max-w-5xl px-6 py-24 lg:px-8">
       <BreadcrumbJsonLd
         items={[
           { name: "Home", url: "https://www.karanrajkr.com/" },
@@ -28,14 +28,17 @@ export default function ProjectsList() {
       <div className="border-t border-border">
         {projects.map((project) => (
           <article key={project.slug} className="grid gap-3 border-b border-border py-8 md:grid-cols-[10rem_1fr] md:gap-10">
-            <p className="font-mono text-xs leading-6 text-muted-foreground">{project.subtitle}</p>
+            <p className="font-mono text-xs leading-6 text-muted-foreground">{project.context}</p>
             <div className="max-w-2xl">
               <h2 className="mb-2 text-2xl font-semibold tracking-tight">
-                <Link href={`/projects/${project.slug}`} className="transition-colors hover:text-muted-foreground">
+                <Link href={`/projects/${project.slug}`} className="underline-offset-4 hover:underline hover:decoration-accent-signal">
                   {project.title}
                 </Link>
               </h2>
-              <p className="mb-4 leading-relaxed text-muted-foreground">{project.story}</p>
+              <p className="mb-4 leading-relaxed text-muted-foreground">{project.description}</p>
+              {project.outcome && (
+                <p className="mb-4 text-sm font-semibold text-accent-signal">{project.outcome}</p>
+              )}
               <Link
                 href={`/projects/${project.slug}`}
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"

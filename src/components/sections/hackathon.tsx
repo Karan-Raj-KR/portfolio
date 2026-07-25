@@ -1,122 +1,88 @@
-"use client";
-
-import { motion, Variants } from "framer-motion";
-import { Tilt } from "@/components/ui/tilt";
-import { Terminal, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+// Canonical numbers. Open Loop: 309 participants, 121 teams, 109 colleges,
+// 14 states. HackBLR: 2,500+ *participants* (not teams), 40 teams advanced.
 const hackathons = [
     {
-        title: "1st Place Winner",
-        organization: "Open Loop Hackathon",
+        result: "1st place",
+        event: "Open Loop 2026",
         date: "April 2026",
-        description: "Built FormPilot, an AI-powered Chrome extension, competing against 120+ teams from 100+ colleges.",
-        summary: "1st Place | FormPilot | React, Chrome APIs, LLMs",
-        metric: "Rank 1 / 121 teams · 109 colleges · 14 states",
-        link: "/hackathons/open-loop-2026"
+        scale: "121 teams · 109 colleges · 309 participants · 14 states",
+        description:
+            "Built FormPilot, a Chrome extension that autofills complex web forms with an LLM. Scored 80/100; second place scored 60. Team of three.",
+        href: "/hackathons/open-loop-2026",
+        external: false,
     },
     {
-        title: "Finalist",
-        organization: "HackBLR 2026",
+        result: "Top 40",
+        event: "HackBLR 2026",
         date: "April 2026",
-        description: "Selected as a finalist out of 2,500+ participants. Built VoiceRx, a voice-first health AI assistant solo.",
-        summary: "Finalist | VoiceRx | FastAPI, Vapi, Groq, Qdrant",
-        metric: "Top 40 / 2500+"
+        scale: "2,500+ participants · 40 teams advanced",
+        description:
+            "Built VoiceRx, a RAG-backed voice health assistant, competing solo against teams from IITs, NITs and IISc.",
+        href: "https://github.com/Karan-Raj-KR/VoiceRx",
+        external: true,
     },
     {
-        title: "Participant",
-        organization: "Agentathon 2026",
+        result: "Participant",
+        event: "Agentathon 2026",
         date: "2026",
-        description: "Built a 4-agent CrewAI pipeline that qualifies local business leads and drafts personalized cold outreach.",
-        summary: "Participant | Lead Intelligence Agent | CrewAI, Python, Groq",
-        metric: "Multi-Agent"
+        scale: null,
+        description:
+            "A four-agent CrewAI pipeline that qualifies local business leads and drafts outreach. It still runs KĀRYO's prospecting.",
+        href: "https://github.com/Karan-Raj-KR/karyo-agent",
+        external: true,
     },
     {
-        title: "Participant",
-        organization: "Databricks Hackathon",
+        result: "Participant",
+        event: "Databricks Hackathon",
         date: "2026",
-        description: "Built Court Backlog Predictor ML pipeline using PySpark, MLflow, and Delta Lake.",
-        summary: "Participant | Court Backlog Predictor | PySpark, MLflow, Delta Lake",
-        metric: "Solo Build"
-    }
+        scale: null,
+        description:
+            "Court Backlog Predictor — a PySpark and MLflow pipeline forecasting judicial case backlog. Built solo.",
+        href: "https://github.com/Karan-Raj-KR/court-backlog-predictor",
+        external: true,
+    },
 ];
 
-interface HackathonProps {
-    titleAs?: "h1" | "h2";
-    title?: string;
-}
-
-export function Hackathon({ titleAs: Title = "h2", title = "Competitive Building" }: HackathonProps = {}) {
-    const containerVariants: Variants = {
-        hidden: {},
-        visible: {
-            transition: {
-                staggerChildren: 0.1,
-            },
-        },
-    };
-
-    const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-    };
-
+export function Hackathon() {
     return (
-        <section id="hackathon" className="container mx-auto px-4 py-24 md:px-6">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="mb-12 pt-16"
-            >
-                <div className="mb-3 flex items-center gap-2 text-sm font-medium text-primary/80">
-                    <Terminal className="h-4 w-4" />
-                    Hackathons
-                </div>
-                <Title className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">{title}</Title>
-                <p className="max-w-2xl text-lg text-muted-foreground">
-                    A look at the projects and prototypes I've built under intense time constraints. Hackathons are my favorite way to experiment with new technologies and rapidly validate ideas. Here you'll find a collection of my competitive builds, ranging from AI voice assistants to data engineering pipelines.
-                </p>
-            </motion.div>
+        <section id="hackathons" className="container mx-auto max-w-5xl px-6 py-20 md:py-28 lg:px-8">
+            <h1 className="text-3xl font-bold tracking-[-0.02em] md:text-5xl">Hackathons</h1>
+            <p className="mt-4 max-w-[62ch] text-lg text-muted-foreground">
+                What I&apos;ve built under a clock, and how it placed. Two wins and two that
+                didn&apos;t place — both are here.
+            </p>
 
-            <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-            >
-                {hackathons.map((item, index) => (
-                    <motion.div key={index} variants={itemVariants}>
-                        <Tilt className="flex h-full flex-col justify-between rounded-xl border border-border bg-muted/10 p-4 sm:p-6 transition-colors hover:bg-muted/20">
-                            <div>
-                                <h3 className="mb-1 text-xl font-semibold text-foreground">{item.title}</h3>
-                                <p className="mb-4 text-sm font-medium text-primary/80">{item.organization}</p>
-                                <p className="mb-4 text-sm leading-relaxed text-muted-foreground break-words">
-                                    {item.description}
-                                </p>
-                                <p className="mb-6 text-xs font-medium text-foreground bg-muted/50 p-2 rounded-md">
-                                    {item.summary}
-                                </p>
-                            </div>
-                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-border pt-4 gap-2 sm:gap-0">
-                                <span className="text-sm font-medium text-foreground break-words">{item.metric}</span>
-                                <span className="text-xs text-muted-foreground shrink-0">{item.date}</span>
-                            </div>
-                            {item.link && (
-                                <div className="mt-4 border-t border-border/50 pt-4">
-                                    <Link
-                                        href={item.link}
-                                        className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors"
-                                    >
-                                        View Details <ArrowRight className="h-4 w-4" />
-                                    </Link>
-                                </div>
-                            )}
-                        </Tilt>
-                    </motion.div>
+            <ul className="mt-14">
+                {hackathons.map((item) => (
+                    <li key={item.event} className="reveal border-t border-border py-8">
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                            <h2 className="text-xl font-semibold md:text-2xl">
+                                <Link
+                                    href={item.href}
+                                    target={item.external ? "_blank" : undefined}
+                                    rel={item.external ? "noopener noreferrer" : undefined}
+                                    className="underline-offset-4 hover:underline hover:decoration-accent-signal"
+                                >
+                                    {item.event}
+                                </Link>
+                            </h2>
+                            <span className="text-xs uppercase tracking-wider text-muted-foreground">
+                                {item.date}
+                            </span>
+                        </div>
+
+                        <p className="mt-2 text-sm font-semibold text-accent-signal">{item.result}</p>
+
+                        <p className="mt-3 max-w-[62ch] text-muted-foreground">{item.description}</p>
+
+                        {item.scale && (
+                            <p className="mt-3 font-mono text-xs text-muted-foreground">{item.scale}</p>
+                        )}
+                    </li>
                 ))}
-            </motion.div>
+            </ul>
         </section>
     );
 }
