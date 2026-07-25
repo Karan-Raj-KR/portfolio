@@ -2,21 +2,28 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { useActiveSection } from "@/hooks/use-active-section";
 
 const navLinks = [
-    { href: "/#about", label: "About" },
-    { href: "/#skills", label: "Skills" },
-    { href: "/#projects", label: "Work" },
+    { href: "/#about", label: "About", section: "about" },
+    { href: "/#skills", label: "Skills", section: "skills" },
+    { href: "/#projects", label: "Work", section: "projects" },
     { href: "/hackathons", label: "Hackathons" },
     { href: "/blog", label: "Blog" },
-    { href: "/#karyo", label: "Karyo" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/#karyo", label: "Karyo", section: "karyo" },
+    { href: "/#contact", label: "Contact", section: "contact" },
 ];
+
+const trackedSections = navLinks.flatMap((link) => (link.section ? [link.section] : []));
 
 export function Header() {
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
+    const activeSection = useActiveSection(trackedSections);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,6 +32,9 @@ export function Header() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const isActive = (link: (typeof navLinks)[number]) =>
+        link.section ? activeSection === link.section : pathname.startsWith(link.href);
 
     return (
         <header
@@ -39,15 +49,29 @@ export function Header() {
                 </Link>
 
                 <nav className="hidden lg:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className="text-sm font-medium text-foreground/60 hover:text-foreground transition-colors"
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+                    {navLinks.map((link) => {
+                        const active = isActive(link);
+                        return (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                aria-current={active ? "true" : undefined}
+                                className={cn(
+                                    "relative text-sm font-medium transition-colors hover:text-foreground",
+                                    active ? "text-foreground" : "text-foreground/60"
+                                )}
+                            >
+                                {link.label}
+                                {active && (
+                                    <motion.span
+                                        layoutId="nav-indicator"
+                                        className="absolute -bottom-1.5 left-0 right-0 h-px bg-foreground"
+                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                    />
+                                )}
+                            </Link>
+                        );
+                    })}
                     <div className="flex items-center gap-2">
                         <ThemeToggle />
                     </div>

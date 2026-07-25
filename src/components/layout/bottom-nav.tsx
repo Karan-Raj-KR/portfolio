@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { User, Briefcase, Trophy, Building2, LayoutGrid } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BottomNavSheet } from "./bottom-nav-sheet";
+import { useActiveSection } from "@/hooks/use-active-section";
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
@@ -16,11 +17,13 @@ const navItems = [
     { id: "karyo", href: "/#karyo", label: "KĀRYO", icon: Building2 },
 ];
 
+const trackedSections = ["about", "projects", "karyo"];
+
 export function BottomNav() {
     const pathname = usePathname();
-    const [activeHash, setActiveHash] = useState<string>("");
+    const activeHash = useActiveSection(trackedSections);
     const [isSheetOpen, setIsSheetOpen] = useState(false);
-    
+
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
 
@@ -32,37 +35,6 @@ export function BottomNav() {
             setHidden(false);
         }
     });
-
-    useEffect(() => {
-        // Only run observer on the home page where these sections exist
-        if (pathname !== "/") {
-            setActiveHash("");
-            return;
-        }
-
-        const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveHash(entry.target.id);
-                }
-            });
-        };
-
-        const observer = new IntersectionObserver(handleIntersect, {
-            root: null,
-            rootMargin: "-40% 0px -40% 0px", // triggers when section is in the middle of viewport
-            threshold: 0,
-        });
-
-        // Observe the sections
-        const sections = ["about", "projects", "karyo"];
-        sections.forEach((id) => {
-            const el = document.getElementById(id);
-            if (el) observer.observe(el);
-        });
-
-        return () => observer.disconnect();
-    }, [pathname]);
 
     const isActive = (item: typeof navItems[0]) => {
         if (item.href.startsWith("/#")) {

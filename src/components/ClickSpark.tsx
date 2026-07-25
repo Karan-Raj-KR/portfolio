@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect, useCallback } from 'react';
 
 interface ClickSparkProps {
@@ -30,19 +32,18 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sparksRef = useRef<Spark[]>([]);
-  const startTimeRef = useRef<number | null>(null);
+  const rafRef = useRef<number | null>(null);
 
+  // Canvas tracks the viewport, not the full page: a page-height canvas was
+  // ~12MP (~50MB of backing store) for an effect that only ever paints near the cursor.
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const parent = canvas.parentElement;
-    if (!parent) return;
-
     let resizeTimeout: ReturnType<typeof setTimeout>;
 
     const resizeCanvas = () => {
-      const { width, height } = parent.getBoundingClientRect();
+      const { innerWidth: width, innerHeight: height } = window;
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
         canvas.height = height;
@@ -54,13 +55,11 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
       resizeTimeout = setTimeout(resizeCanvas, 100);
     };
 
-    const ro = new ResizeObserver(handleResize);
-    ro.observe(parent);
-
     resizeCanvas();
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      ro.disconnect();
+      window.removeEventListener('resize', handleResize);
       clearTimeout(resizeTimeout);
     };
   }, []);
@@ -81,19 +80,16 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     [easing]
   );
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animationId: number;
-
-    const draw = (timestamp: number) => {
-      if (!startTimeRef.current) {
-        startTimeRef.current = timestamp;
+  // Function declaration (not useCallback) so it can schedule itself without a TDZ reference.
+  function draw(timestamp: number) {
+      const canvas = canvasRef.current;
+      const ctx = canvas?.getContext('2d');
+      if (!canvas || !ctx) {
+        rafRef.current = null;
+        return;
       }
-      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       sparksRef.current = sparksRef.current.filter((spark: Spark) => {
         const elapsed = timestamp - spark.startTime;
@@ -122,32 +118,33 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
         return true;
       });
 
-      animationId = requestAnimationFrame(draw);
-    };
+      // Idle when there is nothing to animate, instead of burning a frame forever.
+      rafRef.current = sparksRef.current.length > 0 ? requestAnimationFrame(draw) : null;
+  }
 
-    animationId = requestAnimationFrame(draw);
-
+  useEffect(() => {
     return () => {
-      cancelAnimationFrame(animationId);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
-  }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
+  }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const now = performance.now();
-    const newSparks: Spark[] = Array.from({ length: sparkCount }, (_, i) => ({
-      x,
-      y,
-      angle: (2 * Math.PI * i) / sparkCount,
-      startTime: now
-    }));
+    // Viewport coordinates, matching the fixed canvas.
+    sparksRef.current.push(
+      ...Array.from({ length: sparkCount }, (_, i) => ({
+        x: e.clientX,
+        y: e.clientY,
+        angle: (2 * Math.PI * i) / sparkCount,
+        startTime: now
+      }))
+    );
 
-    sparksRef.current.push(...newSparks);
+    if (rafRef.current === null) {
+      rafRef.current = requestAnimationFrame(draw);
+    }
   };
 
   return (
@@ -161,10 +158,12 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     >
       <canvas
         ref={canvasRef}
+        aria-hidden="true"
         style={{
-          position: 'absolute',
+          position: 'fixed',
           inset: 0,
-          pointerEvents: 'none'
+          pointerEvents: 'none',
+          zIndex: 40
         }}
       />
       {children}

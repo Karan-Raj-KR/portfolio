@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ExternalLink, Globe, Users, Clock, Sparkles, Building2, Cpu } from "lucide-react";
+import { ExternalLink, Globe, Users, Building2, Cpu } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
