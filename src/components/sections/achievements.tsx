@@ -72,9 +72,9 @@ export function Achievements({
                 >
                     <Link
                         href="/achievements"
-                        className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors"
+                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
                     >
-                        View all achievements <ArrowRight className="h-4 w-4" />
+                        View More Achievements <ArrowRight className="h-4 w-4" />
                     </Link>
                 </motion.div>
             )}
