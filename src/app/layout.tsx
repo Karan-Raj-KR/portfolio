@@ -46,6 +46,7 @@ export const metadata: Metadata = {
 import { ThemeProvider } from "@/components/theme-provider";
 import { BottomNav } from "@/components/layout/bottom-nav";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { Footer } from "@/components/layout/footer";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans', display: 'swap'});
 
@@ -78,6 +79,7 @@ export default function RootLayout({
             <div className="pb-[64px] lg:pb-0">
               {children}
             </div>
+            <Footer />
             <BottomNav />
           </ThemeProvider>
         </MotionProvider>
