@@ -1,4 +1,5 @@
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { Header } from "@/components/layout/header";
 
 // This is a dynamic route
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -28,6 +29,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <main className="container mx-auto px-4 py-24 md:px-6">
+      <Header />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(postSchema) }}

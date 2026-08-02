@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { Code2, Mail, BookOpen, Trophy } from "lucide-react";
+import { Code2, Mail, BookOpen, Trophy, User } from "lucide-react";
 
 interface BottomNavSheetProps {
     isOpen: boolean;
@@ -13,6 +13,7 @@ interface BottomNavSheetProps {
 
 const sheetLinks = [
     { href: "#skills", label: "Skills", icon: Code2 },
+    { href: "/about", label: "About", icon: User },
     { href: "/achievements", label: "Achievements", icon: Trophy },
     { href: "/blog", label: "Blog", icon: BookOpen },
     { href: "#contact", label: "Contact", icon: Mail },
