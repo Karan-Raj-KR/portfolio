@@ -4,8 +4,9 @@ export function SiteJsonLd() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://www.karanrajkr.com/#person",
     "name": "Karan Raj KR",
-    "alternateName": "Karan Raj",
+    "alternateName": "karanrajkr",
     "url": "https://www.karanrajkr.com",
     "image": "https://www.karanrajkr.com/karan-raj-kr-ai-engineer.jpeg",
     "jobTitle": "AI Engineer & Backend Developer",
@@ -14,6 +15,10 @@ export function SiteJsonLd() {
       "name": "KĀRYO"
     },
     "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "NIAT–S-VYASA University"
+    },
+    "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "NIAT–S-VYASA University"
     },
@@ -45,8 +50,9 @@ export function SiteJsonLd() {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://www.karyo.in/#organization",
     name: "KĀRYO",
-    url: "https://www.karanrajkr.com",
+    url: "https://www.karyo.in",
     logo: "https://www.karanrajkr.com/og-image.png",
     description: "A digital studio helping local businesses get online.",
     founders: [
@@ -64,12 +70,11 @@ export function SiteJsonLd() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://www.karanrajkr.com/#website",
     name: "Karan Raj KR - Portfolio",
     url: "https://www.karanrajkr.com",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://www.karanrajkr.com/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
+    publisher: {
+      "@id": "https://www.karanrajkr.com/#person"
     }
   };
 
