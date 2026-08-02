@@ -1,11 +1,22 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { Tilt } from "@/components/ui/tilt";
-import { achievements } from "@/data/achievements";
-import { Trophy } from "lucide-react";
+import Link from "next/link";
+import { Trophy, ArrowRight } from "lucide-react";
+import { AchievementCard } from "@/components/sections/achievement-card";
+import { featuredAchievements } from "@/data/achievements";
 
-export function Achievements() {
+interface AchievementsProps {
+    titleAs?: "h1" | "h2";
+    title?: string;
+    showViewAll?: boolean;
+}
+
+export function Achievements({
+    titleAs: Title = "h2",
+    title = "Milestones & Impact",
+    showViewAll = true,
+}: AchievementsProps = {}) {
     const containerVariants: Variants = {
         hidden: {},
         visible: {
@@ -32,7 +43,7 @@ export function Achievements() {
                     <Trophy className="h-4 w-4" />
                     Featured Highlights
                 </div>
-                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Milestones & Impact</h2>
+                <Title className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">{title}</Title>
                 <p className="max-w-2xl text-lg text-muted-foreground">
                     A snapshot of recent competitive and professional accomplishments.
                 </p>
@@ -45,24 +56,28 @@ export function Achievements() {
                 viewport={{ once: true }}
                 className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
             >
-                {achievements.map((item, index) => (
+                {featuredAchievements.map((item, index) => (
                     <motion.div key={index} variants={itemVariants}>
-                        <Tilt className="flex h-full flex-col justify-between rounded-xl border border-border bg-muted/10 p-4 sm:p-6 transition-colors hover:bg-muted/20">
-                            <div>
-                                <h3 className="mb-1 text-xl font-semibold text-foreground">{item.title}</h3>
-                                <p className="mb-4 text-sm font-medium text-primary/80">{item.organization}</p>
-                                <p className="mb-6 text-sm leading-relaxed text-muted-foreground break-words">
-                                    {item.description}
-                                </p>
-                            </div>
-                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-border pt-4 gap-2 sm:gap-0">
-                                <span className="text-sm font-medium text-foreground break-words">{item.metric}</span>
-                                <span className="text-xs text-muted-foreground shrink-0">{item.date}</span>
-                            </div>
-                        </Tilt>
+                        <AchievementCard item={item} />
                     </motion.div>
                 ))}
             </motion.div>
+
+            {showViewAll && (
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-8"
+                >
+                    <Link
+                        href="/achievements"
+                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
+                    >
+                        View More Achievements <ArrowRight className="h-4 w-4" />
+                    </Link>
+                </motion.div>
+            )}
         </section>
     );
 }

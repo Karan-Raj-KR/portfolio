@@ -10,6 +10,7 @@ const navLinks = [
     { href: "/#skills", label: "Skills" },
     { href: "/#projects", label: "Work" },
     { href: "/hackathons", label: "Hackathons" },
+    { href: "/achievements", label: "Achievements" },
     { href: "/blog", label: "Blog" },
     { href: "/#karyo", label: "Karyo" },
     { href: "/#contact", label: "Contact" },
@@ -38,7 +39,7 @@ export function Header() {
                     Karan Raj KR
                 </Link>
 
-                <nav className="hidden lg:flex items-center gap-8">
+                <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
