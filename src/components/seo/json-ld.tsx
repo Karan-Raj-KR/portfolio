@@ -47,7 +47,7 @@ export function SiteJsonLd() {
     "@type": "Organization",
     name: "KĀRYO",
     url: "https://www.karanrajkr.com",
-    logo: "https://www.karanrajkr.com/og-image.jpg",
+    logo: "https://www.karanrajkr.com/og-image.png",
     description: "A digital studio helping local businesses get online.",
     founders: [
       {

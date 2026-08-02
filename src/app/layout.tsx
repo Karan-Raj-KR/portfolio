@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Karan Raj KR | AI Engineer & Backend Developer',
     description: 'Karan Raj KR is an AI Engineer and Backend Dev building with Python, FastAPI and Next.js. Founder of KĀRYO. B.Tech CSE (AI/ML) at NIAT–S-VYASA, Bengaluru.',
     siteName: 'Karan Raj KR Portfolio',
-    images: [{ url: 'https://www.karanrajkr.com/og-image.png', width: 1200, height: 630, alt: 'Karan Raj KR - AI Engineer and Backend Developer, Founder of KĀRYO' }],
+    images: [{ url: 'https://www.karanrajkr.com/og-image.png', width: 1731, height: 909, alt: 'Karan Raj KR - AI Engineer and Backend Developer, Founder of KĀRYO' }],
     locale: 'en_IN',
     type: 'website',
   },
@@ -39,7 +39,6 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: '/favicon.ico',
-    apple: '/apple-icon.png',
   }
 };
 

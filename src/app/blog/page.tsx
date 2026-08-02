@@ -17,7 +17,7 @@ export const metadata = {
     title: "Blog",
     description: "Read my latest articles about AI Engineering, Backend Development, and building products.",
     url: "https://www.karanrajkr.com/blog",
-    images: [{ url: publications[0]?.coverImage || "/og-image.jpg" }]
+    images: [{ url: publications[0]?.coverImage || "/og-image.png" }]
   }
 };
 
