@@ -3,6 +3,21 @@ import Image from "next/image";
 import { Github, Linkedin, Twitter, Instagram, Youtube, ExternalLink } from "lucide-react";
 import { About as AboutSection } from "@/components/sections/about";
 
+export const metadata = {
+  title: "About Karan Raj KR | AI Engineer & Backend Developer",
+  description:
+    "Karan Raj KR (karanrajkr.com) — AI Engineer & Backend Developer, founder of KĀRYO and B.Tech CSE (AI/ML) student at NIAT–S-VYASA University, Bengaluru.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Karan Raj KR | AI Engineer & Backend Developer",
+    description:
+      "Karan Raj KR (karanrajkr.com) — AI Engineer & Backend Developer, founder of KĀRYO and B.Tech CSE (AI/ML) student at NIAT–S-VYASA University, Bengaluru.",
+    url: "/about",
+  },
+};
+
 export default function AboutPage() {
   return (
     <main className="relative flex min-h-screen flex-col overflow-hidden selection:bg-primary/20">

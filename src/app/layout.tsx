@@ -19,13 +19,9 @@ export const metadata: Metadata = {
   keywords: ['Karan Raj KR', 'Karan Raj AI Engineer', 'Karan Raj Portfolio', 'Karan Raj KR', 'Karan Raj NIAT', 'Karan NIAT', 'Backend Developer', 'AI', 'FastAPI'],
   authors: [{ name: 'Karan Raj KR' }],
   creator: 'Karan Raj KR',
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     title: 'Karan Raj KR | AI Engineer & Backend Developer',
     description: 'Karan Raj KR is an AI Engineer and Backend Dev building with Python, FastAPI and Next.js. Founder of KĀRYO. B.Tech CSE (AI/ML) at NIAT–S-VYASA, Bengaluru.',
-    url: 'https://www.karanrajkr.com',
     siteName: 'Karan Raj KR Portfolio',
     images: [{ url: 'https://www.karanrajkr.com/og-image.png', width: 1200, height: 630, alt: 'Karan Raj KR - AI Engineer and Backend Developer, Founder of KĀRYO' }],
     locale: 'en_IN',
