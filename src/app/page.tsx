@@ -14,6 +14,15 @@ const Skills = dynamic(() => import("@/components/sections/skills").then(mod => 
 
 const Contact = dynamic(() => import("@/components/sections/contact").then(mod => mod.Contact));
 
+export const metadata = {
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    url: '/',
+  },
+};
+
 export default function Home() {
   return (
     <ClickSparkWrapper>
