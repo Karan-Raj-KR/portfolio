@@ -1,12 +1,17 @@
+import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { Header } from "@/components/layout/header";
+import { publications } from "@/data/publications";
 
 // This is a dynamic route
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
+  const article = publications.find((p) => p.slug === resolvedParams.slug);
+  if (!article) notFound();
+
   return {
-    title: `Post ${resolvedParams.slug}`,
-    description: `A deep dive into ${resolvedParams.slug} as an AI Engineer and Backend Developer.`,
+    title: article.title,
+    description: article.excerpt,
     alternates: {
       canonical: `/blog/${resolvedParams.slug}`,
     },
@@ -15,12 +20,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  
+  const article = publications.find((p) => p.slug === resolvedParams.slug);
+  if (!article) notFound();
+
   const postSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: `Post ${resolvedParams.slug}`,
-    datePublished: "2026-07-05T08:00:00Z",
+    headline: article.title,
+    datePublished: article.publishedDate,
     author: {
       "@type": "Person",
       name: "Karan Raj KR",
@@ -38,12 +45,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         items={[
           { name: "Home", url: "https://www.karanrajkr.com/" },
           { name: "Blog", url: "https://www.karanrajkr.com/blog" },
-          { name: resolvedParams.slug, url: `https://www.karanrajkr.com/blog/${resolvedParams.slug}` },
+          { name: article.title, url: `https://www.karanrajkr.com/blog/${resolvedParams.slug}` },
         ]}
       />
       
       <article className="prose prose-invert lg:prose-xl max-w-3xl">
-        <h1>{resolvedParams.slug.replace("-", " ")}</h1>
+        <h1>{article.title}</h1>
+        <p>{article.excerpt}</p>
         <p>This is a placeholder for the blog post content.</p>
       </article>
     </main>
