@@ -33,14 +33,14 @@ export const projects: Project[] = [
         slug: "formpilot",
         title: "FormPilot",
         subtitle: "Chrome Extension · April 2026",
-        description: "AI-powered Chrome extension that scans any web form, understands field context with LLMs, and autofills inputs with multi-profile support.",
+        description: "AI-powered Chrome extension that scans any web form, understands field context with LLMs, and autofills inputs with multi-profile support. Built as a team of 3 at Open Loop 2026.",
         tags: ["Manifest V3", "React", "TypeScript", "TailwindCSS", "Vite", "LLM"],
         metrics: [
             { label: "Placement", value: "1st Place" },
             { label: "Score", value: "80/100" },
-            { label: "Users", value: "TBA" }
+            { label: "Team", value: "3 builders" }
         ],
-        overview: "FormPilot is a BYOK Chrome extension that intelligently autofills complex web forms using LLMs. 1st place winner at the Open Loop 2026 hackathon.",
+        overview: "FormPilot is a BYOK Chrome extension that intelligently autofills complex web forms using LLMs. We built it as a team of 3 (Karan Raj KR, Havinash, Saagnik Dey — extension work led by Havinash) and won 1st place at the Open Loop 2026 hackathon.",
         problem: "Users waste hours filling out repetitive, complex forms (job applications, grants, registrations). Traditional autofill is dumb—it relies on exact field name matches and fails on long-form text or nuanced dropdowns.",
         solution: "FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM along with the user's selected profile, and maps the AI's structured JSON response back into the form fields.",
         architecture: "Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All data is stored locally using Chrome Storage API.",
