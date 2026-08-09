@@ -1,10 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ExternalLink, Globe, Users, Clock, Sparkles, Building2, Cpu } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-import { useRef } from "react";
 import { Tilt } from "@/components/ui/tilt";
 
 const capabilities = [
@@ -26,16 +24,6 @@ const capabilities = [
 ];
 
 export function Karyo() {
-    const imageRef = useRef<HTMLDivElement>(null);
-    const shouldReduceMotion = useReducedMotion();
-
-    const { scrollYProgress } = useScroll({
-        target: imageRef,
-        offset: ["start end", "end start"],
-    });
-
-    const imageY = useTransform(scrollYProgress, [0, 1], shouldReduceMotion ? ["0%", "0%"] : ["-8%", "8%"]);
-
     return (
         <section id="karyo" className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <motion.div
@@ -68,7 +56,7 @@ export function Karyo() {
                         transition={{ delay: 0.2 }}
                     >
                         <Link
-                            href="https://www.karyo.in"
+                            href="https://linktr.ee/karyo"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
@@ -90,7 +78,7 @@ export function Karyo() {
                     </div>
                 </div>
 
-                <div className="mb-12">
+                <div>
                     <h3 className="text-2xl font-semibold mb-8">Core Capabilities</h3>
                     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                         {capabilities.map((cap, index) => (
@@ -112,27 +100,6 @@ export function Karyo() {
                         ))}
                     </div>
                 </div>
-                
-                {/* Visual Asset */}
-                <motion.div
-                    ref={imageRef}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="relative w-full h-[500px] rounded-xl overflow-hidden border border-border"
-                >
-                    {/* Oversized wrapper so the ±8% parallax shift never exposes an edge */}
-                    <motion.div style={{ y: imageY }} className="absolute inset-x-0 top-[-10%] bottom-[-10%]">
-                        <Image
-                            src="/images/karyo-image.png"
-                            alt="KĀRYO Client Dashboard"
-                            fill
-                            sizes="(max-width: 1024px) 100vw, 1024px"
-                            className="object-cover"
-                        />
-                    </motion.div>
-                </motion.div>
-
             </motion.div>
         </section>
     );
