@@ -7,6 +7,7 @@ import { ClickSparkWrapper } from "@/components/ui/click-spark-wrapper";
 // Dynamically import sections below the fold to reduce initial bundle size
 const Achievements = dynamic(() => import("@/components/sections/achievements").then(mod => mod.Achievements));
 const About = dynamic(() => import("@/components/sections/about").then(mod => mod.About));
+const Now = dynamic(() => import("@/components/sections/now").then(mod => mod.Now));
 
 const Projects = dynamic(() => import("@/features/projects/components/project-list").then(mod => mod.Projects));
 const Karyo = dynamic(() => import("@/components/sections/karyo").then(mod => mod.Karyo));
@@ -25,6 +26,7 @@ export default function Home() {
         <Hero />
         <Achievements />
         <About />
+        <Now />
 
         <Projects />
         <Karyo />
