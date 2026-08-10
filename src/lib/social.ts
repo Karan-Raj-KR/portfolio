@@ -30,7 +30,7 @@ export const socialLinks: SocialLink[] = [
     {
         name: "Email",
         icon: Mail,
-        href: "mailto:karanrajkr2008@gmail.com",
-        info: "karanrajkr2008@gmail.com",
+        href: "mailto:mail@karanrajkr.com",
+        info: "mail@karanrajkr.com",
     },
 ];
