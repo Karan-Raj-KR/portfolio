@@ -39,7 +39,7 @@ export function Contact() {
                 >
                     <Magnetic>
                         <Link
-                            href="mailto:karanrajkr2008@gmail.com"
+                            href="mailto:mail@karanrajkr.com"
                             className="inline-flex h-14 items-center justify-center rounded-full bg-foreground px-8 text-base font-medium text-background transition-colors hover:bg-foreground/90 focus-visible:outline-none"
                         >
                             Get in Touch
