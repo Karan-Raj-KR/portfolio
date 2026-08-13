@@ -1,7 +1,17 @@
+import { Metadata } from "next";
 import { Header } from "@/components/layout/header";
 import Image from "next/image";
 import { Github, Linkedin, Twitter, Instagram, Youtube, ExternalLink } from "lucide-react";
 import { About as AboutSection } from "@/components/sections/about";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn more about Karan Raj KR — AI Engineer, Backend Developer, and Founder of KĀRYO based in Bengaluru.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (
