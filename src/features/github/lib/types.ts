@@ -99,5 +99,5 @@ export interface GitHubStats {
     languages: LanguageStat[];
     activities: ActivityItem[];
     lastCommitAt: string;
-    lastCommitSha: string | null;
+    lastCommitUrl: string | null;
 }

@@ -82,6 +82,6 @@ export function buildFallbackStats(): GitHubStats {
       },
     ],
     lastCommitAt: new Date(now - 2 * HOUR).toISOString(),
-    lastCommitSha: "d40a7ca",
+    lastCommitUrl: "https://github.com/Karan-Raj-KR/crewai-recipes/commit/d40a7ca",
   };
 }

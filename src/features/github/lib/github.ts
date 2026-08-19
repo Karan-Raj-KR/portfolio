@@ -267,7 +267,7 @@ async function fetchGitHubStats(): Promise<GitHubStats> {
         (a, b) => toTime(b.pushed_at) - toTime(a.pushed_at),
     )[0]?.pushed_at ?? new Date().toISOString();
 
-    const lastCommitSha = latestCommit?.url?.split("/").pop() ?? fallbackShaFromPush(events);
+    const lastCommitUrl = latestCommit?.url ?? null;
 
     return {
         username: user.login,
@@ -282,13 +282,6 @@ async function fetchGitHubStats(): Promise<GitHubStats> {
         languages,
         activities: activities.slice(0, 5),
         lastCommitAt,
-        lastCommitSha,
+        lastCommitUrl,
     };
-}
-
-function fallbackShaFromPush(events: GitHubEvent[]): string | null {
-    const newestPush = events
-        .filter((event) => event.type === "PushEvent" && event.payload.head)
-        .sort((a, b) => toTime(b.created_at) - toTime(a.created_at))[0];
-    return newestPush?.payload.head ?? null;
 }
