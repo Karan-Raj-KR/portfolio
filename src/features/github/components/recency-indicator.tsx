@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { RelativeTime } from "./relative-time";
 
@@ -17,14 +17,18 @@ export function RecencyIndicator({
     profileUrl,
     username,
 }: RecencyIndicatorProps) {
+    const reduceMotion = useReducedMotion();
+
     return (
         <div className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-3 rounded-xl border border-live/25 bg-live/5 px-5 py-4">
             <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
-                <motion.span
-                    className="absolute inline-flex h-full w-full rounded-full bg-live"
-                    animate={{ opacity: [0.6, 0], scale: [1, 2.4] }}
-                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
-                />
+                {!reduceMotion && (
+                    <motion.span
+                        className="absolute inline-flex h-full w-full rounded-full bg-live"
+                        animate={{ opacity: [0.6, 0], scale: [1, 2.4] }}
+                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+                    />
+                )}
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-live" />
             </span>
             <p className="font-mono text-sm text-foreground">
