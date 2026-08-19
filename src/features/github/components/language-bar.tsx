@@ -60,14 +60,14 @@ export function LanguageBar({ languages }: LanguageBarProps) {
                                 segmentRefs.current[index] = element;
                             }}
                             type="button"
-                            onMouseEnter={() => setActive(index)}
+                            onMouseEnter={() => activateSegment(index)}
                             onMouseLeave={() => setActive(null)}
-                            onFocus={() => setActive(index)}
+                            onFocus={() => activateSegment(index)}
                             onBlur={() => setActive(null)}
                             style={{
                                 width: `${total > 0 ? (language.bytes / total) * 100 : 0}%`,
                                 backgroundColor: "var(--live)",
-                                opacity: active === index ? 1 : shadeFor(index),
+                                opacity: active?.index === index ? 1 : shadeFor(index),
                             }}
                             aria-label={`${language.name}: ${language.percent.toFixed(1)} percent of code bytes`}
                             className="h-full cursor-pointer outline-none transition-[opacity,filter] duration-200 hover:brightness-125 focus-visible:ring-2 focus-visible:ring-ring"
@@ -75,13 +75,13 @@ export function LanguageBar({ languages }: LanguageBarProps) {
                     ))}
                 </div>
 
-                {active !== null && languages[active] && (
+                {active !== null && languages[active.index] && (
                     <div
                         aria-hidden="true"
                         className="pointer-events-none absolute -top-4 -translate-y-full -translate-x-1/2 rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs whitespace-nowrap text-foreground shadow-lg"
-                        style={{ left: `${midpointOf(active)}px` }}
+                        style={{ left: `${active.left}px` }}
                     >
-                        {languages[active].name} · {languages[active].percent.toFixed(1)}%
+                        {languages[active.index].name} · {languages[active.index].percent.toFixed(1)}%
                     </div>
                 )}
             </div>
