@@ -11,21 +11,31 @@ function shadeFor(index: number): number {
     return Math.max(0.3, 0.95 - index * 0.15);
 }
 
+interface ActiveSegment {
+    index: number;
+    left: number;
+}
+
 export function LanguageBar({ languages }: LanguageBarProps) {
     const barRef = useRef<HTMLDivElement>(null);
     const segmentRefs = useRef<(HTMLButtonElement | null)[]>([]);
-    const [active, setActive] = useState<number | null>(null);
+    const [active, setActive] = useState<ActiveSegment | null>(null);
 
     if (!languages || languages.length === 0) return null;
 
     const total = languages.reduce((sum, language) => sum + language.bytes, 0);
 
-    const midpointOf = (index: number): number => {
+    const activateSegment = (index: number) => {
         const bar = barRef.current;
         const segment = segmentRefs.current[index];
-        if (!bar || !segment) return 50;
-        const segmentCenter = segment.offsetLeft + segment.offsetWidth / 2;
-        return Math.min(Math.max(segmentCenter, 44), bar.offsetWidth - 44);
+        let left = 50;
+        if (bar && segment) {
+            const barRect = bar.getBoundingClientRect();
+            const segmentRect = segment.getBoundingClientRect();
+            const center = segmentRect.left - barRect.left + segmentRect.width / 2;
+            left = Math.min(Math.max(center, 44), barRect.width - 44);
+        }
+        setActive({ index, left });
     };
 
     return (

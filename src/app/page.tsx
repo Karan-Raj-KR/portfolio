@@ -15,6 +15,8 @@ const Skills = dynamic(() => import("@/components/sections/skills").then(mod => 
 
 const Contact = dynamic(() => import("@/components/sections/contact").then(mod => mod.Contact));
 
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <ClickSparkWrapper>
