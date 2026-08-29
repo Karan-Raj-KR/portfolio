@@ -12,7 +12,7 @@ export const experience: Experience[] = [
         company: "",
         description: [
             "Active contributor in GirlScript Summer of Code 2026",
-            "Merged 4 pull requests across open-source repositories",
+            "Merged 18 pull requests across open-source repositories",
             "Contributing through bug fixes, backend improvements, and feature implementations",
             "Collaborating with maintainers via GitHub workflows and code reviews",
         ],
@@ -32,9 +32,9 @@ export const experience: Experience[] = [
         period: "April 2026",
         company: "Yenepoya University / Yentech",
         description: [
-            "National-level 24-hour hackathon — 120+ teams, 100+ colleges, 14 states",
+            "National-level 24-hour hackathon — 121 teams, 109 colleges, 14 states, 309 participants",
             "Built FormPilot: a Chrome extension that auto-fills web forms using AI (ChatGPT/Claude/Gemini). Handles React/Vue apps, writes cover letters, matches dropdowns intelligently",
-            "Scored 80/100 — second place scored 60",
+            "Scored 80/100 — runner-up scored 60/100. ₹20,000 prize",
             "Team of 3: Karan Raj KR, Havinash, Saagnik Dey",
         ],
     },
@@ -43,7 +43,7 @@ export const experience: Experience[] = [
         period: "April 2026",
         company: "HackBLR, Bangalore",
         description: [
-            "Selected as finalist from 2,500+ participants across IITs, NITs, IISc — 40 teams made it",
+            "Selected as finalist from 2,500+ teams across IITs, NITs, IISc — Top 40",
             "Built VoiceRx: AI voice health assistant for patients without doctor access (FastAPI, Vapi, Qdrant, Groq, RAG)",
             "Competed solo",
         ],

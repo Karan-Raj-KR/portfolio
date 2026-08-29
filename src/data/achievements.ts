@@ -39,8 +39,8 @@ export const achievements: Achievement[] = [
         title: "1st Place Winner",
         organization: "Open Loop Hackathon",
         date: "April 2026",
-        description: "Built FormPilot, competing against 120+ teams from 100+ colleges across 14 states.",
-        metric: "Rank 1 / 120+",
+        description: "Built FormPilot, competing against 121 teams from 109 colleges across 14 states — 309 participants. Scored 80/100 vs the runner-up's 60/100. ₹20,000 prize.",
+        metric: "Rank 1 / 121 teams",
         category: "competition",
         featured: true,
         link: "/hackathons/open-loop-2026"
@@ -49,8 +49,8 @@ export const achievements: Achievement[] = [
         title: "Top 40 Finish",
         organization: "HackBLR",
         date: "April 2026",
-        description: "Selected as a finalist out of 2,500+ participants. Built VoiceRx solo.",
-        metric: "Top 40 / 2500+",
+        description: "Selected as a finalist out of 2,500+ teams. Built VoiceRx solo.",
+        metric: "Top 40 / 2,500+ teams",
         category: "competition",
         featured: true
     },
@@ -71,6 +71,24 @@ export const achievements: Achievement[] = [
         category: "competition"
     },
     {
+        title: "Technology Innovators Award",
+        organization: "Certificate of Achievement",
+        date: "August 2026",
+        description: "Recognized with a certificate of achievement for the Technology Innovators Award.",
+        metric: "Award",
+        category: "recognition",
+        featured: true
+    },
+    {
+        title: "Ideathon Winner",
+        organization: "Ideathon",
+        date: "2026",
+        description: "Took first place at the Ideathon.",
+        metric: "1st Place",
+        category: "competition",
+        featured: true
+    },
+    {
         title: "Maintainer & Project Admin",
         organization: "crewai-recipes (ECSoC)",
         date: "2026",
@@ -84,8 +102,8 @@ export const achievements: Achievement[] = [
         title: "Open Source Contributor",
         organization: "GirlScript Summer of Code",
         date: "2026",
-        description: "Merged 12 pull requests as part of GSSoC 2026 (CommitPulse).",
-        metric: "12 PRs Merged",
+        description: "Merged 18 pull requests as part of GSSoC 2026 (CommitPulse).",
+        metric: "18 PRs Merged",
         category: "open-source",
         featured: true
     },

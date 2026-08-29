@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Chrome } from "lucide-react";
 import Link from "next/link";
 import { Tilt } from "@/components/ui/tilt";
 import { projects } from "@/data/projects";
@@ -96,6 +96,17 @@ export function Projects() {
                                 </Link>
 
                                 <div className="flex gap-4">
+                                    {project.links.store && (
+                                        <Link
+                                            href={project.links.store}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                                            aria-label={`Install ${project.title} from the Chrome Web Store`}
+                                        >
+                                            <Chrome className="h-4 w-4" aria-hidden="true" />
+                                        </Link>
+                                    )}
                                     {project.links.demo && (
                                         <Link
                                             href={project.links.demo}

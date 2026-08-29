@@ -40,7 +40,7 @@ export const projects: Project[] = [
             { label: "Score", value: "80/100" },
             { label: "Team", value: "3 builders" }
         ],
-        overview: "FormPilot is a BYOK Chrome extension that intelligently autofills complex web forms using LLMs. We built it as a team of 3 (Karan Raj KR, Havinash, Saagnik Dey — extension work led by Havinash) and won 1st place at the Open Loop 2026 hackathon.",
+        overview: "FormPilot is a BYOK Chrome extension that intelligently autofills complex web forms using LLMs. We built it as a team of 3 (Karan Raj KR, Havinash, Saagnik Dey — extension work led by Havinash) and won 1st place at the Open Loop 2026 hackathon. It is now live on the Chrome Web Store.",
         problem: "Users waste hours filling out repetitive, complex forms (job applications, grants, registrations). Traditional autofill is dumb—it relies on exact field name matches and fails on long-form text or nuanced dropdowns.",
         solution: "FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM along with the user's selected profile, and maps the AI's structured JSON response back into the form fields.",
         architecture: "Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All data is stored locally using Chrome Storage API.",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
             "Bring Your Own Key (BYOK) architecture"
         ],
         challenges: "Handling dynamic form fields rendered by frameworks like React or Vue, which often swallow native DOM events. We had to simulate authentic user input events (input, change, blur) to trigger framework state updates.",
-        results: "Won 1st Place at Open Loop 2026 against 120+ teams, scoring 80/100 (2nd place scored 60/100). Successfully published to the Chrome Web Store.",
+        results: "Won 1st Place at Open Loop 2026 against 121 teams from 109 colleges across 14 states, scoring 80/100 (runner-up scored 60/100). ₹20,000 prize. Now live on the Chrome Web Store.",
         lessons: "Learned the intricacies of Manifest V3, service worker lifecycles, and the importance of simulating trusted events in modern web apps.",
         timeline: "Built in 24 hours (April 2026)",
         assets: [
@@ -74,7 +74,7 @@ export const projects: Project[] = [
         tags: ["FastAPI", "Vapi", "Qdrant", "Groq", "RAG"],
         metrics: [
             { label: "Status", value: "Finalist" },
-            { label: "Applicants", value: "2,500+" }
+            { label: "Teams", value: "2,500+" }
         ],
         overview: "VoiceRx is an AI voice health assistant providing accessible preliminary medical information to patients without immediate access to doctors.",
         problem: "In many regions, wait times for doctors are extensive, and patients lack a reliable way to get immediate, conversational answers about symptoms or medications without resorting to anxiety-inducing web searches.",
@@ -88,7 +88,7 @@ export const projects: Project[] = [
             "Symptom triage logic"
         ],
         challenges: "Reducing latency in the voice pipeline. The combination of STT (Speech-to-Text), RAG retrieval, LLM generation, and TTS (Text-to-Speech) initially took over 2 seconds. Optimized by streaming chunks and using Groq.",
-        results: "Selected as a Finalist at HackBLR 2026 out of 2,500+ participants across India.",
+        results: "Selected as a Finalist at HackBLR 2026 out of 2,500+ teams across India.",
         lessons: "Deep dive into real-time voice architectures and latency optimization for LLMs.",
         timeline: "April 2026",
         assets: [
@@ -134,7 +134,6 @@ export const projects: Project[] = [
         description: "ML model predicting court case backlog trends — built solo at Databricks Hackathon",
         tags: ["PySpark", "MLflow", "Delta Lake", "Unity Catalog", "Jupyter"],
         metrics: [
-            { label: "Build", value: "Solo" },
             { label: "Tech", value: "Databricks" }
         ],
         overview: "A machine learning pipeline built on Databricks to analyze and predict judicial backlog trends across various courts.",

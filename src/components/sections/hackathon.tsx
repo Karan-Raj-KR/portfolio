@@ -10,7 +10,7 @@ const hackathons = [
         title: "1st Place Winner",
         organization: "Open Loop Hackathon",
         date: "April 2026",
-        description: "Built FormPilot, an AI-powered Chrome extension, competing against 120+ teams from 100+ colleges.",
+        description: "Built FormPilot, an AI-powered Chrome extension, competing against 121 teams from 109 colleges.",
         summary: "1st Place | FormPilot | React, Chrome APIs, LLMs",
         metric: "Rank 1 / 121 teams · 109 colleges · 14 states",
         link: "/hackathons/open-loop-2026"
@@ -19,9 +19,9 @@ const hackathons = [
         title: "Finalist",
         organization: "HackBLR 2026",
         date: "April 2026",
-        description: "Selected as a finalist out of 2,500+ participants. Built VoiceRx, a voice-first health AI assistant solo.",
+        description: "Selected as a finalist out of 2,500+ teams. Built VoiceRx, a voice-first health AI assistant solo.",
         summary: "Finalist | VoiceRx | FastAPI, Vapi, Groq, Qdrant",
-        metric: "Top 40 / 2500+"
+        metric: "Top 40 / 2,500+ teams"
     },
     {
         title: "Participant",

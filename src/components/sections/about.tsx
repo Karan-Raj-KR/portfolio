@@ -34,7 +34,7 @@ export function About() {
                     I'm a B.Tech CSE (AI/ML) student at NIAT–S-VYASA University, but most of what I've learned came from shipping real projects, competing in hackathons, and running a digital agency while juggling exams.
                 </motion.p>
                 <motion.p variants={itemVariants}>
-                    This past year I won 1st place at Open Loop 2026 — a national hackathon with 309 participants across 109 colleges and 14 states. We built FormPilot, an AI Chrome extension that auto-fills web forms using LLMs. 80/100 score, ₹20,000 cash prize, beat 120 other teams.
+                    This past year I won 1st place at Open Loop 2026 — a national hackathon with 309 participants across 109 colleges and 14 states. We built FormPilot, an AI Chrome extension that auto-fills web forms using LLMs. 80/100 score against the runner-up's 60/100, ₹20,000 cash prize, 1st of 121 teams.
                 </motion.p>
                 <motion.p variants={itemVariants}>
                     Before that I went solo at HackBLR 2026 with VoiceRx — a RAG-based voice health assistant — and landed Top 40 out of 2,500+ teams.
