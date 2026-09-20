@@ -19,9 +19,9 @@ export default function HackathonsPage() {
       <main className="relative flex min-h-screen flex-col overflow-hidden selection:bg-primary/20">
         <Spotlight />
         <Header />
-        
+
         <Hackathon titleAs="h1" title="Hackathons" />
-        
+
         <Contact />
       </main>
     </ClickSparkWrapper>

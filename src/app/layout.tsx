@@ -51,7 +51,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { BottomNav } from "@/components/layout/bottom-nav";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans', display: 'swap'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 
 export default function RootLayout({
   children,

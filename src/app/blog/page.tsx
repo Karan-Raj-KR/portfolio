@@ -36,7 +36,7 @@ const platformLabels: Record<string, string> = {
 };
 
 export default function BlogList() {
-  const sortedArticles = [...publications].sort((a, b) => 
+  const sortedArticles = [...publications].sort((a, b) =>
     new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
   );
 
@@ -71,7 +71,7 @@ export default function BlogList() {
           { name: "Blog", url: "https://www.karanrajkr.com/blog" },
         ]}
       />
-      
+
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Blog</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
@@ -92,9 +92,9 @@ export default function BlogList() {
                 <Tilt className="flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-muted/10 transition-colors group-hover:bg-muted/20 relative z-0">
                   {article.coverImage && (
                     <Link href={primaryUrl} target="_blank" rel="noopener noreferrer" className="relative h-48 w-full border-b border-border bg-muted/30 block">
-                      <Image 
-                        src={article.coverImage} 
-                        alt={article.title} 
+                      <Image
+                        src={article.coverImage}
+                        alt={article.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover"
@@ -127,10 +127,10 @@ export default function BlogList() {
                         <span className="text-xs font-medium text-muted-foreground mr-2">Read on:</span>
                         <div className="flex flex-wrap gap-2 mt-2">
                           {article.platforms.map((platform, idx) => (
-                            <Link 
-                              key={idx} 
-                              href={platform.url} 
-                              target="_blank" 
+                            <Link
+                              key={idx}
+                              href={platform.url}
+                              target="_blank"
                               rel="noopener noreferrer"
                               className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-colors ${platformStyles[platform.source] || 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
                             >

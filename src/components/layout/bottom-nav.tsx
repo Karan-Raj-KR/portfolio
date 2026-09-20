@@ -20,7 +20,7 @@ export function BottomNav() {
     const pathname = usePathname();
     const [activeHash, setActiveHash] = useState<string>("");
     const [isSheetOpen, setIsSheetOpen] = useState(false);
-    
+
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
 
@@ -73,7 +73,7 @@ export function BottomNav() {
 
     return (
         <>
-            <motion.nav 
+            <motion.nav
                 variants={{
                     visible: { y: 0 },
                     hidden: { y: "100%" },

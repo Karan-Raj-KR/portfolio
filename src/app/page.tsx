@@ -23,7 +23,7 @@ export default function Home() {
       <main className="relative flex min-h-screen flex-col overflow-hidden selection:bg-primary/20">
         <Spotlight />
         <Header />
-        
+
         {/* 15-Second Information Hierarchy */}
         <Hero />
         <Achievements />
@@ -33,7 +33,7 @@ export default function Home() {
         <Projects />
         <Karyo />
         <Skills />
-        
+
         <Contact />
       </main>
     </ClickSparkWrapper>

@@ -8,16 +8,22 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   html {
     @apply font-sans;
   }
+
   body {
     @apply bg-background text-foreground;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-  h1, h2, h3 {
+
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-outfit), var(--font-sans);
   }
+
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-ring;
   }
@@ -25,17 +31,24 @@
 
 /* Marquee animation */
 @keyframes marquee {
-    from { transform: translateX(0) translateZ(0); }
-    to   { transform: translateX(-50%) translateZ(0); }
+  from {
+    transform: translateX(0) translateZ(0);
+  }
+
+  to {
+    transform: translateX(-50%) translateZ(0);
+  }
 }
+
 .marquee-track {
-    will-change: transform;
-    animation-name: marquee;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+  will-change: transform;
+  animation-name: marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
+
 .marquee-row:hover .marquee-track {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 /* Custom Scrollbar for Webkit */
@@ -124,7 +137,8 @@
   --color-foreground: var(--foreground);
   --color-background: var(--background);
   --color-live: var(--live);
-  --radius-sm: calc(var(--radius) * 0.6);  --radius-md: calc(var(--radius) * 0.8);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
