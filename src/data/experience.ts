@@ -1,6 +1,6 @@
 export interface Experience {
     role: string;
-    period: string;
+    period?: string;
     company: string;
     description: string[];
 }
@@ -8,7 +8,6 @@ export interface Experience {
 export const experience: Experience[] = [
     {
         role: "Open Source Contributor — GSSoC 2026",
-        period: "May 2026 — Present",
         company: "",
         description: [
             "Active contributor in GirlScript Summer of Code 2026",

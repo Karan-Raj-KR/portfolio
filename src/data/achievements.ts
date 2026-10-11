@@ -8,7 +8,7 @@ export type AchievementCategory =
 export interface Achievement {
     title: string;
     organization: string;
-    date: string;
+    date?: string;
     description: string;
     metric: string;
     category: AchievementCategory;
@@ -101,7 +101,6 @@ export const achievements: Achievement[] = [
     {
         title: "Open Source Contributor",
         organization: "GirlScript Summer of Code",
-        date: "2026",
         description: "Merged 18 pull requests as part of GSSoC 2026 (CommitPulse).",
         metric: "18 PRs Merged",
         category: "open-source",

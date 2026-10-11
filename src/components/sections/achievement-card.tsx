@@ -17,7 +17,7 @@ export function AchievementCard({ item }: { item: Achievement }) {
       </div>
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-t border-border pt-4 gap-2 sm:gap-0">
         <span className="text-sm font-medium text-foreground break-words">{item.metric}</span>
-        <span className="text-xs text-muted-foreground shrink-0">{item.date}</span>
+        {item.date && <span className="text-xs text-muted-foreground shrink-0">{item.date}</span>}
       </div>
       {item.link && (
         <div className="mt-4 border-t border-border/50 pt-4">

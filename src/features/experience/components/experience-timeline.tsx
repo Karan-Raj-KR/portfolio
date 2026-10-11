@@ -28,7 +28,7 @@ export function Experience() {
                         <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-muted-foreground ring-4 ring-background" />
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                             <h3 className="text-xl font-semibold text-foreground">{item.role}</h3>
-                            <span className="text-sm font-light text-muted-foreground">{item.period}</span>
+                            {item.period && <span className="text-sm font-light text-muted-foreground">{item.period}</span>}
                         </div>
                         {item.company && <div className="mb-4 text-base font-medium text-muted-foreground/80">{item.company}</div>}
                         <ul className="max-w-2xl text-muted-foreground dark:text-gray-400 list-disc pl-4 space-y-1">
