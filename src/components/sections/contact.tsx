@@ -28,7 +28,7 @@ export function Contact() {
           transition={{ delay: 0.1 }}
           className="max-w-[600px] text-lg text-muted-foreground md:text-xl space-y-4 break-words"
         >
-          <span className="block">I build backends, compete at hackathons, and co-run a digital agency in Bangalore. If you have something worth building — let's talk.</span>
+          <span className="block">I build products and run KĀRYO in Bengaluru. Let’s build something together.</span>
         </motion.p>
 
         <motion.div

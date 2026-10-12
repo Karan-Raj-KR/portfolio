@@ -7,37 +7,61 @@ import Link from "next/link";
 
 const hackathons = [
   {
-    title: "1st Place Winner",
-    organization: "Open Loop Hackathon",
-    date: "April 2026",
-    description: "Built FormPilot, an AI-powered Chrome extension, competing against 121 teams from 109 colleges.",
-    summary: "1st Place | FormPilot | React, Chrome APIs, LLMs",
-    metric: "Rank 1 / 121 teams · 109 colleges · 14 states",
-    link: "/hackathons/open-loop-2026"
+    "title": "1st place",
+    "organization": "Open Loop 2026",
+    "date": "25–26 Apr 2026",
+    "description": "FormPilot, an AI Chrome extension, built by Karan Raj KR, Havinash and Saagnik. Yenepoya, Mangaluru.",
+    "summary": "309 participants · 121 teams · 109 colleges · 14 states",
+    "metric": "80/100 vs 60/100 · ₹20,000 prize",
+    "link": "/hackathons/open-loop-2026"
   },
   {
-    title: "Finalist",
-    organization: "HackBLR 2026",
-    date: "April 2026",
-    description: "Selected as a finalist out of 2,500+ teams. Built VoiceRx, a voice-first health AI assistant solo.",
-    summary: "Finalist | VoiceRx | FastAPI, Vapi, Groq, Qdrant",
-    metric: "Top 40 / 2,500+ teams"
+    "title": "Top 40",
+    "organization": "Hack BLR 2026",
+    "date": "2026",
+    "description": "VoiceRx, a voice health assistant built solo with Vapi, FastAPI, Qdrant and Groq.",
+    "summary": "Solo build",
+    "metric": "Top 40 of 2,500+ teams"
   },
   {
-    title: "Participant",
-    organization: "Agentathon 2026",
-    date: "2026",
-    description: "Built a 4-agent CrewAI pipeline that qualifies local business leads and drafts personalized cold outreach.",
-    summary: "Participant | Lead Intelligence Agent | CrewAI, Python, Groq",
-    metric: "Multi-Agent"
+    "title": "Top 50",
+    "organization": "OpenAI DevDay Exchange community hackathon",
+    "date": "10 Oct 2026",
+    "description": "Top 50 at the OpenAI DevDay Exchange community hackathon in Bengaluru.",
+    "summary": "Bengaluru",
+    "metric": "Top 50"
   },
   {
-    title: "Participant",
-    organization: "Databricks Hackathon",
-    date: "2026",
-    description: "Built Court Backlog Predictor ML pipeline using PySpark, MLflow, and Delta Lake.",
-    summary: "Participant | Court Backlog Predictor | PySpark, MLflow, Delta Lake",
-    metric: "Solo Build"
+    "title": "Winner",
+    "organization": "Ideathon",
+    "date": "2026",
+    "description": "Won an Ideathon.",
+    "summary": "Ideathon winner",
+    "metric": "Win"
+  },
+  {
+    "title": "Participated",
+    "organization": "TakeOver’26",
+    "date": "2026",
+    "description": "24-hour live build session with Havinash and Saagnik at NIAT KKH, Hyderabad.",
+    "summary": "Team build session",
+    "metric": "24 hours"
+  },
+  {
+    "title": "Internal round",
+    "organization": "Smart India Hackathon 2026",
+    "date": "2026",
+    "description": "Presented EdgeWake for an ISRO problem statement at the internal round.",
+    "summary": "EdgeWake · ISRO problem statement",
+    "metric": "Presented"
+  },
+  {
+    "title": "Participated",
+    "organization": "Agentathon",
+    "date": "2026",
+    "description": "Participated with the KĀRYO Lead Intelligence Agent, a CrewAI multi-agent pipeline.",
+    "summary": "KĀRYO Lead Intelligence Agent · CrewAI",
+    "metric": "Participated"
   }
 ];
 
@@ -75,7 +99,7 @@ export function Hackathon({ titleAs: Title = "h2", title = "Competitive Building
         </div>
         <Title className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">{title}</Title>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          A look at the projects and prototypes I've built under intense time constraints. Hackathons are my favorite way to experiment with new technologies and rapidly validate ideas. Here you'll find a collection of my competitive builds, ranging from AI voice assistants to data engineering pipelines.
+          2× wins: Open Loop 2026 and an Ideathon. Results, team builds and participation below.
         </p>
       </motion.div>
 

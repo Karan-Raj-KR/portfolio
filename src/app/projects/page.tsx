@@ -1,29 +1,39 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { BreadcrumbJsonLd, ProjectJsonLd } from "@/components/seo/json-ld";
+import { Header } from "@/components/layout/header";
 import { projects } from "@/data/projects";
 
 export const metadata = {
   title: "Projects",
-  description: "Case studies of what I've built — hackathon wins, agents, and tools, each starting with what actually happened.",
+  description: "Case studies of projects built by Karan Raj KR — hackathon wins, multi-agent AI systems, and Chrome extensions.",
   alternates: {
     canonical: "/projects",
+  },
+  openGraph: {
+    title: "Projects | Karan Raj KR",
+    description: "Case studies of projects built by Karan Raj KR — hackathon wins, multi-agent AI systems, and Chrome extensions.",
+    url: "https://www.karanrajkr.com/projects",
   },
 };
 
 export default function ProjectsList() {
   return (
     <main className="container mx-auto px-4 py-24 md:px-6">
+      <Header />
+      <ProjectJsonLd />
       <BreadcrumbJsonLd
         items={[
           { name: "Home", url: "https://www.karanrajkr.com/" },
           { name: "Projects", url: "https://www.karanrajkr.com/projects" },
         ]}
       />
-      <h1 className="mb-8 text-4xl font-bold tracking-tight">Projects</h1>
-      <p className="mb-12 max-w-2xl text-lg text-muted-foreground">
-        Each case study starts with what actually happened, not the feature list.
-      </p>
+      <div className="pt-12">
+        <h1 className="mb-4 text-4xl md:text-5xl font-bold tracking-tight">Projects</h1>
+        <p className="mb-12 max-w-2xl text-lg text-muted-foreground">
+          Each case study starts with what actually happened, not the feature list.
+        </p>
+      </div>
 
       <div className="border-t border-border">
         {projects.map((project) => (

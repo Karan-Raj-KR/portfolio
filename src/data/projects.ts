@@ -6,15 +6,15 @@ export interface Project {
     tags: string[];
     metrics: { label: string; value: string }[];
     overview: string;
-    problem: string;
-    solution: string;
-    architecture: string;
+    problem?: string;
+    solution?: string;
+    architecture?: string;
     techStack: string[];
     features: string[];
-    challenges: string;
-    results: string;
-    lessons: string;
-    timeline: string;
+    challenges?: string;
+    results?: string;
+    lessons?: string;
+    timeline?: string;
     assets: {
         type: "image" | "gif";
         url: string; // Placeholder string
@@ -26,134 +26,260 @@ export interface Project {
         code: string | null;
     };
     story?: string;
+    collaborators?: string[];
 }
 
 export const projects: Project[] = [
-    {
-        slug: "formpilot",
-        title: "FormPilot",
-        subtitle: "Chrome Extension · April 2026",
-        description: "AI-powered Chrome extension that scans any web form, understands field context with LLMs, and autofills inputs with multi-profile support. Built as a team of 3 at Open Loop 2026.",
-        tags: ["Manifest V3", "React", "TypeScript", "TailwindCSS", "Vite", "LLM"],
-        metrics: [
-            { label: "Placement", value: "1st Place" },
-            { label: "Score", value: "80/100" },
-            { label: "Team", value: "3 builders" }
-        ],
-        overview: "FormPilot is a BYOK Chrome extension that intelligently autofills complex web forms using LLMs. We built it as a team of 3 (Karan Raj KR, Havinash, Saagnik Dey — extension work led by Havinash) and won 1st place at the Open Loop 2026 hackathon. It is now live on the Chrome Web Store.",
-        problem: "Users waste hours filling out repetitive, complex forms (job applications, grants, registrations). Traditional autofill is dumb—it relies on exact field name matches and fails on long-form text or nuanced dropdowns.",
-        solution: "FormPilot injects a content script to scrape the DOM for input fields, passes their context to an LLM along with the user's selected profile, and maps the AI's structured JSON response back into the form fields.",
-        architecture: "Vite + React frontend for the popup UI. Background service workers handle API communication. Content scripts manipulate the active page's DOM. All data is stored locally using Chrome Storage API.",
-        techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Chrome Extension API (Manifest V3)", "OpenAI/Groq API"],
-        features: [
-            "Multi-profile support (e.g., Job Seeker, Investor)",
-            "Intelligent dropdown matching",
-            "Long-form text generation (cover letters, summaries)",
-            "100% local storage of personal data",
-            "Bring Your Own Key (BYOK) architecture"
-        ],
-        challenges: "Handling dynamic form fields rendered by frameworks like React or Vue, which often swallow native DOM events. We had to simulate authentic user input events (input, change, blur) to trigger framework state updates.",
-        results: "Won 1st Place at Open Loop 2026 against 121 teams from 109 colleges across 14 states, scoring 80/100 (runner-up scored 60/100). ₹20,000 prize. Now live on the Chrome Web Store.",
-        lessons: "Learned the intricacies of Manifest V3, service worker lifecycles, and the importance of simulating trusted events in modern web apps.",
-        timeline: "Built in 24 hours (April 2026)",
-        assets: [
-            { type: "image", url: "placeholder", alt: "FormPilot Popup UI" },
-            { type: "gif", url: "placeholder", alt: "FormPilot autofilling a complex job application" }
-        ],
-        links: {
-            demo: "https://form-pilot.netlify.app/",
-            store: "https://chromewebstore.google.com/detail/formpilot/ffkpekcnpbafklidejfbhinahahaabfi",
-            code: "https://github.com/Karan-Raj-KR/FormPilot",
-        },
-    },
-    {
-        slug: "voicerx",
-        title: "VoiceRx",
-        subtitle: "HackBLR 2026",
-        description: "AI voice health assistant for patients without doctor access — built at HackBLR 2026",
-        tags: ["FastAPI", "Vapi", "Qdrant", "Groq", "RAG"],
-        metrics: [
-            { label: "Status", value: "Finalist" },
-            { label: "Teams", value: "2,500+" }
-        ],
-        overview: "VoiceRx is an AI voice health assistant providing accessible preliminary medical information to patients without immediate access to doctors.",
-        problem: "In many regions, wait times for doctors are extensive, and patients lack a reliable way to get immediate, conversational answers about symptoms or medications without resorting to anxiety-inducing web searches.",
-        solution: "A voice-first interface powered by Vapi and Groq, utilizing a custom RAG (Retrieval-Augmented Generation) pipeline backed by Qdrant vector database to ensure medical accuracy.",
-        architecture: "FastAPI backend handles webhooks and RAG logic. Qdrant stores medical embeddings. Groq provides ultra-fast LLM inference, and Vapi orchestrates the voice synthesis and recognition.",
-        techStack: ["Python", "FastAPI", "Vapi", "Qdrant", "Groq", "LangChain"],
-        features: [
-            "Real-time voice conversation",
-            "RAG-backed medical knowledge base",
-            "Low-latency responses (<500ms)",
-            "Symptom triage logic"
-        ],
-        challenges: "Reducing latency in the voice pipeline. The combination of STT (Speech-to-Text), RAG retrieval, LLM generation, and TTS (Text-to-Speech) initially took over 2 seconds. Optimized by streaming chunks and using Groq.",
-        results: "Selected as a Finalist at HackBLR 2026 out of 2,500+ teams across India.",
-        lessons: "Deep dive into real-time voice architectures and latency optimization for LLMs.",
-        timeline: "April 2026",
-        assets: [
-            { type: "image", url: "placeholder", alt: "VoiceRx Architecture Diagram" }
-        ],
-        links: { demo: null, code: "https://github.com/Karan-Raj-KR/VoiceRx" },
-    },
-    {
-        slug: "karyo-agent",
-        title: "KĀRYO Lead Intelligence Agent",
-        subtitle: "Agentathon 2026",
-        description: "4-agent CrewAI pipeline that qualifies local business leads and drafts personalized cold outreach — built for KĀRYO's real sales workflow.",
-        tags: ["CrewAI", "Groq", "Pydantic", "Python"],
-        metrics: [
-            { label: "Agents", value: "4" },
-            { label: "Workflow", value: "Automated" }
-        ],
-        overview: "An automated lead generation and qualification pipeline built to support KĀRYO's door-to-door sales efforts in Bangalore.",
-        problem: "Manually researching local businesses, checking if they have a website, and drafting personalized outreach is incredibly time-consuming and scales poorly.",
-        solution: "A multi-agent system using CrewAI. Agent 1 scrapes local directories. Agent 2 qualifies leads based on digital footprint. Agent 3 drafts personalized outreach. Agent 4 reviews and formats the output.",
-        architecture: "Python scripts orchestrating CrewAI with Groq as the LLM engine for cost-effective, rapid reasoning. Outputs are structured using Pydantic and exported to .docx.",
-        techStack: ["Python", "CrewAI", "Groq", "Pydantic", "BeautifulSoup"],
-        features: [
-            "Automated lead scraping",
-            "Digital footprint analysis (Website/GMB presence)",
-            "Personalized pitch generation",
-            "Self-correction loop for quality assurance",
-            "Structured .docx output"
-        ],
-        challenges: "Preventing hallucinations in the qualification agent. Enforced strict JSON schema outputs using Pydantic to ensure reliable data passing between agents.",
-        results: "Significantly accelerated KĀRYO's prospecting phase, generating dozens of highly qualified leads per run.",
-        lessons: "Learned the complexities of multi-agent orchestration and the importance of structured outputs in LLM chains.",
-        timeline: "2026",
-        assets: [
-            { type: "image", url: "placeholder", alt: "CrewAI Agent Graph" }
-        ],
-        links: { demo: null, code: "https://github.com/Karan-Raj-KR/karyo-agent" },
-    },
-    {
-        slug: "court-backlog-predictor",
-        title: "Court Backlog Predictor",
-        subtitle: "Databricks Hackathon",
-        description: "ML model predicting court case backlog trends — built solo at Databricks Hackathon",
-        tags: ["PySpark", "MLflow", "Delta Lake", "Unity Catalog", "Jupyter"],
-        metrics: [
-            { label: "Tech", value: "Databricks" }
-        ],
-        overview: "A machine learning pipeline built on Databricks to analyze and predict judicial backlog trends across various courts.",
-        problem: "Court systems are overwhelmed, and administrative bodies lack predictive insights to allocate resources or judges efficiently.",
-        solution: "Leveraged PySpark to process historical case data and train regression models to forecast future backlog severity by case type and jurisdiction.",
-        architecture: "Data ingested into Delta Lake, managed via Unity Catalog. PySpark handles distributed data processing and model training, with MLflow tracking experiments.",
-        techStack: ["PySpark", "MLflow", "Delta Lake", "Databricks Unity Catalog", "Python"],
-        features: [
-            "Distributed data processing",
-            "Predictive modeling for case duration",
-            "Automated experiment tracking",
-            "Data governance via Unity Catalog"
-        ],
-        challenges: "Handling messy, unstructured historical legal data required extensive cleaning and normalization before feature engineering could begin.",
-        results: "Successfully built and deployed a predictive pipeline during the Databricks Hackathon.",
-        lessons: "Gained hands-on experience with the modern data lakehouse architecture and distributed ML workflows.",
-        timeline: "2026",
-        assets: [
-            { type: "image", url: "placeholder", alt: "Databricks MLflow Dashboard" }
-        ],
-        links: { demo: null, code: "https://github.com/Karan-Raj-KR/court-backlog-predictor" },
+  {
+    "slug": "client-onboarding-manager",
+    "title": "KĀRYO Client Onboarding Manager",
+    "subtitle": "AI agent",
+    "description": "AI agent for quotations, GST invoices and payment automation.",
+    "overview": "AI agent for quotations, GST invoices and payment automation.",
+    "story": "AI agent for quotations, GST invoices and payment automation.",
+    "tags": [
+      "Next.js",
+      "Groq",
+      "Supabase"
+    ],
+    "techStack": [
+      "Next.js",
+      "Groq",
+      "Supabase"
+    ],
+    "features": [
+      "Quotations",
+      "GST invoices",
+      "Payment automation"
+    ],
+    "metrics": [],
+    "assets": [],
+    "links": {
+      "demo": "https://karyo-client-onboarding-manager.vercel.app",
+      "code": "https://github.com/Karan-Raj-KR/Client-Onboarding-Manager"
     }
+  },
+  {
+    "slug": "school-erp",
+    "title": "School ERP",
+    "subtitle": "Demo product",
+    "description": "School ERP demo with ~45 routes: students, fees, exams, attendance, a parent portal and Ask ERP, an AI query feature.",
+    "overview": "School ERP demo with ~45 routes: students, fees, exams, attendance, a parent portal and Ask ERP, an AI query feature.",
+    "story": "School ERP demo with ~45 routes: students, fees, exams, attendance, a parent portal and Ask ERP, an AI query feature.",
+    "tags": [
+      "Next.js 15",
+      "Supabase"
+    ],
+    "techStack": [
+      "Next.js 15",
+      "Supabase"
+    ],
+    "features": [
+      "Students and fees",
+      "Exams and attendance",
+      "Parent portal",
+      "Ask ERP: AI queries"
+    ],
+    "metrics": [
+      {
+        "label": "Routes",
+        "value": "~45"
+      },
+      {
+        "label": "Status",
+        "value": "Demo product"
+      }
+    ],
+    "assets": [],
+    "links": {
+      "demo": "https://erpdemo.karanrajkr.com",
+      "code": null
+    }
+  },
+  {
+    "slug": "eligent",
+    "title": "Eligent",
+    "subtitle": "Prototype in progress",
+    "description": "Opportunity discovery and autofill prototype, built with Mustafa. Prototype in progress.",
+    "overview": "Opportunity discovery and autofill prototype, built with Mustafa. Prototype in progress.",
+    "story": "Opportunity discovery and autofill prototype, built with Mustafa. Prototype in progress.",
+    "tags": [],
+    "techStack": [],
+    "features": [
+      "Opportunity discovery",
+      "Autofill"
+    ],
+    "metrics": [],
+    "assets": [],
+    "links": {
+      "demo": null,
+      "code": null
+    },
+    "collaborators": [
+      "Mustafa"
+    ]
+  },
+  {
+    "slug": "iskcon-visakhapatnam",
+    "title": "ISKCON Visakhapatnam website",
+    "subtitle": "Client project",
+    "description": "Client website for ISKCON Visakhapatnam.",
+    "overview": "Client website for ISKCON Visakhapatnam.",
+    "story": "Client website for ISKCON Visakhapatnam.",
+    "tags": [
+      "Next.js 14",
+      "Tailwind"
+    ],
+    "techStack": [
+      "Next.js 14",
+      "Tailwind"
+    ],
+    "features": [
+      "Client website"
+    ],
+    "metrics": [],
+    "assets": [],
+    "links": {
+      "demo": null,
+      "code": null
+    }
+  },
+  {
+    "slug": "karyo-agent",
+    "title": "KĀRYO Lead Intelligence Agent",
+    "subtitle": "Agentathon · Participated",
+    "description": "CrewAI multi-agent pipeline. Participated in Agentathon with this project.",
+    "overview": "CrewAI multi-agent pipeline. Participated in Agentathon with this project.",
+    "story": "CrewAI multi-agent pipeline. Participated in Agentathon with this project.",
+    "tags": [
+      "CrewAI"
+    ],
+    "techStack": [
+      "CrewAI"
+    ],
+    "features": [
+      "Multi-agent pipeline"
+    ],
+    "metrics": [],
+    "assets": [],
+    "links": {
+      "demo": null,
+      "code": null
+    }
+  },
+  {
+    "slug": "crewai-recipes",
+    "title": "crewai-recipes",
+    "subtitle": "Open source · ECSoC Project Admin",
+    "description": "Open-source CrewAI templates using NVIDIA NIM. MIT licensed, with 9 forks. ECSoC Project Admin.",
+    "overview": "Open-source CrewAI templates using NVIDIA NIM. MIT licensed, with 9 forks. ECSoC Project Admin.",
+    "story": "Open-source CrewAI templates using NVIDIA NIM. MIT licensed, with 9 forks. ECSoC Project Admin.",
+    "tags": [
+      "CrewAI",
+      "NVIDIA NIM"
+    ],
+    "techStack": [
+      "CrewAI",
+      "NVIDIA NIM"
+    ],
+    "features": [
+      "Open-source templates",
+      "MIT license"
+    ],
+    "metrics": [
+      {
+        "label": "Forks",
+        "value": "9"
+      },
+      {
+        "label": "Role",
+        "value": "ECSoC Project Admin"
+      }
+    ],
+    "assets": [],
+    "links": {
+      "demo": null,
+      "code": "https://github.com/Karan-Raj-KR/crewai-recipes"
+    }
+  },
+  {
+    "slug": "formpilot",
+    "title": "FormPilot",
+    "subtitle": "Open Loop 2026 · 1st place",
+    "description": "AI Chrome extension built by Karan Raj KR, Havinash and Saagnik. Our team won 1st place at Open Loop 2026.",
+    "overview": "AI Chrome extension built by Karan Raj KR, Havinash and Saagnik. Our team won 1st place at Open Loop 2026.",
+    "story": "AI Chrome extension built by Karan Raj KR, Havinash and Saagnik. Our team won 1st place at Open Loop 2026.",
+    "tags": [
+      "Chrome Extension"
+    ],
+    "techStack": [
+      "Chrome Extension"
+    ],
+    "features": [
+      "AI form filling"
+    ],
+    "metrics": [
+      {
+        "label": "Placement",
+        "value": "1st place"
+      },
+      {
+        "label": "Score",
+        "value": "80/100"
+      },
+      {
+        "label": "Team",
+        "value": "3 builders"
+      }
+    ],
+    "assets": [],
+    "links": {
+      "demo": null,
+      "code": null
+    },
+    "collaborators": [
+      "Havinash",
+      "Saagnik"
+    ],
+    "timeline": "25–26 Apr 2026 · Yenepoya, Mangaluru",
+    "results": "1st place among 121 teams: 309 participants, 109 colleges, 14 states. Scored 80/100 vs 60/100. ₹20,000 prize."
+  },
+  {
+    "slug": "voicerx",
+    "title": "VoiceRx",
+    "subtitle": "Hack BLR 2026 · Top 40",
+    "description": "Voice health assistant built solo at Hack BLR 2026. Top 40 of 2,500+ teams.",
+    "overview": "Voice health assistant built solo at Hack BLR 2026. Top 40 of 2,500+ teams.",
+    "story": "Voice health assistant built solo at Hack BLR 2026. Top 40 of 2,500+ teams.",
+    "tags": [
+      "Vapi",
+      "FastAPI",
+      "Qdrant",
+      "Groq"
+    ],
+    "techStack": [
+      "Vapi",
+      "FastAPI",
+      "Qdrant",
+      "Groq"
+    ],
+    "features": [
+      "Voice health assistant"
+    ],
+    "metrics": [
+      {
+        "label": "Result",
+        "value": "Top 40"
+      },
+      {
+        "label": "Team",
+        "value": "Solo"
+      }
+    ],
+    "assets": [],
+    "links": {
+      "demo": null,
+      "code": null
+    }
+  }
 ];

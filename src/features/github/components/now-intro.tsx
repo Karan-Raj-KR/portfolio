@@ -17,8 +17,7 @@ export function NowIntro() {
             </div>
             <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-5xl">Currently Building</h2>
             <p className="text-xl leading-relaxed text-muted-foreground md:text-2xl">
-                Currently building a production SaaS that automates agency client onboarding
-                end-to-end — document generation, e-signing, GST invoicing, and payment tracking.
+                Building the KĀRYO Client Onboarding Manager for quotations, GST invoices and payment automation. Eligent, built with Mustafa, is a prototype in progress. Currently running for EDC (Entrepreneurship Development Cell) President.
             </p>
         </motion.div>
     );

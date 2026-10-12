@@ -1,45 +1,58 @@
 import React from "react";
+import { personSameAs } from "@/lib/social";
+import { galleryItems } from "@/data/gallery";
+import { projects } from "@/data/projects";
+
+export const CANONICAL_PERSON_ID = "https://www.karanrajkr.com/#person";
+export const CANONICAL_WEBSITE_ID = "https://www.karanrajkr.com/#website";
 
 export function SiteJsonLd() {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Karan Raj KR",
-    "alternateName": "Karan Raj",
-    "url": "https://www.karanrajkr.com",
-    "image": "https://www.karanrajkr.com/karan-raj-kr-ai-engineer.jpeg",
-    "jobTitle": "AI Engineer & Backend Developer",
-    "worksFor": {
+    "@id": CANONICAL_PERSON_ID,
+    name: "Karan Raj KR",
+    alternateName: ["Karan Raj K R", "Karan Raj"],
+    url: "https://www.karanrajkr.com",
+    image: "https://www.karanrajkr.com/karan-raj-kr-ai-engineer.jpeg",
+    jobTitle: "Founder, KĀRYO",
+    description:
+      "Karan Raj KR is Founder, KĀRYO; a builder, hackathon winner, open-source contributor and content creator from Gubbi, Tumkur. B.Tech CSE (AI/ML), NIAT–S-VYASA, Bengaluru, batch 2025–29. Running for EDC (Entrepreneurship Development Cell) President. 6 figures in revenue through agencies and products. 18 merged PRs in GSSoC 2026.",
+    worksFor: {
       "@type": "Organization",
-      "name": "KĀRYO"
+      name: "KĀRYO",
+      url: "https://www.karanrajkr.com",
     },
-    "affiliation": {
+    affiliation: {
       "@type": "CollegeOrUniversity",
-      "name": "NIAT–S-VYASA University"
+      name: "NIAT–S-VYASA University",
     },
-    "address": {
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Bengaluru",
-      "addressCountry": "IN"
+      addressLocality: "Bengaluru",
+      addressRegion: "Karnataka",
+      addressCountry: "IN",
     },
-    "knowsAbout": [
-      "Artificial Intelligence",
-      "Backend Development",
-      "Python",
-      "FastAPI",
-      "Next.js",
-      "Machine Learning",
-      "Large Language Models (LLMs)"
+    homeLocation: { "@type": "Place", name: "Gubbi, Tumkur" },
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      name: "B.Tech CSE (AI/ML), NIAT–S-VYASA, Bengaluru · Batch 2025–29 · In progress",
+      credentialCategory: "Degree in progress",
+    },
+    award: [
+      "GRIT Awards 2026 — Content",
+      "GRIT Awards 2026 — Hackathons",
+      "Technology Innovators Award — 10 Aug 2026",
+      "Open Loop 2026 — 1st place with Havinash and Saagnik",
+      "Ideathon — Winner",
+      "Hack BLR 2026 — Top 40, solo, of 2,500+ teams",
+      "OpenAI DevDay Exchange community hackathon — Top 50, Bengaluru, 10 Oct 2026",
     ],
-    "sameAs": [
-      "https://github.com/Karan-Raj-KR",
-      "https://linkedin.com/in/karanrajkr",
-      "https://twitter.com/karan_raj_kr",
-      "https://instagram.com/karan.rajkr",
-      "https://karanrajkr.hashnode.dev",
-      "https://dev.to/karanrajkr",
-      "https://youtube.com/@KaranRajKR"
-    ]
+    knowsAbout: [
+      "Next.js", "React", "TypeScript", "Tailwind", "Supabase", "Python", "FastAPI",
+      "Groq", "NVIDIA NIM", "CrewAI", "MCP", "Claude Code", "Vercel", "Docker", "AWS Bedrock",
+    ],
+    sameAs: personSameAs,
   };
 
   const orgSchema = {
@@ -47,30 +60,31 @@ export function SiteJsonLd() {
     "@type": "Organization",
     name: "KĀRYO",
     url: "https://www.karanrajkr.com",
-    logo: "https://www.karanrajkr.com/og-image.jpg",
-    description: "A digital studio helping local businesses get online.",
-    founders: [
-      {
-        "@type": "Person",
-        name: "Karan Raj KR",
-      },
-      {
-        "@type": "Person",
-        name: "Havinash",
-      }
-    ]
+    logo: "https://www.karanrajkr.com/og-image.png",
+    description: "A digital studio helping local businesses build high-performance online presence.",
+    foundingDate: "2025-08",
+    founder: {
+      "@id": CANONICAL_PERSON_ID,
+    },
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Karan Raj KR - Portfolio",
+    "@id": CANONICAL_WEBSITE_ID,
+    name: "Karan Raj KR | Portfolio",
     url: "https://www.karanrajkr.com",
+    author: {
+      "@id": CANONICAL_PERSON_ID,
+    },
+    publisher: {
+      "@id": CANONICAL_PERSON_ID,
+    },
     potentialAction: {
       "@type": "SearchAction",
       target: "https://www.karanrajkr.com/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return (
@@ -83,46 +97,83 @@ export function SiteJsonLd() {
   );
 }
 
+export function ProfilePageJsonLd() {
+  const profilePageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": "https://www.karanrajkr.com/about#profilepage",
+    url: "https://www.karanrajkr.com/about",
+    name: "About Karan Raj KR",
+    description:
+      "Background, engineering focus, hackathon accomplishments, and verified social profiles for Karan Raj KR.",
+    mainEntity: {
+      "@id": CANONICAL_PERSON_ID,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+    />
+  );
+}
+
+export function GalleryJsonLd() {
+  const gallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "@id": "https://www.karanrajkr.com/gallery#gallery",
+    name: "Karan Raj KR — Media & Photography Gallery",
+    description:
+      "Verified photographs, certificates, and technical engineering diagrams for Karan Raj KR.",
+    url: "https://www.karanrajkr.com/gallery",
+    author: {
+      "@id": CANONICAL_PERSON_ID,
+    },
+    image: galleryItems.map((item) => ({
+      "@type": "ImageObject",
+      contentUrl: `https://www.karanrajkr.com${item.imageUrl}`,
+      name: item.title,
+      caption: item.caption,
+      description: item.description,
+      datePublished: item.date,
+      width: item.width,
+      height: item.height,
+      author: {
+        "@id": CANONICAL_PERSON_ID,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
+    />
+  );
+}
+
 export function ProjectJsonLd() {
   const projectsSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: [
-      {
+    name: "Projects by Karan Raj KR",
+    itemListElement: projects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
         "@type": "SoftwareApplication",
-        position: 1,
-        name: "FormPilot",
-        applicationCategory: "BrowserExtension",
-        operatingSystem: "Chrome",
-        url: "https://form-pilot.netlify.app/",
-        author: {
-          "@type": "Person",
-          name: "Karan Raj KR",
-        },
+        name: project.title,
+        description: project.overview,
+        applicationCategory: project.slug === "formpilot" ? "BrowserExtension" : project.slug === "voicerx" ? "HealthApplication" : "BusinessApplication",
+        url: `https://www.karanrajkr.com/projects/${project.slug}`,
+        author: [
+          { "@id": CANONICAL_PERSON_ID },
+          ...(project.collaborators ?? []).map((name) => ({ "@type": "Person", name })),
+        ],
       },
-      {
-        "@type": "SoftwareApplication",
-        position: 2,
-        name: "VoiceRx",
-        applicationCategory: "HealthApplication",
-        operatingSystem: "Web",
-        author: {
-          "@type": "Person",
-          name: "Karan Raj KR",
-        },
-      },
-      {
-        "@type": "SoftwareApplication",
-        position: 3,
-        name: "KĀRYO Lead Intelligence Agent",
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Any",
-        author: {
-          "@type": "Person",
-          name: "Karan Raj KR",
-        },
-      }
-    ]
+    })),
   };
 
   return (

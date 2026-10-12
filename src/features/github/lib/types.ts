@@ -87,6 +87,7 @@ export interface LanguageStat {
 }
 
 export interface GitHubStats {
+    unavailable?: boolean;
     username: string;
     profileUrl: string;
     followers: number;

@@ -9,15 +9,15 @@ import { ExternalLink } from "lucide-react";
 
 export const metadata = {
   title: "Blog",
-  description: "Read my latest articles about AI Engineering, Backend Development, and building products.",
+  description: "Read articles by Karan Raj KR about AI Engineering, Backend Development, and building products.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "Blog",
-    description: "Read my latest articles about AI Engineering, Backend Development, and building products.",
+    title: "Blog | Karan Raj KR",
+    description: "Read articles by Karan Raj KR about AI Engineering, Backend Development, and building products.",
     url: "https://www.karanrajkr.com/blog",
-    images: [{ url: publications[0]?.coverImage || "/og-image.jpg" }]
+    images: [{ url: publications[0]?.coverImage || "/og-image.png" }]
   }
 };
 
@@ -45,6 +45,11 @@ export default function BlogList() {
     "@type": "Blog",
     "name": "Blog | Karan Raj KR",
     "url": "https://www.karanrajkr.com/blog",
+    "author": {
+      "@type": "Person",
+      "@id": "https://www.karanrajkr.com/#person",
+      "name": "Karan Raj KR",
+    },
     "blogPost": sortedArticles.map((article) => ({
       "@type": "BlogPosting",
       "headline": article.title,
@@ -53,7 +58,8 @@ export default function BlogList() {
       "description": article.excerpt,
       "author": {
         "@type": "Person",
-        "name": "Karan Raj KR"
+        "@id": "https://www.karanrajkr.com/#person",
+        "name": "Karan Raj KR",
       }
     }))
   };
@@ -75,7 +81,7 @@ export default function BlogList() {
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">Blog</h1>
         <p className="max-w-2xl text-lg text-muted-foreground">
-          I write about my journey in AI engineering, backend development, and building products. You'll find technical deep dives, hackathon build logs, and reflections on creating scalable systems. My goal is to share practical insights that can help other developers build better software.
+          Build notes, hackathon stories and lessons from engineering and entrepreneurship.
         </p>
       </div>
 

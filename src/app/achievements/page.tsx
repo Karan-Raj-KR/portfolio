@@ -9,7 +9,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 export const metadata: Metadata = {
   title: "Achievements",
   description:
-    "Hackathon wins, open-source contributions, and milestones — a complete record of what I've won, shipped, and built.",
+    "Hackathon wins, open-source contributions, and engineering milestones achieved by Karan Raj KR.",
   alternates: {
     canonical: "/achievements",
   },

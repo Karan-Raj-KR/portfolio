@@ -2,55 +2,32 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
-import {
-    Code, FileJson, Terminal, Wind,
-    Database, Cpu, Server, Layers, Workflow,
-    MonitorSmartphone, LayoutTemplate, Atom, Triangle, MessageSquare, Sparkles, Bot, Link as LinkIcon, Code2, GitBranch, Github, Cloud, Rocket, Network
-} from "lucide-react";
-
-const skillCategories = [
-    {
-        title: "Languages & Frameworks",
-        description: "Python, JavaScript/TypeScript, React, Next.js, FastAPI. The core building blocks for scalable backends and highly interactive frontends.",
-    },
-    {
-        title: "AI & Data Engineering",
-        description: "LLM Integration, RAG Pipelines, Prompt Engineering, CrewAI, Qdrant, Databricks. Bridging generative AI with robust data infrastructures.",
-    },
-    {
-        title: "Infrastructure & Tooling",
-        description: "Git, Vercel, n8n, REST APIs, Chrome Extensions. Focused on seamless deployment, automated workflows, and developer productivity.",
-    }
-];
+import { Triangle, Atom, FileJson, Wind, Database, Server, Cpu, Bot, Network, Code2, Cloud, Layers } from "lucide-react";
 
 const skillRows = [
     [
-        { name: "JavaScript", icon: <FileJson className="h-4 w-4" /> },
-        { name: "Python", icon: <Terminal className="h-4 w-4" /> },
-        { name: "React", icon: <Atom className="h-4 w-4" /> },
         { name: "Next.js", icon: <Triangle className="h-4 w-4" /> },
-        { name: "Node.js", icon: <Server className="h-4 w-4" /> },
-        { name: "Tailwind CSS", icon: <Wind className="h-4 w-4" /> },
+        { name: "React", icon: <Atom className="h-4 w-4" /> },
+        { name: "TypeScript", icon: <FileJson className="h-4 w-4" /> },
+        { name: "Tailwind", icon: <Wind className="h-4 w-4" /> },
+        { name: "Supabase", icon: <Database className="h-4 w-4" /> },
+        { name: "Python/FastAPI", icon: <Server className="h-4 w-4" /> }
     ],
     [
-        { name: "Prompt Engineering", icon: <MessageSquare className="h-4 w-4" /> },
-        { name: "Generative AI", icon: <Sparkles className="h-4 w-4" /> },
-        { name: "AI Agents", icon: <Bot className="h-4 w-4" /> },
-        { name: "LLM Integration", icon: <LinkIcon className="h-4 w-4" /> },
-        { name: "Claude Code", icon: <Code2 className="h-4 w-4" /> },
+        { name: "Groq", icon: <Cpu className="h-4 w-4" /> },
+        { name: "NVIDIA NIM", icon: <Cpu className="h-4 w-4" /> },
+        { name: "CrewAI", icon: <Bot className="h-4 w-4" /> },
+        { name: "MCP", icon: <Network className="h-4 w-4" /> },
+        { name: "Claude Code", icon: <Code2 className="h-4 w-4" /> }
     ],
     [
-        { name: "Git", icon: <GitBranch className="h-4 w-4" /> },
-        { name: "GitHub", icon: <Github className="h-4 w-4" /> },
         { name: "Vercel", icon: <Cloud className="h-4 w-4" /> },
-        { name: "Antigravity", icon: <Rocket className="h-4 w-4" /> },
-        { name: "n8n", icon: <Workflow className="h-4 w-4" /> },
-        { name: "MySQL", icon: <Database className="h-4 w-4" /> },
-        { name: "REST APIs", icon: <Network className="h-4 w-4" /> },
+        { name: "Docker", icon: <Layers className="h-4 w-4" /> },
+        { name: "AWS Bedrock", icon: <Cloud className="h-4 w-4" /> }
     ]
 ];
 
-function SkillChip({ skill, index }: { skill: { name: string, icon: React.ReactNode }; index: number }) {
+function SkillChip({ skill }: { skill: { name: string, icon: React.ReactNode } }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -101,7 +78,7 @@ export function Skills() {
                 transition={{ duration: 0.8 }}
                 className="container mx-auto px-4 sm:px-6 lg:px-8 mb-16"
             >
-                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl break-words">Technical Arsenal</h2>
+                <h2 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl break-words">Skills</h2>
                 <p className="max-w-2xl text-lg text-muted-foreground mb-12">
                     Technologies and architectures I use to build scalable backends, deploy AI agents, and ship full-stack applications.
                 </p>
@@ -128,7 +105,7 @@ export function Skills() {
                             {[...Array(4)].map((_, dupIdx) => (
                                 <div key={dupIdx} className="flex gap-4 px-2" aria-hidden={dupIdx > 0 ? "true" : undefined}>
                                     {row.map((skill, i) => (
-                                        <SkillChip key={`${skill.name}-${dupIdx}-${i}`} skill={skill} index={i} />
+                                        <SkillChip key={`${skill.name}-${dupIdx}-${i}`} skill={skill} />
                                     ))}
                                 </div>
                             ))}

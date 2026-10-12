@@ -12,39 +12,61 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.karanrajkr.com"),
   title: {
-    default: 'Karan Raj KR | AI Engineer & Backend Developer',
-    template: '%s | Karan Raj KR'
+    default: "Karan Raj KR | Founder, KĀRYO",
+    template: "%s | Karan Raj KR",
   },
-  description: 'Karan Raj KR is an AI Engineer and Backend Dev building with Python, FastAPI and Next.js. Founder of KĀRYO. B.Tech CSE (AI/ML) at NIAT–S-VYASA, Bengaluru.',
-  keywords: ['Karan Raj KR', 'Karan Raj AI Engineer', 'Karan Raj Portfolio', 'Karan Raj KR', 'Karan Raj NIAT', 'Karan NIAT', 'Backend Developer', 'AI', 'FastAPI'],
-  authors: [{ name: 'Karan Raj KR' }],
-  creator: 'Karan Raj KR',
+  description:
+    "Karan Raj KR is a developer and founder based in Bengaluru, India, building AI applications, backend systems and technology products. Explore his projects, open-source work, achievements and articles.",
+  keywords: [
+    "Karan Raj KR",
+    "Karan Raj KR",
+    "Karan Raj",
+    "AI Engineer",
+    "Backend Developer",
+    "KĀRYO",
+    "FastAPI",
+    "Python",
+    "Next.js",
+    "Bengaluru",
+  ],
+  authors: [{ name: "Karan Raj KR", url: "https://www.karanrajkr.com" }],
+  creator: "Karan Raj KR",
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
-    title: 'Karan Raj KR | AI Engineer & Backend Developer',
-    description: 'Karan Raj KR is an AI Engineer and Backend Dev building with Python, FastAPI and Next.js. Founder of KĀRYO. B.Tech CSE (AI/ML) at NIAT–S-VYASA, Bengaluru.',
-    url: 'https://www.karanrajkr.com',
-    siteName: 'Karan Raj KR Portfolio',
-    images: [{ url: 'https://www.karanrajkr.com/og-image.png', width: 1200, height: 630, alt: 'Karan Raj KR - AI Engineer and Backend Developer, Founder of KĀRYO' }],
-    locale: 'en_IN',
-    type: 'website',
+    title: "Karan Raj KR | Founder, KĀRYO",
+    description:
+      "Karan Raj KR is a developer and founder based in Bengaluru, India, building AI applications, backend systems and technology products. Explore his projects, open-source work, achievements and articles.",
+    url: "https://www.karanrajkr.com",
+    siteName: "Karan Raj KR",
+    images: [
+      {
+        url: "https://www.karanrajkr.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Karan Raj KR — Founder, KĀRYO",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Karan Raj KR | AI Engineer & Backend Developer',
-    description: 'Karan Raj KR is an AI Engineer and Backend Dev building with Python, FastAPI and Next.js. Founder of KĀRYO. B.Tech CSE (AI/ML) at NIAT–S-VYASA, Bengaluru.',
-    images: ['https://www.karanrajkr.com/og-image.png'],
+    card: "summary_large_image",
+    title: "Karan Raj KR | Founder, KĀRYO",
+    description:
+      "Karan Raj KR is a developer and founder based in Bengaluru, India, building AI applications, backend systems and technology products. Explore his projects, open-source work, achievements and articles.",
+    creator: "@karan_raj_kr",
+    images: ["https://www.karanrajkr.com/og-image.png"],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "0W3wPYuowx9ekB31u-YSCyuTTf0GQeRXilZ3nagT-BM",
   },
-  manifest: "/manifest.json",
+  manifest: "/manifest.webmanifest",
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
-  }
+    icon: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 import { ThemeProvider } from "@/components/theme-provider";

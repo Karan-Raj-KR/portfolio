@@ -35,7 +35,7 @@ export function ActivityFeed({ items }: ActivityFeedProps) {
     return (
         <div className="mt-12">
             <div className="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                <span className="text-live">$</span>
+
                 <span>recent activity</span>
             </div>
             <ul className="divide-y divide-border/60 rounded-xl border border-border/60 bg-muted/10">

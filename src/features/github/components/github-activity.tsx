@@ -15,11 +15,20 @@ const STAT_DESCRIPTIONS = [
 export async function GithubActivity() {
     const stats = await getGitHubStats();
 
+    if (stats.unavailable) {
+        return (
+            <div className="mt-14 rounded-xl border border-border bg-muted/10 p-6 text-muted-foreground">
+                <p>GitHub activity is temporarily unavailable.</p>
+                <a href={stats.profileUrl} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-foreground hover:underline">View GitHub <ArrowUpRight aria-hidden="true" className="h-4 w-4" /></a>
+            </div>
+        );
+    }
+
     return (
         <div className="mt-14">
             <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
                 <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                    <span className="text-live">$</span> open-source pulse
+                    Open-source activity
                 </span>
                 <a
                     href={stats.profileUrl}

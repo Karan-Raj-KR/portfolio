@@ -49,6 +49,17 @@ export function Achievements({
                 </p>
             </motion.div>
 
+      <ul className="flex flex-wrap justify-start gap-x-6 gap-y-2 max-w-3xl mb-8 text-sm text-muted-foreground">
+        <li>6 figures · Agency and product revenue</li>
+        <li>3× awards · 2 GRIT + Technology Innovators Award</li>
+        <li>2× wins · Open Loop 2026 + Ideathon</li>
+        <li>Top 40 · Hack BLR 2026 · Solo, of 2,500+ teams</li>
+        <li>Top 50 · OpenAI DevDay Exchange community hackathon · Bengaluru, 10 Oct 2026</li>
+        <li>140+ people · Biggest ED Club event</li>
+        <li>18 merged PRs · GSSoC 2026</li>
+      </ul>
+
+
             <motion.div
                 variants={containerVariants}
                 initial="hidden"

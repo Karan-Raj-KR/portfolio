@@ -26,9 +26,9 @@ export const publications: Article[] = [
   },
   {
     slug: "my-first-year-of-engineering",
-    title: "My First Year of Engineering",
-    excerpt: "A deep dive into what I built, won, and actually learned during my first year.",
-    publishedDate: "2026-07-05",
+    title: "My First Year of Engineering: What I Built, Won, and Actually Learned",
+    excerpt: "What I built, won and learned during my first year of engineering.",
+    publishedDate: "2026-07-06",
     platforms: [
       { source: "hashnode", url: "https://karanrajkr.hashnode.dev/my-first-year-of-engineering" },
       { source: "devto", url: "https://dev.to/karanrajkr/my-first-year-of-engineering-what-i-built-won-and-actually-learned-1473" }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Globe, Users, Clock, Sparkles, Building2, Cpu } from "lucide-react";
+import { ExternalLink, Globe, Users, Building2, Cpu } from "lucide-react";
 import Link from "next/link";
 import { Tilt } from "@/components/ui/tilt";
 
@@ -46,7 +46,7 @@ export function Karyo() {
             </motion.div>
             <h2 className="text-3xl font-bold tracking-tight md:text-6xl break-words leading-tight">KĀRYO</h2>
             <p className="mt-3 max-w-lg text-lg text-muted-foreground">
-              Digital Agency · Bangalore
+              Founder, KĀRYO · Bengaluru · Founded Aug 2025
             </p>
           </div>
           <motion.div
@@ -70,10 +70,10 @@ export function Karyo() {
           <div className="max-w-3xl">
             <h3 className="text-2xl font-semibold mb-6">The Mission</h3>
             <p className="text-lg leading-relaxed text-muted-foreground mb-6">
-              KĀRYO was founded by Havinash and me to solve a critical disconnect: local businesses in Bangalore have massive potential but lack the technical literacy to establish a robust online presence.
+              I founded KĀRYO in Aug 2025. Door-to-door client outreach across Bengaluru.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              As Founder, I lead the technical architecture and digital strategy. We bypass traditional agency bloat by combining direct door-to-door client acquisition with rapid, AI-assisted development pipelines.
+              6 figures in revenue through agencies and products. Agency docs cover proposals, contracts, GST invoices and international client handling.
             </p>
           </div>
         </div>

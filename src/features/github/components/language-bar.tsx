@@ -41,7 +41,7 @@ export function LanguageBar({ languages }: LanguageBarProps) {
     return (
         <div className="mt-12">
             <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                <span className="text-live">$</span> <span>languages · by bytes</span>
+                 <span>languages · by bytes</span>
             </div>
 
             <div className="relative">

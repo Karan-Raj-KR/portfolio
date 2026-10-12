@@ -26,10 +26,44 @@ export const achievementCategories: { id: AchievementCategory; label: string }[]
 ];
 
 export const achievements: Achievement[] = [
+  {
+    "title": "Top 50",
+    "organization": "OpenAI DevDay Exchange community hackathon",
+    "date": "10 Oct 2026",
+    "description": "Top 50 at the OpenAI DevDay Exchange community hackathon, Bengaluru.",
+    "metric": "Top 50",
+    "category": "competition",
+    "featured": true
+  },
+  {
+    "title": "Creator programme selection",
+    "organization": "SPARK 2026 · NIAT",
+    "date": "2026",
+    "description": "Instagram and LinkedIn creator. Selected for SPARK 2026, the NIAT creator programme.",
+    "metric": "Selected",
+    "category": "recognition"
+  },
+  {
+    "title": "Agency and product revenue",
+    "organization": "Entrepreneurship",
+    "date": "To date",
+    "description": "Revenue through agencies and products.",
+    "metric": "6 figures",
+    "category": "entrepreneurship",
+    "featured": true
+  },
+  {
+    "title": "Finance Head · Last term",
+    "organization": "Entrepreneurship (ED) Club",
+    "date": "Last term",
+    "description": "Co-organised 4+ events. The biggest ED Club event had 140+ people.",
+    "metric": "140+ people · 4+ events",
+    "category": "entrepreneurship"
+  },
     {
         title: "Double Category Winner",
         organization: "GRIT Awards 2026 — NIAT",
-        date: "July 2026",
+        date: "2026",
         description: "Won both the Content and Hackathons categories at NIAT's annual GRIT Awards.",
         metric: "2 Categories",
         category: "competition",
@@ -37,9 +71,9 @@ export const achievements: Achievement[] = [
     },
     {
         title: "1st Place Winner",
-        organization: "Open Loop Hackathon",
+        organization: "Open Loop 2026",
         date: "April 2026",
-        description: "Built FormPilot, competing against 121 teams from 109 colleges across 14 states — 309 participants. Scored 80/100 vs the runner-up's 60/100. ₹20,000 prize.",
+        description: "Built FormPilot with Havinash and Saagnik, competing against 121 teams from 109 colleges across 14 states — 309 participants. Scored 80/100 vs the runner-up's 60/100. ₹20,000 prize.",
         metric: "Rank 1 / 121 teams",
         category: "competition",
         featured: true,
@@ -47,7 +81,7 @@ export const achievements: Achievement[] = [
     },
     {
         title: "Top 40 Finish",
-        organization: "HackBLR",
+        organization: "Hack BLR 2026",
         date: "April 2026",
         description: "Selected as a finalist out of 2,500+ teams. Built VoiceRx solo.",
         metric: "Top 40 / 2,500+ teams",
@@ -58,22 +92,14 @@ export const achievements: Achievement[] = [
         title: "Participant",
         organization: "Agentathon 2026",
         date: "2026",
-        description: "Built a 4-agent CrewAI pipeline that qualifies local business leads and drafts personalized cold outreach.",
+        description: "Participated with the KĀRYO Lead Intelligence Agent, a CrewAI multi-agent pipeline.",
         metric: "Multi-Agent",
-        category: "competition"
-    },
-    {
-        title: "Participant",
-        organization: "Databricks Hackathon",
-        date: "2026",
-        description: "Built Court Backlog Predictor ML pipeline using PySpark, MLflow, and Delta Lake.",
-        metric: "Solo Build",
         category: "competition"
     },
     {
         title: "Technology Innovators Award",
         organization: "Certificate of Achievement",
-        date: "August 2026",
+        date: "10 Aug 2026",
         description: "Recognized with a certificate of achievement for the Technology Innovators Award.",
         metric: "Award",
         category: "recognition",
@@ -83,7 +109,7 @@ export const achievements: Achievement[] = [
         title: "Ideathon Winner",
         organization: "Ideathon",
         date: "2026",
-        description: "Took first place at the Ideathon.",
+        description: "Won an Ideathon.",
         metric: "1st Place",
         category: "competition",
         featured: true
@@ -92,8 +118,8 @@ export const achievements: Achievement[] = [
         title: "Maintainer & Project Admin",
         organization: "crewai-recipes (ECSoC)",
         date: "2026",
-        description: "Built and maintain an open-source CrewAI multi-agent template library (MIT licensed). Review and merge pull requests from external contributors.",
-        metric: "Open Source · MIT",
+        description: "Open-source CrewAI templates using NVIDIA NIM. MIT licensed, with 9 forks. ECSoC Project Admin.",
+        metric: "9 forks · MIT",
         category: "open-source",
         featured: true,
         link: "https://github.com/Karan-Raj-KR/crewai-recipes"
@@ -102,7 +128,7 @@ export const achievements: Achievement[] = [
         title: "Open Source Contributor",
         organization: "GirlScript Summer of Code",
         date: "2026",
-        description: "Merged 18 pull requests as part of GSSoC 2026 (CommitPulse).",
+        description: "Merged 18 pull requests as part of GSSoC 2026.",
         metric: "18 PRs Merged",
         category: "open-source",
         featured: true
@@ -110,8 +136,8 @@ export const achievements: Achievement[] = [
     {
         title: "Founder",
         organization: "KĀRYO",
-        date: "2025 - Present",
-        description: "Building a digital agency for local businesses in Bangalore.",
+        date: "Aug 2025 – Present",
+        description: "Founded KĀRYO in Aug 2025. Door-to-door client outreach across Bengaluru.",
         metric: "Active Agency",
         category: "entrepreneurship",
         featured: true
@@ -119,26 +145,24 @@ export const achievements: Achievement[] = [
     {
         title: "Google Campus Ambassador",
         organization: "Google",
-        // TODO(karan): confirm the date/term for the Campus Ambassador role.
-        date: "TBA",
-        description: "Selected as a Google Campus Ambassador.",
+        date: "Ended Jan 2026",
+        description: "Past role: Google Campus Ambassador.",
         metric: "Google",
         category: "recognition"
     },
     {
         title: "Top Prompt Creator",
         organization: "Google Pitch Night",
-        // TODO(karan): confirm the date and any additional detail (event edition, prize, etc.).
-        date: "TBA",
-        description: "Recognized as a Top Prompt Creator at Google Pitch Night.",
+        date: "Past credential",
+        description: "Past credential: Top Prompt Creator at Google Pitch Night.",
         metric: "Google",
         category: "recognition"
     },
     {
-        title: "BTech, Computer Science Engineering",
+        title: "B.Tech CSE (AI/ML)",
         organization: "NIAT–S-VYASA University",
         date: "2025 - 2029",
-        description: "Focusing on backend development with Python and FastAPI, while competing at hackathons and shipping projects outside the curriculum.",
+        description: "NIAT–S-VYASA, Bengaluru. Batch 2025–29.",
         metric: "In Progress",
         category: "education"
     }
