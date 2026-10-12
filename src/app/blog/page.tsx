@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/layout/header";
-import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { BreadcrumbJsonLd, safeJsonLdStringify } from "@/components/seo/json-ld";
 import { publications } from "@/data/publications";
 import { Tilt } from "@/components/ui/tilt";
 import { ShareButtons } from "@/components/blog/share-buttons";
@@ -69,7 +69,7 @@ export default function BlogList() {
       <Header />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(blogSchema) }}
       />
       <BreadcrumbJsonLd
         items={[

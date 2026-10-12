@@ -17,7 +17,7 @@ export const GITHUB_REVALIDATE = 3600;
 
 const API_ORIGIN = "https://api.github.com";
 const REQUEST_TIMEOUT_MS = 8000;
-const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+const NINETY_DAYS_MS = 90 * 24 * 60 * 60 * 1000;
 
 function apiHeaders(): Record<string, string> {
     const token = process.env.GITHUB_TOKEN;
@@ -44,7 +44,10 @@ async function getGitHub<T>(path: string): Promise<T> {
 async function safeGetGitHub<T>(path: string): Promise<T | null> {
     try {
         return await getGitHub<T>(path);
-    } catch {
+    } catch (error) {
+        if (process.env.NODE_ENV !== "production") {
+            console.warn(`[GitHub API error on ${path}]:`, error instanceof Error ? error.message : error);
+        }
         return null;
     }
 }
@@ -65,7 +68,7 @@ export async function getGitHubStats(): Promise<GitHubStats> {
 }
 
 async function fetchGitHubStats(): Promise<GitHubStats> {
-    const cutoff = Date.now() - THIRTY_DAYS_MS;
+    const cutoff = Date.now() - NINETY_DAYS_MS;
     const cutoffIso = new Date(cutoff).toISOString();
 
     const [user, repos, assignedEvents] = await Promise.all([
@@ -109,7 +112,7 @@ async function fetchGitHubStats(): Promise<GitHubStats> {
         if (commits.length > 0) commitsByRepo.set(repo.full_name, commits);
     });
 
-    const commits30d = [...commitsByRepo.values()].reduce((sum, commits) => sum + commits.length, 0);
+    const commits90d = [...commitsByRepo.values()].reduce((sum, commits) => sum + commits.length, 0);
 
     const prEventRepoNames = Array.from(
         new Set(
@@ -134,13 +137,13 @@ async function fetchGitHubStats(): Promise<GitHubStats> {
     });
 
     const pullLists = [...pullsByRepo.values()];
-    const prsOpened30d = pullLists.reduce(
+    const prsOpened90d = pullLists.reduce(
         (sum, prs) =>
             sum +
             [...prs.values()].filter((pr) => toTime(pr.created_at) > cutoff).length,
         0,
     );
-    const prsMerged30d = pullLists.reduce(
+    const prsMerged90d = pullLists.reduce(
         (sum, prs) =>
             sum +
             [...prs.values()].filter((pr) => pr.merged_at && toTime(pr.merged_at) > cutoff).length,
@@ -275,10 +278,14 @@ async function fetchGitHubStats(): Promise<GitHubStats> {
         followers: user.followers,
         publicRepos: user.public_repos,
         totalStars: repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0),
-        commits30d,
+        commits90d,
+        activeRepos90d: candidateRepos.length,
+        prsOpened90d,
+        prsMerged90d,
+        commits30d: commits90d,
         activeRepos30d: candidateRepos.length,
-        prsOpened30d,
-        prsMerged30d,
+        prsOpened30d: prsOpened90d,
+        prsMerged30d: prsMerged90d,
         languages,
         activities: activities.slice(0, 5),
         lastCommitAt,

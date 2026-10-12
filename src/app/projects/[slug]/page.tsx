@@ -4,7 +4,7 @@ import { ExternalLink, Github, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { ImagePlaceholder } from "@/components/ui/image-placeholder";
-import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { BreadcrumbJsonLd, safeJsonLdStringify } from "@/components/seo/json-ld";
 import { Header } from "@/components/layout/header";
 
 export async function generateStaticParams() {
@@ -89,7 +89,7 @@ export default async function ProjectCaseStudy({ params }: { params: Promise<{ s
       <Header />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(projectSchema) }}
       />
       <BreadcrumbJsonLd
         items={[

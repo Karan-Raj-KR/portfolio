@@ -6,6 +6,13 @@ import { projects } from "@/data/projects";
 export const CANONICAL_PERSON_ID = "https://www.karanrajkr.com/#person";
 export const CANONICAL_WEBSITE_ID = "https://www.karanrajkr.com/#website";
 
+/**
+ * Safely serialize JSON-LD to prevent XSS script-tag breakout attacks.
+ */
+export function safeJsonLdStringify(data: unknown): string {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
 export function SiteJsonLd() {
   const personSchema = {
     "@context": "https://schema.org",
@@ -91,7 +98,7 @@ export function SiteJsonLd() {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify([personSchema, orgSchema, websiteSchema]),
+        __html: safeJsonLdStringify([personSchema, orgSchema, websiteSchema]),
       }}
     />
   );
@@ -114,7 +121,7 @@ export function ProfilePageJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(profilePageSchema) }}
     />
   );
 }
@@ -149,7 +156,7 @@ export function GalleryJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(gallerySchema) }}
     />
   );
 }
@@ -179,7 +186,7 @@ export function ProjectJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(projectsSchema) }}
     />
   );
 }
@@ -203,7 +210,7 @@ export function BreadcrumbJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(breadcrumbSchema) }}
     />
   );
 }

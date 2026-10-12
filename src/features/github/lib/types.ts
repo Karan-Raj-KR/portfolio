@@ -93,10 +93,14 @@ export interface GitHubStats {
     followers: number;
     publicRepos: number;
     totalStars: number;
-    commits30d: number;
-    activeRepos30d: number;
-    prsOpened30d: number;
-    prsMerged30d: number;
+    commits90d: number;
+    activeRepos90d: number;
+    prsOpened90d: number;
+    prsMerged90d: number;
+    commits30d?: number;
+    activeRepos30d?: number;
+    prsOpened30d?: number;
+    prsMerged30d?: number;
     languages: LanguageStat[];
     activities: ActivityItem[];
     lastCommitAt: string;

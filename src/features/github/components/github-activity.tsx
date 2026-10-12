@@ -6,10 +6,10 @@ import { RecencyIndicator } from "./recency-indicator";
 import { StatCard } from "./stat-card";
 
 const STAT_DESCRIPTIONS = [
-    { label: "Commits", hint: "last 30 days" },
-    { label: "Repos", hint: "active this month" },
-    { label: "PRs opened", hint: "last 30 days" },
-    { label: "PRs merged", hint: "last 30 days" },
+    { label: "Commits", hint: "last 90 days" },
+    { label: "Repos", hint: "last 90 days" },
+    { label: "PRs opened", hint: "last 90 days" },
+    { label: "PRs merged", hint: "last 90 days" },
 ] as const;
 
 export async function GithubActivity() {
@@ -44,25 +44,25 @@ export async function GithubActivity() {
 
             <dl className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
                 <StatCard
-                    value={stats.commits30d}
+                    value={stats.commits90d}
                     label={STAT_DESCRIPTIONS[0].label}
                     hint={STAT_DESCRIPTIONS[0].hint}
                     index={0}
                 />
                 <StatCard
-                    value={stats.activeRepos30d}
+                    value={stats.activeRepos90d}
                     label={STAT_DESCRIPTIONS[1].label}
                     hint={STAT_DESCRIPTIONS[1].hint}
                     index={1}
                 />
                 <StatCard
-                    value={stats.prsOpened30d}
+                    value={stats.prsOpened90d}
                     label={STAT_DESCRIPTIONS[2].label}
                     hint={STAT_DESCRIPTIONS[2].hint}
                     index={2}
                 />
                 <StatCard
-                    value={stats.prsMerged30d}
+                    value={stats.prsMerged90d}
                     label={STAT_DESCRIPTIONS[3].label}
                     hint={STAT_DESCRIPTIONS[3].hint}
                     index={3}

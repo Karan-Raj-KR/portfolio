@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Calendar, User } from "lucide-react";
-import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { BreadcrumbJsonLd, safeJsonLdStringify } from "@/components/seo/json-ld";
 import { Header } from "@/components/layout/header";
 import { publications } from "@/data/publications";
 
@@ -82,7 +82,7 @@ export default async function BlogPost({
       <Header />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(postSchema) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(postSchema) }}
       />
       <BreadcrumbJsonLd
         items={[
