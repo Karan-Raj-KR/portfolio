@@ -1,0 +1,12 @@
+---
+// One real photograph with its caption, on its own average colour while it loads.
+import type { Image } from '../data/site';
+interface Props { media: Image; label?: boolean; eager?: boolean }
+const { media, label = true, eager = false } = Astro.props;
+---
+<figure class="media">
+  <div class="media__frame" style={media.tint ? `background:${media.tint}` : undefined}>
+    <img src={media.src} srcset={media.srcset} sizes={media.sizes} alt={media.alt} width={media.w} height={media.h} loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : undefined} />
+  </div>
+  {label && <figcaption class="fig__caption">{media.caption}</figcaption>}
+</figure>

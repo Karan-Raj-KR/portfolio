@@ -1,0 +1,19 @@
+---
+import { site } from '../data/site';
+import { emailLinks } from '../lib/email';
+interface Props { footer?: boolean }
+const { footer = false } = Astro.props;
+const links = emailLinks(site.email);
+---
+<div class="email-options" data-email-options data-email={site.email}>
+  {footer && <p class="email-options__note">The address opens Gmail in this tab. You can also choose below.</p>}
+  <div class="email-options__links" role="group" aria-label="Choose where to open your email draft">
+    <a class="u-link" href={links.gmail} data-email-provider="gmail" data-astro-reload>Gmail</a>
+    <a class="u-link" href={links.outlook} data-email-provider="outlook" data-astro-reload>Outlook.com</a>
+    <a class="u-link" href={links.app} data-email-provider="app" data-astro-reload>Email app</a>
+    <button class="ask__copy" type="button" data-copy={site.email}>Copy address</button>
+    {!footer && <button class="ask__copy" type="button" data-copy-draft hidden>Copy idea</button>}
+  </div>
+  <p class="email-options__status" role="status" aria-live="polite" data-email-status></p>
+  <textarea class="email-options__manual" readonly hidden aria-label="Select and copy this text" data-copy-manual></textarea>
+</div>

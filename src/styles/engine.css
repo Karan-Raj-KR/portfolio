@@ -1,0 +1,74 @@
+/* ENGINE + FOUNDATION. The project look lives in tokens and site.css. */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  background: var(--c-bg);
+  color: var(--c-fg);
+}
+body {
+  min-height: 100dvh;
+  font-family: var(--f-body);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  overflow-x: clip;
+}
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+img { height: auto; }
+input, button, textarea, select { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+[id] { scroll-margin-top: var(--anchor-offset); }
+ul, ol { list-style: none; }
+h1, h2, h3, h4 { font-weight: inherit; font-size: inherit; text-wrap: balance; }
+p { text-wrap: pretty; }
+::selection { background: var(--c-accent); color: var(--c-paper); }
+
+/* Accessibility */
+:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 4px; border-radius: 0; }
+#main:focus { outline: none; }
+.skip-link {
+  position: fixed; left: 0; top: 0; z-index: calc(var(--z-loader) + 1);
+  padding: calc(var(--gutter) * 0.75) var(--gutter); min-width: 16rem; background: var(--c-accent); color: var(--c-paper); font-size: var(--t-small); font-weight: 500;
+  translate: 0 -250%;
+}
+.skip-link:focus-visible { translate: none; outline-color: var(--c-ink); }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Stacking */
+#main, [data-layer='content'] { position: relative; z-index: var(--z-content); }
+
+/* Hidden-until-revealed (only when motion is allowed and JS runs) */
+.motion [data-split], .motion [data-reveal] { visibility: hidden; }
+.split-line { padding-bottom: 0.2em; margin-bottom: -0.2em; }
+[data-split] > * , [data-split] > * > * { text-indent: 0; }
+[data-split] > :first-child, [data-split] > :first-child > :first-child { text-indent: inherit; }
+[data-reveal='lead'] { position: relative; }
+.lead-sheet { position: absolute; inset: 0; z-index: 3; background: var(--c-accent); pointer-events: none; }
+
+/* Curtain: a blue panel leads, the ink panel follows. GSAP owns their clip-paths. */
+#curtain { position: fixed; inset: 0; z-index: var(--z-curtain); pointer-events: none; visibility: hidden; overflow: hidden; }
+.curtain__lead, .curtain__panel { position: absolute; inset: 0; }
+.curtain__lead { background: var(--c-accent); }
+.curtain__panel { background: var(--c-curtain); display: grid; align-content: end; padding: var(--gutter); color: var(--c-paper); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

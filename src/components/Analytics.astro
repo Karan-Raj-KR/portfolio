@@ -1,0 +1,9 @@
+---
+import { analyticsEnabled, googleAnalyticsId } from '../lib/deployment';
+const config = { enabled: analyticsEnabled, id: googleAnalyticsId, origin: Astro.site!.origin };
+---
+<script id="portfolio-analytics" type="application/json" set:html={JSON.stringify(config).replace(/</g, '\\u003c')} />
+<script>
+  import { setupAnalytics } from '../analytics';
+  setupAnalytics();
+</script>

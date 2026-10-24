@@ -1,0 +1,71 @@
+/* Design tokens. Paper and ink, with one committed blue used as whole fields of colour.
+   Surfaces are separated by tone steps and space, never by lines or shadows. */
+
+@font-face { font-family: 'Panchang'; src: url('/fonts/panchang-800-normal.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Switzer'; src: url('/fonts/switzer-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Switzer'; src: url('/fonts/switzer-500-normal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+/* Metric-matched fallback so the swap does not shift the hero */
+@font-face { font-family: 'Panchang Fallback'; src: local('Arial Black'), local('Arial'); size-adjust: 128%; ascent-override: 74%; descent-override: 20%; }
+
+:root {
+  --c-paper: #ecedef;
+  --c-ink: #0c0d10;
+  --c-blue: #1f35ff;
+
+  --c-bg: var(--c-paper);
+  --c-fg: var(--c-ink);
+  --c-muted: #43474f; /* secondary notes only: 8.2:1 on paper */
+  --c-tone: #dfe1e5; /* one tone step from paper: surfaces, fields, buttons at rest */
+  --c-accent: var(--c-blue);
+  --c-accent-soft: #9aa6ff; /* the accent on ink: 7.7:1 */
+  --c-ink-tone: #1b1d22; /* one tone step from ink */
+  --c-paper-soft: #b9bcc3; /* secondary text on ink: 9.6:1 */
+  --c-curtain: var(--c-ink);
+
+  --f-display: 'Panchang', 'Panchang Fallback', system-ui, sans-serif;
+  --f-body: 'Switzer', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-data: var(--f-body);
+
+  /* Five steps do the visible work. The footer email is fitted to the width (its own size). */
+  --t-display: clamp(2.3rem, 9.9vw, 13rem); /* the hero line, in Panchang: its longest line spans the width */
+  --t-poster: clamp(2.4rem, 0.4rem + 7.6vw, 9rem); /* KĀRYO and the footer line, in Panchang */
+  --t-big: clamp(2.2rem, 0.5rem + 5.2vw, 6.2rem); /* product names and their figures, the email */
+  --t-title: clamp(2.25rem, 1.2rem + 2.6vw, 4rem); /* project names, figures, big prompts */
+  --t-lead: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); /* headings, statements (36px max) */
+  --t-body: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem); /* running text, 17 to 20px */
+  --t-small: 1rem; /* small text that is read: 16px */
+  --t-note: 0.875rem; /* captions, axis labels, field labels: 14px */
+
+  /* Legacy names mapped onto the five steps */
+  --t-mega: var(--t-display);
+  --t-xl: var(--t-title);
+  --t-l: var(--t-lead);
+  --t-m: var(--t-lead);
+  --t-s: var(--t-small);
+  --t-xs: var(--t-small);
+  --t-data: var(--t-small);
+
+  --u: clamp(0.5rem, 0.35rem + 0.6vw, 1rem);
+  --gutter: clamp(1rem, 0.6rem + 1.6vw, 2.5rem);
+  --section: clamp(6rem, 3rem + 7vw, 11rem); /* the gap between sections: 96 to 176px */
+  --cols: 12;
+  --radius: 0px;
+  --header-height: calc(4rem + env(safe-area-inset-top, 0px));
+  --anchor-offset: calc(var(--header-height) + 1.5rem);
+
+  --ease-lead: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --z-content: 1;
+  --z-header: 50;
+  --z-curtain: 90;
+  --z-loader: 100;
+}
+
+@media (max-width: 599px) {
+  :root { --header-height: calc(3.5rem + env(safe-area-inset-top, 0px)); }
+}
+
+/* The one global field switch: the section under the frame sets its colours through these classes. */
+html { --frame-fg: var(--c-ink); --frame-bg: var(--c-paper); }
+html.field-blue { --frame-fg: var(--c-paper); --frame-bg: var(--c-blue); }
+html.field-ink { --frame-fg: var(--c-paper); --frame-bg: var(--c-ink); }

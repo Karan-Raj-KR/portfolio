@@ -1,0 +1,150 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { site, media } from '../data/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import { googleSiteVerification, isPreview } from '../lib/deployment';
+import '../styles/tokens.css';
+import '../styles/engine.css';
+import '../styles/site.css';
+
+interface Props {
+  title?: string;
+  seoTitle?: string;
+  description?: string;
+  image?: string;
+  current?: 'home' | 'work' | 'record' | 'about' | 'none';
+  jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
+}
+const { title, seoTitle, description = site.description, image = '/og.png', current = 'none', jsonLd, noindex = false } = Astro.props;
+const fullTitle = seoTitle ?? (title ? `${title} | ${site.name}` : site.seoTitle);
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const ogImage = new URL(image, Astro.site ?? site.url).href;
+const origin = Astro.site?.origin ?? site.url;
+const homeUrl = new URL('/', origin).href;
+const personId = `${homeUrl}#person`;
+const websiteId = `${homeUrl}#website`;
+const organizationId = new URL('/#organization', site.karyo.link.href).href;
+const pageId = `${canonical}#webpage`;
+const imageAlt = `${site.name}, AI developer, open-source maintainer and KĀRYO co-founder`;
+// The page's own entity (a case study passes a CreativeWork); its @context belongs to the outer graph.
+const { '@context': _context, ...work } = jsonLd ?? {};
+const workId = `${canonical}#work`;
+const person = {
+  '@id': personId,
+  '@type': 'Person',
+  name: site.name,
+  alternateName: site.short,
+  // First sentence of the visible site description: who he is, without the "Explore…" call to action.
+  description: `${site.description.split('. ')[0].replace(/\.$/, '')}.`,
+  jobTitle: ['AI Developer', 'Open-source Maintainer', 'Co-founder, KĀRYO'],
+  worksFor: { '@id': organizationId },
+  memberOf: [
+    { '@type': 'CollegeOrUniversity', name: 'NIAT' },
+    { '@type': 'CollegeOrUniversity', name: 'S-VYASA University' },
+  ],
+  homeLocation: {
+    '@type': 'Place', name: 'Bangalore, Karnataka, India',
+    address: { '@type': 'PostalAddress', addressLocality: 'Bangalore', addressRegion: 'Karnataka', addressCountry: 'IN' },
+  },
+  award: ['1st place, Open Loop 2026', 'Top 40, Hack BLR 2026', 'GRIT Awards 2026: Content and Hackathons', 'Technology Innovators Award 2026', '1st place, Ideathon 2026'],
+  knowsAbout: site.about.skills.flatMap((g) => g.items),
+  image: new URL(media.portrait.src, origin).href,
+  url: homeUrl,
+  email: `mailto:${site.email}`,
+  sameAs: [...site.socials, ...site.otherProfiles].map((s) => s.href),
+};
+const isProfile = current === 'home' || current === 'about';
+// Work has no index page of its own (it is a section of the home page), so case studies are Home > Project.
+const breadcrumbs = title && !noindex ? [
+  { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
+  { '@type': 'ListItem', position: 2, name: title, item: canonical },
+] : undefined;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    person,
+    {
+      '@type': 'Organization', '@id': organizationId, name: 'KĀRYO', url: site.karyo.link.href,
+      founder: [{ '@id': personId }, { '@type': 'Person', name: 'Havinash' }],
+    },
+    { '@type': 'WebSite', '@id': websiteId, name: site.name, url: homeUrl, inLanguage: 'en', publisher: { '@id': personId } },
+    {
+      '@type': isProfile ? 'ProfilePage' : current === 'record' ? 'CollectionPage' : 'WebPage',
+      '@id': pageId, url: canonical, name: fullTitle, description, inLanguage: 'en',
+      isPartOf: { '@id': websiteId }, about: { '@id': jsonLd ? workId : personId },
+      ...(isProfile ? { mainEntity: { '@id': personId } } : jsonLd ? { mainEntity: { '@id': workId } } : {}),
+      ...(breadcrumbs ? { breadcrumb: { '@id': `${canonical}#breadcrumb` } } : {}),
+    },
+    ...(breadcrumbs ? [{ '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumb`, itemListElement: breadcrumbs }] : []),
+    ...(jsonLd ? [{ ...work, '@id': workId, mainEntityOfPage: { '@id': pageId } }] : []),
+  ],
+};
+---
+<!doctype html>
+<html lang="en" transition:animate="none">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={isPreview ? 'noindex, nofollow' : noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+    <meta name="google-site-verification" content={googleSiteVerification} />
+    <meta name="author" content={site.name} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#ecedef" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name}: writing`} href="/feed.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <meta name="twitter:creator" content="@karan_raj_kr" />
+    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')} />}
+    <link rel="preload" href="/fonts/panchang-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/switzer-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+      // Failsafe: if the motion engine never boots, show everything instead of leaving it hidden.
+      setTimeout(function () { var h = document.documentElement; if (!h.classList.contains('is-booted')) h.classList.remove('motion'); }, 2500);
+    </script>
+    <ClientRouter fallback="swap" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="curtain" transition:persist="curtain" aria-hidden="true">
+      <div class="curtain__lead"></div>
+      <div class="curtain__panel"><span class="curtain__label" data-curtain-label></span></div>
+    </div>
+    <Header current={current} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <Analytics />
+    <script>
+      import { start } from '../engine/astro';
+      import { setupMotion } from '../motion/setup';
+      start(setupMotion);
+    </script>
+  </body>
+</html>

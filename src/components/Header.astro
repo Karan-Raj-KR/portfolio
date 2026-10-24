@@ -1,0 +1,28 @@
+---
+import { site } from '../data/site';
+interface Props { current?: 'home' | 'work' | 'record' | 'about' | 'none' }
+const { current = 'none' } = Astro.props;
+const links = [
+  { label: 'Work', href: '/#work', key: 'work' },
+  { label: 'Record', href: '/record/', key: 'record' },
+  { label: 'About', href: '/about/', key: 'about' },
+];
+---
+<header class="frame" data-frame data-frame-home={current === 'home' ? '' : undefined}>
+  <a class="frame__name fx-line" href="/" aria-current={current === 'home' ? 'page' : undefined} data-transition-label="Home">
+    <span>{site.name}</span>
+  </a>
+  <nav class="frame__nav" aria-label="Main">
+    <ul>
+      {links.map((l) => (
+        <li>
+          <a class="fx-line" href={l.href} aria-current={current === l.key ? 'page' : undefined} data-transition-label={l.label}>
+            <span>{l.label}</span>
+          </a>
+        </li>
+      ))}
+      <li class="frame__cta-item"><a class="frame__cta" href={current === 'home' ? '#contact' : '/#contact'} data-transition-label="Contact">Email<span class="frame__cta-label">&nbsp;me</span></a></li>
+    </ul>
+  </nav>
+  <span class="frame__progress" aria-hidden="true"></span>
+</header>

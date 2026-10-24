@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import MoreWork from '../components/MoreWork.astro';
+import { site } from '../data/site';
+---
+<Base title="Not found" description="This page does not exist on Karan Raj KR’s site. Head back to the start, or go straight to his AI projects, hackathon record and about page." noindex>
+  <section class="lost" data-section="Not found">
+    <p class="lost__code" aria-hidden="true">404</p>
+    <h1 class="lost__title"><span class="mask"><span class="rise">{site.notFound.heading}</span></span></h1>
+    <p class="lost__text rise-in">{site.notFound.text}</p>
+    <a class="arrow-link" href="/" data-transition-label="Home"><span class="arrow-link__label">{site.notFound.cta}</span><span class="arrow-link__arrow" aria-hidden="true">→</span></a>
+  </section>
+  <MoreWork heading="Pages that do exist" />
+</Base>

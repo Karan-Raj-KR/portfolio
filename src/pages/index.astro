@@ -1,0 +1,205 @@
+---
+import Base from '../layouts/Base.astro';
+import Socials from '../components/Socials.astro';
+import EmailOptions from '../components/EmailOptions.astro';
+import Clock from '../components/Clock.astro';
+import How from '../components/How.astro';
+import { site, projects, media } from '../data/site';
+
+// "[[c|text]]" in the KĀRYO story marks a highlighted fact.
+const storyParts = site.karyo.story.split(/\[\[([bkt])\|(.+?)\]\]/g);
+const story: { t: string; c?: string }[] = [];
+for (let i = 0; i < storyParts.length; i += 3) {
+  story.push({ t: storyParts[i] });
+  if (storyParts[i + 1]) story.push({ c: storyParts[i + 1], t: storyParts[i + 2] });
+}
+const ghUser = site.github;
+const lists = [
+  {
+    name: 'Open source',
+    rows: [
+      { label: 'crewai-recipes, maintainer', href: 'https://github.com/Karan-Raj-KR/crewai-recipes', value: 'MIT licensed', live: 'forks' },
+      { label: 'FormPilot', href: 'https://chromewebstore.google.com/detail/formpilot/ffkpekcnpbafklidejfbhinahahaabfi', value: 'Chrome Web Store' },
+      { label: 'GirlScript Summer of Code 2026', href: 'https://github.com/Karan-Raj-KR', value: '18 PRs merged' },
+      { label: 'ECSoC, crewai-recipes', href: 'https://github.com/Karan-Raj-KR/crewai-recipes', value: 'Project Admin' },
+      { label: 'Latest push', href: `https://github.com/${ghUser}`, value: 'Claude-vids, 22 Oct 2026', live: 'push' },
+    ],
+  },
+  {
+    name: 'Writing',
+    rows: site.about.writing.map((w) => ({ label: w.title, href: w.href, value: w.date })),
+  },
+];
+const featured = ['formpilot', 'eligent', 'voicerx', 'crewai-recipes'].map((slug) => projects.find((p) => p.slug === slug)!);
+const karyoBuilt = site.karyo.built.map((slug) => projects.find((p) => p.slug === slug)!);
+const rest = projects.filter((p) => !p.idea && !site.karyo.built.includes(p.slug));
+const [lead, ...results] = site.wins.items;
+---
+<Base current="home">
+  <section class="hero" data-section="Start" aria-labelledby="hero-title">
+    <h1 class="hero__name" id="hero-title" data-echo>
+      {site.hero.title.map((l, i) => <span class={`hero__mask hero__mask--${i}`}><span class="hero__line" data-text={l}>{l}</span></span>)}
+    </h1>
+    <div class="hero__foot">
+      <div class="hero__who">
+        <p class="hero__sentence">{site.hero.sentence}</p>
+        <p class="hero__roles">{site.hero.roles}</p>
+        <Socials class="hero__socials" />
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--ink" href={site.hero.action.href}><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{site.hero.action.label}</span><span class="btn__arrow" aria-hidden="true">↓</span></a>
+        <a class="fx-line hero__second" href={site.hero.second.href}><span>{site.hero.second.label}</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="results" data-field="blue" data-section="Results" aria-labelledby="results-title">
+    <h2 class="sec-heading results__title" id="results-title" data-split="lines">{site.wins.heading}</h2>
+    <a class="results__lead" href={lead.href} data-transition-label={lead.event} data-reveal="up">
+      <span class="results__figure">{lead.figure}</span>
+      <span class="results__event">{lead.event}<span class="results__arrow" aria-hidden="true">→</span></span>
+      <span class="results__detail">{lead.detail}</span>
+    </a>
+    <ul class="results__list">
+      {results.map((x) => (
+        <li data-reveal="up">
+          {x.href
+            ? <a class="result result--link" href={x.href} data-transition-label={x.event}><span class="result__figure">{x.figure}</span><span class="result__event">{x.event}<span class="result__arrow" aria-hidden="true">→</span></span><span class="result__detail">{x.detail}</span></a>
+            : <div class="result"><span class="result__figure">{x.figure}</span><span class="result__event">{x.event}</span><span class="result__detail">{x.detail}</span></div>}
+        </li>
+      ))}
+    </ul>
+    <a class="arrow-link results__more" href="/record/" data-transition-label="Record"><span class="arrow-link__label">The full record</span><span class="arrow-link__arrow" aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="work" id="work" data-section="Work" aria-labelledby="work-title">
+    <div class="work__head" id="projects">
+      <h2 class="sec-heading" id="work-title" data-split="lines">From ideas to real products</h2>
+      <p class="work__note">Four products, each from the sentence it started as to how it works.</p>
+    </div>
+    <div class="shift" data-shift>
+      <ol class="shift__beats">
+        {featured.map((p, i) => (
+          <li class={`beat beat--${p.how!.kind}${i === 0 ? ' is-active' : ''}`} id={`beat-${p.slug}`} data-beat>
+            <div class="beat__copy">
+              <p class="beat__idea"><span class="beat__said">The idea.</span> {p.idea}</p>
+              <h3 class="beat__name" data-ghost={p.title}><span class="beat__ink">{p.title}</span></h3>
+              <p class="beat__line">{p.line}</p>
+              <p class="beat__proof">{p.proof}</p>
+              <a class="arrow-link beat__more" href={`/work/${p.slug}/`} data-transition-label={p.title}><span class="arrow-link__label">How {p.title} works</span><span class="arrow-link__arrow" aria-hidden="true">→</span></a>
+            </div>
+            <How how={p.how!} />
+          </li>
+        ))}
+      </ol>
+      <nav class="shift__toc" aria-label="Featured projects">
+        <ol>
+          {featured.map((p, i) => <li><a class="shift__link" href={`#beat-${p.slug}`} aria-current={i === 0 ? 'step' : undefined} data-shift-link={i}><span>{p.title}</span></a></li>)}
+        </ol>
+      </nav>
+    </div>
+    <h3 class="work__more">Also built</h3>
+    <ol class="index">
+      {rest.map((p) => (
+        <li data-reveal="up">
+          <a class="entry" href={`/work/${p.slug}/`} data-transition-label={p.title}>
+            <span class="entry__sweep" aria-hidden="true"></span>
+            <span class="entry__title">{p.title}</span>
+            <span class="entry__line">{p.line}</span>
+            <span class="entry__kind">{p.kind}</span>
+            <span class="entry__result">{p.result}</span>
+            <span class="entry__arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="karyo" id="karyo" data-section="KĀRYO" aria-labelledby="karyo-title">
+    <div class="karyo__head">
+      <h2 class="karyo__title" id="karyo-title"><span class="echo" data-ghost={site.karyo.heading}>{site.karyo.heading}</span></h2>
+      <div class="karyo__karana">
+        <p>{site.karana}</p>
+        <Clock class="clock--karyo" fallback="The current karana is worked out in your browser." />
+      </div>
+    </div>
+    <p class="karyo__story" data-reveal="up">
+      {story.map((s) => (s.c ? <mark class={`hl hl--${s.c}`}>{s.t}</mark> : s.t))}
+    </p>
+    <div class="karyo__built">
+      <h3 class="karyo__built-title">What I built for it</h3>
+      <ul class="poster">
+        {karyoBuilt.map((p) => (
+          <li data-reveal="up">
+            <a class="poster__item" href={`/work/${p.slug}/`} data-transition-label={p.title}>
+              <span class="poster__word">{p.title}</span>
+              <span class="poster__detail">{p.line}</span>
+              <span class="poster__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <a class="arrow-link karyo__link" href={site.karyo.link.href} rel="noopener" target="_blank"><span class="arrow-link__label">{site.karyo.close}</span><span class="arrow-link__arrow" aria-hidden="true">↗</span></a>
+  </section>
+
+  <section class="about" id="about" data-section="About" aria-labelledby="about-title">
+    <div class="about__photo" data-reveal="lead">
+      <figure class="media">
+        <div class="media__frame" style={`background:${media.portrait.tint}`}><img src={media.portrait.src} srcset={media.portrait.srcset} sizes={media.portrait.sizes} alt={media.portrait.alt} width={media.portrait.w} height={media.portrait.h} loading="lazy" decoding="async" data-drift /></div>
+        <figcaption class="fig__caption">{media.portrait.caption}</figcaption>
+      </figure>
+    </div>
+    <div class="about__main">
+      <h2 class="sec-heading" id="about-title" data-split="lines">{site.teaser.heading}</h2>
+      <p class="about__text" data-split="lines">{site.teaser.text}</p>
+      <dl class="facts facts--row">
+        <div><dt>Based in</dt><dd>Bangalore</dd></div>
+        <div><dt>Studying</dt><dd>B.Tech CSE (AI/ML), NIAT and S-VYASA, 2029</dd></div>
+      </dl>
+      <a class="arrow-link" href="/about/" data-transition-label="About"><span class="arrow-link__label">More about me</span><span class="arrow-link__arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="lists" id="open-source" data-section="Open source" data-github={ghUser} aria-labelledby="oss-title">
+    <h2 class="sec-heading lists__title" id="oss-title" data-split="lines">Open source and writing</h2>
+    <div class="lists__cols">
+      {lists.map((g) => (
+        <div class="lists__group" id={g.name === 'Writing' ? 'writing' : undefined}>
+          <h3 class="lists__name">{g.name}</h3>
+          <ul>
+            {g.rows.map((r) => (
+              <li>
+                <a class="row2" href={r.href} rel="noopener" target="_blank">
+                  <span class="row2__label">{r.label}</span>
+                  <span class="row2__value" data-gh={(r as { live?: string }).live}>{r.value}</span>
+                  <span class="row2__arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="contact" id="contact" data-section="Contact" aria-labelledby="contact-title">
+    <form class="ask" action="https://mail.google.com/mail/" method="get" data-contact-form data-astro-reload>
+      <input type="hidden" name="view" value="cm" />
+      <input type="hidden" name="fs" value="1" />
+      <input type="hidden" name="to" value={site.email} />
+      <input type="hidden" name="su" value="An idea for Karan" />
+      <h2 class="ask__prompt" id="contact-title"><span>{site.contact.lines[0]}</span> <span>{site.contact.lines[1]}</span></h2>
+      <div>
+        <label class="ask__label" for="ask-idea">Your idea, in one line</label>
+        <div class="ask__field">
+          <input id="ask-idea" name="body" type="text" placeholder={site.contact.placeholder} autocomplete="off" aria-describedby="ask-note" pattern=".*\S.*" maxlength="500" title="Write your idea before opening Gmail." required />
+          <button class="ask__send" type="submit" aria-label="Open your idea in Gmail" title="Open a Gmail draft in this tab"><span aria-hidden="true">→</span></button>
+        </div>
+        <p class="ask__note" id="ask-note">{site.contact.note}</p>
+        <EmailOptions />
+        <p class="ask__direct">To <a class="u-link" href={`mailto:${site.email}`} data-email-direct>{site.email}</a> <button class="u-link" type="button" data-clear-draft hidden>Clear idea</button></p>
+      </div>
+    </form>
+  </section>
+</Base>

@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, media } from '../data/site';
+const a = site.about;
+---
+<Base title="About" seoTitle="About Karan Raj KR | AI Developer & KĀRYO Co-founder" description="Meet Karan Raj KR, an AI developer and KĀRYO co-founder in Bangalore. Explore his open-source work, engineering background, writing and public speaking." current="about">
+  <section class="page-hero page-hero--photo" data-section="About">
+    <h1 class="page-hero__title page-hero__title--display"><span class="mask"><span class="rise"><span class="echo" data-ghost={a.heading}>{a.heading}</span></span></span></h1>
+    <div class="page-hero__lead rise-in"><p>{a.bio[0]}</p>
+      <p class="page-hero__bio">{a.bio[1]}</p>
+      <dl class="facts facts--row page-hero__facts">
+        <div><dt>Based in</dt><dd>Bangalore</dd></div>
+        <div><dt>Studying</dt><dd>B.Tech CSE (AI/ML), batch of 2029</dd></div>
+      </dl>
+      <nav class="page-hero__jumps" aria-label="On this page">
+        <a class="u-link" href="#now">Now</a>
+        <a class="u-link" href="#roles">Roles</a>
+        <a class="u-link" href="#tools">Tools</a>
+        <a class="u-link" href="#writing">Writing</a>
+        <a class="u-link" href="#profiles">Profiles</a>
+      </nav>
+    </div>
+    <figure class="page-hero__photo rise-in" id="media">
+      <a class="photo-link" href={media.portrait.src} target="_blank" rel="noopener">
+        <span class="media__frame" style={`background:${media.portrait.tint}`}><img src={media.portrait.src} srcset={media.portrait.srcset} sizes={media.portrait.sizes} alt={media.portrait.alt} width={media.portrait.w} height={media.portrait.h} fetchpriority="high" decoding="async" /></span>
+        <span class="photo-link__label"><span>{media.portrait.caption}</span> <span class="photo-link__open">Open full size <span aria-hidden="true">↗</span></span></span>
+      </a>
+    </figure>
+  </section>
+
+
+  <section class="now" id="now" data-field="blue" data-section="Now" aria-labelledby="now-title">
+    <h2 class="sub-heading now__title" id="now-title" data-split="lines">What I’m building now</h2>
+    <ul class="now__list">
+      {a.now.map((n) => <li data-reveal="up">{n}</li>)}
+    </ul>
+  </section>
+
+  <section class="roles" id="roles" data-section="Roles" aria-labelledby="roles-title">
+    <h2 class="sub-heading" id="roles-title" data-split="lines">Roles</h2>
+    <ol class="ledger">
+      {a.roles.map((r) => (
+        <li class="ledger__row">
+          <span class="ledger__when">{r.when}</span>
+          <h3 class="ledger__what">{r.title}</h3>
+          <p class="ledger__text">{r.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="recog" data-section="Recognition" aria-labelledby="recog-title">
+    <div class="recog__list">
+      <h2 class="sub-heading" id="recog-title" data-split="lines">Recognition</h2>
+      <ul class="features">{a.recognition.map((r) => <li>{r}</li>)}</ul>
+      <h2 class="sub-heading" id="tools">Tools I ship with</h2>
+      <dl class="facts">
+        {a.skills.map((g) => <div><dt>{g.group}</dt><dd>{g.items.join(', ')}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+
+  <section class="writing" id="writing" data-section="Writing" aria-labelledby="writing-title">
+    <h2 class="sub-heading" id="writing-title" data-split="lines">Writing</h2>
+    <ul class="writing__list">
+      {a.writing.map((w) => (
+        <li class="writing__item" id={`writing-${w.slug}`}>
+          <a class="post" href={w.href} rel="noopener" target="_blank">
+            <time class="post__date" datetime={w.datetime}>{w.date}</time>
+            <span class="post__title">{w.title}</span>
+            <span class="post__where">Hashnode ↗</span>
+          </a>
+          <p class="post__summary">{w.summary}</p>
+          <a class="fx-line post__alt" href={w.alt.href} rel="noopener" target="_blank"><span>Also on {w.alt.label}</span></a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="profiles" id="profiles" aria-labelledby="profiles-title">
+    <div class="profiles__intro">
+      <h2 class="sub-heading" id="profiles-title">Find me elsewhere</h2>
+      <p>Code, build notes, videos, and conversations.</p>
+    </div>
+    <ul class="profiles__links">
+      {[...site.socials, ...site.otherProfiles].map((p) => <li><a class="arrow-link" href={p.href} rel="me noopener" target="_blank"><span class="arrow-link__label">{p.label}</span><span class="arrow-link__arrow" aria-hidden="true">↗</span></a></li>)}
+    </ul>
+  </section>
+
+</Base>

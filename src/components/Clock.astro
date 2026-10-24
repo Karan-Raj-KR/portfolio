@@ -1,0 +1,10 @@
+---
+// Live karana clock. Filled in the browser by src/motion/almanac-ui.ts (minute resolution).
+// The server text is the no-JS fallback; each placement gets its own wording.
+interface Props { class?: string; fallback?: string }
+const { class: cls = '', fallback = 'The current karana is worked out in your browser.' } = Astro.props;
+---
+<p class={`clock ${cls}`} data-clock>
+  <span class="clock__now" data-k-now-wrap>{fallback}</span>
+  <span class="clock__next" data-k-next-wrap></span>
+</p>

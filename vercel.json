@@ -1,5 +1,43 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), browsing-topics=()"
+        },
+        {
+          "key": "X-Permitted-Cross-Domain-Policies",
+          "value": "none"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://api.github.com https://va.vercel-scripts.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://mail.google.com https://outlook.live.com mailto:; upgrade-insecure-requests;"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "has": [
@@ -9,8 +47,219 @@
         }
       ],
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
+    }
+  ],
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/projects",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/projects/",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/projects/client-onboarding-manager",
+      "destination": "/work/client-onboarding-manager/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/client-onboarding-manager/",
+      "destination": "/work/client-onboarding-manager/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/school-erp",
+      "destination": "/work/school-erp/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/school-erp/",
+      "destination": "/work/school-erp/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/eligent",
+      "destination": "/work/eligent/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/eligent/",
+      "destination": "/work/eligent/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/iskcon-visakhapatnam",
+      "destination": "/work/iskcon-visakhapatnam/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/iskcon-visakhapatnam/",
+      "destination": "/work/iskcon-visakhapatnam/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/karyo-agent",
+      "destination": "/work/lead-intelligence-agent/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/karyo-agent/",
+      "destination": "/work/lead-intelligence-agent/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/crewai-recipes",
+      "destination": "/work/crewai-recipes/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/crewai-recipes/",
+      "destination": "/work/crewai-recipes/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/formpilot",
+      "destination": "/work/formpilot/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/formpilot/",
+      "destination": "/work/formpilot/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/voicerx",
+      "destination": "/work/voicerx/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/voicerx/",
+      "destination": "/work/voicerx/",
+      "permanent": true
+    },
+    {
+      "source": "/hackathons",
+      "destination": "/record/#wins",
+      "permanent": true
+    },
+    {
+      "source": "/hackathons/",
+      "destination": "/record/#wins",
+      "permanent": true
+    },
+    {
+      "source": "/hackathons/open-loop-2026",
+      "destination": "/work/formpilot/",
+      "permanent": true
+    },
+    {
+      "source": "/hackathons/open-loop-2026/",
+      "destination": "/work/formpilot/",
+      "permanent": true
+    },
+    {
+      "source": "/achievements",
+      "destination": "/record/",
+      "permanent": true
+    },
+    {
+      "source": "/achievements/",
+      "destination": "/record/",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/about/#media",
+      "permanent": true
+    },
+    {
+      "source": "/gallery/",
+      "destination": "/about/#media",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/about/#writing",
+      "permanent": true
+    },
+    {
+      "source": "/blog/",
+      "destination": "/about/#writing",
+      "permanent": true
+    },
+    {
+      "source": "/writing",
+      "destination": "/about/#writing",
+      "permanent": true
+    },
+    {
+      "source": "/writing/",
+      "destination": "/about/#writing",
+      "permanent": true
+    },
+    {
+      "source": "/blog/open-loop-2026-formpilot-winner",
+      "destination": "/about/#writing-open-loop-2026-formpilot-winner",
+      "permanent": true
+    },
+    {
+      "source": "/blog/open-loop-2026-formpilot-winner/",
+      "destination": "/about/#writing-open-loop-2026-formpilot-winner",
+      "permanent": true
+    },
+    {
+      "source": "/blog/my-first-year-of-engineering",
+      "destination": "/about/#writing-my-first-year-of-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/blog/my-first-year-of-engineering/",
+      "destination": "/about/#writing-my-first-year-of-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/changelog",
+      "destination": "/record/#updates",
+      "permanent": true
+    },
+    {
+      "source": "/changelog/",
+      "destination": "/record/#updates",
+      "permanent": true
+    },
+    {
+      "source": "/karan-raj-kr-ai-engineer.jpeg",
+      "destination": "/media/karan-portrait.webp",
+      "permanent": true
+    },
+    {
+      "source": "/Karan-certificate.png",
+      "destination": "/media/open-loop-certificate.webp",
+      "permanent": true
+    },
+    {
+      "source": "/architecture-image.png",
+      "destination": "/media/formpilot-architecture.webp",
+      "permanent": true
+    },
+    {
+      "source": "/og-image.png",
+      "destination": "/og.png",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
     }
   ]
 }
