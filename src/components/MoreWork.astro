@@ -1,0 +1,22 @@
+---
+// Other projects as a short text index: what each one is and how it ended.
+import { projects } from '../data/site';
+interface Props { exclude?: string | string[]; heading?: string; max?: number }
+const { exclude, heading = 'More work', max = 4 } = Astro.props;
+const skip = [exclude ?? []].flat();
+const items = projects.filter((p) => !skip.includes(p.slug)).slice(0, max);
+---
+<section class="more" data-section={heading} aria-labelledby="more-title">
+  <h2 class="sec-heading" id="more-title" data-split="lines">{heading}</h2>
+  <ul class="more__list">
+    {items.map((p) => (
+      <li data-reveal="up">
+        <a class="more__item" href={`/work/${p.slug}/`} data-transition-label={p.title}>
+          <span class="more__title">{p.title}</span>
+          <span class="more__line">{p.line}</span>
+          <span class="more__result">{p.result}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

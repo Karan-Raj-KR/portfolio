@@ -1,0 +1,12 @@
+---
+// Every profile Karan keeps, in one clean row: the main five first, then the rest.
+import { site } from '../data/site';
+interface Props { class?: string; label?: string }
+const { class: cls = '', label = 'Find me on' } = Astro.props;
+const all = [...site.socials, ...site.otherProfiles];
+---
+<ul class={`socials ${cls}`} aria-label={label}>
+  {all.map((s) => (
+    <li><a class="socials__link" href={s.href} rel="me noopener" target="_blank"><span>{s.label}</span><span class="socials__arrow" aria-hidden="true">↗</span></a></li>
+  ))}
+</ul>

@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Wins from '../components/Wins.astro';
+import { site } from '../data/site';
+const r = site.record;
+type Row = { when: string; what: string; where: string; result: string; tier?: 'win' | 'minor' };
+const id = (name: string) => `log-${name.split(' ')[0].toLowerCase()}`;
+---
+<Base title="Record" seoTitle="Hackathon Wins & Open-Source Work | Karan Raj KR" description="Karan Raj KR’s hackathon wins and open-source record: Open Loop 2026 national winner, Hack BLR Top 40, repository maintenance and KĀRYO entrepreneurship." current="record">
+  <section class="page-hero page-hero--photo" data-section="Record">
+    <h1 class="page-hero__title page-hero__title--display"><span class="mask"><span class="rise"><span class="echo" data-ghost="The record">The record</span></span></span></h1>
+    <p class="page-hero__lead rise-in">{r.intro}</p>
+    <nav class="page-hero__index rise-in" aria-label="Record sections">
+      <a href="#wins"><span>Results</span><span aria-hidden="true">↓</span></a>
+      {r.groups.map((g) => (g.rows as Row[]).some((row) => row.tier !== 'win') && <a href={`#${id(g.name)}`}><span>{g.name}</span><span aria-hidden="true">↓</span></a>)}
+      <a href="#updates"><span>Dated updates</span><span aria-hidden="true">↓</span></a>
+    </nav>
+  </section>
+
+  <Wins more={false} photo={false} />
+
+  <div class="logs">
+    {r.groups.map((g) => {
+      const rows = (g.rows as Row[]).filter((row) => row.tier !== 'win');
+      if (!rows.length) return null;
+      return (
+        <section class="log" id={id(g.name)} data-section={g.name} aria-labelledby={`${id(g.name)}-title`}>
+          <h2 class="sub-heading" id={`${id(g.name)}-title`}>{g.name}</h2>
+          <ul class="log__rows">
+            {rows.map((row) => (
+              <li class="log__row" data-reveal="up">
+                <span class="log__what">{row.what}</span>
+                <span class="log__result">{row.result}</span>
+                <span class="log__where">{[row.when, row.where].filter(Boolean).join(', ')}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+    <section class="log" id="updates" aria-labelledby="updates-title">
+      <h2 class="sub-heading" id="updates-title">Dated updates</h2>
+      <ol class="updates">
+        {site.updates.map((u) => <li><time datetime={u.datetime}>{u.date}</time><a class="u-link" href={u.href}>{u.text}</a></li>)}
+      </ol>
+    </section>
+  </div>
+</Base>

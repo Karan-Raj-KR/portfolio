@@ -1,0 +1,36 @@
+---
+// The national Open Loop win leads, paired with its award photograph.
+// The remaining results follow as aligned rows on the ink field.
+import { site, media } from '../data/site';
+interface Props { more?: boolean; photo?: boolean }
+const { more = true, photo = true } = Astro.props;
+const w = site.wins;
+const c = media.certificate;
+---
+<section class="wins" id="wins" data-field="ink" data-section="Wins" aria-labelledby="wins-title">
+  <div class="wins__head">
+    <h2 class="sec-heading" id="wins-title" data-split="lines">{w.heading}</h2>
+    <p class="wins__lead">{w.lead}</p>
+  </div>
+  <ol class="wins__list">
+    {w.items.map((x, i) => {
+      const Tag = x.href ? 'a' : 'div';
+      return (
+        <li class:list={{ 'wins__featured': photo && i === 0 }} data-reveal="up">
+          <Tag class={`win${x.href ? ' win--link' : ''}`} href={x.href} data-transition-label={x.href ? x.event : undefined}>
+            <span class="win__figure">{x.figure}</span>
+            <span class="win__body">
+              <span class="win__event">{x.event}{x.href && <span class="win__arrow" aria-hidden="true">→</span>}</span>
+              {x.detail && <span class="win__detail">{x.detail}</span>}
+            </span>
+          </Tag>
+          {photo && i === 0 && <figure class="wins__photo">
+            <div class="media__frame" style={`background:${c.tint}`}><img src={c.src} alt={c.alt} width={c.w} height={c.h} loading="lazy" decoding="async" /></div>
+            <figcaption class="fig__caption">{c.caption}</figcaption>
+          </figure>}
+        </li>
+      );
+    })}
+  </ol>
+  {more && <a class="arrow-link wins__more" href="/record/" data-transition-label="Record"><span class="arrow-link__label">The full record</span><span class="arrow-link__arrow" aria-hidden="true">→</span></a>}
+</section>

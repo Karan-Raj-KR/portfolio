@@ -1,0 +1,48 @@
+---
+// FormPilot's scan → preview → fill, walked through on a sample form. An ARIA tabs pattern
+// (arrow keys, Home and End); without script all three steps are shown one after another.
+// It is an illustration of what each step does, not a connection to the extension.
+import type { Mechanism } from '../data/site';
+interface Props { how: Extract<Mechanism, { kind: 'steps' }> }
+const { how } = Astro.props;
+const fields = [
+  { label: 'Full name', sort: 'Personal', from: 'Your profile' },
+  { label: 'Email', sort: 'Contact', from: 'Your profile' },
+  { label: 'City', sort: 'Address', from: 'Your profile' },
+  { label: 'Why do you want to join? (500 words)', sort: 'Essay', from: 'Written by your model' },
+];
+const columns = ['Sorted as', 'Suggested from', 'On the page'];
+---
+<section class="walk" id="walkthrough" data-walk data-section="Walkthrough" aria-labelledby="walk-title">
+  <div class="walk__head">
+    <h2 class="sub-heading" id="walk-title">Scan, preview, fill</h2>
+    <p class="walk__note">A sample form, to show what each step does. It is not connected to FormPilot.</p>
+  </div>
+  <div class="walk__tabs" role="tablist" aria-label="FormPilot’s three steps" hidden data-walk-tabs>
+    {how.steps.map((s, i) => (
+      <button class="walk__tab" type="button" role="tab" id={`walk-tab-${i}`} aria-controls={`walk-panel-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+        <span class="walk__tab-name">{s.name}</span>
+      </button>
+    ))}
+  </div>
+  {how.steps.map((s, i) => (
+    <div class="walk__panel" id={`walk-panel-${i}`} role="tabpanel" aria-labelledby={`walk-tab-${i}`} data-walk-panel>
+      <h3 class="walk__step"><span class="walk__step-name">{s.name}</span></h3>
+      <p class="walk__text">{s.text}</p>
+      <table class="walk__table">
+        <caption class="sr-only">The sample form after {s.name.toLowerCase()}</caption>
+        <thead><tr><th scope="col">Field</th>{columns.map((c, k) => <th scope="col" class:list={{ 'is-later': k > i, 'is-now': k === i }}>{c}</th>)}</tr></thead>
+        <tbody>
+          {fields.map((f) => (
+            <tr>
+              <th scope="row">{f.label}</th>
+              <td class:list={{ 'is-now': i === 0 }}>{f.sort}</td>
+              <td class:list={{ 'is-later': i < 1, 'is-now': i === 1 }}>{i >= 1 ? f.from : <><span class="sr-only">Not yet</span><span aria-hidden="true">·</span></>}</td>
+              <td class:list={{ 'is-later': i < 2, 'is-now': i === 2 }}>{i >= 2 ? 'Filled' : <><span class="sr-only">Not yet</span><span aria-hidden="true">·</span></>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ))}
+</section>

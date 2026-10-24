@@ -1,0 +1,42 @@
+---
+// How a product works, set in type. Each project gets the form its mechanism actually has:
+// FormPilot's three steps, VoiceRx's call path, crewai-recipes' contract, Eligent's verdicts.
+// Everything is readable without script or motion; motion only stages the parts in order.
+import type { Mechanism } from '../data/site';
+interface Props { how: Mechanism; size?: 'beat' | 'case'; headingLevel?: 'h3' | 'h2' }
+const { how, size = 'beat', headingLevel: H = 'h3' } = Astro.props;
+---
+<div class={`how how--${how.kind} how--${size}`} data-how>
+  <H class="how__title">{how.title}</H>
+  {how.kind === 'steps' && (
+    <ol class="how__steps">
+      {how.steps.map((s) => (
+        <li class="how__step" data-how-part>
+          <span class="how__name">{s.name}</span>
+          <span class="how__text">{s.text}</span>
+        </li>
+      ))}
+    </ol>
+  )}
+  {how.kind === 'chain' && (
+    <ol class="how__chain" style={`--cols: ${how.steps.length > 4 ? 3 : how.steps.length}`}>
+      {how.steps.map((s) => <li class="how__link" data-how-part><span>{s}</span></li>)}
+    </ol>
+  )}
+  {how.kind === 'code' && (
+    <>
+      <pre class="how__code" data-how-part><code>{how.code}</code></pre>
+      <p class="how__note" data-how-part>{how.note}</p>
+    </>
+  )}
+  {how.kind === 'verdicts' && (
+    <ul class="how__verdicts">
+      {how.verdicts.map((v, i) => (
+        <li class={`how__verdict how__verdict--${i}`} data-how-part>
+          <span class="how__name">{v.name}</span>
+          <span class="how__text">{v.text}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>

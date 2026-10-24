@@ -1,0 +1,34 @@
+---
+// Footer, "contact as the headline": the email address is the display line; small notes above it,
+// links and the year below.
+import { site } from '../data/site';
+import Socials from './Socials.astro';
+import EmailOptions from './EmailOptions.astro';
+import { emailLinks } from '../lib/email';
+const year = new Date().getFullYear();
+const [user, domain] = site.email.split('@');
+const links = emailLinks(site.email);
+---
+<footer class="footer" data-field="ink" data-section="Contact">
+  <nav class="footer__explore" aria-label="Explore the portfolio">
+    <a class="fx-line" href="/#work"><span>Work</span></a>
+    <a class="fx-line" href="/record/"><span>Record</span></a>
+    <a class="fx-line" href="/about/"><span>About</span></a>
+    <a class="fx-line" href="/about/#writing"><span>Writing</span></a>
+    <a class="fx-line" href="/about/#media"><span>Media</span></a>
+    <a class="fx-line" href="/record/#updates"><span>Updates</span></a>
+  </nav>
+  <div class="footer__top">
+    <h2 class="footer__heading"><span class="echo" data-ghost={site.footer.heading}>{site.footer.heading}</span></h2>
+    <p class="footer__note">Based in Bangalore. Founder of KĀRYO, studying B.Tech CSE (AI/ML).</p>
+    <a class="u-link footer__top-link" href="#main">Back to top</a>
+  </div>
+  <div class="footer__contact">
+    <a class="footer__mail" href={links.gmail} data-email-primary={site.email} data-astro-reload><span>{user}</span><span>@{domain}</span></a>
+    <EmailOptions footer />
+  </div>
+  <div class="footer__base">
+    <Socials class="footer__socials" label="Elsewhere" />
+    <p class="footer__meta">© {year} {site.name}.</p>
+  </div>
+</footer>
