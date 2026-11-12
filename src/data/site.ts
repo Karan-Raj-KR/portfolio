@@ -72,7 +72,7 @@ export const site = {
     // The h1, one line each: Karan's own line from karanrajkr.com, set in the display face.
     title: ['From ideas', 'to real', 'products.'],
     sentence: 'I’m Karan Raj KR, Founder of KĀRYO. I build AI products and maintain crewai-recipes, an open-source CrewAI repository.',
-    roles: '2nd-year B.Tech CSE (AI/ML) at NIAT x S-VYASA, batch 2025–29, CGPA 8.92. Based in Bengaluru, from Gubbi, Tumkur.',
+    roles: '2nd-year B.Tech CSE (AI/ML) at NIAT x S-VYASA, batch 2025–29. Based in Bengaluru.',
     action: { label: 'See the work', href: '#work' },
     second: { label: 'Email me', href: '#contact' },
   },
@@ -92,7 +92,9 @@ export const site = {
       { figure: 'Top 41', event: 'OpenAI DevDay Exchange', detail: 'Selected from thousands of applications for the community hackathon in Bengaluru.', when: 'Oct 2026' },
       { figure: '2/2', event: 'GRIT Awards 2026', detail: 'Won both the Content and the Hackathons categories at NIAT.', when: '2026' },
       { figure: 'Award', event: 'Technology Innovators Award', detail: 'Certificate of achievement.', when: 'Aug 2026' },
-      { figure: '1st', event: 'NIAT Ideathon 2025', detail: 'First place.', when: '2025' },
+      { figure: 'Top 3', event: 'NIAT Ideathon 2025', detail: 'A podium finish with my team.', when: '2025' },
+      { figure: 'EDC', event: 'EDC President 2026-27', detail: 'President of the Entrepreneurship Development Club at NIAT.', when: '2026 to 2027', href: '/about/#roles' },
+      { figure: 'AWS', event: 'Student Builder Group Leader', detail: 'A student-led role, not employment or an internship.', when: 'Oct 2026', href: '/about/#roles' },
     ],
   },
 
@@ -183,7 +185,7 @@ export const site = {
           { when: '25 to 26 Apr 2026', what: 'Open Loop 2026, FormPilot with my team', where: 'Yenepoya, Mangaluru', result: '1st of 121 teams', tier: 'win' },
           { when: 'Apr 2026', what: 'Hack BLR 2026, VoiceRx, solo', where: 'Bengaluru', result: 'Top 40 of 2,500+', tier: 'win' },
           { when: '2026', what: 'GRIT Awards 2026, Content and Hackathons categories', where: 'NIAT', result: 'Won both', tier: 'win' },
-          { when: '2025', what: 'NIAT Ideathon 2025', where: 'NIAT', result: '1st place', tier: 'win' },
+          { when: '2025', what: 'NIAT Ideathon 2025', where: 'NIAT', result: 'Top 3', tier: 'win' },
           { when: '2026', what: 'Agentathon 2026, KĀRYO Lead Intelligence Agent', where: '', result: 'Participated', tier: 'minor' },
           { when: '2026', what: 'TakeOver’26, 24 hour live build with my team', where: 'NIAT KKH, Hyderabad', result: 'Participated', tier: 'minor' },
           { when: '2026', what: 'Smart India Hackathon 2026, EdgeWake for an ISRO problem statement', where: 'Internal round', result: 'Presented', tier: 'minor' },
@@ -201,7 +203,7 @@ export const site = {
         rows: [
           { when: 'Aug 2025 to now', what: 'Founder, KĀRYO', where: 'Bengaluru', result: 'Active agency' },
           { when: 'To date', what: 'Revenue through the agency and my products', where: '', result: '6 figures' },
-          { when: '2026 to 2027', what: 'EDC President 2026-27, Entrepreneurship Development Club', where: 'NIAT', result: 'Current role' },
+          { when: '2026 to 2027', what: 'EDC President 2026-27, Entrepreneurship Development Club', where: 'NIAT', result: 'Current role', tier: 'win' },
           { when: '2025 · First year of B.Tech', what: 'Finance Head, Entrepreneurship (ED) Club', where: 'NIAT', result: '4+ events, 140+ people' },
         ],
       },
@@ -209,7 +211,7 @@ export const site = {
         name: 'Recognition',
         rows: [
           { when: '10 Aug 2026', what: 'Technology Innovators Award', where: 'Certificate of achievement', result: 'Award', tier: 'win' },
-          { when: 'Public since 31 Oct 2026', what: 'Student Builder Group Leader, AWS (#AWSsbgl)', where: 'Student-led role', result: 'Current role' },
+          { when: 'Public since 31 Oct 2026', what: 'Student Builder Group Leader, AWS (#AWSsbgl)', where: 'Student-led role', result: 'Current role', tier: 'win' },
           { when: 'Until Jan 2026', what: 'Google Campus Ambassador', where: 'Google', result: 'Past role', tier: 'minor' },
           { when: 'Past', what: 'Top Prompt Creator, Google Pitch Night', where: 'Google', result: 'Credential', tier: 'minor' },
           { when: '2025', what: 'Best Member, Entrepreneurship Club', where: 'NIAT', result: 'Award', tier: 'minor' },
