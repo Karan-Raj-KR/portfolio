@@ -67,6 +67,16 @@
       "permanent": true
     },
     {
+      "source": "/work",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
+      "source": "/work/",
+      "destination": "/#work",
+      "permanent": true
+    },
+    {
       "source": "/projects/client-onboarding-manager",
       "destination": "/work/client-onboarding-manager/",
       "permanent": true

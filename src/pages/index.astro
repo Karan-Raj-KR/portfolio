@@ -30,14 +30,14 @@ const lists = [
     rows: site.about.writing.map((w) => ({ label: w.title, href: w.href, value: w.date })),
   },
 ];
-const featured = ['formpilot', 'eligent', 'voicerx', 'crewai-recipes'].map((slug) => projects.find((p) => p.slug === slug)!);
+const featured = ['eligent', 'crewai-recipes', 'formpilot', 'voicerx'].map((slug) => projects.find((p) => p.slug === slug)!);
 const karyoBuilt = site.karyo.built.map((slug) => projects.find((p) => p.slug === slug)!);
 const rest = projects.filter((p) => !p.idea && !site.karyo.built.includes(p.slug));
 const [lead, ...results] = site.wins.items;
 ---
 <Base current="home">
   <section class="hero" data-section="Start" aria-labelledby="hero-title">
-    <h1 class="hero__name" id="hero-title" data-echo>
+    <h1 class="hero__name" id="hero-title" data-echo><span class="sr-only">{site.name}. </span>
       {site.hero.title.map((l, i) => <span class={`hero__mask hero__mask--${i}`}><span class="hero__line" data-text={l}>{l}</span></span>)}
     </h1>
     <div class="hero__foot">
@@ -154,8 +154,8 @@ const [lead, ...results] = site.wins.items;
       <h2 class="sec-heading" id="about-title" data-split="lines">{site.teaser.heading}</h2>
       <p class="about__text" data-split="lines">{site.teaser.text}</p>
       <dl class="facts facts--row">
-        <div><dt>Based in</dt><dd>Bangalore</dd></div>
-        <div><dt>Studying</dt><dd>B.Tech CSE (AI/ML), NIAT and S-VYASA, 2029</dd></div>
+        <div><dt>Based in</dt><dd>Bengaluru</dd></div>
+        <div><dt>Studying</dt><dd>2nd-year B.Tech CSE (AI/ML), NIAT x S-VYASA, batch 2025–29, CGPA 8.92</dd></div>
       </dl>
       <a class="arrow-link" href="/about/" data-transition-label="About"><span class="arrow-link__label">More about me</span><span class="arrow-link__arrow" aria-hidden="true">→</span></a>
     </div>

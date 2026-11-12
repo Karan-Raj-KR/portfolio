@@ -20,11 +20,11 @@ const links = emailLinks(site.email);
   </nav>
   <div class="footer__top">
     <h2 class="footer__heading"><span class="echo" data-ghost={site.footer.heading}>{site.footer.heading}</span></h2>
-    <p class="footer__note">Based in Bangalore. Founder of KĀRYO, studying B.Tech CSE (AI/ML).</p>
+    <p class="footer__note">Based in Bengaluru. Founder of KĀRYO, studying B.Tech CSE (AI/ML).</p>
     <a class="u-link footer__top-link" href="#main">Back to top</a>
   </div>
   <div class="footer__contact">
-    <a class="footer__mail" href={links.gmail} data-email-primary={site.email} data-astro-reload><span>{user}</span><span>@{domain}</span></a>
+    <a class="footer__mail" href={links.gmail} rel="nofollow" data-email-primary={site.email} data-astro-reload><span>{user}</span><span>@{domain}</span></a>
     <EmailOptions footer />
   </div>
   <div class="footer__base">

@@ -18,7 +18,7 @@ export type Project = {
   title: string;
   kind: string; // what it is
   result: string; // the index column: placement or status
-  year: number;
+  year?: number;
   team: string;
   stack: string[];
   summary: string; // what it does, for whom; the result is stated separately, once
@@ -48,13 +48,13 @@ export const media = {
 export const site = {
   name: 'Karan Raj KR',
   short: 'Karan Raj',
-  role: 'Co-founder, KĀRYO',
-  seoTitle: 'Karan Raj KR | AI Developer & KĀRYO Co-founder',
+  role: 'Founder, KĀRYO',
+  seoTitle: 'Karan Raj KR | Founder, KĀRYO | Bengaluru',
   url: 'https://www.karanrajkr.com',
   description:
-    'Karan Raj KR is an AI developer, open-source maintainer and KĀRYO co-founder in Bangalore. Explore AI projects, national hackathon wins and build notes.',
+    'Karan Raj KR is the Founder of KĀRYO, an agency selling websites and clinic software to local businesses in Bengaluru. See his products and hackathon wins.',
   email: 'mail@karanrajkr.com',
-  location: 'Based in Bangalore.',
+  location: 'Based in Bengaluru.',
   github: 'Karan-Raj-KR',
   socials: [
     { label: 'GitHub', href: 'https://github.com/Karan-Raj-KR' },
@@ -71,8 +71,8 @@ export const site = {
   hero: {
     // The h1, one line each: Karan's own line from karanrajkr.com, set in the display face.
     title: ['From ideas', 'to real', 'products.'],
-    sentence: 'I’m Karan Raj KR. I build AI products, co-founded KĀRYO with Havinash, and maintain crewai-recipes, an open-source CrewAI repository.',
-    roles: 'B.Tech CSE (AI/ML) at NIAT and S-VYASA, batch of 2029. Based in Bangalore.',
+    sentence: 'I’m Karan Raj KR, Founder of KĀRYO. I build AI products and maintain crewai-recipes, an open-source CrewAI repository.',
+    roles: '2nd-year B.Tech CSE (AI/ML) at NIAT x S-VYASA, batch 2025–29, CGPA 8.92. Based in Bengaluru, from Gubbi, Tumkur.',
     action: { label: 'See the work', href: '#work' },
     second: { label: 'Email me', href: '#contact' },
   },
@@ -87,21 +87,21 @@ export const site = {
     heading: 'Results so far',
     lead: 'Each against the field it was measured in.',
     items: [
-      { figure: '1st', event: 'Open Loop 2026', detail: 'A national-level hackathon with teams from 14+ states. We won with FormPilot, built with Havinash and Saagnik.', when: 'Apr 2026', href: '/work/formpilot/' },
+      { figure: '1st', event: 'Open Loop 2026', detail: 'A national-level hackathon with teams from 14+ states. My team and I won with FormPilot.', when: 'Apr 2026', href: '/work/formpilot/' },
       { figure: 'Top 40', event: 'Hack BLR 2026', detail: 'VoiceRx, a voice health assistant, built alone against 2,500+ teams.', when: 'Apr 2026', href: '/work/voicerx/' },
       { figure: 'Top 41', event: 'OpenAI DevDay Exchange', detail: 'Selected from thousands of applications for the community hackathon in Bengaluru.', when: 'Oct 2026' },
       { figure: '2/2', event: 'GRIT Awards 2026', detail: 'Won both the Content and the Hackathons categories at NIAT.', when: '2026' },
       { figure: 'Award', event: 'Technology Innovators Award', detail: 'Certificate of achievement.', when: 'Aug 2026' },
-      { figure: '1st', event: 'Ideathon 2026', detail: 'First place.', when: '2026' },
+      { figure: '1st', event: 'NIAT Ideathon 2025', detail: 'First place.', when: '2025' },
     ],
   },
 
   karyo: {
     heading: 'KĀRYO',
     // [[c|text]] marks a highlight: c is b (blue), k (ink) or t (tone).
-    story: 'KĀRYO is the digital agency Havinash and I co-founded in [[b|August 2025]] to put local businesses in Bangalore online. We find clients the direct way, [[k|door to door]], starting with clinics and neighbourhood shops. I lead the backend, business development and client outreach. We build the websites, including the one for [[t|ISKCON Visakhapatnam]], and the tools that run the agency itself: the Client Onboarding Manager for quotations and [[t|GST invoices]], and a Lead Intelligence Agent that decides which doors to knock on next. Every proposal, contract and invoice template is written in house, international clients included. So far the agency and my products have brought in [[b|6 figures in revenue]], and I have pitched KĀRYO to [[k|a VC and an angel investor]].',
+    story: 'KĀRYO is the agency I founded in [[b|August 2025]] to sell websites and clinic software to local businesses in Bengaluru. We find clients the direct way, [[k|door to door]], starting with clinics and neighbourhood shops. I lead the backend, business development and client outreach. We build the websites, including the one for [[t|ISKCON Visakhapatnam]], and the tools that run the agency itself: the Client Onboarding Manager for quotations and [[t|GST invoices]], and a Lead Intelligence Agent that decides which doors to knock on next. Every proposal, contract and invoice template is written in house, international clients included. So far the agency and my products have brought in [[b|6 figures in revenue]], and I have pitched KĀRYO to [[k|a VC and an angel investor]].',
     close: 'See what KĀRYO is doing now.',
-    lead: 'Havinash and I co-founded KĀRYO in August 2025: a digital agency for local businesses in Bangalore. We find clients the direct way, door to door, starting with clinics and local shops.',
+    lead: 'I founded KĀRYO in August 2025: an agency that sells websites and clinic software to local businesses in Bengaluru. We find clients the direct way, door to door, starting with clinics and local shops.',
     work: [
       'I lead backend, business development and client outreach',
       'Client websites, including ISKCON Visakhapatnam (Next.js, Tailwind)',
@@ -117,20 +117,21 @@ export const site = {
   karana: 'KĀRYO is named after the karana, half a lunar day.',
 
   teaser: {
-    heading: 'Building in Bangalore.',
+    heading: 'Building in Bengaluru.',
     text: 'When I’m not shipping, I’m on stage, writing build notes, or knocking on a clinic door for KĀRYO. I also make content on Instagram and LinkedIn.',
   },
 
   about: {
     heading: 'Builder. Founder.',
     bio: [
-      'I’m Karan Raj KR, based in Bangalore, studying B.Tech CSE (AI/ML) at NIAT and S-VYASA, batch of 2025 to 2029.',
-      'In my first year Havinash and I co-founded KĀRYO. I won Open Loop 2026 with FormPilot, placed Top 40 of 2,500+ teams at Hack BLR building solo, and became the project admin of an open-source repository other developers fork. I also make content on Instagram and LinkedIn.',
+      'I’m Karan Raj KR, a 2nd-year B.Tech CSE (AI/ML) student at NIAT x S-VYASA, batch 2025–29, with a CGPA of 8.92. I’m based in Bengaluru and come from Gubbi, Tumkur.',
+      'In my first year I founded KĀRYO, won Open Loop 2026 with FormPilot as part of a team, placed Top 40 of 2,500+ teams at Hack BLR building solo, and became the project admin of an open-source repository other developers fork. Now, in my second year, I am EDC President 2026-27 at NIAT and a Student Builder Group Leader, AWS, which is a student-led role. I also make content on Instagram and LinkedIn.',
     ],
     roles: [
-      { title: 'Co-founder, KĀRYO', when: 'Aug 2025 to now', text: 'Co-founded with Havinash. I lead backend, business development and client outreach for a digital agency serving local businesses.' },
-      { title: 'EDC President candidate', when: 'Now', text: 'Running for President of the Entrepreneurship Development Cell.' },
-      { title: 'Finance Head, ED Club', when: '2025 · First year of B.Tech', text: 'Co-organised 4+ events: an IPL auction, a build-a-product-in-30-minutes pitch, a sponsored teams event and an entrepreneurship debate. The biggest drew 140+ people, and I spoke to large audiences. Won a best member award.' },
+      { title: 'Founder, KĀRYO', when: 'Aug 2025 to now', text: 'I lead backend, business development and client outreach for an agency that sells websites and clinic software to local businesses.' },
+      { title: 'EDC President 2026-27', when: '2026 to 2027', text: 'President of the Entrepreneurship Development Club at NIAT.' },
+      { title: 'Student Builder Group Leader, AWS', when: 'Public since 31 Oct 2026', text: 'A student-led role, not employment or an internship. #AWSsbgl' },
+      { title: 'Finance Head, ED Club', when: '2025 · First year of B.Tech', text: 'Co-organised 4+ events: an IPL auction, a build-a-product-in-30-minutes pitch, a sponsored teams event and an entrepreneurship debate. The biggest drew 140+ people, and I spoke to large audiences. Best Member, Entrepreneurship Club 2025.' },
       { title: 'Project Admin, ECSoC', when: '2026', text: 'crewai-recipes: open-source CrewAI templates on NVIDIA NIM.' },
       { title: 'Contributor, GSSoC', when: '2026', text: '18 pull requests merged in GirlScript Summer of Code.' },
       { title: 'Google Campus Ambassador', when: 'Until Jan 2026', text: 'Past role.' },
@@ -138,12 +139,14 @@ export const site = {
     recognition: [
       'GRIT Awards 2026, NIAT: won both the Content and the Hackathons categories',
       'Technology Innovators Award, certificate of achievement, 10 Aug 2026',
+      'Best Member, Entrepreneurship Club 2025',
       'Top Prompt Creator, Google Pitch Night',
     ],
     now: [
-      'Building the KĀRYO Client Onboarding Manager: quotations, GST invoices and payment automation',
-      'Eligent: a prototype in progress',
-      'Running for EDC President',
+      'Eligent: live, with paying users, and my top priority',
+      'Founder, KĀRYO: websites and clinic software for local businesses',
+      'EDC President 2026-27, Entrepreneurship Development Club, NIAT',
+      'Student Builder Group Leader, AWS: a student-led role',
     ],
     skills: [
       { group: 'Product', items: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Supabase', 'Python', 'FastAPI'] },
@@ -157,13 +160,15 @@ export const site = {
   },
 
   updates: [
+    { datetime: '2026-11-07', date: '5 to 7 Nov 2026', text: 'Competed at ETHGlobal Mumbai with my team.', href: '/record/#log-competitions' },
+    { datetime: '2026-10-31', date: '31 Oct 2026', text: 'Announced my role as Student Builder Group Leader, AWS, a student-led role. #AWSsbgl', href: '/about/#roles' },
     { datetime: '2026-10-10', date: '10 Oct 2026', text: 'Selected among the top 41 from thousands of applications for the OpenAI DevDay Exchange community hackathon in Bengaluru.', href: '/record/#wins' },
     { datetime: '2026-08-30', date: '29 and 30 Aug 2026', text: 'Built Eligent in 24 hours at The Hive Sprint, Startup Park Bengaluru.', href: '/work/eligent/' },
     { datetime: '2026-08-10', date: '10 Aug 2026', text: 'Received the Technology Innovators Award.', href: '/record/#wins' },
     { datetime: '2026-07-09', date: '9 Jul 2026', text: 'Published the story behind FormPilot and our Open Loop win.', href: '/about/#writing-open-loop-2026-formpilot-winner' },
     { datetime: '2026-07-06', date: '6 Jul 2026', text: 'Published what I built, won and learned in my first year of engineering.', href: '/about/#writing-my-first-year-of-engineering' },
-    { datetime: '2026-04-25', date: '25 and 26 Apr 2026', text: 'Won Open Loop 2026 with FormPilot, built with Havinash and Saagnik.', href: '/work/formpilot/' },
-    { datetime: '2025-08', date: 'Aug 2025', text: 'Co-founded KĀRYO with Havinash in Bangalore.', href: '/#karyo' },
+    { datetime: '2026-04-25', date: '25 and 26 Apr 2026', text: 'Won Open Loop 2026 with FormPilot, built with my team.', href: '/work/formpilot/' },
+    { datetime: '2025-08', date: 'Aug 2025', text: 'Founded KĀRYO in Bengaluru.', href: '/#karyo' },
   ],
 
   record: {
@@ -172,14 +177,15 @@ export const site = {
       {
         name: 'Competitions and hackathons',
         rows: [
+          { when: '5 to 7 Nov 2026', what: 'ETHGlobal Mumbai, with my team', where: 'Mumbai', result: 'Participated', tier: 'minor' },
           { when: '10 Oct 2026', what: 'OpenAI DevDay Exchange community hackathon, selected from thousands of applications', where: 'Bengaluru', result: 'Top 41', tier: 'win' },
           { when: '29 to 30 Aug 2026', what: 'The Hive Sprint, Eligent built in 24 hours', where: 'Startup Park Bengaluru', result: 'Built' },
-          { when: '25 to 26 Apr 2026', what: 'Open Loop 2026, FormPilot with Havinash and Saagnik', where: 'Yenepoya, Mangaluru', result: '1st of 121 teams', tier: 'win' },
+          { when: '25 to 26 Apr 2026', what: 'Open Loop 2026, FormPilot with my team', where: 'Yenepoya, Mangaluru', result: '1st of 121 teams', tier: 'win' },
           { when: 'Apr 2026', what: 'Hack BLR 2026, VoiceRx, solo', where: 'Bengaluru', result: 'Top 40 of 2,500+', tier: 'win' },
           { when: '2026', what: 'GRIT Awards 2026, Content and Hackathons categories', where: 'NIAT', result: 'Won both', tier: 'win' },
-          { when: '2026', what: 'Ideathon 2026', where: '', result: '1st place', tier: 'win' },
+          { when: '2025', what: 'NIAT Ideathon 2025', where: 'NIAT', result: '1st place', tier: 'win' },
           { when: '2026', what: 'Agentathon 2026, KĀRYO Lead Intelligence Agent', where: '', result: 'Participated', tier: 'minor' },
-          { when: '2026', what: 'TakeOver’26, 24 hour live build with Havinash and Saagnik', where: 'NIAT KKH, Hyderabad', result: 'Participated', tier: 'minor' },
+          { when: '2026', what: 'TakeOver’26, 24 hour live build with my team', where: 'NIAT KKH, Hyderabad', result: 'Participated', tier: 'minor' },
           { when: '2026', what: 'Smart India Hackathon 2026, EdgeWake for an ISRO problem statement', where: 'Internal round', result: 'Presented', tier: 'minor' },
         ],
       },
@@ -193,8 +199,9 @@ export const site = {
       {
         name: 'Entrepreneurship',
         rows: [
-          { when: 'Aug 2025 to now', what: 'Co-founder, KĀRYO, with Havinash', where: 'Bangalore', result: 'Active agency' },
+          { when: 'Aug 2025 to now', what: 'Founder, KĀRYO', where: 'Bengaluru', result: 'Active agency' },
           { when: 'To date', what: 'Revenue through the agency and my products', where: '', result: '6 figures' },
+          { when: '2026 to 2027', what: 'EDC President 2026-27, Entrepreneurship Development Club', where: 'NIAT', result: 'Current role' },
           { when: '2025 · First year of B.Tech', what: 'Finance Head, Entrepreneurship (ED) Club', where: 'NIAT', result: '4+ events, 140+ people' },
         ],
       },
@@ -202,13 +209,16 @@ export const site = {
         name: 'Recognition',
         rows: [
           { when: '10 Aug 2026', what: 'Technology Innovators Award', where: 'Certificate of achievement', result: 'Award', tier: 'win' },
+          { when: 'Public since 31 Oct 2026', what: 'Student Builder Group Leader, AWS (#AWSsbgl)', where: 'Student-led role', result: 'Current role' },
           { when: 'Until Jan 2026', what: 'Google Campus Ambassador', where: 'Google', result: 'Past role', tier: 'minor' },
           { when: 'Past', what: 'Top Prompt Creator, Google Pitch Night', where: 'Google', result: 'Credential', tier: 'minor' },
+          { when: '2025', what: 'Best Member, Entrepreneurship Club', where: 'NIAT', result: 'Award', tier: 'minor' },
+          { when: '20 to 22 Nov 2026', what: 'NxtWave Creator Fest 2.0', where: 'Hyderabad', result: 'Selected', tier: 'minor' },
         ],
       },
       {
         name: 'Education',
-        rows: [{ when: '2025 to 2029', what: 'B.Tech CSE (AI/ML)', where: 'NIAT and S-VYASA University, Bengaluru', result: 'In progress' }],
+        rows: [{ when: '2025 to 2029', what: '2nd-year B.Tech CSE (AI/ML), CGPA 8.92', where: 'NIAT x S-VYASA, Bengaluru', result: 'In progress' }],
       },
     ],
   },
@@ -230,12 +240,12 @@ export const projects: Project[] = [
     kind: 'AI Chrome extension',
     result: '1st, Open Loop 2026',
     year: 2026,
-    team: 'Karan Raj KR, Havinash and Saagnik',
+    team: 'Karan Raj KR and two teammates',
     stack: ['Chrome Manifest V3', 'React 18', 'TypeScript', 'Vite', 'esbuild'],
     summary: 'A Chrome extension that reads a web form, works out what each field is asking, shows you its answers, and fills them in when you agree, long answers included.',
-    description: 'FormPilot is an AI Chrome extension that scans a web form, previews its answers and fills them on approval. Built by Karan Raj KR, Havinash and Saagnik.',
+    description: 'FormPilot is an AI Chrome extension that scans a web form, previews its answers and fills them on approval. Built by Karan Raj KR and two teammates.',
     serves: 'People who type the same details into form after form, and still face the long answer at the end of an application.',
-    contribution: 'Team lead. I mapped the architecture, worked out the business model and the pitch, shot the demo video and gave the explanation in judging. Havinash built the frontend and backend logic; he and Saagnik built Google Sign-In.',
+    contribution: 'Team lead. I mapped the architecture, worked out the business model and the pitch, shot the demo video and gave the explanation in judging. A teammate built the frontend and backend logic, and my two teammates built Google Sign-In.',
     links: [
       { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/formpilot/ffkpekcnpbafklidejfbhinahahaabfi' },
       { label: 'Website', href: 'https://form-pilot.netlify.app/' },
@@ -279,7 +289,7 @@ export const projects: Project[] = [
     kind: 'Voice health assistant',
     result: 'Top 40, Hack BLR 2026',
     year: 2026,
-    team: 'Solo',
+    team: 'Karan Raj KR, solo',
     stack: ['Vapi', 'FastAPI', 'Qdrant', 'Groq', 'FastEmbed'],
     summary: 'A voice assistant that answers health questions on a phone call, from a curated set of health FAQs rather than the model’s memory.',
     description: 'VoiceRx is a voice health assistant Karan Raj KR built solo with Vapi, FastAPI, Qdrant and Groq. It answers from retrieved health FAQs during a call.',
@@ -352,7 +362,7 @@ export const projects: Project[] = [
     kind: 'Open-source repository',
     result: 'Maintainer',
     year: 2026,
-    team: 'Maintainer, with open-source contributors',
+    team: 'Karan Raj KR, maintainer, with open-source contributors',
     stack: ['CrewAI', 'NVIDIA NIM', 'Python', 'FastAPI'],
     summary: 'Ready-to-run CrewAI multi-agent workflows on NVIDIA NIM, with a gallery where you watch a recorded run before you clone anything. I maintain it.',
     description: 'crewai-recipes: open-source, MIT-licensed CrewAI multi-agent workflows on NVIDIA NIM, maintained by Karan Raj KR, with a gallery of recorded runs.',
@@ -389,20 +399,20 @@ export const projects: Project[] = [
   {
     slug: 'eligent',
     title: 'Eligent',
-    kind: 'Eligibility checker',
-    result: 'Prototype',
+    kind: 'AI opportunity engine',
+    result: 'Live product',
     year: 2026,
     team: 'Karan Raj KR',
     stack: ['TypeScript', 'Chrome extension'],
-    summary: 'Tells students which scholarships and opportunities they shouldn’t apply to, and quotes the exact clause that rules them out.',
-    description: 'Eligent tells students which scholarships they don’t qualify for and quotes the clause, with zero AI in the eligibility decision. Built in 24 hours.',
+    summary: 'An AI opportunity engine with deterministic eligibility: it tells students which scholarships and opportunities they shouldn’t apply to, and quotes the exact clause that rules them out.',
+    description: 'Eligent by Karan Raj KR is a live AI opportunity engine with deterministic eligibility. It tells students what not to apply to, and quotes the clause.',
     serves: 'Students applying for scholarships and other opportunities with strict eligibility rules.',
     contribution: 'I built all of it: the eligibility engine, the website and the Chrome extension.',
-    links: [{ label: 'Live prototype', href: 'https://eligent.karanrajkr.com/' }],
-    facts: [{ k: 'Built', v: '24 hours, The Hive Sprint, 29 and 30 Aug 2026' }, { k: 'Where', v: 'Startup Park Bengaluru' }, { k: 'Status', v: 'Prototype in progress' }],
+    links: [{ label: 'Live product', href: 'https://eligent.karanrajkr.com/' }],
+    facts: [{ k: 'Built', v: '24 hours, The Hive Sprint, 29 and 30 Aug 2026' }, { k: 'Where', v: 'Startup Park Bengaluru' }, { k: 'Status', v: 'Live, with paying users' }],
     line: 'Tells students which opportunities they don’t qualify for, and quotes the clause.',
     idea: 'Tell students what they shouldn’t apply to, and quote the clause.',
-    proof: 'A live prototype, built in 24 hours at The Hive Sprint',
+    proof: 'A live product with paying users, first built in 24 hours at The Hive Sprint',
     how: {
       kind: 'verdicts',
       title: 'Three verdicts',
@@ -426,7 +436,7 @@ export const projects: Project[] = [
     kind: 'KĀRYO lead pipeline',
     result: 'Agentathon 2026',
     year: 2026,
-    team: 'Solo',
+    team: 'Karan Raj KR, solo',
     stack: ['CrewAI', 'Groq', 'Python', 'OpenStreetMap'],
     summary: 'Given a city and a category, it finds local businesses, scores the gaps in their online presence, re-checks the borderline ones, and drafts an email for each lead worth pitching.',
     description: 'The KĀRYO Lead Intelligence Agent by Karan Raj KR: a CrewAI and Groq pipeline that finds, scores and re-checks local leads, then drafts outreach.',
@@ -452,14 +462,34 @@ export const projects: Project[] = [
     kind: 'Client website, KĀRYO',
     result: 'Client work',
     year: 2026,
-    team: 'KĀRYO',
+    team: 'Karan Raj KR and KĀRYO',
     stack: ['Next.js 14', 'Tailwind'],
     summary: 'A website for ISKCON Visakhapatnam, designed and built by KĀRYO.',
-    description: 'The ISKCON Visakhapatnam website, a client project built by Karan Raj KR and KĀRYO with Next.js 14 and Tailwind CSS.',
+    description: 'The ISKCON Visakhapatnam website is a client project designed and built by Karan Raj KR and his agency KĀRYO with Next.js 14 and Tailwind CSS.',
     links: [],
     line: 'A client website, designed and shipped through KĀRYO.',
     sections: [
       { heading: 'What it is', text: 'A client website for ISKCON Visakhapatnam, shipped through KĀRYO with Next.js 14 and Tailwind.' },
     ],
   },
+  {
+    slug: 'clinicdesk',
+    title: 'ClinicDesk',
+    kind: 'Dental clinic software',
+    result: 'SaaS product',
+    team: 'Karan Raj KR',
+    stack: [],
+    summary: 'ClinicDesk is a SaaS product for dental clinics.',
+    description: 'ClinicDesk is a dental clinic SaaS by Karan Raj KR, Founder of KĀRYO, the Bengaluru agency that sells websites and clinic software to local businesses.',
+    serves: 'Dental clinics.',
+    links: [],
+    line: 'Software as a service for dental clinics.',
+    sections: [
+      { heading: 'What it is', text: 'A SaaS product for dental clinics. KĀRYO sells websites and clinic software to local businesses.' },
+    ],
+  },
 ];
+
+// Priority order for the work index, the next-project chain, More work and llms.txt.
+const order = ['eligent', 'school-erp', 'clinicdesk', 'crewai-recipes', 'formpilot', 'voicerx', 'client-onboarding-manager', 'lead-intelligence-agent', 'iskcon-visakhapatnam'];
+projects.sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug));

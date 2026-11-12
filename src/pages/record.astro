@@ -6,9 +6,9 @@ const r = site.record;
 type Row = { when: string; what: string; where: string; result: string; tier?: 'win' | 'minor' };
 const id = (name: string) => `log-${name.split(' ')[0].toLowerCase()}`;
 ---
-<Base title="Record" seoTitle="Hackathon Wins & Open-Source Work | Karan Raj KR" description="Karan Raj KR’s hackathon wins and open-source record: Open Loop 2026 national winner, Hack BLR Top 40, repository maintenance and KĀRYO entrepreneurship." current="record">
+<Base title="Record" seoTitle="Karan Raj KR | Awards and hackathons" description="Awards and hackathons of Karan Raj KR: 1st place at Open Loop 2026, Top 40 at Hack BLR 2026, Top 41 at OpenAI DevDay Exchange and GRIT Awards 2026." current="record">
   <section class="page-hero page-hero--photo" data-section="Record">
-    <h1 class="page-hero__title page-hero__title--display"><span class="mask"><span class="rise"><span class="echo" data-ghost="The record">The record</span></span></span></h1>
+    <h1 class="page-hero__title page-hero__title--display"><span class="sr-only">{site.name}: </span><span class="mask"><span class="rise"><span class="echo" data-ghost="The record">The record</span></span></span></h1>
     <p class="page-hero__lead rise-in">{r.intro}</p>
     <nav class="page-hero__index rise-in" aria-label="Record sections">
       <a href="#wins"><span>Results</span><span aria-hidden="true">↓</span></a>

@@ -28,7 +28,7 @@ const personId = `${homeUrl}#person`;
 const websiteId = `${homeUrl}#website`;
 const organizationId = new URL('/#organization', site.karyo.link.href).href;
 const pageId = `${canonical}#webpage`;
-const imageAlt = `${site.name}, AI developer, open-source maintainer and KĀRYO co-founder`;
+const imageAlt = `${site.name}, Founder of KĀRYO and open-source maintainer`;
 // The page's own entity (a case study passes a CreativeWork); its @context belongs to the outer graph.
 const { '@context': _context, ...work } = jsonLd ?? {};
 const workId = `${canonical}#work`;
@@ -36,20 +36,20 @@ const person = {
   '@id': personId,
   '@type': 'Person',
   name: site.name,
-  alternateName: site.short,
+  alternateName: ['Karan Raj K R', 'Karan Raj', 'karanrajkr'],
   // First sentence of the visible site description: who he is, without the "Explore…" call to action.
   description: `${site.description.split('. ')[0].replace(/\.$/, '')}.`,
-  jobTitle: ['AI Developer', 'Open-source Maintainer', 'Co-founder, KĀRYO'],
+  jobTitle: ['Founder, KĀRYO', 'Open-source Maintainer'],
   worksFor: { '@id': organizationId },
   memberOf: [
     { '@type': 'CollegeOrUniversity', name: 'NIAT' },
     { '@type': 'CollegeOrUniversity', name: 'S-VYASA University' },
   ],
   homeLocation: {
-    '@type': 'Place', name: 'Bangalore, Karnataka, India',
-    address: { '@type': 'PostalAddress', addressLocality: 'Bangalore', addressRegion: 'Karnataka', addressCountry: 'IN' },
+    '@type': 'Place', name: 'Bengaluru, Karnataka, India',
+    address: { '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressRegion: 'Karnataka', addressCountry: 'IN' },
   },
-  award: ['1st place, Open Loop 2026', 'Top 40, Hack BLR 2026', 'Top 41, OpenAI DevDay Exchange 2026','GRIT Awards 2026: Content and Hackathons', 'Technology Innovators Award 2026', '1st place, Ideathon 2026'],
+  award: ['1st place, Open Loop 2026', 'Top 40, Hack BLR 2026', 'Top 41, OpenAI DevDay Exchange 2026','GRIT Awards 2026: Content and Hackathons', 'Technology Innovators Award 2026', '1st place, NIAT Ideathon 2025'],
   knowsAbout: site.about.skills.flatMap((g) => g.items),
   image: new URL(media.portrait.src, origin).href,
   url: homeUrl,
@@ -68,7 +68,7 @@ const structuredData = {
     person,
     {
       '@type': 'Organization', '@id': organizationId, name: 'KĀRYO', url: site.karyo.link.href,
-      founder: [{ '@id': personId }, { '@type': 'Person', name: 'Havinash' }],
+      founder: { '@id': personId },
     },
     { '@type': 'WebSite', '@id': websiteId, name: site.name, url: homeUrl, inLanguage: 'en', publisher: { '@id': personId } },
     {
