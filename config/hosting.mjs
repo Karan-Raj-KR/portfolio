@@ -29,6 +29,9 @@ export const hosting = {
       { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
       { key: 'Content-Security-Policy', value: csp },
     ] },
+    // Font files never change in place. Media and previews keep their names, so they revalidate after a day.
+    { source: '/fonts/(.*)', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
+    { source: '/(media|og)/(.*)', headers: [{ key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' }] },
     { source: '/(.*)', has: [{ type: 'host', value: '.*\\.vercel\\.app' }],
       headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
   ],

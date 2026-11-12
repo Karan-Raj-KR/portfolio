@@ -20,6 +20,9 @@ const jsonLd = {
   '@type': 'CreativeWork',
   name: project.title,
   abstract: project.summary,
+  description: project.description,
+  inLanguage: 'en',
+  image: new URL(`/og/${project.slug}.png`, Astro.site ?? site.url).href,
   genre: project.kind,
   ...(project.year ? { dateCreated: String(project.year) } : {}),
   ...(project.stack.length ? { keywords: project.stack.join(', ') } : {}),
@@ -32,7 +35,7 @@ const jsonLd = {
 const walk = project.how?.kind === 'steps' ? project.how : undefined;
 const hasOutcome = project.outcome || project.facts || project.photo;
 ---
-<Base title={project.title} seoTitle={`${project.title} by ${site.name}`} description={project.description} current="work" jsonLd={jsonLd}>
+<Base title={project.title} seoTitle={`${project.title}: ${project.kind} | ${site.name}`} description={project.description} image={`/og/${project.slug}.png`} imageAlt={`${project.title}: ${project.line}`} current="work" jsonLd={jsonLd}>
   <article class="case">
     <header class="case__hero" data-section="Case">
       <h1 class="case__title" style={`--chars: ${Math.max(10, ...project.title.split(/[\s-]+/).map((w) => w.length))}`}><span class="mask"><span class="rise"><span class="echo" data-ghost={project.title}>{project.title}</span></span></span></h1>
