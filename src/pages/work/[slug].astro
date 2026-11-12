@@ -21,10 +21,10 @@ const jsonLd = {
   name: project.title,
   abstract: project.summary,
   genre: project.kind,
-  dateCreated: String(project.year),
-  keywords: project.stack.join(', '),
+  ...(project.year ? { dateCreated: String(project.year) } : {}),
+  ...(project.stack.length ? { keywords: project.stack.join(', ') } : {}),
   creator: { '@id': new URL('/#person', Astro.site ?? site.url).href },
-  ...(/Havinash|Saagnik/.test(project.team) ? { contributor: project.team.split(/,\s*|\s+and\s+/).filter((n) => n !== site.name).map((name) => ({ '@type': 'Person', name })) } : {}),
+  author: { '@id': new URL('/#person', Astro.site ?? site.url).href },
   ...(project.links[0] ? { url: project.links[0].href } : {}),
   ...(sameAs.length ? { sameAs } : {}),
   ...(articles.length ? { subjectOf: articles.map((url) => ({ '@type': 'Article', url })) } : {}),
@@ -32,7 +32,7 @@ const jsonLd = {
 const walk = project.how?.kind === 'steps' ? project.how : undefined;
 const hasOutcome = project.outcome || project.facts || project.photo;
 ---
-<Base title={project.title} seoTitle={`${project.title}: ${project.kind} | ${site.name}`} description={project.description} current="work" jsonLd={jsonLd}>
+<Base title={project.title} seoTitle={`${project.title} by ${site.name}`} description={project.description} current="work" jsonLd={jsonLd}>
   <article class="case">
     <header class="case__hero" data-section="Case">
       <h1 class="case__title" style={`--chars: ${Math.max(10, ...project.title.split(/[\s-]+/).map((w) => w.length))}`}><span class="mask"><span class="rise"><span class="echo" data-ghost={project.title}>{project.title}</span></span></span></h1>
@@ -40,8 +40,9 @@ const hasOutcome = project.outcome || project.facts || project.photo;
       {project.proof && <p class="case__proof rise-in">{project.proof}</p>}
       <dl class="case__meta facts facts--row rise-in">
         {project.serves && <div><dt>For</dt><dd>{project.serves}</dd></div>}
-        {project.contribution ? <div class="case__mine"><dt>My part</dt><dd>{project.contribution}</dd></div> : <div><dt>Team</dt><dd>{project.team}</dd></div>}
-        <div><dt>Built with</dt><dd>{project.stack.join(', ')}</dd></div>
+        <div><dt>Built by</dt><dd>{project.team}</dd></div>
+        {project.contribution && <div class="case__mine"><dt>My part</dt><dd>{project.contribution}</dd></div>}
+        {project.stack.length > 0 && <div><dt>Built with</dt><dd>{project.stack.join(', ')}</dd></div>}
       </dl>
       {project.links.length > 0 && (
         <ul class="case__links rise-in" aria-label={`${project.title} links`}>

@@ -2,6 +2,7 @@
 // One map drives Astro's portable HTML fallbacks and the supported hosts' permanent rules.
 export const legacyRoutes = {
   '/projects': '/#work',
+  '/work': '/#work',
   '/projects/client-onboarding-manager': '/work/client-onboarding-manager/',
   '/projects/school-erp': '/work/school-erp/',
   '/projects/eligent': '/work/eligent/',

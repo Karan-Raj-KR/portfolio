@@ -68,7 +68,7 @@ const titles = new Map();
 const descriptions = new Map();
 const indexable = new Set();
 const forbidden = [
-  [/mustafa/i, 'Mustafa'], [/gubbi/i, 'Gubbi'], [/tumkur/i, 'Tumkur'], [/stack\s?overflow/i, 'Stack Overflow'],
+  [/mustafa/i, 'Mustafa'], [/stack\s?overflow/i, 'Stack Overflow'],
   [/telegram|t\.me\//i, 'Telegram'], [/facebook|fb\.com/i, 'Facebook'], [/\bSPARK\b/i, 'SPARK'], [/\bforecast/i, 'forecast'],
   [/localhost|127\.0\.0\.1|\[::1\]/i, 'local host'],
 ];

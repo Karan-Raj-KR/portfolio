@@ -29,9 +29,9 @@ try {
     img { display: block; width: 270px; height: 360px; object-fit: cover; }
     footer { margin-top: 34px; color: #1f35ff; font-size: 22px; }
   </style></head><body>
-    <header><span>${escape(new URL(site.url).hostname)}</span><span>Bangalore, India</span></header>
+    <header><span>${escape(new URL(site.url).hostname)}</span><span>Bengaluru, India</span></header>
     <main><div><h1 aria-label="${escape(site.name)}"><span data-text="Karan">Karan</span><span data-text="Raj KR">Raj KR</span></h1>
-    <p>AI developer · Open-source maintainer<br>${escape(site.role)}</p></div><img src="${portrait}" alt="Karan Raj KR speaking in public"></main>
+    <p>${escape(site.role)}<br>Open-source maintainer</p></div><img src="${portrait}" alt="Karan Raj KR speaking in public"></main>
     <footer>From ideas to real products.</footer>
   </body></html>`);
   await page.evaluate(() => document.fonts.ready);

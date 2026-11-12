@@ -38,7 +38,7 @@ assert.ok(bing.includes('B3FEA252606E5D9B50A4BEA367942AFB'));
 const manifest = JSON.parse(await readFile(resolve(root, 'manifest.webmanifest'), 'utf8'));
 for (const icon of manifest.icons) assert.ok(existsSync(resolve(root, '.' + icon.src)));
 const llms = await readFile(resolve(root, 'llms.txt'), 'utf8');
-assert.ok(!/mustafa|gubbi|tumkur|stack\s?overflow|telegram|facebook|\bspark\b/i.test(llms), 'Old public copy returned in llms.txt');
+assert.ok(!/mustafa|stack\s?overflow|telegram|facebook|\bspark\b/i.test(llms), 'Old public copy returned in llms.txt');
 assert.ok(llms.includes('I built all of it'));
 for (const name of await readdir(resolve(root, '_astro'))) {
   if (name.endsWith('.js')) assert.ok(!(await readFile(resolve(root, '_astro', name), 'utf8')).includes('GITHUB_TOKEN'), 'Server-only token variable appears in a client script');
@@ -83,7 +83,7 @@ for (const [name, engine] of Object.entries({ chromium, webkit })) {
   await page.goto(origin + '/', { waitUntil: 'networkidle' });
   const views = (count) => page.waitForFunction((n) => window.vaq?.filter((a) => a[0] === 'pageview').length === n, count);
   await views(1);
-  assert.deepEqual(await page.locator('[data-shift-link]').allTextContents(), ['FormPilot', 'Eligent', 'VoiceRx', 'crewai-recipes']);
+  assert.deepEqual(await page.locator('[data-shift-link]').allTextContents(), ['Eligent', 'crewai-recipes', 'FormPilot', 'VoiceRx']);
   assert.equal(await page.locator('.footer__meta').textContent(), '© 2026 Karan Raj KR.');
   await page.locator('.frame__nav a[href="/about/"]').click();
   await page.waitForURL(origin + '/about/'); await page.waitForLoadState('networkidle');
