@@ -177,7 +177,7 @@ export const site = {
           { when: '25 to 26 Apr 2026', what: 'Open Loop 2026, FormPilot with Havinash and Saagnik', where: 'Yenepoya, Mangaluru', result: '1st of 121 teams', tier: 'win' },
           { when: 'Apr 2026', what: 'Hack BLR 2026, VoiceRx, solo', where: 'Bengaluru', result: 'Top 40 of 2,500+', tier: 'win' },
           { when: '2026', what: 'GRIT Awards 2026, Content and Hackathons categories', where: 'NIAT', result: 'Won both', tier: 'win' },
-          { when: '2026', what: 'Ideathon', where: '', result: 'Winner', tier: 'win' },
+          { when: '2026', what: 'Ideathon 2026', where: '', result: '1st place', tier: 'win' },
           { when: '2026', what: 'Agentathon 2026, KĀRYO Lead Intelligence Agent', where: '', result: 'Participated', tier: 'minor' },
           { when: '2026', what: 'TakeOver’26, 24 hour live build with Havinash and Saagnik', where: 'NIAT KKH, Hyderabad', result: 'Participated', tier: 'minor' },
           { when: '2026', what: 'Smart India Hackathon 2026, EdgeWake for an ISRO problem statement', where: 'Internal round', result: 'Presented', tier: 'minor' },
@@ -194,7 +194,7 @@ export const site = {
         name: 'Entrepreneurship',
         rows: [
           { when: 'Aug 2025 to now', what: 'Co-founder, KĀRYO, with Havinash', where: 'Bangalore', result: 'Active agency' },
-          { when: 'To date', what: 'Revenue through agencies and products', where: '', result: '6 figures' },
+          { when: 'To date', what: 'Revenue through the agency and my products', where: '', result: '6 figures' },
           { when: '2025 · First year of B.Tech', what: 'Finance Head, Entrepreneurship (ED) Club', where: 'NIAT', result: '4+ events, 140+ people' },
         ],
       },
