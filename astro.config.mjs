@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { legacyRoutes } from './src/data/legacy-routes.mjs';
+import { buildDate } from './src/lib/build-date.mjs';
 
 // Override SITE_URL at build time for a separate deployment; leave DNS changes for launch.
 const productionUrl = new URL(process.env.SITE_URL || 'https://www.karanrajkr.com');
@@ -12,7 +13,7 @@ export default defineConfig({
   site: productionUrl.origin,
   redirects: legacyRoutes,
   trailingSlash: 'always',
-  integrations: [sitemap({ filter: (page) => {
+  integrations: [sitemap({ lastmod: new Date(buildDate), filter: (page) => {
     const path = new URL(page).pathname.replace(/\/$/, '');
     return path !== '/404' && !(path in legacyRoutes);
   } })],

@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import { googleSiteVerification, isPreview } from '../lib/deployment';
+import { buildDate } from '../lib/build-date.mjs';
 import '../styles/tokens.css';
 import '../styles/engine.css';
 import '../styles/site.css';
@@ -14,11 +15,12 @@ interface Props {
   seoTitle?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   current?: 'home' | 'work' | 'record' | 'about' | 'none';
   jsonLd?: Record<string, unknown>;
   noindex?: boolean;
 }
-const { title, seoTitle, description = site.description, image = '/og.png', current = 'none', jsonLd, noindex = false } = Astro.props;
+const { title, seoTitle, description = site.description, image = '/og.png', imageAlt: imageAltProp, current = 'none', jsonLd, noindex = false } = Astro.props;
 const fullTitle = seoTitle ?? (title ? `${title} | ${site.name}` : site.seoTitle);
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const ogImage = new URL(image, Astro.site ?? site.url).href;
@@ -28,7 +30,7 @@ const personId = `${homeUrl}#person`;
 const websiteId = `${homeUrl}#website`;
 const organizationId = new URL('/#organization', site.karyo.link.href).href;
 const pageId = `${canonical}#webpage`;
-const imageAlt = `${site.name}, Founder of KĀRYO and open-source maintainer`;
+const imageAlt = imageAltProp ?? `${site.name}, Founder of KĀRYO and open-source maintainer`;
 // The page's own entity (a case study passes a CreativeWork); its @context belongs to the outer graph.
 const { '@context': _context, ...work } = jsonLd ?? {};
 const workId = `${canonical}#work`;
@@ -67,14 +69,18 @@ const structuredData = {
   '@graph': [
     person,
     {
-      '@type': 'Organization', '@id': organizationId, name: 'KĀRYO', url: site.karyo.link.href,
+      '@type': 'Organization', '@id': organizationId, name: 'KĀRYO', alternateName: 'Karyo', url: site.karyo.link.href,
+      description: 'An agency selling websites and clinic software to local businesses in Bengaluru.',
       founder: { '@id': personId },
+      areaServed: { '@type': 'City', name: 'Bengaluru' },
     },
     { '@type': 'WebSite', '@id': websiteId, name: site.name, url: homeUrl, inLanguage: 'en', publisher: { '@id': personId } },
     {
       '@type': isProfile ? 'ProfilePage' : current === 'record' ? 'CollectionPage' : 'WebPage',
       '@id': pageId, url: canonical, name: fullTitle, description, inLanguage: 'en',
-      isPartOf: { '@id': websiteId }, about: { '@id': jsonLd ? workId : personId },
+      isPartOf: { '@id': websiteId }, dateModified: buildDate,
+      primaryImageOfPage: { '@type': 'ImageObject', url: ogImage, width: 1200, height: 630 },
+      about: { '@id': jsonLd ? workId : personId },
       ...(isProfile ? { mainEntity: { '@id': personId } } : jsonLd ? { mainEntity: { '@id': workId } } : {}),
       ...(breadcrumbs ? { breadcrumb: { '@id': `${canonical}#breadcrumb` } } : {}),
     },
